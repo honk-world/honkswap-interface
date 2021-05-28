@@ -2868,10 +2868,10 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@sushiswap/sushi-data@^2.0.0-canary.2":
-  version "2.0.0-canary.2"
-  resolved "https://registry.yarnpkg.com/@sushiswap/sushi-data/-/sushi-data-2.0.0-canary.2.tgz#9130989960087e2b77a38fb496a817485ff096b1"
-  integrity sha512-cX0I9YzNqgvtWysUK+9+qgk0z/3UC7lE1IvKwgdLSZYsTCvNyBN9y1lO+LviWlxe4pUVlUriTbJ8G0u2tDp+AA==
+"@sushiswap/sushi-data@1.0.26":
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@sushiswap/sushi-data/-/sushi-data-1.0.26.tgz#6f9d68f0193d7bb3839262fe47dcd095478ee3e1"
+  integrity sha512-zGAL3un1K8J+mc4GyMhjOdJHYsnuwh7WiP4zlgvGyz1FJbFvnkv6NaKqh1bLAVCJDTZRFBZCzty7qp+6kX+nJw==
   dependencies:
     bluebird "^3.7.2"
     commander "6.1.0"
@@ -10254,9 +10254,9 @@ graph-results-pager@LufyCZ/graph-results-pager#types:
   dependencies:
     node-fetch "2.6.1"
 
-"graph-results-pager@https://github.com/LufyCZ/graph-results-pager":
+"graph-results-pager@git+https://github.com/LufyCZ/graph-results-pager.git":
   version "1.0.3"
-  resolved "https://github.com/LufyCZ/graph-results-pager#9b230f05b8d79aeedc9e167ac5a1fea33e04d51f"
+  resolved "git+https://github.com/LufyCZ/graph-results-pager.git#9b230f05b8d79aeedc9e167ac5a1fea33e04d51f"
   dependencies:
     node-fetch "2.6.1"
 
