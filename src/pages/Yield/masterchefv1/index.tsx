@@ -23,8 +23,9 @@ export default function Yield(): JSX.Element {
     const query = useFarms()
     const farms = query?.farms
     const userFarms = query?.userFarms
-
     const tvl = _.sumBy(farms, 'tvl')
+
+    const [section, setSection] = useState<'portfolio' | 'all' | 'kmp' | 'slp' | 'mcv2'>('all')
 
     // Search Setup
     const options = { keys: ['symbol', 'name', 'pairAddress'], threshold: 0.4 }
@@ -43,15 +44,60 @@ export default function Yield(): JSX.Element {
                 <meta name="description" content="Farm SUSHI by staking LP (Liquidity Provider) tokens" />
             </Helmet>
             <div className="container mx-auto grid grid-cols-12 gap-4">
-                <div className="col-span-3" style={{ maxHeight: '40rem' }}>
-                    <Card
+                <div className="col-span-3 space-y-2" style={{ maxHeight: '40rem' }}>
+                    <div
+                        className={`bg-dark-900 rounded flex items-center px-4 py-6 border border-transparent ${section ===
+                            'portfolio' && 'border-gradient'}`}
+                        onClick={() => {
+                            return setSection('portfolio')
+                        }}
+                    >
+                        Your Staked Assets
+                    </div>
+                    <div
+                        className={`bg-dark-900 rounded flex items-center px-4 py-6 border border-transparent ${section ===
+                            'all' && 'border-gradient'}`}
+                        onClick={() => {
+                            return setSection('all')
+                        }}
+                    >
+                        All Yield Assets
+                    </div>
+                    <div
+                        className={`bg-dark-900 rounded flex items-center px-4 py-6 border border-transparent ${section ===
+                            'kmp' && 'border-gradient'}`}
+                        onClick={() => {
+                            return setSection('kmp')
+                        }}
+                    >
+                        Lending Yield Assets
+                    </div>
+                    <div
+                        className={`bg-dark-900 rounded flex items-center px-4 py-6 border border-transparent ${section ===
+                            'slp' && 'border-gradient'}`}
+                        onClick={() => {
+                            return setSection('slp')
+                        }}
+                    >
+                        Liquidity Yield Assets
+                    </div>
+                    <div
+                        className={`bg-dark-900 rounded flex items-center px-4 py-6 border border-transparent ${section ===
+                            'mcv2' && 'border-gradient'}`}
+                        onClick={() => {
+                            return setSection('mcv2')
+                        }}
+                    >
+                        Double Yield Assets
+                    </div>
+                    {/* <Card
                         className="h-full bg-dark-900"
                         backgroundImage={DepositGraphic}
                         title={'Create a new Kashi Market'}
                         description={
                             'If you want to supply to a market that is not listed yet, you can use this tool to create a new pair.'
                         }
-                    />
+                    /> */}
                 </div>
                 <div className="col-span-9">
                     <Card
@@ -73,97 +119,109 @@ export default function Yield(): JSX.Element {
                                     </div>
                                     <Search search={search} term={term} />
                                 </div>
-                                <div className="flex">
-                                    <div className="">Something</div>
-                                    <div className="">Something</div>
-                                    <div className="">Something</div>
-                                </div>
                             </CardHeader>
                         }
                     >
                         {/* UserFarms */}
-                        {userFarms && userFarms.length > 0 && (
-                            <>
-                                <div className="pb-4">
-                                    <div className="grid grid-cols-3 md:grid-cols-4 pb-4 px-4 text-sm  text-secondary">
-                                        <div className="flex items-center">
-                                            <div>Your Yields</div>
-                                        </div>
-                                        <div className="hidden md:block ml-4">
-                                            <div>Claim</div>
-                                        </div>
-                                        <div className="flex items-center justify-end">
-                                            <div>Deposited</div>
-                                        </div>
-                                        <div className="flex items-center justify-end">
-                                            <div>APY</div>
-                                        </div>
-                                    </div>
-                                    <div className="flex-col space-y-2">
-                                        {userFarms.map((farm: any, i: number) => {
-                                            return <UserBalance key={farm.address + '_' + i} farm={farm} />
-                                        })}
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                        {/* All Farms */}
-                        <div className="grid grid-cols-3 md:grid-cols-4 pb-4 px-4 text-sm  text-secondary">
-                            <div
-                                className="flex items-center cursor-pointer hover:text-secondary"
-                                onClick={() => requestSort('symbol')}
-                            >
-                                <div>Instruments</div>
-                                {sortConfig &&
-                                    sortConfig.key === 'symbol' &&
-                                    ((sortConfig.direction === 'ascending' && <ChevronUp size={12} />) ||
-                                        (sortConfig.direction === 'descending' && <ChevronDown size={12} />))}
-                            </div>
-                            <div className="hidden md:block ml-4">
-                                <div className="flex items-center justify-start">
-                                    <div className="pr-2">Pool Rewards</div>
-                                    <Badge color="blue">2X</Badge>
-                                </div>
-                            </div>
-                            <div className="hover:text-secondary cursor-pointer" onClick={() => requestSort('tvl')}>
-                                <div className="flex items-center justify-end">
-                                    <div>TVL</div>
-                                    {sortConfig &&
-                                        sortConfig.key === 'tvl' &&
-                                        ((sortConfig.direction === 'ascending' && <ChevronUp size={12} />) ||
-                                            (sortConfig.direction === 'descending' && <ChevronDown size={12} />))}
-                                </div>
-                            </div>
-                            <div
-                                className="hover:text-secondary cursor-pointer"
-                                onClick={() => requestSort('roiPerYear')}
-                            >
-                                <div className="flex items-center justify-end">
-                                    <div>APY (incl. Fees)</div>
-                                    {sortConfig &&
-                                        sortConfig.key === 'roiPerYear' &&
-                                        ((sortConfig.direction === 'ascending' && <ChevronUp size={12} />) ||
-                                            (sortConfig.direction === 'descending' && <ChevronDown size={12} />))}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex-col space-y-2">
-                            {items && items.length > 0 ? (
-                                items.map((farm: any, i: number) => {
-                                    return <TokenBalance key={farm.address + '_' + i} farm={farm} />
-                                })
-                            ) : (
+                        <>
+                            {section === 'portfolio' && (
                                 <>
-                                    {term ? (
-                                        <div className="w-full text-center py-6">No Results.</div>
-                                    ) : (
-                                        <div className="w-full text-center py-6">
-                                            <Dots>Fetching Instruments</Dots>
-                                        </div>
+                                    {userFarms && userFarms.length > 0 && (
+                                        <>
+                                            <div className="pb-4">
+                                                <div className="grid grid-cols-3 md:grid-cols-4 pb-4 px-4 text-sm  text-secondary">
+                                                    <div className="flex items-center">
+                                                        <div>Your Yields</div>
+                                                    </div>
+                                                    <div className="hidden md:block ml-4">
+                                                        <div>Claim</div>
+                                                    </div>
+                                                    <div className="flex items-center justify-end">
+                                                        <div>Deposited</div>
+                                                    </div>
+                                                    <div className="flex items-center justify-end">
+                                                        <div>APY</div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex-col space-y-2">
+                                                    {userFarms.map((farm: any, i: number) => {
+                                                        return <UserBalance key={farm.address + '_' + i} farm={farm} />
+                                                    })}
+                                                </div>
+                                            </div>
+                                        </>
                                     )}
                                 </>
                             )}
-                        </div>
+                        </>
+                        {section === 'all' && (
+                            <>
+                                {/* All Farms */}
+                                <div className="grid grid-cols-3 md:grid-cols-4 pb-4 px-4 text-sm  text-secondary">
+                                    <div
+                                        className="flex items-center cursor-pointer hover:text-secondary"
+                                        onClick={() => requestSort('symbol')}
+                                    >
+                                        <div>Instruments</div>
+                                        {sortConfig &&
+                                            sortConfig.key === 'symbol' &&
+                                            ((sortConfig.direction === 'ascending' && <ChevronUp size={12} />) ||
+                                                (sortConfig.direction === 'descending' && <ChevronDown size={12} />))}
+                                    </div>
+                                    <div className="hidden md:block ml-4">
+                                        <div className="flex items-center justify-start">
+                                            <div className="pr-2">Pool Rewards</div>
+                                            <Badge color="blue">2X</Badge>
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="hover:text-secondary cursor-pointer"
+                                        onClick={() => requestSort('tvl')}
+                                    >
+                                        <div className="flex items-center justify-end">
+                                            <div>TVL</div>
+                                            {sortConfig &&
+                                                sortConfig.key === 'tvl' &&
+                                                ((sortConfig.direction === 'ascending' && <ChevronUp size={12} />) ||
+                                                    (sortConfig.direction === 'descending' && (
+                                                        <ChevronDown size={12} />
+                                                    )))}
+                                        </div>
+                                    </div>
+                                    <div
+                                        className="hover:text-secondary cursor-pointer"
+                                        onClick={() => requestSort('roiPerYear')}
+                                    >
+                                        <div className="flex items-center justify-end">
+                                            <div>APY (incl. Fees)</div>
+                                            {sortConfig &&
+                                                sortConfig.key === 'roiPerYear' &&
+                                                ((sortConfig.direction === 'ascending' && <ChevronUp size={12} />) ||
+                                                    (sortConfig.direction === 'descending' && (
+                                                        <ChevronDown size={12} />
+                                                    )))}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex-col space-y-2">
+                                    {items && items.length > 0 ? (
+                                        items.map((farm: any, i: number) => {
+                                            return <TokenBalance key={farm.address + '_' + i} farm={farm} />
+                                        })
+                                    ) : (
+                                        <>
+                                            {term ? (
+                                                <div className="w-full text-center py-6">No Results.</div>
+                                            ) : (
+                                                <div className="w-full text-center py-6">
+                                                    <Dots>Fetching Instruments</Dots>
+                                                </div>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
+                            </>
+                        )}
                     </Card>
                 </div>
             </div>
