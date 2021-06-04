@@ -4,24 +4,11 @@ import { ArrowRight } from 'react-feather'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { NETWORK_LABEL } from '../../constants/networks'
-import { usePro, useUserSwapHistory } from '../../context/Pro/hooks'
+import { usePro } from '../../context/Pro/hooks'
 import { OrderDirection } from '../../context/Pro/types'
 import { useDispatch } from 'react-redux'
 import { selectCurrencies } from '../../state/swap/actions'
-
-interface ListHeaderProps {
-    className?: string
-}
-
-const ListHeader: FC<ListHeaderProps> = ({ children, className }) => {
-    return (
-        <div
-            className={`flex items-center cursor-pointer hover:text-primary text-sm ${className}`}
-        >
-            <div>{children}</div>
-        </div>
-    )
-}
+import ListHeader from '../../components/ListHeader'
 
 interface UserSwapHistoryProps {}
 

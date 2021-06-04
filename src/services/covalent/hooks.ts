@@ -33,13 +33,11 @@ export function useTokenBalances({ initialData, chainId, address }) {
     return res
 }
 
-export function usePorfolio({ initialData, chainId, address }) {
-    const res = useSWR(
-        `https://api.covalenthq.com/v1/${chainId}/address/${address}/portfolio_v2/`,
-        () => getPortfolio(chainId, address),
-        { initialData }
-    )
-    return res
+export function usePortfolio({ initialData = {}, chainId, address }) {
+    const shouldFetch = chainId && address
+    return useSWR(shouldFetch ? [chainId, address] : null, getPortfolio, {
+        initialData,
+    })
 }
 
 export function useTransfers({ initialData, chainId, address }) {
@@ -61,9 +59,14 @@ export function useBlock({ initialData, chainId, blockHeight }) {
 }
 
 export function useBlockHeights({ initialData, chainId, startDate, endDate }) {
-    return useSWR([chainId, startDate, endDate], getBlockHeights, {
-        initialData,
-    })
+    const shouldFetch = chainId && startDate && endDate
+    return useSWR(
+        shouldFetch ? [chainId, startDate, endDate] : null,
+        getBlockHeights,
+        {
+            initialData,
+        }
+    )
 }
 
 export function useOneDayBlock({ chainId }) {
@@ -211,12 +214,21 @@ export function useSushiSwapLiquidityTransaction({
     chainId,
     address,
 }) {
-    return useSWR([chainId, address], getSushiSwapLiquidityTransactions, {
-        initialData,
-    })
+    const shouldFetch = chainId && address
+    return useSWR(
+        shouldFetch ? [chainId, address] : null,
+        getSushiSwapLiquidityTransactions,
+        {
+            initialData,
+        }
+    )
 }
 
 export function useSushiSwapBalances({ initialData = {}, chainId, address }) {
-    console.log('hi')
-    return useSWR([chainId, address], getSushiSwapBalances, { initialData })
+    const shouldFetch = chainId && address
+    return useSWR(
+        shouldFetch ? [chainId, address] : null,
+        getSushiSwapBalances,
+        { initialData }
+    )
 }

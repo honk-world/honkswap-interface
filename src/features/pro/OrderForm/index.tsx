@@ -15,7 +15,7 @@ const OrderForm: FC<OrderFormProps> = () => {
     const [orderType, setOrderType] = useState<OrderType>(OrderType.MARKET)
 
     return (
-        <div className="grid flex-col items-center p-4 gap-4">
+        <div className="grid flex-col items-center p-4 gap-4 draggable">
             <div className="flex justify-between">
                 <ToggleButtonGroup active={orderType} className="p-4 rounded">
                     <ToggleButton
@@ -71,10 +71,18 @@ const OrderForm: FC<OrderFormProps> = () => {
             </div>
 
             <div className="gap-4 flex">
-                <Button variant="outlined" color="green" className="w-full border border-green">
+                <Button
+                    variant="outlined"
+                    color="green"
+                    className="w-full border border-green"
+                >
                     {i18n._(t`Buy`)}
                 </Button>
-                <Button variant="outlined" color="red" className="w-full border border-red">
+                <Button
+                    variant="outlined"
+                    color="red"
+                    className="w-full border border-red"
+                >
                     {i18n._(t`Sell`)}
                 </Button>
             </div>

@@ -105,9 +105,6 @@ export interface State {
     lastSwap: SwapMessage | null
     userSwapHistory: UserHistoryMessage[]
     swapHistory: SwapMessage[]
-    oneDayBlock: number
-    twoDayBlock: number
-    pairData: PairData | null
 }
 
 export type Action =

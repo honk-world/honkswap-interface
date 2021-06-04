@@ -5,20 +5,7 @@ import { useLingui } from '@lingui/react'
 import withPair, { WithPairProps } from '../../hoc/withPair'
 import { usePro } from '../../context/Pro/hooks'
 import { OrderDirection } from '../../context/Pro/types'
-
-interface ListHeaderProps {
-    className?: string
-}
-
-const ListHeader: FC<ListHeaderProps> = ({ children, className = '' }) => {
-    return (
-        <div
-            className={`flex items-center cursor-pointer hover:text-primary text-sm ${className}`}
-        >
-            <div>{children}</div>
-        </div>
-    )
-}
+import ListHeader from '../../components/ListHeader'
 
 interface SwapHistoryProps extends WithPairProps {}
 

@@ -1,18 +1,24 @@
 import React, { FC } from 'react'
-import { usePro } from '../../context/Pro/hooks'
+import { usePairData, usePro } from '../../context/Pro/hooks'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { formatNumber, priceFormatter } from '../../functions'
 import { OrderDirection } from '../../context/Pro/types'
-import withPair, { WithPairProps } from '../../hoc/withPair'
 import Lottie from 'lottie-react'
 import loadingCircle from '../../animation/loading-circle.json'
+import { useOneDayBlock, useTwoDayBlock } from '../../services/covalent/hooks'
+import { useActiveWeb3React } from '../../hooks'
+import withPair, { WithPairProps } from '../../hoc/withPair'
 
-interface PriceHeaderStatsProps {}
+interface PriceHeaderStatsProps extends WithPairProps {}
 
-const PriceHeaderStats: FC<PriceHeaderStatsProps> = () => {
+const PriceHeaderStats: FC<PriceHeaderStatsProps> = ({ pair }) => {
     const { i18n } = useLingui()
-    const [{ lastSwap, pairData }] = usePro()
+    const { chainId } = useActiveWeb3React()
+    const oneDayBlock = useOneDayBlock({ chainId })
+    const twoDayBlock = useTwoDayBlock({ chainId })
+    const pairData = usePairData({ pair, chainId, oneDayBlock, twoDayBlock })
+    const [{ lastSwap }] = usePro()
 
     const volumeUSD = +(pairData?.current?.volumeUSD === '0'
         ? pairData?.current?.untrackedVolumeUSD
@@ -131,4 +137,4 @@ const PriceHeaderStats: FC<PriceHeaderStatsProps> = () => {
     )
 }
 
-export default PriceHeaderStats
+export default withPair(PriceHeaderStats)

@@ -47,7 +47,7 @@ const Tabs: FC<TabsProps> = ({ titles, components, footer }) => {
 
     return (
         <>
-            <div className="flex justify-between items-center h-10 bg-dark-800">
+            <div className="flex justify-between items-center h-10 bg-dark-800 draggable">
                 <div className="flex w-full justify-between h-full">
                     <ToggleButtonGroup active={value}>
                         {titles.map((el, index) => (

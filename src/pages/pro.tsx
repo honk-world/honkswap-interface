@@ -18,9 +18,9 @@ const ResponsiveGridLayout = WidthProvider(Responsive)
 
 const Card: FC<{ title?: string }> = ({ children, title }) => {
     return (
-        <div className="bg-dark-900 rounded-sm overflow-hidden h-full">
+        <div className="bg-dark-900 rounded-sm overflow-hidden h-full z-10">
             {title && (
-                <div className="flex text-sm font-bold text-secondary h-10 bg-dark-800 items-center px-4">
+                <div className="flex text-sm font-bold text-secondary h-10 bg-dark-800 items-center px-4 draggable cursor-pointer">
                     {title}
                 </div>
             )}
@@ -34,9 +34,9 @@ const Pro: FC = () => {
         lg: [
             { i: 'OrderForm', x: 0, y: 0, w: 4, h: 10 },
             { i: 'QuantStats', x: 0, y: 20, w: 4, h: 10 },
-            { i: 'SwapHistory', x: 4, y: 20, w: 4, h: 20 },
-            { i: 'TVChart', x: 8, y: 0, w: 16, h: 14 },
-            { i: 'Positions', x: 8, y: 20, w: 16, h: 6 },
+            { i: 'SwapHistory', x: 20, y: 20, w: 4, h: 20 },
+            { i: 'TVChart', x: 4, y: 0, w: 16, h: 14 },
+            { i: 'Positions', x: 4, y: 20, w: 16, h: 6 },
         ],
     }
     return (
@@ -46,7 +46,7 @@ const Pro: FC = () => {
                 <title>SushiPro | Sushi</title>
                 <meta name="description" content="Pro" />
             </Head>
-            <div className="flex flex-col w-full gap-2">
+            <div className="flex flex-col w-full">
                 <div className="flex flex-row w-full p-4 pb-0">
                     <div className="flex flex-col min-w-[324px] justify-center">
                         <MarketSelect />
@@ -68,7 +68,8 @@ const Pro: FC = () => {
                         cols={{ lg: 24, md: 10, sm: 6, xs: 4, xxs: 2 }}
                         className="layout"
                         layouts={layouts}
-                        rowHeight={30}
+                        rowHeight={40}
+                        draggableHandle=".draggable"
                     >
                         <div key="OrderForm">
                             <Card>
@@ -97,6 +98,7 @@ const Pro: FC = () => {
                             </Card>
                         </div>
                         <div key="TVChart">
+                            <div className="z-[-1] h-full w-full absolute" />
                             <Card>
                                 <TVChartContainer />
                             </Card>

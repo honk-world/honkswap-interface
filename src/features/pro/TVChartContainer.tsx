@@ -13,23 +13,23 @@ const SYMBOL_MAP = {
     [ChainId.RINKEBY]: '',
     [ChainId.GÖRLI]: '',
     [ChainId.KOVAN]: '',
-    [ChainId.FANTOM]: 'FTM',
-    [ChainId.FANTOM_TESTNET]: 'FTM',
-    [ChainId.MATIC]: 'PLG',
-    [ChainId.MATIC_TESTNET]: 'PLG',
-    [ChainId.XDAI]: 'XDAI',
-    [ChainId.BSC]: 'BSC',
-    [ChainId.BSC_TESTNET]: 'BSC',
-    [ChainId.MOONBEAM_TESTNET]: 'GLMR',
-    [ChainId.AVALANCHE]: 'AVA',
-    [ChainId.AVALANCHE_TESTNET]: 'AVA',
-    [ChainId.HECO]: 'HECO',
-    [ChainId.HECO_TESTNET]: 'HECO',
-    [ChainId.HARMONY]: 'ONE',
-    [ChainId.HARMONY_TESTNET]: 'ONE',
-    [ChainId.OKEX]: 'OKT',
-    [ChainId.OKEX_TESTNET]: 'OKT',
-    [ChainId.ARBITRUM]: 'ARB',
+    [ChainId.FANTOM]: 'FTM_',
+    [ChainId.FANTOM_TESTNET]: 'FTM_',
+    [ChainId.MATIC]: 'PLG_',
+    [ChainId.MATIC_TESTNET]: 'PLG_',
+    [ChainId.XDAI]: 'XDAI_',
+    [ChainId.BSC]: 'BSC_',
+    [ChainId.BSC_TESTNET]: 'BSC_',
+    [ChainId.MOONBEAM_TESTNET]: 'GLMR_',
+    [ChainId.AVALANCHE]: 'AVA_',
+    [ChainId.AVALANCHE_TESTNET]: 'AVA_',
+    [ChainId.HECO]: 'HECO_',
+    [ChainId.HECO_TESTNET]: 'HECO_',
+    [ChainId.HARMONY]: 'ONE_',
+    [ChainId.HARMONY_TESTNET]: 'ONE_',
+    [ChainId.OKEX]: 'OKT_',
+    [ChainId.OKEX_TESTNET]: 'OKT_',
+    [ChainId.ARBITRUM]: 'ARB_',
 }
 
 const TVChartContainer: FC<TVChartContainerProps> = ({ pair }) => {
@@ -37,7 +37,7 @@ const TVChartContainer: FC<TVChartContainerProps> = ({ pair }) => {
     const [active, setActive] = useState(pair?.token1.symbol === 'WETH' ? 0 : 1)
     const handleClick = (e, index) => setActive(index)
 
-    const symbol = `${SYMBOL_MAP[chainId]}_${
+    const symbol = `${SYMBOL_MAP[chainId]}${
         active === 0
             ? `${pair?.token0.symbol}${pair?.token1.symbol}_USD`
             : `${pair?.token0.symbol}${pair?.token1.symbol}`
@@ -45,17 +45,17 @@ const TVChartContainer: FC<TVChartContainerProps> = ({ pair }) => {
 
     return (
         <div className="h-full">
-            <div className="h-10 bg-dark-800">
+            <div className="h-10 bg-dark-800 draggable">
                 <ToggleButtonGroup active={active}>
                     <ToggleButton value={0} onClick={handleClick}>
-                        <div className="flex gap-0.5 text-xs">
+                        <div className="flex gap-0.5">
                             <span>{pair?.token0.symbol}</span>
                             <span>-</span>
                             <span>USD</span>
                         </div>
                     </ToggleButton>
                     <ToggleButton value={1} onClick={handleClick}>
-                        <div className="flex gap-0.5 text-xs">
+                        <div className="flex gap-0.5">
                             <span>{pair?.token0.symbol}</span>
                             <span>-</span>
                             <span>{pair?.token1.symbol}</span>
@@ -63,7 +63,7 @@ const TVChartContainer: FC<TVChartContainerProps> = ({ pair }) => {
                     </ToggleButton>
                 </ToggleButtonGroup>
             </div>
-            <div className="h-full">
+            <div className="h-[calc(100%-2.5rem)]">
                 <iframe
                     src={`http://localhost:5000?symbol=${symbol}`}
                     width="100%"

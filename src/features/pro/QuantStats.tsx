@@ -1,28 +1,9 @@
-import useSWR from 'swr'
-import { vesting } from '../../fetchers/graph'
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC } from 'react'
 import { formatNumber, formatPercent } from '../../functions'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
-
-const MAX_SUSHI_CLAIMABLE_PER_WEEK = [
-    2989133, 3000866, 3047466, 3039733, 2772605, 2693560, 2437719, 2428066,
-    2433933, 2252929, 2126360, 2128927, 2129110, 2000090, 1825240, 1823200,
-    1824179, 1817733, 1524646, 1518533, 1517733, 1439266, 1212337, 1209803,
-    1212123, 1213478, 772405,
-]
-
-const query = `
-  query manyUsers($lastID: ID) {
-    users(first: 1000, where: { id_gt:$lastID }) {
-      id
-      totalClaimed
-    }
-    weeks {
-      totalClaimed
-    }
-  }
-`
+import { useQuantStats } from '../../context/Pro/hooks'
+import { MAX_SUSHI_CLAIMABLE_PER_WEEK } from '../../context/Pro/constants'
 
 const Stat: FC<{ label: string; value: any }> = ({ label, value }) => {
     return (
@@ -54,38 +35,10 @@ const ProgressBar: FC<{ percentage: number }> = ({ percentage }) => {
 
 const QuantStats = () => {
     const { i18n } = useLingui()
-    const [{ lastID, userCount, totalClaimed, totalClaimable }, setState] =
-        useState({
-            lastID: '',
-            userCount: 0,
-            totalClaimed: 0,
-            totalClaimable: 0,
-        })
-    const call = useMemo(() => [query, { lastID }], [lastID])
-    const { data } = useSWR(call, vesting)
-
-    useEffect(() => {
-        if (!data) return
-
-        const { users, weeks } = data
-        setState((prevState) => ({
-            lastID:
-                users.length > 0
-                    ? users[users.length - 1].id
-                    : prevState.lastID,
-            userCount: prevState.userCount + users.length,
-            totalClaimed:
-                prevState.totalClaimed +
-                users.reduce((acc, el) => acc + +el.totalClaimed, 0),
-            totalClaimable: MAX_SUSHI_CLAIMABLE_PER_WEEK.reduce(
-                (a, b, i) => (i < weeks.length ? a + b : a),
-                0
-            ),
-        }))
-    }, [data])
+    const { userCount, totalClaimed, totalClaimable } = useQuantStats()
 
     return (
-        <div className="p-4 grid gap-2">
+        <div className="p-4 grid gap-2 draggable">
             <div className="h1 text-high-emphesis font-bold pb-2">
                 {i18n._(t`Vested SUSHI statistics`)}
             </div>

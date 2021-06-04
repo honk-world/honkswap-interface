@@ -9,7 +9,7 @@ export const getTokenBalances = (chainId = ChainId.MAINNET, address) =>
 
 export const getPortfolio = (chainId = ChainId.MAINNET, address) =>
     fetch(
-        `https://api.covalenthq.com/v1/${chainId}/address/${address}/portfolio_v2/`
+        `https://api.covalenthq.com/v1/${chainId}/address/${address}/portfolio_v2/?key=ckey_cba3674f2ce5450f9d5dd290589`
     ).then((res) => res.json())
 
 export const getTransfers = (chainId = ChainId.MAINNET, address) =>
