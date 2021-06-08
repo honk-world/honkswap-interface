@@ -83,12 +83,12 @@ export function usePairData({
                 }
             `,
             {
-                id: pair.liquidityToken.address.toLowerCase(),
+                id: pair?.liquidityToken.address.toLowerCase(),
                 oneDayBlock,
                 twoDayBlock,
             },
         ],
-        [chainId, pair.liquidityToken.address, oneDayBlock, twoDayBlock]
+        [chainId, pair?.liquidityToken.address, oneDayBlock, twoDayBlock]
     )
 
     const { data: pairData } = useSWR(shouldFetch ? call : null, exchange)

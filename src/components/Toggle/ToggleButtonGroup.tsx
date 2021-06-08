@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from 'react'
-import { ToggleButtonProps } from './ToggleButton'
+import ToggleButton, { ToggleButtonProps } from './ToggleButton'
 
 interface ToggleButtonGroupProps {
     active: any
@@ -7,12 +7,28 @@ interface ToggleButtonGroupProps {
     className?: string
 }
 
-export const ToggleButtonGroup: FC<ToggleButtonGroupProps> = ({ className = '', children, active }) => {
+export const ToggleButtonGroup: FC<ToggleButtonGroupProps> = ({
+    className = '',
+    children,
+    active,
+}) => {
+    const clones = []
+    React.Children.forEach(children, (child, index) => {
+        if (child?.type === ToggleButton) {
+            clones.push(
+                React.cloneElement(child, {
+                    active: child.props.value === active,
+                    key: index,
+                })
+            )
+        }
+    })
+
     return (
-        <div className={`inline-flex items-center font-black whitespace-nowrap grid grid-flow-col h-full ${className}`}>
-            {React.Children.map(children, (child) =>
-                React.cloneElement(child, { active: child.props.value === active })
-            )}
+        <div
+            className={`inline-flex items-center font-black whitespace-nowrap grid grid-flow-col h-full ${className}`}
+        >
+            {clones}
         </div>
     )
 }

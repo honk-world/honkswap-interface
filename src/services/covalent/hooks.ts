@@ -37,6 +37,7 @@ export function usePortfolio({ initialData = {}, chainId, address }) {
     const shouldFetch = chainId && address
     return useSWR(shouldFetch ? [chainId, address] : null, getPortfolio, {
         initialData,
+        revalidateOnMount: true,
     })
 }
 
@@ -65,6 +66,7 @@ export function useBlockHeights({ initialData, chainId, startDate, endDate }) {
         getBlockHeights,
         {
             initialData,
+            revalidateOnMount: true,
         }
     )
 }

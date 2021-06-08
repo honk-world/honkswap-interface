@@ -38,7 +38,7 @@ const QuantStats = () => {
     const { userCount, totalClaimed, totalClaimable } = useQuantStats()
 
     return (
-        <div className="p-4 grid gap-2 draggable">
+        <div className="p-4 grid gap-2 draggable overflow-auto">
             <div className="h1 text-high-emphesis font-bold pb-2">
                 {i18n._(t`Vested SUSHI statistics`)}
             </div>
