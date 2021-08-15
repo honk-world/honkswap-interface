@@ -50,6 +50,10 @@ export default function Repay({ pair }: RepayProps) {
   const [pinRepayMax, setPinRepayMax] = useState(false)
   const [updateOracle, setUpdateOracle] = useState(false)
   const [swap, setSwap] = useState(false)
+  const [swapMax, setSwapMax] = useState(false)
+  const [preSwap, setPreSwap] = useState(false)
+  const [collateralSwapValue, setCollateralSwapValue] = useState('')
+  const [repaySwapValue, setRepaySwapValue] = useState('')
 
   const assetToken = useCurrency(pair.asset.address) || undefined
   const collateralToken = useCurrency(pair.collateral.address) || undefined
@@ -92,7 +96,11 @@ export default function Repay({ pair }: RepayProps) {
   // const [allowedSlippage] = useUserSlippageTolerance(); // 10 = 0.1%
   const allowedSlippage = useUserSlippageToleranceWithDefault(DEFAULT_KASHI_REPAY_SLIPPAGE_TOLERANCE)
 
-  const parsedAmount = tryParseAmount(pair.currentUserBorrowAmount.string, assetToken)
+  const parsedAmount = swapMax
+    ? tryParseAmount(pair.currentUserBorrowAmount.string, assetToken)
+    : tryParseAmount(repaySwapValue, assetToken)
+  //const parsedAmount = tryParseAmount(repayValue, assetToken)
+  console.log(parsedAmount)
 
   const trade = useV2TradeExactOut(collateralToken, parsedAmount) || undefined
 
@@ -141,7 +149,7 @@ export default function Repay({ pair }: RepayProps) {
 
   const transactionReview = new TransactionReview()
 
-  if (displayRepayValue || displayRemoveValue) {
+  /*if (displayRepayValue || displayRemoveValue) {
     transactionReview.addTokenAmount(
       'Borrow Limit',
       pair.maxBorrowable.safe.value,
@@ -149,6 +157,46 @@ export default function Repay({ pair }: RepayProps) {
       pair.asset
     )
     transactionReview.addPercentage('Health', pair.health.value, nextHealth)
+  }*/
+
+  if (swap) {
+    const afterSwapCollateralAmount = swapMax
+      ? '0'.toBigNumber()
+      : pair.userCollateralAmount.value.sub(collateralSwapValue.toBigNumber(pair.collateral.tokenInfo.decimals))
+
+    const afterSwapBorrowAmount = swapMax
+      ? '0'.toBigNumber()
+      : pair.currentUserBorrowAmount.value.sub(repaySwapValue.toBigNumber(pair.asset.tokenInfo.decimals))
+
+    const afterSwapMaxBorrowable = swapMax
+      ? '0'.toBigNumber()
+      : afterSwapCollateralAmount.mulDiv(e10(16).mul('75'), pair.currentExchangeRate)
+
+    const afterSwapHealth = afterSwapBorrowAmount.mulDiv('1000000000000000000', afterSwapMaxBorrowable)
+
+    console.log(afterSwapCollateralAmount)
+    console.log(afterSwapBorrowAmount)
+
+    transactionReview.addTokenAmount(
+      'Collateral',
+      pair.userCollateralAmount.value,
+      afterSwapCollateralAmount,
+      pair.collateral
+    )
+    transactionReview.addUSD(
+      'Collateral USD',
+      pair.userCollateralAmount.value,
+      afterSwapCollateralAmount,
+      pair.collateral
+    )
+    transactionReview.addTokenAmount('Borrowed', pair.currentUserBorrowAmount.value, afterSwapBorrowAmount, pair.asset)
+    transactionReview.addTokenAmount(
+      'Borrow Limit',
+      pair.maxBorrowable.safe.value,
+      afterSwapMaxBorrowable.sub(afterSwapBorrowAmount),
+      pair.asset
+    )
+    transactionReview.addPercentage('Limit Used', pair.health.value, afterSwapHealth)
   }
 
   const warnings = new Warnings()
@@ -228,32 +276,89 @@ export default function Repay({ pair }: RepayProps) {
     setRepayAssetValue('')
   }
 
+  function resetSwapState() {
+    setSwap(false)
+    setSwapMax(false)
+    setCollateralSwapValue('')
+    setRepaySwapValue('')
+  }
+
+  function setSwapState(repayValue, collateralValue, percentage) {
+    if (percentage == '100') {
+      setSwapMax(true)
+    } else {
+      setSwapMax(false)
+    }
+
+    setCollateralSwapValue(collateralValue)
+    setRepaySwapValue(repayValue)
+    setSwap(true)
+    resetRepayState()
+  }
+
   // Handlers
   async function onExecute(cooker: KashiCooker) {
     let summary = ''
 
     if (swap && trade) {
-      const share = toShare(pair.collateral, pair.userCollateralAmount.value)
+      if (swapMax) {
+        const share = toShare(pair.collateral, collateralSwapValue.toBigNumber(pair.collateral.tokenInfo.decimals))
 
-      cooker.removeCollateral(pair.userCollateralShare, true)
-      cooker.bentoTransferCollateral(pair.userCollateralShare, SUSHISWAP_MULTI_EXACT_SWAPPER_ADDRESS[chainId || 1])
-      cooker.repayShare(pair.userBorrowPart)
+        cooker.removeCollateral(share, true)
+        cooker.bentoTransferCollateral(share, SUSHISWAP_MULTI_EXACT_SWAPPER_ADDRESS[chainId || 1])
+        cooker.getRepayPart(repaySwapValue.toBigNumber(pair.asset.tokenInfo.decimals))
+        cooker.repayShare(BigNumber.from(-1))
 
-      const path = trade.route.path.map((token) => token.address) || []
+        const path = trade.route.path.map((token) => token.address) || []
 
-      console.log('debug', [
-        pair.collateral.address,
-        pair.asset.address,
-        maxAmountIn,
-        path.length > 2 ? path[1] : ethers.constants.AddressZero,
-        path.length > 3 ? path[2] : ethers.constants.AddressZero,
-        account,
-        pair.userCollateralShare,
-      ])
+        console.log('yoooooooooooo')
+        console.log(collateralSwapValue)
+        console.log(repaySwapValue)
 
-      const data = defaultAbiCoder.encode(
-        ['address', 'address', 'uint256', 'address', 'address', 'address', 'uint256'],
-        [
+        console.log('debug', [
+          pair.collateral.address,
+          pair.asset.address,
+          maxAmountIn,
+          path.length > 2 ? path[1] : ethers.constants.AddressZero,
+          path.length > 3 ? path[2] : ethers.constants.AddressZero,
+          account,
+          share,
+        ])
+
+        const data = defaultAbiCoder.encode(
+          ['address', 'address', 'uint256', 'address', 'address', 'address', 'uint256'],
+          [
+            pair.collateral.address,
+            pair.asset.address,
+            maxAmountIn,
+            path.length > 2 ? path[1] : ethers.constants.AddressZero,
+            path.length > 3 ? path[2] : ethers.constants.AddressZero,
+            account,
+            share,
+          ]
+        )
+
+        cooker.action(
+          SUSHISWAP_MULTI_EXACT_SWAPPER_ADDRESS[chainId || 1],
+          ZERO,
+          ethers.utils.hexConcat([ethers.utils.hexlify('0x3087d742'), data]),
+          true,
+          false,
+          1
+        )
+
+        cooker.addCollateral(BigNumber.from(-1), true)
+        cooker.repay(repaySwapValue.toBigNumber(pair.asset.tokenInfo.decimals), true)
+      } else {
+        const share = toShare(pair.collateral, pair.userCollateralAmount.value)
+
+        cooker.removeCollateral(pair.userCollateralShare, true)
+        cooker.bentoTransferCollateral(pair.userCollateralShare, SUSHISWAP_MULTI_EXACT_SWAPPER_ADDRESS[chainId || 1])
+        cooker.repayShare(pair.userBorrowPart)
+
+        const path = trade.route.path.map((token) => token.address) || []
+
+        console.log('debug', [
           pair.collateral.address,
           pair.asset.address,
           maxAmountIn,
@@ -261,25 +366,38 @@ export default function Repay({ pair }: RepayProps) {
           path.length > 3 ? path[2] : ethers.constants.AddressZero,
           account,
           pair.userCollateralShare,
-        ]
-      )
+        ])
 
-      cooker.action(
-        SUSHISWAP_MULTI_EXACT_SWAPPER_ADDRESS[chainId || 1],
-        ZERO,
-        ethers.utils.hexConcat([ethers.utils.hexlify('0x3087d742'), data]),
-        true,
-        false,
-        1
-      )
+        const data = defaultAbiCoder.encode(
+          ['address', 'address', 'uint256', 'address', 'address', 'address', 'uint256'],
+          [
+            pair.collateral.address,
+            pair.asset.address,
+            maxAmountIn,
+            path.length > 2 ? path[1] : ethers.constants.AddressZero,
+            path.length > 3 ? path[2] : ethers.constants.AddressZero,
+            account,
+            pair.userCollateralShare,
+          ]
+        )
 
-      cooker.repayPart(pair.userBorrowPart, true)
+        cooker.action(
+          SUSHISWAP_MULTI_EXACT_SWAPPER_ADDRESS[chainId || 1],
+          ZERO,
+          ethers.utils.hexConcat([ethers.utils.hexlify('0x3087d742'), data]),
+          true,
+          false,
+          1
+        )
+
+        cooker.repayPart(pair.userBorrowPart, true)
+      }
 
       if (!useBentoRemove) {
         cooker.bentoWithdrawCollateral(ZERO, BigNumber.from(-1))
       }
 
-      summary = 'Repay All'
+      summary = 'Repay With Swap'
     } else {
       if (pinRepayMax && pair.userBorrowPart.gt(0) && balance.gte(pair.currentUserBorrowAmount.value)) {
         cooker.repayPart(pair.userBorrowPart, useBentoRepay)
@@ -309,6 +427,33 @@ export default function Repay({ pair }: RepayProps) {
     return summary
   }
 
+  function onPercentage(percentage: string) {
+    const repayAmount = pair.currentUserBorrowAmount.value
+    console.log(repayAmount.toString())
+    console.log(percentage)
+
+    let test_adjusted_amt = repayAmount.mul(percentage).div(100)
+    console.log(test_adjusted_amt)
+    console.log(test_adjusted_amt.toString())
+
+    //const test_allowedSlippage = useUserSlippageToleranceWithDefault(DEFAULT_KASHI_REPAY_SLIPPAGE_TOLERANCE)
+    /*const test_parseAmount = tryParseAmount(test_adjusted_amt.toString(), assetToken)
+    const test_foundTrade = useV2TradeExactOut(collateralToken, parsedAmount)
+
+    console.log(test_foundTrade)
+    console.log(test_foundTrade.minimumAmountOut(allowedSlippage).quotient.toString())*/
+
+    const test_collateral_amt = test_adjusted_amt.mulDiv(pair.currentExchangeRate.toString(), e10(16).mul('75'))
+    console.log(test_collateral_amt.toString())
+    console.log(pair.currentExchangeRate.toString())
+
+    setSwapState(
+      test_adjusted_amt.toFixed(pair.asset.tokenInfo.decimals),
+      test_collateral_amt.toFixed(pair.collateral.tokenInfo.decimals),
+      percentage
+    )
+  }
+
   return (
     <>
       <div className="mt-6 mb-4 text-3xl text-high-emphesis">Repay {pair.asset.tokenInfo.symbol}</div>
@@ -327,8 +472,8 @@ export default function Repay({ pair }: RepayProps) {
         pinMax={pinRepayMax}
         setPinMax={setPinRepayMax}
         showMax={!swap && !pair.currentUserBorrowAmount.value.isZero()}
-        disabled={swap || pair.currentUserBorrowAmount.value.isZero()}
-        switchDisabled={swap || pair.currentUserBorrowAmount.value.isZero()}
+        disabled={preSwap || swap || pair.currentUserBorrowAmount.value.isZero()}
+        switchDisabled={preSwap || swap || pair.currentUserBorrowAmount.value.isZero()}
       />
 
       <SmartNumberInput
@@ -347,18 +492,19 @@ export default function Repay({ pair }: RepayProps) {
           pair.currentUserBorrowAmount.value.eq(displayRepayValue.toBigNumber(pair.asset.tokenInfo.decimals)) ||
           pair.currentUserBorrowAmount.value.isZero()
         }
-        disabled={swap || pair.userCollateralAmount.value.isZero()}
-        switchDisabled={pair.userCollateralAmount.value.isZero()}
+        disabled={preSwap || swap || pair.userCollateralAmount.value.isZero()}
+        switchDisabled={preSwap || swap || pair.userCollateralAmount.value.isZero()}
       />
 
       {!pair.currentUserBorrowAmount.value.isZero() && (
         <SwapCheckbox
           trade={trade}
           color="pink"
-          swap={swap}
+          swap={preSwap}
           setSwap={(value: boolean) => {
             resetRepayState()
-            setSwap(value)
+            resetSwapState()
+            setPreSwap(value)
           }}
           title={`Swap ${pair.collateral.tokenInfo.symbol} collateral for ${pair.asset.tokenInfo.symbol} and repay`}
           help="Swapping your removed collateral tokens and repay allows for reducing your borrow by using your collateral and/or to unwind leveraged positions."
@@ -373,6 +519,27 @@ export default function Repay({ pair }: RepayProps) {
           setUpdateOracle={setUpdateOracle}
           desiredDirection="up"
         />
+      )}
+
+      {preSwap && (
+        <>
+          <div className="mb-4">
+            {['5', '10', '20', '30', '50', '70', '80', '90', '100'].map((percentage, i) => (
+              <Button
+                variant="outlined"
+                size="xs"
+                color="pink"
+                key={i}
+                onClick={() => {
+                  onPercentage(percentage)
+                }}
+                className="mr-4 text-md focus:ring-pink"
+              >
+                {percentage}%
+              </Button>
+            ))}
+          </div>
+        </>
       )}
 
       <WarningsView warnings={warnings} />

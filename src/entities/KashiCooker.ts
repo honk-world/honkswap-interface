@@ -172,6 +172,12 @@ export default class KashiCooker {
     return this
   }
 
+  getRepayPart(amount: BigNumber): KashiCooker {
+    this.add(Action.GET_REPAY_PART, defaultAbiCoder.encode(['int256'], [amount]))
+
+    return this
+  }
+
   addCollateral(amount: BigNumber, fromBento: boolean): KashiCooker {
     let share: BigNumber
     if (fromBento) {
