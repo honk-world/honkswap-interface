@@ -310,6 +310,9 @@ export default function Repay({ pair }: RepayProps) {
         cooker.repayShare(BigNumber.from(-1))
 
         const path = trade.route.path.map((token) => token.address) || []
+        if (path.length > 4) {
+          throw 'Path too long'
+        }
 
         console.log('yoooooooooooo')
         console.log(collateralSwapValue)
@@ -357,6 +360,10 @@ export default function Repay({ pair }: RepayProps) {
         cooker.repayShare(pair.userBorrowPart)
 
         const path = trade.route.path.map((token) => token.address) || []
+
+        if (path.length > 4) {
+          throw 'Path too long'
+        }
 
         console.log('debug', [
           pair.collateral.address,
