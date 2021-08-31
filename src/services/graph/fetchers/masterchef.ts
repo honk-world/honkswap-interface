@@ -9,7 +9,7 @@ import {
   poolsV2Query,
 } from '../queries'
 
-import { getTokenSubset } from './exchange'
+import { getTokenSubset, getEthPrice } from './exchange'
 
 import { ChainId } from '@sushiswap/sdk'
 import { GRAPH_HOST } from '../constants'
@@ -84,7 +84,20 @@ export const getMasterChefV2PairAddreses = async () => {
 
 export const getMiniChefFarms = async (chainId = ChainId.MAINNET) => {
   const { pools } = await miniChef(miniChefPoolsQuery, chainId)
-  return pools
+
+  const tokens = await getTokenSubset(chainId, {
+    tokenAddresses: Array.from(pools.map((pool) => pool.rewarder.rewardToken)),
+  })
+
+  const bundlePrice = await getEthPrice(chainId)
+
+  return pools.map((pool) => ({
+    ...pool,
+    rewardToken: {
+      ...tokens.find((token) => token.id === pool.rewarder.rewardToken),
+    },
+    bundlePrice: bundlePrice,
+  }))
 }
 
 export const getMiniChefPairAddreses = async (chainId = ChainId.MAINNET) => {

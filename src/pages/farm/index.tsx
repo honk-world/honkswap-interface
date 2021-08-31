@@ -33,6 +33,7 @@ import Search from '../../components/Search'
 import { classNames } from '../../functions'
 import dynamic from 'next/dynamic'
 import { getAddress } from 'ethers/lib/utils'
+import { getTokenLogoURL } from '../../components/CurrencyLogo'
 import { usePositions } from '../../features/farm/hooks'
 import { useRouter } from 'next/router'
 
@@ -166,12 +167,38 @@ export default function Farm(): JSX.Element {
         const sushiPerBlock = sushiPerSecond * averageBlockTime
         const sushiPerDay = sushiPerBlock * blocksPerDay
 
+        const native_rewarder = '0xa3378ca78633b3b9b2255eaa26748770211163ae'
+        const icon = getTokenLogoURL(pool.rewarder.rewardToken, chainId)
+
+        /*if (native_rewarder == pool.rewarder.id) {
+          const rewarder_total_ap = 10000
+
+          const rewardPerSecond =
+            ((pool.allocPoint / rewarder_total_ap) * pool.rewarder.rewardPerSecond) / (10 ** pool.rewardToken.decimals)
+          const rewardPerBlock = rewardPerSecond * averageBlockTime
+          const rewardPerDay = rewardPerBlock * blocksPerDay
+        } else {
+          const rewardPerSecond = pool.rewarder.rewardPerSecond
+          const rewardPerBlock = rewardPerSecond * averageBlockTime
+          const rewardPerDay = rewardPerBlock * blocksPerDay
+        }*/
+
         const rewardPerSecond =
-          ((pool.allocPoint / pool.miniChef.totalAllocPoint) * pool.rewarder.rewardPerSecond) / 1e18
+          native_rewarder == pool.rewarder.id
+            ? ((pool.allocPoint / 10000) * pool.rewarder.rewardPerSecond) / 10 ** pool.rewardToken.decimals
+            : pool.rewarder.rewardPerSecond
+        //const rewardPerSecond =
+        //  ((pool.allocPoint / pool.miniChef.totalAllocPoint) * pool.rewarder.rewardPerSecond) / (10 ** pool.rewardToken.decimals)
         const rewardPerBlock = rewardPerSecond * averageBlockTime
         const rewardPerDay = rewardPerBlock * blocksPerDay
 
         const reward = {
+          token: pool.rewardToken.symbol,
+          icon: icon,
+          rewardPrice: pool.rewardToken.derivedETH * pool.bundlePrice,
+        }
+
+        /*const reward = {
           [ChainId.MATIC]: {
             token: 'MATIC',
             icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/polygon.jpg',
@@ -187,7 +214,7 @@ export default function Farm(): JSX.Element {
             icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/one.jpg',
             rewardPrice: onePrice,
           },
-        }
+        }*/
 
         return [
           {
@@ -196,7 +223,7 @@ export default function Farm(): JSX.Element {
             rewardPerDay: sushiPerDay,
           },
           {
-            ...reward[chainId],
+            ...reward,
             rewardPerBlock: rewardPerBlock,
             rewardPerDay: rewardPerDay,
           },
