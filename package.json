@@ -1,5 +1,5 @@
 {
-  "name": "sushiswap-interface",
+  "name": "mistswap-interface",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -66,10 +66,10 @@
     "@reduxjs/toolkit": "^1.6.0",
     "@sentry/nextjs": "^6.11.0",
     "@sushiswap/chainlink-whitelist": "0.2.3",
-    "@sushiswap/core": "2.0.0-canary.0",
-    "@sushiswap/default-token-list": "14.18.0",
+    "@mistswapdex/core": "0.0.1",
+    "@mistswapdex/default-token-list": "0.0.1",
     "@sushiswap/limit-order-pair-list": "0.2.2",
-    "@sushiswap/sdk": "5.0.0-canary.66",
+    "@mistswapdex/sdk": "^0.0.1",
     "@sushiswap/sushi-data": "^1.0.24",
     "@tailwindcss/jit": "^0.1.18",
     "@transak/transak-sdk": "^1.0.28",
