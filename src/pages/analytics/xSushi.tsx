@@ -162,8 +162,8 @@ export default function XSushi() {
         <div className="flex flex-row space-x-4 overflow-auto">
           <InfoCard text="APY (Last 24 Hours)" number={formatPercent(APY1d)} />
           <InfoCard text="APY (Last 7 Days)" number={formatPercent(APY1w)} />
-          <InfoCard text="xSUSHI Supply" number={formatNumber(bar?.totalSupply)} />
-          <InfoCard text="xSUSHI : SUSHI" number={Number(bar?.ratio ?? 0)?.toFixed(4)} />
+          <InfoCard text="xMIST Supply" number={formatNumber(bar?.totalSupply)} />
+          <InfoCard text="xMIST : MIST" number={Number(bar?.ratio ?? 0)?.toFixed(4)} />
         </div>
         <div className="space-y-4">
           {graphs.map((graph, i) => (

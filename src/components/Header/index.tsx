@@ -115,7 +115,7 @@ function AppBar(): JSX.Element {
                   <div className="flex items-center justify-between w-full space-x-2 sm:justify-end">
                     {chainId && [ChainId.MAINNET].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
-                        <QuestionHelper text={i18n._(t`Add xSUSHI to your MetaMask wallet`)}>
+                        <QuestionHelper text={i18n._(t`Add xMIST to your MetaMask wallet`)}>
                           <div
                             className="hidden p-0.5 rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800"
                             onClick={() => {
@@ -124,7 +124,7 @@ function AppBar(): JSX.Element {
                                   type: 'ERC20',
                                   options: {
                                     address: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
-                                    symbol: 'XSUSHI',
+                                    symbol: 'xMIST',
                                     decimals: 18,
                                     image:
                                       'https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272/logo.png',
@@ -137,7 +137,7 @@ function AppBar(): JSX.Element {
                                   })
                                   .then((success) => {
                                     if (success) {
-                                      console.log('Successfully added XSUSHI to MetaMask')
+                                      console.log('Successfully added xMIST to MetaMask')
                                     } else {
                                       throw new Error('Something went wrong.')
                                     }
@@ -148,7 +148,7 @@ function AppBar(): JSX.Element {
                           >
                             <Image
                               src="/images/tokens/xsushi-square.jpg"
-                              alt="xSUSHI"
+                              alt="xMIST"
                               width="38px"
                               height="38px"
                               objectFit="contain"
@@ -161,7 +161,7 @@ function AppBar(): JSX.Element {
 
                     {chainId && chainId in SUSHI_ADDRESS && library && library.provider.isMetaMask && (
                       <>
-                        <QuestionHelper text={i18n._(t`Add SUSHI to your MetaMask wallet`)}>
+                        <QuestionHelper text={i18n._(t`Add MIST to your MetaMask wallet`)}>
                           <div
                             className="hidden rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800 p-0.5"
                             onClick={() => {
@@ -169,7 +169,7 @@ function AppBar(): JSX.Element {
                                 type: 'ERC20',
                                 options: {
                                   address: SUSHI_ADDRESS[chainId],
-                                  symbol: 'SUSHI',
+                                  symbol: 'MIST',
                                   decimals: 18,
                                   image:
                                     'https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
@@ -183,7 +183,7 @@ function AppBar(): JSX.Element {
                                   })
                                   .then((success) => {
                                     if (success) {
-                                      console.log('Successfully added SUSHI to MetaMask')
+                                      console.log('Successfully added MIST to MetaMask')
                                     } else {
                                       throw new Error('Something went wrong.')
                                     }
@@ -194,7 +194,7 @@ function AppBar(): JSX.Element {
                           >
                             <Image
                               src="/images/tokens/sushi-square.jpg"
-                              alt="SUSHI"
+                              alt="MIST"
                               width="38px"
                               height="38px"
                               objectFit="contain"

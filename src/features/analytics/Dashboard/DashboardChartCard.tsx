@@ -57,7 +57,7 @@ export default function DashboardChartCard(props: DashboardChartCardProps): JSX.
   return (
     <ChartCard
       header={type.header}
-      subheader={'SUSHI AMM'}
+      subheader={'MIST AMM'}
       figure={data.figure}
       change={data.change}
       chart={data.chart}
