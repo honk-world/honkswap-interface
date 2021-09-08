@@ -11,29 +11,31 @@ import { useLingui } from '@lingui/react'
 const items = (i18n: I18n) => [
   {
     name: i18n._(t`Docs`),
-    description: i18n._(t`Documentation for users of Sushi.`),
-    href: 'https://docs.sushi.com',
+    description: i18n._(t`Documentation for users of MIST.`),
+    href: 'https://docs.mistswap.fi',
   },
   {
     name: i18n._(t`Dev`),
-    description: i18n._(t`Documentation for developers of Sushi.`),
-    href: 'https://dev.sushi.com',
+    description: i18n._(t`Documentation for developers of MIST.`),
+    href: 'https://dev.mistswap.fi',
   },
   {
     name: i18n._(t`Open Source`),
-    description: i18n._(t`Sushi is a supporter of Open Source.`),
-    href: 'https://github.com/sushiswap',
+    description: i18n._(t`MIST is a supporter of Open Source.`),
+    href: 'https://github.com/mistswapdex',
   },
   {
     name: i18n._(t`Tools`),
     description: i18n._(t`Tools to optimize your workflow.`),
     href: '/tools',
   },
+  /*
   {
     name: i18n._(t`Discord`),
     description: i18n._(t`Join the community on Discord.`),
     href: 'https://discord.gg/NVPXN4e',
   },
+  */
 ]
 
 export default function Menu() {
