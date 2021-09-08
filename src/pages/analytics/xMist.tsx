@@ -19,7 +19,7 @@ import { useBar, useBarHistory } from '../../services/graph/hooks/bar'
 import ColoredNumber from '../../features/analytics/ColoredNumber'
 import { XSUSHI } from '../../config/tokens'
 
-export default function XSushi() {
+export default function XMIST() {
   const block1d = useBlock({ daysAgo: 1, chainId: ChainId.MAINNET })
 
   const exchange = useFactory({ chainId: ChainId.MAINNET })
@@ -104,7 +104,7 @@ export default function XSushi() {
         ],
       },
       {
-        labels: ['Sushi Staked (USD)', 'Sushi Harvested (USD)'],
+        labels: ['Mist Staked (USD)', 'Mist Harvested (USD)'],
         note: '/ day',
         data: [
           data.map((d) => ({
@@ -118,7 +118,7 @@ export default function XSushi() {
         ],
       },
       {
-        title: 'xSushi Total Supply',
+        title: 'xMist Total Supply',
         data: [
           data.map((d) => ({
             date: d.date * 1000,
@@ -135,8 +135,8 @@ export default function XSushi() {
       <Background background="bar">
         <div className="grid items-center justify-between grid-cols-1 gap-x-4 gap-y-2 md:grid-cols-2">
           <div className="space-y-5">
-            <div className="text-3xl font-bold text-high-emphesis">xSushi</div>
-            <div>Find out all about xSushi here.</div>
+            <div className="text-3xl font-bold text-high-emphesis">xMist</div>
+            <div>Find out all about xMist here.</div>
           </div>
           <div className="flex space-x-12">
             <div className="flex flex-col">

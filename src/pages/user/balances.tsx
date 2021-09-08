@@ -41,7 +41,7 @@ function Balances() {
   return (
     <>
       <Head>
-        <title>Balances | Sushi</title>
+        <title>Balances | Mist</title>
         <meta key="description" name="description" content="" />
       </Head>
       <Card

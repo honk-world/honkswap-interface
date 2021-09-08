@@ -6,7 +6,7 @@ export default function Analytics() {
   return (
     <Container maxWidth="full" className="grid h-full grid-cols-4 mx-auto gap-9">
       <Head>
-        <title>Analytics Dashboard | Sushi</title>
+        <title>Analytics Dashboard | Mist</title>
         <meta name="description" content="MIST Analytics Dashboard by MIST..." />
       </Head>
 

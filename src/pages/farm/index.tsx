@@ -270,8 +270,8 @@ export default function Farm(): JSX.Element {
   return (
     <Container id="farm-page" className="grid h-full grid-cols-4 py-4 mx-auto md:py-8 lg:py-12 gap-9" maxWidth="7xl">
       <Head>
-        <title>Farm | Sushi</title>
-        <meta key="description" name="description" content="Farm SUSHI" />
+        <title>Farm | Mist</title>
+        <meta key="description" name="description" content="Farm MIST" />
       </Head>
       <div className={classNames('sticky top-0 hidden lg:block md:col-span-1')} style={{ maxHeight: '40rem' }}>
         <Menu positionsLength={positions.length} />
