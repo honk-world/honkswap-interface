@@ -135,18 +135,18 @@ function MyApp({
 
         <meta key="twitter:card" name="twitter:card" content="app" />
         <meta key="twitter:title" name="twitter:title" content="MIST App" />
-        <meta key="twitter:url" name="twitter:url" content="https://app.sushi.com" />
+        <meta key="twitter:url" name="twitter:url" content="https://app.mistswap.fi" />
         <meta
           key="twitter:description"
           name="twitter:description"
           content="Be a DeFi Chef with Sushi. Swap, earn, stack yields, lend, borrow, leverage all on one decentralized, community driven platform. Welcome home to DeFi"
         />
-        <meta key="twitter:image" name="twitter:image" content="https://app.sushi.com/icons/icon-192x192.png" />
-        <meta key="twitter:creator" name="twitter:creator" content="@SushiSwap" />
+        <meta key="twitter:image" name="twitter:image" content="https://app.mistswap.fi/icons/icon-192x192.png" />
+        <meta key="twitter:creator" name="twitter:creator" content="@kasumi_null" />
         <meta key="og:type" property="og:type" content="website" />
         <meta key="og:site_name" property="og:site_name" content="MIST App" />
-        <meta key="og:url" property="og:url" content="https://app.sushi.com" />
-        <meta key="og:image" property="og:image" content="https://app.sushi.com/apple-touch-icon.png" />
+        <meta key="og:url" property="og:url" content="https://app.mistswap.fi" />
+        <meta key="og:image" property="og:image" content="https://app.mistswap.fi/apple-touch-icon.png" />
         <meta
           key="og:description"
           property="og:description"

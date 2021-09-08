@@ -127,7 +127,7 @@ function MisoInfo({
         </div>
         <div className="ml-5 cursor-pointer md:ml-8">
           <a
-            href="https://miso.sushi.com/auctions/0x15c5E87Ce788F0dEBcAF70cF1dde69E3Bc3E6Ad1"
+            href="https://miso.mistswap.fi/auctions/0x15c5E87Ce788F0dEBcAF70cF1dde69E3Bc3E6Ad1"
             target="_blank"
             rel="noreferrer noopener"
           >
