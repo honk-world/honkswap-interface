@@ -1,4 +1,4 @@
-import { ChainId, Currency, CurrencyAmount, Price, Token, USDC } from '@mistswapdex/sdk'
+import { ChainId, Currency, CurrencyAmount, Price, Token } from '@mistswapdex/sdk'
 
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import { useMemo } from 'react'
@@ -8,20 +8,7 @@ import { useV2TradeExactOut } from './useV2Trades'
 
 // Stablecoin amounts used when calculating spot price for a given currency.
 // The amount is large enough to filter low liquidity pairs.
-const STABLECOIN_AMOUNT_OUT: { [chainId: number]: CurrencyAmount<Token> } = {
-  [ChainId.MAINNET]: CurrencyAmount.fromRawAmount(USDC[ChainId.MAINNET], 100_000e6),
-  [ChainId.ROPSTEN]: CurrencyAmount.fromRawAmount(USDC[ChainId.ROPSTEN], 100_000e6),
-  [ChainId.KOVAN]: CurrencyAmount.fromRawAmount(USDC[ChainId.KOVAN], 100_000e6),
-  [ChainId.MATIC]: CurrencyAmount.fromRawAmount(USDC[ChainId.MATIC], 100_000e6),
-  [ChainId.FANTOM]: CurrencyAmount.fromRawAmount(USDC[ChainId.FANTOM], 100_000e6),
-  [ChainId.BSC]: CurrencyAmount.fromRawAmount(USDC[ChainId.BSC], 100_000e18),
-  [ChainId.HARMONY]: CurrencyAmount.fromRawAmount(USDC[ChainId.HARMONY], 100_000e6),
-  [ChainId.HECO]: CurrencyAmount.fromRawAmount(USDC[ChainId.HECO], 100_000e6),
-  [ChainId.OKEX]: CurrencyAmount.fromRawAmount(USDC[ChainId.OKEX], 100_000e18),
-  [ChainId.XDAI]: CurrencyAmount.fromRawAmount(USDC[ChainId.XDAI], 100_000e6),
-  [ChainId.ARBITRUM]: CurrencyAmount.fromRawAmount(USDC[ChainId.ARBITRUM], 100_000e6),
-  [ChainId.CELO]: undefined,
-}
+const STABLECOIN_AMOUNT_OUT: { [chainId: number]: CurrencyAmount<Token> } = {}
 
 /**
  * Returns the price in USDC of the input currency

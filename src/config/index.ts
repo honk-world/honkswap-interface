@@ -1,7 +1,7 @@
 import { ChainId } from '@mistswapdex/sdk'
 
 const config = {
-  [ChainId.MAINNET]: {},
+  [ChainId.SMARTBCH]: {},
 }
 
 export default config

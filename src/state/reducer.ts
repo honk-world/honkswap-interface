@@ -2,7 +2,6 @@ import application from './application/reducer'
 import burn from './burn/reducer'
 import { combineReducers } from '@reduxjs/toolkit'
 import create from './create/reducer'
-import inari from './inari/reducer'
 import limitOrder from './limit-order/reducer'
 import lists from './lists/reducer'
 import mint from './mint/reducer'
@@ -22,7 +21,6 @@ const reducer = combineReducers({
   lists,
   limitOrder,
   create,
-  inari,
 })
 
 export default reducer

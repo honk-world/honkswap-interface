@@ -122,7 +122,7 @@ export function useSwapCallArguments(
             allowedSlippage,
             recipient,
             ttl: deadline.toNumber(),
-            ethTip: CurrencyAmount.fromRawAmount(Ether.onChain(ChainId.MAINNET), archerETHTip),
+            ethTip: CurrencyAmount.fromRawAmount(Ether.onChain(ChainId.SMARTBCH), archerETHTip),
           })
         )
       }
@@ -356,7 +356,7 @@ export function useSwapCallback(
               data: calldata,
               // let the wallet try if we can't estimate the gas
               ...('gasEstimate' in bestCallOption ? { gasLimit: calculateGasMargin(bestCallOption.gasEstimate) } : {}),
-              gasPrice: !eip1559 && chainId === ChainId.HARMONY ? BigNumber.from('2000000000') : undefined,
+              gasPrice: chainId === ChainId.SMARTBCH ? BigNumber.from('1050000000') : undefined,
               ...(value && !isZero(value) ? { value } : {}),
             })
             .then((response) => {
@@ -443,7 +443,7 @@ export function useSwapCallback(
               const chainNames: {
                 [chainId in ChainId]?: string
               } = {
-                [ChainId.MAINNET]: 'mainnet',
+                [ChainId.SMARTBCH]: 'smartbch',
               }
               const chain = chainNames[chainId]
               if (!chain) throw new Error(`Unknown chain ID ${chainId} when building transaction`)

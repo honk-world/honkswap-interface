@@ -5,18 +5,7 @@ import { ChainId } from '@mistswapdex/sdk'
 import { GRAPH_HOST } from '../constants'
 import { request } from 'graphql-request'
 
-export const BLOCKS = {
-  [ChainId.MAINNET]: 'blocklytics/ethereum-blocks',
-  [ChainId.XDAI]: 'matthewlilley/xdai-blocks',
-  [ChainId.MATIC]: 'matthewlilley/polygon-blocks',
-  [ChainId.FANTOM]: 'matthewlilley/fantom-blocks',
-  [ChainId.BSC]: 'matthewlilley/bsc-blocks',
-  [ChainId.HARMONY]: 'sushiswap/harmony-blocks',
-  [ChainId.AVALANCHE]: 'matthewlilley/avalanche-blocks',
-  [ChainId.CELO]: 'sushiswap/celo-blocks',
-  [ChainId.ARBITRUM]: 'sushiswap/arbitrum-blocks',
-  [ChainId.OKEX]: 'sushiswap/okex-blocks',
-}
+export const BLOCKS = {}
 
 export const fetcher = async (chainId = ChainId.MAINNET, query, variables = undefined) => {
   return request(`${GRAPH_HOST[chainId]}/subgraphs/name/${BLOCKS[chainId]}`, query, variables)

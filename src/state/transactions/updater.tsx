@@ -33,10 +33,7 @@ export function shouldCheck(lastBlockNumber: number, tx: TxInterface): boolean {
   }
 }
 
-const RETRY_OPTIONS_BY_CHAIN_ID: { [chainId: number]: RetryOptions } = {
-  [ChainId.HARMONY]: { n: 10, minWait: 250, maxWait: 1000 },
-  [ChainId.ARBITRUM]: { n: 10, minWait: 250, maxWait: 1000 },
-}
+const RETRY_OPTIONS_BY_CHAIN_ID: { [chainId: number]: RetryOptions } = {}
 const DEFAULT_RETRY_OPTIONS: RetryOptions = { n: 3, minWait: 1000, maxWait: 3000 }
 
 export default function Updater(): null {

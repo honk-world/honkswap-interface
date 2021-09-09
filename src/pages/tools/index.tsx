@@ -9,18 +9,6 @@ import { useLingui } from '@lingui/react'
 import { useMemo } from 'react'
 
 const TOOLS = (i18n: I18n) => [
-  {
-    id: 1,
-    name: 'MEOWSHI',
-    description: i18n._(t`Redenominate xMIST into MEOWSHI`),
-    href: '/tools/meowshi',
-  },
-  {
-    id: 2,
-    name: 'INARI',
-    description: 'Deposit MIST in various strategies & platforms in one click!',
-    href: '/inari',
-  },
 ]
 
 export default function Tools() {

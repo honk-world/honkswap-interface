@@ -22,7 +22,7 @@ export * from './exchange'
 
 export function useMasterChefV1TotalAllocPoint(swrConfig = undefined) {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && chainId === ChainId.SMARTBCH
   const { data } = useSWR(
     shouldFetch ? 'masterChefV1TotalAllocPoint' : null,
     () => getMasterChefV1TotalAllocPoint(),
@@ -33,7 +33,7 @@ export function useMasterChefV1TotalAllocPoint(swrConfig = undefined) {
 
 export function useMasterChefV1SushiPerBlock(swrConfig = undefined) {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && chainId === ChainId.SMARTBCH
   const { data } = useSWR(
     shouldFetch ? 'masterChefV1SushiPerBlock' : null,
     () => getMasterChefV1SushiPerBlock(),
@@ -44,7 +44,7 @@ export function useMasterChefV1SushiPerBlock(swrConfig = undefined) {
 
 export function useMasterChefV1Farms(variables = undefined, chainId = undefined, swrConfig = undefined) {
   chainId = chainId ?? useActiveWeb3React().chainId
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && chainId === ChainId.SMARTBCH
   const { data } = useSWR(
     shouldFetch ? ['masterChefV1Farms', JSON.stringify(variables)] : null,
     () => getMasterChefV1Farms(variables),
@@ -62,7 +62,7 @@ export function useMasterChefV2Farms(
   swrConfig: SWRConfiguration = undefined
 ) {
   chainId = chainId ?? useActiveWeb3React().chainId
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && chainId === ChainId.SMARTBCH
   const { data } = useSWR(shouldFetch ? 'masterChefV2Farms' : null, () => getMasterChefV2Farms(), swrConfig)
   return useMemo(() => {
     if (!data) return []
@@ -99,7 +99,7 @@ export function useFarms(variables = undefined, chainId = undefined, swrConfig: 
 
 export function useMasterChefV1PairAddresses() {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && chainId === ChainId.SMARTBCH
   const { data } = useSWR(shouldFetch ? ['masterChefV1PairAddresses', chainId] : null, (_) =>
     getMasterChefV1PairAddreses()
   )
@@ -111,7 +111,7 @@ export function useMasterChefV1PairAddresses() {
 
 export function useMasterChefV2PairAddresses() {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = chainId && chainId === ChainId.SMARTBCH
   const { data } = useSWR(shouldFetch ? ['masterChefV2PairAddresses', chainId] : null, (_) =>
     getMasterChefV2PairAddreses()
   )
@@ -123,7 +123,7 @@ export function useMasterChefV2PairAddresses() {
 
 export function useMiniChefPairAddresses() {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && [ChainId.MATIC, ChainId.XDAI, ChainId.HARMONY, ChainId.ARBITRUM].includes(chainId)
+  const shouldFetch = chainId && [].includes(chainId)
   const { data } = useSWR(shouldFetch ? ['miniChefPairAddresses', chainId] : null, (_, chainId) =>
     getMiniChefPairAddreses(chainId)
   )

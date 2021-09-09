@@ -1,7 +1,7 @@
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
 import { BAR_ADDRESS, ZERO } from '@mistswapdex/sdk'
 import React, { useEffect, useState } from 'react'
-import { SUSHI, XSUSHI } from '../../config/tokens'
+import { MIST, XMIST } from '../../config/tokens'
 
 import Button from '../../components/Button'
 import { ChainId } from '@mistswapdex/sdk'
@@ -60,8 +60,8 @@ const fetcher = (query) => request('https://api.thegraph.com/subgraphs/name/matt
 export default function Stake() {
   const { i18n } = useLingui()
   const { account } = useActiveWeb3React()
-  const sushiBalance = useTokenBalance(account ?? undefined, SUSHI[ChainId.MAINNET])
-  const xSushiBalance = useTokenBalance(account ?? undefined, XSUSHI)
+  const sushiBalance = useTokenBalance(account ?? undefined, MIST[ChainId.SMARTBCH])
+  const xSushiBalance = useTokenBalance(account ?? undefined, XMIST)
 
   const sushiPrice = useSushiPrice()
 
@@ -86,7 +86,7 @@ export default function Stake() {
 
   const parsedAmount = usingBalance ? balance : tryParseAmount(input, balance?.currency)
 
-  const [approvalState, approve] = useApproveCallback(parsedAmount, BAR_ADDRESS[ChainId.MAINNET])
+  const [approvalState, approve] = useApproveCallback(parsedAmount, BAR_ADDRESS[ChainId.SMARTBCH])
 
   const handleInput = (v: string) => {
     if (v.length <= INPUT_CHAR_LIMIT) {

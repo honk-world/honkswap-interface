@@ -119,29 +119,7 @@ export default function useFarmRewards() {
         const rewardPerBlock = rewardPerSecond * averageBlockTime
         const rewardPerDay = rewardPerBlock * blocksPerDay
 
-        const reward = {
-          [ChainId.MATIC]: {
-            token: 'MATIC',
-            icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/polygon.jpg',
-            rewardPrice: maticPrice,
-            rewardPerBlock,
-            rewardPerDay,
-          },
-          [ChainId.XDAI]: {
-            token: 'STAKE',
-            icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/stake.jpg',
-            rewardPerBlock,
-            rewardPerDay,
-            rewardPrice: stakePrice,
-          },
-          [ChainId.HARMONY]: {
-            token: 'ONE',
-            icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/one.jpg',
-            rewardPerBlock,
-            rewardPerDay,
-            rewardPrice: nativePrice, // Reward token = Native token
-          },
-        }
+        const reward = {}
 
         rewards[0] = {
           ...defaultReward,

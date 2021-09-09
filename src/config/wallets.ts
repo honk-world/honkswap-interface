@@ -5,7 +5,7 @@ import { NetworkConnector } from '../entities/NetworkConnector'
 import RPC from './rpc'
 
 export const network = new NetworkConnector({
-  defaultChainId: 1,
+  defaultChainId: 10000,
   urls: RPC,
 })
 
@@ -66,8 +66,8 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: async () => {
       const KeystoneConnector = (await import('@keystonehq/keystone-connector')).KeystoneConnector
       return new KeystoneConnector({
-        chainId: 1,
-        url: RPC[ChainId.MAINNET],
+        chainId: 10000,
+        url: RPC[ChainId.SMARTBCH],
       })
     },
     name: 'Keystone',
@@ -81,8 +81,8 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: async () => {
       const LatticeConnector = (await import('@web3-react/lattice-connector')).LatticeConnector
       return new LatticeConnector({
-        chainId: 1,
-        url: RPC[ChainId.MAINNET],
+        chainId: 10000,
+        url: RPC[ChainId.SMARTBCH],
         appName: 'SushiSwap',
       })
     },
@@ -97,9 +97,9 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: async () => {
       const WalletLinkConnector = (await import('@web3-react/walletlink-connector')).WalletLinkConnector
       return new WalletLinkConnector({
-        url: RPC[ChainId.MAINNET],
-        appName: 'SushiSwap',
-        appLogoUrl: 'https://raw.githubusercontent.com/sushiswap/art/master/sushi/logo-256x256.png',
+        url: RPC[ChainId.SMARTBCH],
+        appName: 'MistSwap',
+        appLogoUrl: 'https://raw.githubusercontent.com/mistswapdex/art/master/sushi/logo-256x256.png',
       })
     },
     name: 'Coinbase Wallet',
@@ -137,7 +137,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
       const PortisConnector = (await import('@web3-react/portis-connector')).PortisConnector
       return new PortisConnector({
         dAppId: process.env.NEXT_PUBLIC_PORTIS_ID ?? '',
-        networks: [1],
+        networks: [ChainId.SMARTBCH],
       })
     },
     name: 'Portis',
@@ -151,7 +151,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: async () => {
       const TorusConnector = (await import('@web3-react/torus-connector')).TorusConnector
       return new TorusConnector({
-        chainId: 1,
+        chainId: ChainId.SMARTBCH,
       })
     },
     name: 'Torus',

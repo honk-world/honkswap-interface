@@ -12,6 +12,7 @@
     "lokalise": "lokalise2 --config lokalise.yaml file download --format po --unzip-to . --original-filenames=false",
     "circular": "madge --circular src --extensions ts,tsx,js,jsx",
     "unused": "next-unused",
+    "postinstall": "patch-package",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
     "prettier": "prettier --write 'src/**/*.{ts,tsx}'",
@@ -20,12 +21,6 @@
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write"
-    ],
-    "*.{md,css}": "prettier --write"
   },
   "resolutions": {
     "@walletconnect/web3-provider": "1.6.0"
@@ -60,16 +55,16 @@
     "@lingui/react": "^3.10.2",
     "@lingui/remote-loader": "^3.10.4",
     "@metamask/jazzicon": "^2.0.0",
+    "@mistswapdex/core": "0.0.1",
+    "@mistswapdex/default-token-list": "0.0.1",
+    "@mistswapdex/sdk": "^0.0.7",
     "@next/bundle-analyzer": "^11.1.0",
     "@popperjs/core": "^2.9.2",
     "@ramp-network/ramp-instant-sdk": "^2.4.6",
     "@reduxjs/toolkit": "^1.6.0",
     "@sentry/nextjs": "^6.11.0",
     "@sushiswap/chainlink-whitelist": "0.2.3",
-    "@mistswapdex/core": "0.0.1",
-    "@mistswapdex/default-token-list": "0.0.1",
     "@sushiswap/limit-order-pair-list": "0.2.2",
-    "@mistswapdex/sdk": "^0.0.1",
     "@sushiswap/sushi-data": "^1.0.24",
     "@tailwindcss/jit": "^0.1.18",
     "@transak/transak-sdk": "^1.0.28",
@@ -110,7 +105,6 @@
     "graphql-tag": "^2.12.5",
     "husky": "^7.0.0",
     "ioredis": "^4.27.7",
-    "lint-staged": "^11.0.0",
     "lodash": "^4.17.21",
     "lottie-react": "^2.1.0",
     "madge": "^5.0.1",
@@ -169,5 +163,9 @@
     "not ie 11",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "dependencies": {
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0"
+  }
 }

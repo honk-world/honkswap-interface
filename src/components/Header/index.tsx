@@ -1,4 +1,4 @@
-import { ChainId, Currency, NATIVE, SUSHI_ADDRESS } from '@mistswapdex/sdk'
+import { ChainId, Currency, NATIVE, MIST_ADDRESS } from '@mistswapdex/sdk'
 import { Feature, featureEnabled } from '../../functions/feature'
 import React, { useEffect, useState } from 'react'
 
@@ -113,7 +113,7 @@ function AppBar(): JSX.Element {
 
                 <div className="fixed bottom-0 left-0 z-10 flex flex-row items-center justify-center w-full p-4 lg:w-auto bg-dark-1000 lg:relative lg:p-0 lg:bg-transparent">
                   <div className="flex items-center justify-between w-full space-x-2 sm:justify-end">
-                    {chainId && [ChainId.MAINNET].includes(chainId) && library && library.provider.isMetaMask && (
+                    {chainId && [ChainId.SMARTBCH].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
                         <QuestionHelper text={i18n._(t`Add xMIST to your MetaMask wallet`)}>
                           <div
@@ -159,7 +159,7 @@ function AppBar(): JSX.Element {
                       </>
                     )}
 
-                    {chainId && chainId in SUSHI_ADDRESS && library && library.provider.isMetaMask && (
+                    {chainId && chainId in MIST_ADDRESS && library && library.provider.isMetaMask && (
                       <>
                         <QuestionHelper text={i18n._(t`Add MIST to your MetaMask wallet`)}>
                           <div
@@ -168,7 +168,7 @@ function AppBar(): JSX.Element {
                               const params: any = {
                                 type: 'ERC20',
                                 options: {
-                                  address: SUSHI_ADDRESS[chainId],
+                                  address: MIST_ADDRESS[chainId],
                                   symbol: 'MIST',
                                   decimals: 18,
                                   image:
