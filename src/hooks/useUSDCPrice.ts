@@ -1,4 +1,4 @@
-import { ChainId, Currency, CurrencyAmount, Price, Token, USDC } from '@sushiswap/sdk'
+import { ChainId, Currency, CurrencyAmount, Price, Token, USDC } from '@mistswapdex/sdk'
 
 import { useActiveWeb3React } from '../hooks/useActiveWeb3React'
 import { useMemo } from 'react'

@@ -1,4 +1,4 @@
-import { Currency, Percent, Trade, TradeType } from '@sushiswap/sdk'
+import { Currency, Percent, Trade, TradeType } from '@mistswapdex/sdk'
 
 import { useMemo } from 'react'
 import { useUserSlippageToleranceWithDefault } from '../state/user/hooks'

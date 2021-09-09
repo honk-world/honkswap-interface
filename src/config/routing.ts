@@ -47,7 +47,7 @@ import {
   XSUSHI,
 } from '../config/tokens'
 // a list of tokens by chain
-import { ChainId, Currency, Token, WNATIVE } from '@sushiswap/sdk'
+import { ChainId, Currency, Token, WNATIVE } from '@mistswapdex/sdk'
 
 type ChainTokenList = {
   readonly [chainId: number]: Token[]

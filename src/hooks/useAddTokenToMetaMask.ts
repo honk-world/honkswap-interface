@@ -1,4 +1,4 @@
-import { Currency, Token } from '@sushiswap/sdk'
+import { Currency, Token } from '@mistswapdex/sdk'
 import { useCallback, useState } from 'react'
 
 import { getCurrencyLogoUrls } from './../components/CurrencyLogo'

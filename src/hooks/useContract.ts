@@ -19,7 +19,7 @@ import {
   SUSHI_ADDRESS,
   TIMELOCK_ADDRESS,
   WNATIVE_ADDRESS,
-} from '@sushiswap/sdk'
+} from '@mistswapdex/sdk'
 import {
   ARGENT_WALLET_DETECTOR_ABI,
   ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS,

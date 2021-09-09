@@ -1,4 +1,4 @@
-import { ChainId, Currency, NATIVE, WNATIVE } from '@sushiswap/sdk'
+import { ChainId, Currency, NATIVE, WNATIVE } from '@mistswapdex/sdk'
 
 import { tryParseAmount } from '../functions/parse'
 import { useActiveWeb3React } from './useActiveWeb3React'
