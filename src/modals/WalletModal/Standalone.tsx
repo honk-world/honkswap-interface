@@ -296,7 +296,7 @@ export default function WalletStandalone({
           <HeaderRow>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</HeaderRow>
           <ContentWrapper>
             {error instanceof UnsupportedChainIdError ? (
-              <h5>Please connect to the appropriate Ethereum network.</h5>
+              <h5>Please connect to the appropriate SmartBCH network.</h5>
             ) : (
               'Error connecting. Try refreshing the page.'
             )}
@@ -330,7 +330,7 @@ export default function WalletStandalone({
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
-              <span>New to Ethereum? &nbsp;</span>{' '}
+              <span>New to SmartBCH? &nbsp;</span>{' '}
               <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink>
             </Blurb>
           )}

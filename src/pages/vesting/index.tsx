@@ -16,7 +16,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Loader from '../../components/Loader'
 import QuestionHelper from '../../components/QuestionHelper'
-import { cloudinaryLoader } from '../../functions/cloudinary'
 import { formatNumber } from '../../functions/format'
 import { isAddress } from '@ethersproject/address'
 import { t } from '@lingui/macro'
@@ -108,7 +107,7 @@ export default function Vesting() {
       </Head>
       <div className="flex px-0 sm:px-4 md:flex-row md:space-x-10 lg:space-x-20 md:px-10">
         <div className="hidden space-y-10 md:block">
-          <Image src={vault} loader={cloudinaryLoader} width={340} height={300} alt="" />
+          <Image src={vault} width={340} height={300} alt="" />
           <div className="relative w-full p-4 overflow-hidden rounded bg-dark-900">
             <div className="font-bold text-white">{i18n._(t`Community Approval`)}</div>
             <div

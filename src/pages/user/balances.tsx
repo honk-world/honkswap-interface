@@ -108,7 +108,6 @@ const TokenBalance = ({ token }: { token: BentoBalance & WrappedTokenInfo }) => 
       >
         <div className="flex items-center space-x-3">
           <Image
-            loader={cloudinaryLoader}
             height={56}
             width={56}
             src={token?.tokenInfo ? token.tokenInfo.logoURI : '/images/tokens/unknown.png'}

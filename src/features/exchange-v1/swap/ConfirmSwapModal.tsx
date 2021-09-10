@@ -1,4 +1,4 @@
-import { ChainId, Currency, CurrencyAmount, Ether, Percent, TradeType, Trade as V2Trade } from '@mistswapdex/sdk'
+import { ChainId, Currency, CurrencyAmount, SmartBCH, Percent, TradeType, Trade as V2Trade } from '@mistswapdex/sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,
@@ -88,10 +88,10 @@ export default function ConfirmSwapModal({
 
   const pendingText2 = minerBribe
     ? trade?.outputAmount.currency.isNative
-      ? `Minus ${CurrencyAmount.fromRawAmount(Ether.onChain(ChainId.MAINNET), minerBribe).toSignificant(
+      ? `Minus ${CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.MAINNET), minerBribe).toSignificant(
           6
         )} ETH Miner Tip`
-      : `Plus ${CurrencyAmount.fromRawAmount(Ether.onChain(ChainId.MAINNET), minerBribe).toSignificant(
+      : `Plus ${CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.MAINNET), minerBribe).toSignificant(
           6
         )} ETH Miner Tip`
     : undefined

@@ -1,4 +1,4 @@
-import { KASHI_ADDRESS, USDC_ADDRESS, WNATIVE_ADDRESS } from '@mistswapdex/sdk'
+import { KASHI_ADDRESS, FLEXUSD_ADDRESS, WNATIVE_ADDRESS } from '@mistswapdex/sdk'
 import { useBentoBoxContract, useBoringHelperContract, useContract } from '../../hooks/useContract'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
@@ -41,7 +41,7 @@ export function useBentoBalances(): BentoBalance[] {
   const uiData = useSingleCallResult(boringHelperContract, 'getUIInfo', [
     account,
     [],
-    USDC_ADDRESS[chainId],
+    FLEXUSD_ADDRESS[chainId],
     [KASHI_ADDRESS[chainId]],
   ])
 

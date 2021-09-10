@@ -1,9 +1,9 @@
-import { Currency, CurrencyAmount, Ether, JSBI, Token } from '@mistswapdex/sdk'
+import { Currency, CurrencyAmount, SmartBCH, JSBI, Token } from '@mistswapdex/sdk'
 import { useMultipleContractSingleData, useSingleContractMultipleData } from '../multicall/hooks'
 
 import ERC20_ABI from '../../constants/abis/erc20.json'
 import { Interface } from '@ethersproject/abi'
-import { SUSHI } from './../../config/tokens'
+import { MIST } from './../../config/tokens'
 import { isAddress } from '../../functions/validate'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useAllTokens } from '../../hooks/Tokens'
@@ -41,7 +41,7 @@ export function useETHBalances(uncheckedAddresses?: (string | undefined)[]): {
       addresses.reduce<{ [address: string]: CurrencyAmount<Currency> }>((memo, address, i) => {
         const value = results?.[i]?.result?.[0]
         if (value && chainId)
-          memo[address] = CurrencyAmount.fromRawAmount(Ether.onChain(chainId), JSBI.BigInt(value.toString()))
+          memo[address] = CurrencyAmount.fromRawAmount(SmartBCH.onChain(chainId), JSBI.BigInt(value.toString()))
         return memo
       }, {}),
     [addresses, chainId, results]

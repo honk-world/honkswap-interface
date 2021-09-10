@@ -101,7 +101,7 @@ export default function Farm(): JSX.Element {
 
       const defaultReward = {
         token: 'SUSHI',
-        icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/sushi.jpg',
+        icon: 'https://raw.githubusercontent.com/mistswapdex/icons/master/token/sushi.jpg',
         rewardPerBlock,
         rewardPerDay: rewardPerBlock * blocksPerDay,
         rewardPrice: sushiPrice,
@@ -114,22 +114,16 @@ export default function Farm(): JSX.Element {
         pool.owner.totalAllocPoint = masterChefV1TotalAllocPoint
 
         const icon = ['0', '3', '4', '8'].includes(pool.id)
-          ? `https://raw.githubusercontent.com/sushiswap/icons/master/token/${pool.rewardToken.symbol.toLowerCase()}.jpg`
-          : `https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/${getAddress(
+          ? `https://raw.githubusercontent.com/mistswapdex/icons/master/token/${pool.rewardToken.symbol.toLowerCase()}.jpg`
+          : `https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/ethereum/assets/${getAddress(
               pool.rewarder.rewardToken
             )}/logo.png`
 
         const decimals = 10 ** pool.rewardToken.decimals
 
-        const rewardPerBlock =
-          pool.rewardToken.symbol === 'ALCX'
-            ? pool.rewarder.rewardPerSecond / decimals
-            : (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime
+        const rewardPerBlock = (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime
 
-        const rewardPerDay =
-          pool.rewardToken.symbol === 'ALCX'
-            ? (pool.rewarder.rewardPerSecond / decimals) * blocksPerDay
-            : (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime * blocksPerDay
+        const rewardPerDay = (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime * blocksPerDay
 
         const reward = {
           token: pool.rewardToken.symbol,
@@ -140,55 +134,6 @@ export default function Farm(): JSX.Element {
         }
 
         return [...defaultRewards, reward]
-      } else if (pool.chef === Chef.MINICHEF) {
-        const sushiPerSecond = ((pool.allocPoint / pool.miniChef.totalAllocPoint) * pool.miniChef.sushiPerSecond) / 1e18
-        const sushiPerBlock = sushiPerSecond * averageBlockTime
-        const sushiPerDay = sushiPerBlock * blocksPerDay
-        const rewardPerSecond =
-          ((pool.allocPoint / pool.miniChef.totalAllocPoint) * pool.rewarder.rewardPerSecond) / 1e18
-        const rewardPerBlock = rewardPerSecond * averageBlockTime
-        const rewardPerDay = rewardPerBlock * blocksPerDay
-
-        const reward = {
-          [ChainId.MATIC]: {
-            token: 'MATIC',
-            icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/polygon.jpg',
-            rewardPrice: maticPrice,
-          },
-          [ChainId.XDAI]: {
-            token: 'STAKE',
-            icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/stake.jpg',
-            rewardPrice: stakePrice,
-          },
-          [ChainId.HARMONY]: {
-            token: 'ONE',
-            icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/one.jpg',
-            rewardPrice: onePrice,
-          },
-        }
-
-        if (!reward[chainId]) {
-          return [
-            {
-              ...defaultReward,
-              rewardPerBlock: sushiPerBlock,
-              rewardPerDay: sushiPerDay,
-            },
-          ]
-        }
-
-        return [
-          {
-            ...defaultReward,
-            rewardPerBlock: sushiPerBlock,
-            rewardPerDay: sushiPerDay,
-          },
-          {
-            ...reward[chainId],
-            rewardPerBlock: rewardPerBlock,
-            rewardPerDay: rewardPerDay,
-          },
-        ]
       }
       return defaultRewards
     }

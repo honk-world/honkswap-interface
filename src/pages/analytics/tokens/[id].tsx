@@ -202,7 +202,7 @@ export default function Token() {
                 <td>Name</td>
                 <td>Symbol</td>
                 <td>Address</td>
-                <td className="flex justify-end w-full">Etherscan</td>
+                <td className="flex justify-end w-full">Smartscan</td>
               </tr>
             </thead>
             <tbody className="border-b border-gray-900">
@@ -215,7 +215,7 @@ export default function Token() {
                 <td>
                   <a
                     className="flex flex-row items-center justify-end space-x-1 text-purple"
-                    href={`https://etherscan.io/address/${id}`}
+                    href={`https://smartscan.cash/address/${id}`}
                     target="_blank"
                     rel="noreferrer"
                   >

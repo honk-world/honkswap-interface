@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Ether, JSBI, NATIVE, Token } from '@mistswapdex/sdk'
+import { Currency, CurrencyAmount, SmartBCH, JSBI, NATIVE, Token } from '@mistswapdex/sdk'
 import { PairState, useV2Pair } from '../../../hooks/useV2Pairs'
 import React, { useCallback, useEffect, useState } from 'react'
 

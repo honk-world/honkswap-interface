@@ -57,6 +57,4 @@ function OpenOrdersPage() {
   )
 }
 
-OpenOrdersPage.Guard = NetworkGuard([ChainId.MATIC])
-
 export default OpenOrdersPage

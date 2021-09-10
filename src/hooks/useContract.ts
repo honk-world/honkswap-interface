@@ -17,6 +17,7 @@ import {
   ROUTER_ADDRESS,
   STOP_LIMIT_ORDER_ADDRESS,
   SUSHI_ADDRESS,
+  SUSHIROLL_ADDRESS,
   TIMELOCK_ADDRESS,
   WNATIVE_ADDRESS,
 } from '@mistswapdex/sdk'
@@ -50,6 +51,7 @@ import MINICHEF_ABI from '../constants/abis/minichef-v2.json'
 import MULTICALL2_ABI from '../constants/abis/multicall2.json'
 import ROUTER_ABI from '../constants/abis/router.json'
 import SUSHI_ABI from '../constants/abis/sushi.json'
+import SUSHIROLL_ABI from "@mistswapdex/core/abi/SushiRoll.json";
 import TIMELOCK_ABI from '../constants/abis/timelock.json'
 import UNI_FACTORY_ABI from '../constants/abis/uniswap-v2-factory.json'
 import WETH9_ABI from '../constants/abis/weth.json'
@@ -189,6 +191,10 @@ export function useChainlinkOracle(): Contract | null {
 
 export function useUniV2FactoryContract(): Contract | null {
   return useContract(UNI_FACTORY_ADDRESS, UNI_FACTORY_ABI, false)
+}
+
+export function useSushiRollContract(): Contract | null {
+  return useContract(chainId && SUSHIROLL_ADDRESS[chainId], SUSHIROLL_ABI, false);
 }
 
 export function useComplexRewarderContract(address, withSignerIfPossible?: boolean): Contract | null {

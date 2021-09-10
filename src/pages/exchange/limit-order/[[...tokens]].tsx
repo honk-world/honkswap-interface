@@ -401,6 +401,4 @@ function LimitOrder() {
   )
 }
 
-LimitOrder.Guard = NetworkGuard([ChainId.MATIC])
-
 export default LimitOrder

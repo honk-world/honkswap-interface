@@ -83,7 +83,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
       return new LatticeConnector({
         chainId: 10000,
         url: RPC[ChainId.SMARTBCH],
-        appName: 'SushiSwap',
+        appName: 'MistSwap',
       })
     },
     name: 'Lattice',

@@ -36,8 +36,7 @@ export function useChefContract(chef: Chef) {
 }
 
 const CHEFS = {
-  [ChainId.MAINNET]: [Chef.MASTERCHEF, Chef.MASTERCHEF_V2],
-  [ChainId.MATIC]: [Chef.MINICHEF],
+  [ChainId.SMARTBCH]: [Chef.MASTERCHEF, Chef.MASTERCHEF_V2],
 }
 
 export function useChefContracts(chefs: Chef[]) {

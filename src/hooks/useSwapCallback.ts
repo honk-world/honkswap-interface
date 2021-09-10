@@ -3,7 +3,7 @@ import {
   ChainId,
   Currency,
   CurrencyAmount,
-  Ether,
+  SmartBCH,
   JSBI,
   Percent,
   Router,
@@ -122,7 +122,7 @@ export function useSwapCallArguments(
             allowedSlippage,
             recipient,
             ttl: deadline.toNumber(),
-            ethTip: CurrencyAmount.fromRawAmount(Ether.onChain(ChainId.SMARTBCH), archerETHTip),
+            ethTip: CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.SMARTBCH), archerETHTip),
           })
         )
       }

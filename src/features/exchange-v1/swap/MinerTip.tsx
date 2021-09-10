@@ -1,4 +1,4 @@
-import { ChainId, CurrencyAmount, Ether } from '@mistswapdex/sdk'
+import { ChainId, CurrencyAmount, SmartBCH } from '@mistswapdex/sdk'
 import {
   useUserArcherETHTip,
   useUserArcherGasPrice,
@@ -105,7 +105,7 @@ export default function MinerTip() {
           Miner Tip
         </Typography>
         <Typography variant="sm" className="text-secondary" onClick={toggleSettings}>
-          {CurrencyAmount.fromRawAmount(Ether.onChain(ChainId.MAINNET), userETHTip).toFixed(3)} ETH
+          {CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.MAINNET), userETHTip).toFixed(3)} ETH
         </Typography>
       </div>
       {!userTipManualOverride && (

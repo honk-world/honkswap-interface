@@ -256,7 +256,7 @@ export default function WalletModal({
           </HeaderRow>
           <div>
             {error instanceof UnsupportedChainIdError ? (
-              <h5>{i18n._(t`Please connect to the appropriate Ethereum network.`)}</h5>
+              <h5>{i18n._(t`Please connect to the appropriate SmartBCH network.`)}</h5>
             ) : (
               i18n._(t`Error connecting. Try refreshing the page.`)
             )}
@@ -295,7 +295,7 @@ export default function WalletModal({
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
             <div className="flex flex-col text-center">
-              <div className="text-secondary">{i18n._(t`New to Ethereum?`)}</div>
+              <div className="text-secondary">{i18n._(t`New to SmartBCH?`)}</div>
               <ExternalLink href="https://ethereum.org/wallets/" color="blue">
                 {i18n._(t`Learn more about wallets`)}
               </ExternalLink>

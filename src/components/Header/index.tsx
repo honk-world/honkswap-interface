@@ -127,7 +127,7 @@ function AppBar(): JSX.Element {
                                     symbol: 'xMIST',
                                     decimals: 18,
                                     image:
-                                      'https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272/logo.png',
+                                      'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/ethereum/assets/0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272/logo.png',
                                   },
                                 }
                                 library.provider
@@ -147,7 +147,7 @@ function AppBar(): JSX.Element {
                             }}
                           >
                             <Image
-                              src="/images/tokens/xsushi-square.jpg"
+                              src="/images/tokens/xmist-square.jpg"
                               alt="xMIST"
                               width="38px"
                               height="38px"
@@ -172,7 +172,7 @@ function AppBar(): JSX.Element {
                                   symbol: 'MIST',
                                   decimals: 18,
                                   image:
-                                    'https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
+                                    'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
                                 },
                               }
                               if (library && library.provider.isMetaMask && library.provider.request) {
@@ -193,7 +193,7 @@ function AppBar(): JSX.Element {
                             }}
                           >
                             <Image
-                              src="/images/tokens/sushi-square.jpg"
+                              src="/images/tokens/mist-square.jpg"
                               alt="MIST"
                               width="38px"
                               height="38px"

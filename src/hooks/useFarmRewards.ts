@@ -70,8 +70,8 @@ export default function useFarmRewards() {
       const rewardPerBlock = (pool.allocPoint / pool.owner.totalAllocPoint) * sushiPerBlock
 
       const defaultReward = {
-        token: 'SUSHI',
-        icon: 'https://raw.githubusercontent.com/sushiswap/icons/master/token/sushi.jpg',
+        token: 'MIST',
+        icon: 'https://raw.githubusercontent.com/mistswapdex/icons/master/token/sushi.jpg',
         rewardPerBlock,
         rewardPerDay: rewardPerBlock * blocksPerDay,
         rewardPrice: sushiPrice,
@@ -84,22 +84,16 @@ export default function useFarmRewards() {
         pool.owner.totalAllocPoint = masterChefV1TotalAllocPoint
 
         const icon = ['0', '3', '4', '8'].includes(pool.id)
-          ? `https://raw.githubusercontent.com/sushiswap/icons/master/token/${pool.rewardToken.symbol.toLowerCase()}.jpg`
-          : `https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/${getAddress(
+          ? `https://raw.githubusercontent.com/mistswapdex/icons/master/token/${pool.rewardToken.symbol.toLowerCase()}.jpg`
+          : `https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/${getAddress(
               pool.rewarder.rewardToken
             )}/logo.png`
 
         const decimals = 10 ** pool.rewardToken.decimals
 
-        const rewardPerBlock =
-          pool.rewardToken.symbol === 'ALCX'
-            ? pool.rewarder.rewardPerSecond / decimals
-            : (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime
+        const rewardPerBlock = (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime
 
-        const rewardPerDay =
-          pool.rewardToken.symbol === 'ALCX'
-            ? (pool.rewarder.rewardPerSecond / decimals) * blocksPerDay
-            : (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime * blocksPerDay
+        const rewardPerDay = (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime * blocksPerDay
 
         const reward = {
           token: pool.rewardToken.symbol,

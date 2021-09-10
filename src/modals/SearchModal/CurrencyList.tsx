@@ -24,7 +24,7 @@ import { useIsUserAddedToken } from '../../hooks/Tokens'
 import { useLingui } from '@lingui/react'
 
 function currencyKey(currency: Currency): string {
-  return currency.isToken ? currency.address : 'ETHER'
+  return currency.isToken ? currency.address : 'BCH'
 }
 
 const Tag = styled.div`

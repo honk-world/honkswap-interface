@@ -16,7 +16,7 @@ import DoubleCurrencyLogo from "../components/DoubleLogo";
 import Empty from "../components/Empty";
 import Head from "next/head";
 import LPToken from "../types/LPToken";
-import Layout from "../layouts/DefaultLayout";
+import Layout from "../layouts";
 import MetamaskError from "../types/MetamaskError";
 import { Input as NumericalInput } from "../components/NumericalInput";
 import Typography from "../components/Typography";
