@@ -13,7 +13,6 @@ import CurrencyModalView from './CurrencyModalView'
 import ExternalLink from '../../components/ExternalLink'
 import ListLogo from '../../components/ListLogo'
 import ListToggle from '../../components/Toggle/ListToggle'
-import ReactGA from 'react-ga'
 import { TokenList } from '@uniswap/token-lists'
 import { UNSUPPORTED_LIST_URLS } from '../../config/token-lists'
 import { listVersionLabel } from '../../functions/list'
@@ -46,45 +45,20 @@ const ListRow = memo(({ listUrl }: { listUrl: string }) => {
 
   const handleAcceptListUpdate = useCallback(() => {
     if (!pending) return
-    ReactGA.event({
-      category: 'Lists',
-      action: 'Update List from List Select',
-      label: listUrl,
-    })
     dispatch(acceptListUpdate(listUrl))
   }, [dispatch, listUrl, pending])
 
   const handleRemoveList = useCallback(() => {
-    ReactGA.event({
-      category: 'Lists',
-      action: 'Start Remove List',
-      label: listUrl,
-    })
     if (window.prompt(`Please confirm you would like to remove this list by typing REMOVE`) === `REMOVE`) {
-      ReactGA.event({
-        category: 'Lists',
-        action: 'Confirm Remove List',
-        label: listUrl,
-      })
       dispatch(removeList(listUrl))
     }
   }, [dispatch, listUrl])
 
   const handleEnableList = useCallback(() => {
-    ReactGA.event({
-      category: 'Lists',
-      action: 'Enable List',
-      label: listUrl,
-    })
     dispatch(enableList(listUrl))
   }, [dispatch, listUrl])
 
   const handleDisableList = useCallback(() => {
-    ReactGA.event({
-      category: 'Lists',
-      action: 'Disable List',
-      label: listUrl,
-    })
     dispatch(disableList(listUrl))
   }, [dispatch, listUrl])
 

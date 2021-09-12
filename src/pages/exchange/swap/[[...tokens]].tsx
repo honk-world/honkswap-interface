@@ -51,7 +51,6 @@ import Loader from '../../../components/Loader'
 import Lottie from 'lottie-react'
 import MinerTip from '../../../features/exchange-v1/swap/MinerTip'
 import ProgressSteps from '../../../components/ProgressSteps'
-import ReactGA from 'react-ga'
 import SwapHeader from '../../../features/trade/Header'
 import TokenWarningModal from '../../../modals/TokenWarningModal'
 import TradePrice from '../../../features/exchange-v1/swap/TradePrice'
@@ -294,26 +293,6 @@ export default function Swap() {
           showConfirm,
           swapErrorMessage: undefined,
           txHash: hash,
-        })
-
-        ReactGA.event({
-          category: 'Swap',
-          action:
-            recipient === null
-              ? 'Swap w/o Send'
-              : (recipientAddress ?? recipient) === account
-              ? 'Swap w/o Send + recipient'
-              : 'Swap w/ Send',
-          label: [
-            trade?.inputAmount?.currency?.symbol,
-            trade?.outputAmount?.currency?.symbol,
-            singleHopOnly ? 'SH' : 'MH',
-          ].join('/'),
-        })
-
-        ReactGA.event({
-          category: 'Routing',
-          action: singleHopOnly ? 'Swap with multihop disabled' : 'Swap with multihop enabled',
         })
       })
       .catch((error) => {

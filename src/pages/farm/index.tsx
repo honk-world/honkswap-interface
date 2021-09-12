@@ -100,8 +100,8 @@ export default function Farm(): JSX.Element {
       const rewardPerBlock = (pool.allocPoint / pool.owner.totalAllocPoint) * sushiPerBlock
 
       const defaultReward = {
-        token: 'SUSHI',
-        icon: 'https://raw.githubusercontent.com/mistswapdex/icons/master/token/sushi.jpg',
+        token: 'MIST',
+        icon: 'https://raw.githubusercontent.com/mistswapdex/icons/master/token/mist.jpg',
         rewardPerBlock,
         rewardPerDay: rewardPerBlock * blocksPerDay,
         rewardPrice: sushiPrice,

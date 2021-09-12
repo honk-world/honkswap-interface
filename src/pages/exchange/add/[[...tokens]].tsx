@@ -29,7 +29,6 @@ import { MinimalPositionCard } from '../../../components/PositionCard'
 import NavLink from '../../../components/NavLink'
 import { PairState } from '../../../hooks/useV2Pairs'
 import { Plus } from 'react-feather'
-import ReactGA from 'react-ga'
 import { TransactionResponse } from '@ethersproject/providers'
 import Typography from '../../../components/Typography'
 import UnsupportedCurrencyFooter from '../../../features/exchange-v1/swap/UnsupportedCurrencyFooter'
@@ -202,12 +201,6 @@ export default function Add() {
           })
 
           setTxHash(response.hash)
-
-          ReactGA.event({
-            category: 'Liquidity',
-            action: 'Add',
-            label: [currencies[Field.CURRENCY_A]?.symbol, currencies[Field.CURRENCY_B]?.symbol].join('/'),
-          })
         })
       )
       .catch((error) => {

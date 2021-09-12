@@ -8,11 +8,7 @@ import { TorusConnector } from '@web3-react/torus-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { Web3Provider } from '@ethersproject/providers'
-
-const RPC = {
-  [ChainId.SMARTBCH]: 'https://smartbch.fountainhead.cash/mainnet',
-  [ChainId.SMARTBCH_AMBER]: 'http://35.220.203.194:8545',
-}
+import { RPC } from '../config/rpc';
 
 export function getNetwork(defaultChainId, urls = RPC) {
   return new NetworkConnector({
@@ -22,7 +18,7 @@ export function getNetwork(defaultChainId, urls = RPC) {
 }
 
 export const network = new NetworkConnector({
-  defaultChainId: 10000,
+  defaultChainId: ChainId.SMARTBCH,
   urls: RPC,
 })
 
@@ -32,11 +28,10 @@ export function getNetworkLibrary(): Web3Provider {
   return (networkLibrary = networkLibrary ?? new Web3Provider(network.provider as any))
 }
 
+const supportedChainIds = Object.values(ChainId) as number[]
+
 export const injected = new InjectedConnector({
-  supportedChainIds: [
-    10000, // smartbch
-    10001, // smartbch-amber
-  ],
+  supportedChainIds,
 })
 
 // mainnet only
@@ -63,7 +58,7 @@ export const portis = new PortisConnector({
 export const walletlink = new WalletLinkConnector({
   url: RPC[ChainId.SMARTBCH],
   appName: 'MistSwap',
-  appLogoUrl: 'https://raw.githubusercontent.com/mistswapdex/art/master/sushi/logo-256x256.png',
+  appLogoUrl: 'https://raw.githubusercontent.com/mistswapdex/art/master/mist/logo-256x256.png',
 })
 
 // mainnet only

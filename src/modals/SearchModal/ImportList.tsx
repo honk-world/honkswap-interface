@@ -9,7 +9,6 @@ import Button from '../../components/Button'
 import CurrencyModalView from './CurrencyModalView'
 import ExternalLink from '../../components/ExternalLink'
 import ListLogo from '../../components/ListLogo'
-import ReactGA from 'react-ga'
 import { TokenList } from '@uniswap/token-lists'
 import { useAllLists } from '../../state/lists/hooks'
 import { useDispatch } from 'react-redux'
@@ -45,23 +44,12 @@ function ImportList({ listURL, list, setModalView, onDismiss }: ImportProps) {
     setAddError(null)
     fetchList(listURL)
       .then(() => {
-        ReactGA.event({
-          category: 'Lists',
-          action: 'Add List',
-          label: listURL,
-        })
-
         // turn list on
         dispatch(enableList(listURL))
         // go back to lists
         setModalView(CurrencyModalView.manage)
       })
       .catch((error) => {
-        ReactGA.event({
-          category: 'Lists',
-          action: 'Add List Failed',
-          label: listURL,
-        })
         setAddError(error.message)
         dispatch(removeList(listURL))
       })

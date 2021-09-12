@@ -11,7 +11,6 @@ import ExternalLink from '../../components/ExternalLink'
 import { OVERLAY_READY } from '../../entities/FortmaticConnector'
 import Option from './Option'
 import PendingView from './PendingView'
-import ReactGA from 'react-ga'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 // import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { XIcon } from '@heroicons/react/outline'
@@ -167,11 +166,6 @@ export default function WalletStandalone({
       return true
     })
     // log selected wallet
-    ReactGA.event({
-      category: 'Wallet',
-      action: 'Change Wallet',
-      label: name,
-    })
     setPendingWallet(conn) // set wallet for pending view
     setWalletView(WALLET_VIEWS.PENDING)
 

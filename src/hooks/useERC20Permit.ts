@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, JSBI, Percent, Token, TradeType, Trade as V2Trade } from '@mistswapdex/sdk'
-import { DAI, SUSHI, USDC } from '../config/tokens'
+import { ChainId, Currency, CurrencyAmount, JSBI, Percent, Token, TradeType, Trade as V2Trade } from '@mistswapdex/sdk'
+import { MIST } from '../config/tokens'
 import { useMemo, useState } from 'react'
 
 import { splitSignature } from '@ethersproject/bytes'
@@ -30,36 +30,11 @@ const PERMITTABLE_TOKENS: {
     [checksummedTokenAddress: string]: PermitInfo
   }
 } = {
-  [1]: {
-    [USDC.address]: { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
-    [DAI.address]: {
-      type: PermitType.ALLOWED,
-      name: 'Dai Stablecoin',
-      version: '1',
-    },
-    [SUSHI[1].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
+  [ChainId.SMARTBCH]: {
+    [MIST[ChainId.SMARTBCH].address]: { type: PermitType.AMOUNT, name: 'MISTswap' },
   },
-  [4]: {
-    ['0xc7AD46e0b8a400Bb3C915120d284AafbA8fc4735']: {
-      type: PermitType.ALLOWED,
-      name: 'Dai Stablecoin',
-      version: '1',
-    },
-    [SUSHI[4].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
-  },
-  [3]: {
-    [SUSHI[3].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
-    ['0x07865c6E87B9F70255377e024ace6630C1Eaa37F']: {
-      type: PermitType.AMOUNT,
-      name: 'USD Coin',
-      version: '2',
-    },
-  },
-  [5]: {
-    [SUSHI[5].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
-  },
-  [42]: {
-    [SUSHI[42].address]: { type: PermitType.AMOUNT, name: 'SushiSwap' },
+  [ChainId.SMARTBCH_AMBER]: {
+    [MIST[ChainId.SMARTBCH_AMBER].address]: { type: PermitType.AMOUNT, name: 'MISTswap' },
   },
 }
 
@@ -268,7 +243,7 @@ export function useERC20Permit(
 
 const REMOVE_V2_LIQUIDITY_PERMIT_INFO: PermitInfo = {
   version: '1',
-  name: 'SushiSwap LP Token',
+  name: 'MISTswap LP Token',
   type: PermitType.AMOUNT,
 }
 

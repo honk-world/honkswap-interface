@@ -18,14 +18,18 @@ import Head from "next/head";
 import LPToken from "../types/LPToken";
 import Layout from "../layouts";
 import MetamaskError from "../types/MetamaskError";
-import { Input as NumericalInput } from "../components/NumericalInput";
+import Input from '../components/Input'
 import Typography from "../components/Typography";
 import Web3Connect from "../components/Web3Connect";
+import styled from 'styled-components'
 import { t } from "@lingui/macro";
 import { useActiveWeb3React } from "../hooks/useActiveWeb3React";
 import { useLingui } from "@lingui/react";
 import { useSushiRollContract } from "../hooks/useContract";
 
+const StyledNumericalInput = styled(Input.Numeric)`
+  caret-color: #e3e3e3;
+`
 const ZERO = JSBI.BigInt(0);
 
 const AmountInput = ({ state }: { state: MigrateState }) => {
@@ -81,7 +85,7 @@ const AmountInput = ({ state }: { state: MigrateState }) => {
       </Typography>
 
       <div className="relative flex items-center w-full mb-4">
-        <NumericalInput
+        <StyledNumericalInput
           className="w-full p-3 rounded bg-dark-700 focus:ring focus:ring-pink"
           value={state.amount}
           onUserInput={(val) => state.setAmount(val)}

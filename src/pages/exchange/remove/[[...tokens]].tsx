@@ -28,7 +28,6 @@ import LiquidityPrice from '../../../features/exchange-v1/liquidity/LiquidityPri
 import { MinimalPositionCard } from '../../../components/PositionCard'
 import NavLink from '../../../components/NavLink'
 import PercentInputPanel from '../../../components/PercentInputPanel'
-import ReactGA from 'react-ga'
 import RemoveLiquidityReceiveDetails from '../../../features/exchange-v1/liquidity/RemoveLiquidityReceiveDetails'
 import { TransactionResponse } from '@ethersproject/providers'
 import Web3Connect from '../../../components/Web3Connect'
@@ -279,12 +278,6 @@ export default function Remove() {
           })
 
           setTxHash(response.hash)
-
-          ReactGA.event({
-            category: 'Liquidity',
-            action: 'Remove',
-            label: [currencyA?.symbol, currencyB?.symbol].join('/'),
-          })
         })
         .catch((error: Error) => {
           setAttemptingTxn(false)
@@ -558,11 +551,6 @@ export default function Remove() {
 
   //         setTxHash(response.hash);
 
-  //         ReactGA.event({
-  //           category: "Liquidity",
-  //           action: "Remove",
-  //           label: [currencyA?.symbol, currencyB?.symbol].join("/"),
-  //         });
   //       })
   //       .catch((error: Error) => {
   //         setAttemptingTxn(false);

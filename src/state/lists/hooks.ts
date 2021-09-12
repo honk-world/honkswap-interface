@@ -1,4 +1,5 @@
 import { AppState } from '..'
+import { ChainId } from '@mistswapdex/sdk'
 import DEFAULT_TOKEN_LIST from '@mistswapdex/default-token-list'
 import { TokenList } from '@uniswap/token-lists'
 import { UNSUPPORTED_LIST_URLS } from '../../config/token-lists'
@@ -50,8 +51,8 @@ export function useAllLists(): AppState['lists']['byUrl'] {
 
 function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddressMap {
   return {
-    10000: { ...map1[10000], ...map2[10000] }, // smartbch
-    10001: { ...map1[10001], ...map2[10001] }, // smartbch amber testnet
+    10000: { ...map1[ChainId.SMARTBCH], ...map2[ChainId.SMARTBCH] },
+    10001: { ...map1[ChainId.SMARTBCH_AMBER], ...map2[ChainId.SMARTBCH_AMBER] },
   }
 }
 

@@ -1,6 +1,5 @@
 import { ChainId } from "@mistswapdex/sdk";
 import LPToken from "../types/LPToken";
-import ReactGA from "react-ga";
 import { ethers } from "ethers";
 import { signERC2612Permit } from "eth-permit";
 import { useActiveWeb3React } from "../hooks/useActiveWeb3React";
@@ -36,12 +35,6 @@ const useSushiRoll = (version: "v1" | "v2" = "v2") => {
           gasLimit: gasLimit.mul(120).div(100),
         });
 
-        ReactGA.event({
-          category: "Migrate",
-          action: `${from}->MISTswap`,
-          label: "migrate",
-        });
-
         return tx;
       }
     },
@@ -75,12 +68,6 @@ const useSushiRoll = (version: "v1" | "v2" = "v2") => {
         const gasLimit = await sushiRoll.estimateGas.migrateWithPermit(...args);
         const tx = await sushiRoll.migrateWithPermit(...args, {
           gasLimit: gasLimit.mul(120).div(100),
-        });
-
-        ReactGA.event({
-          category: "Migrate",
-          action: `${from}->MISTswap`,
-          label: "migrateWithPermit",
         });
 
         return tx;

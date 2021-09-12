@@ -13,7 +13,6 @@ import ModalHeader from '../../components/ModalHeader'
 import { OVERLAY_READY } from '../../entities/FortmaticConnector'
 import Option from './Option'
 import PendingView from './PendingView'
-import ReactGA from 'react-ga'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { XIcon } from '@heroicons/react/outline'
 import { isMobile } from 'react-device-detect'
@@ -123,12 +122,6 @@ export default function WalletModal({
         return (name = SUPPORTED_WALLETS[key].name)
       }
       return true
-    })
-    // log selected wallet
-    ReactGA.event({
-      category: 'Wallet',
-      action: 'Change Wallet',
-      label: name,
     })
     setPendingWallet(conn) // set wallet for pending view
     setWalletView(WALLET_VIEWS.PENDING)

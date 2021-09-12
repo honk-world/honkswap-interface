@@ -16,7 +16,6 @@ import { I18nProvider } from '@lingui/react'
 import ListsUpdater from '../state/lists/updater'
 import MulticallUpdater from '../state/multicall/updater'
 import { PersistGate } from 'redux-persist/integration/react'
-import ReactGA from 'react-ga'
 import { Provider as ReduxProvider } from 'react-redux'
 import TransactionUpdater from '../state/transactions/updater'
 import UserUpdater from '../state/user/updater'
@@ -51,25 +50,6 @@ function MyApp({
   }
 }) {
   const { pathname, query, locale } = useRouter()
-
-  useEffect(() => {
-    ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, { testMode: process.env.NODE_ENV === 'development' })
-
-    const errorHandler = (error) => {
-      ReactGA.exception({
-        description: `${error.message} @ ${error.filename}:${error.lineno}:${error.colno}`,
-        fatal: true,
-      })
-    }
-
-    window.addEventListener('error', errorHandler)
-
-    return () => window.removeEventListener('error', errorHandler)
-  }, [])
-
-  useEffect(() => {
-    ReactGA.pageview(`${pathname}${query}`)
-  }, [pathname, query])
 
   useEffect(() => {
     async function load(locale) {

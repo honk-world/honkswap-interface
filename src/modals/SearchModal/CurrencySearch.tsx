@@ -12,7 +12,6 @@ import CurrencyList from './CurrencyList'
 import { FixedSizeList } from 'react-window'
 import ImportRow from './ImportRow'
 import ModalHeader from '../../components/ModalHeader'
-import ReactGA from 'react-ga'
 import { isAddress } from '../../functions/validate'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
@@ -88,16 +87,6 @@ export function CurrencySearch({
   const searchToken = useToken(debouncedQuery)
 
   const searchTokenIsAdded = useIsUserAddedToken(searchToken)
-
-  useEffect(() => {
-    if (isAddressSearch) {
-      ReactGA.event({
-        category: 'Currency Select',
-        action: 'Search by address',
-        label: isAddressSearch,
-      })
-    }
-  }, [isAddressSearch])
 
   const tokenComparator = useTokenComparator(invertSearchOrder)
 

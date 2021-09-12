@@ -1,8 +1,8 @@
 import { ChainId, Token, TokenAmount } from "@mistswapdex/sdk";
 import {
   useBoringHelperContract,
-  useDashboardContract,
-  useQuickSwapFactoryContract,
+  // useDashboardContract,
+  // useQuickSwapFactoryContract,
 } from "../hooks/useContract";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -38,8 +38,8 @@ export interface LPTokensState {
 const useLPTokensState = () => {
   const { account, chainId } = useActiveWeb3React();
   const boringHelperContract = useBoringHelperContract();
-  const dashboardContract = useDashboardContract();
-  const quickSwapFactoryContract = useQuickSwapFactoryContract();
+  // const dashboardContract = useDashboardContract();
+  // const quickSwapFactoryContract = useQuickSwapFactoryContract();
   const [lpTokens, setLPTokens] = useState<LPToken[]>([]);
   const [selectedLPToken, setSelectedLPToken] = useState<LPToken>();
   const [selectedLPTokenAllowed, setSelectedLPTokenAllowed] = useState(false);
@@ -49,6 +49,7 @@ const useLPTokensState = () => {
     try {
       updatingLPTokens.current = true;
       if (chainId && [ChainId.SMARTBCH].includes(chainId)) {
+        /*
         const requests: any = {
           [ChainId.SMARTBCHMAINNET]: [
             `https://api.covalenthq.com/v1/${ChainId.SMARTBCHMAINNET}/address/${String(
@@ -134,6 +135,7 @@ const useLPTokensState = () => {
         if (lpTokens) {
           setLPTokens(lpTokens);
         }
+        */
       }
     } finally {
       setLoading(false);
@@ -143,8 +145,8 @@ const useLPTokensState = () => {
     chainId,
     account,
     boringHelperContract,
-    dashboardContract,
-    quickSwapFactoryContract,
+    // dashboardContract,
+    // quickSwapFactoryContract,
   ]);
 
   useEffect(() => {

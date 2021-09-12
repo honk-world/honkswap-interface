@@ -16,8 +16,8 @@ import {
   MULTICALL2_ADDRESS,
   ROUTER_ADDRESS,
   STOP_LIMIT_ORDER_ADDRESS,
-  SUSHI_ADDRESS,
-  SUSHIROLL_ADDRESS,
+  MIST_ADDRESS,
+  MISTROLL_ADDRESS,
   TIMELOCK_ADDRESS,
   WNATIVE_ADDRESS,
 } from '@mistswapdex/sdk'
@@ -133,7 +133,7 @@ export function useMulticall2Contract() {
 
 export function useSushiContract(withSignerIfPossible = true): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && SUSHI_ADDRESS[chainId], SUSHI_ABI, withSignerIfPossible)
+  return useContract(chainId && MIST_ADDRESS[chainId], SUSHI_ABI, withSignerIfPossible)
 }
 
 export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {
@@ -194,7 +194,8 @@ export function useUniV2FactoryContract(): Contract | null {
 }
 
 export function useSushiRollContract(): Contract | null {
-  return useContract(chainId && SUSHIROLL_ADDRESS[chainId], SUSHIROLL_ABI, false);
+  const { chainId } = useActiveWeb3React()
+  return useContract(chainId && MISTROLL_ADDRESS[chainId], SUSHIROLL_ABI, false);
 }
 
 export function useComplexRewarderContract(address, withSignerIfPossible?: boolean): Contract | null {

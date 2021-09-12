@@ -5,7 +5,7 @@ import { NetworkConnector } from '../entities/NetworkConnector'
 import RPC from './rpc'
 
 export const network = new NetworkConnector({
-  defaultChainId: 10000,
+  defaultChainId: ChainId.SMARTBCH,
   urls: RPC,
 })
 
@@ -52,7 +52,10 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
         rpc: RPC,
         bridge: 'https://bridge.walletconnect.org',
         qrcode: true,
-        pollingInterval: 15000,
+        supportedChainIds: [
+          ChainId.SMARTBCH,
+          ChainId.SMARTBCH_AMBER,
+        ],
       })
     },
     name: 'WalletConnect',
@@ -66,7 +69,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: async () => {
       const KeystoneConnector = (await import('@keystonehq/keystone-connector')).KeystoneConnector
       return new KeystoneConnector({
-        chainId: 10000,
+        chainId: ChainId.SMARTBCH,
         url: RPC[ChainId.SMARTBCH],
       })
     },
@@ -81,7 +84,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     connector: async () => {
       const LatticeConnector = (await import('@web3-react/lattice-connector')).LatticeConnector
       return new LatticeConnector({
-        chainId: 10000,
+        chainId: ChainId.SMARTBCH,
         url: RPC[ChainId.SMARTBCH],
         appName: 'MistSwap',
       })
