@@ -48,7 +48,7 @@ export default function useFarmRewards() {
     // How can we include this?
 
     // TODO: Deal with inconsistencies between properties on subgraph
-    pool.owner = pool?.owner || pool?.masterChef || pool?.miniChef
+    pool.owner = pool?.owner || pool?.masterChef
     pool.balance = pool?.balance || pool?.slpBalance
 
     const swapPair = swapPairs?.find((pair) => pair.id === pool.pair)
@@ -104,26 +104,6 @@ export default function useFarmRewards() {
         }
 
         rewards[1] = reward
-      } else if (pool.chef === Chef.MINICHEF) {
-        const sushiPerSecond = ((pool.allocPoint / pool.miniChef.totalAllocPoint) * pool.miniChef.sushiPerSecond) / 1e18
-        const sushiPerBlock = sushiPerSecond * averageBlockTime
-        const sushiPerDay = sushiPerBlock * blocksPerDay
-        const rewardPerSecond =
-          ((pool.allocPoint / pool.miniChef.totalAllocPoint) * pool.rewarder.rewardPerSecond) / 1e18
-        const rewardPerBlock = rewardPerSecond * averageBlockTime
-        const rewardPerDay = rewardPerBlock * blocksPerDay
-
-        const reward = {}
-
-        rewards[0] = {
-          ...defaultReward,
-          rewardPerBlock: sushiPerBlock,
-          rewardPerDay: sushiPerDay,
-        }
-
-        if (chainId in reward) {
-          rewards[1] = reward[chainId]
-        }
       }
 
       return rewards

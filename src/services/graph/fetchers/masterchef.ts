@@ -3,8 +3,6 @@ import {
   masterChefV1SushiPerBlockQuery,
   masterChefV1TotalAllocPointQuery,
   masterChefV2PairAddressesQuery,
-  miniChefPairAddressesQuery,
-  miniChefPoolsQuery,
   poolsQuery,
   poolsV2Query,
 } from '../queries'
@@ -13,16 +11,6 @@ import { ChainId } from '@mistswapdex/sdk'
 import { GRAPH_HOST } from '../constants'
 import { getTokenSubset } from './exchange'
 import { request } from 'graphql-request'
-
-export const MINICHEF = {
-  [ChainId.MATIC]: 'sushiswap/matic-minichef',
-  [ChainId.XDAI]: 'matthewlilley/xdai-minichef',
-  [ChainId.HARMONY]: 'sushiswap/harmony-minichef',
-  [ChainId.ARBITRUM]: 'sushiswap/arbitrum-minichef',
-}
-
-export const miniChef = async (query, chainId = ChainId.MAINNET, variables = undefined) =>
-  request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MINICHEF[chainId]}`, query, variables)
 
 export const MASTERCHEF_V2 = {
   [ChainId.MAINNET]: 'sushiswap/master-chefv2',
@@ -79,16 +67,5 @@ export const getMasterChefV2Farms = async (variables = undefined) => {
 
 export const getMasterChefV2PairAddreses = async () => {
   const { pools } = await masterChefV2(masterChefV2PairAddressesQuery)
-  return pools
-}
-
-export const getMiniChefFarms = async (chainId = ChainId.MAINNET, variables = undefined) => {
-  const { pools } = await miniChef(miniChefPoolsQuery, chainId, variables)
-  return pools
-}
-
-export const getMiniChefPairAddreses = async (chainId = ChainId.MAINNET) => {
-  console.debug('getMiniChefPairAddreses')
-  const { pools } = await miniChef(miniChefPairAddressesQuery, chainId)
   return pools
 }

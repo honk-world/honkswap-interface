@@ -4,12 +4,11 @@ import {
   JSBI,
   MASTERCHEF_ADDRESS,
   MASTERCHEF_V2_ADDRESS,
-  MINICHEF_ADDRESS,
 } from '@mistswapdex/sdk'
 import { Chef } from './enum'
 import { NEVER_RELOAD, useSingleCallResult, useSingleContractMultipleData } from '../../state/multicall/hooks'
 import { Dispatch, useCallback, useEffect, useMemo, useState } from 'react'
-import { useMasterChefContract, useMasterChefV2Contract, useMiniChefContract } from '../../hooks/useContract'
+import { useMasterChefContract, useMasterChefV2Contract } from '../../hooks/useContract'
 
 import { Contract } from '@ethersproject/contracts'
 import { SUSHI } from '../../config/tokens'
@@ -21,14 +20,12 @@ import zip from 'lodash/zip'
 export function useChefContract(chef: Chef) {
   const masterChefContract = useMasterChefContract()
   const masterChefV2Contract = useMasterChefV2Contract()
-  const miniChefContract = useMiniChefContract()
   const contracts = useMemo(
     () => ({
       [Chef.MASTERCHEF]: masterChefContract,
       [Chef.MASTERCHEF_V2]: masterChefV2Contract,
-      [Chef.MINICHEF]: miniChefContract,
     }),
-    [masterChefContract, masterChefV2Contract, miniChefContract]
+    [masterChefContract, masterChefV2Contract]
   )
   return useMemo(() => {
     return contracts[chef]
@@ -42,14 +39,12 @@ const CHEFS = {
 export function useChefContracts(chefs: Chef[]) {
   const masterChefContract = useMasterChefContract()
   const masterChefV2Contract = useMasterChefV2Contract()
-  const miniChefContract = useMiniChefContract()
   const contracts = useMemo(
     () => ({
       [Chef.MASTERCHEF]: masterChefContract,
       [Chef.MASTERCHEF_V2]: masterChefV2Contract,
-      [Chef.MINICHEF]: miniChefContract,
     }),
-    [masterChefContract, masterChefV2Contract, miniChefContract]
+    [masterChefContract, masterChefV2Contract]
   )
   return chefs.map((chef) => contracts[chef])
 }
@@ -143,8 +138,6 @@ export function useChefPositions(contract?: Contract | null, rewarder?: Contract
       return Chef.MASTERCHEF
     } else if (MASTERCHEF_V2_ADDRESS[chainId] === contract.address) {
       return Chef.MASTERCHEF_V2
-    } else if (MINICHEF_ADDRESS[chainId] === contract.address) {
-      return Chef.MINICHEF
     }
   }, [chainId, contract])
 
@@ -167,12 +160,11 @@ export function useChefPositions(contract?: Contract | null, rewarder?: Contract
 }
 
 export function usePositions(chainId = undefined) {
-  const [masterChefV1Positions, masterChefV2Positions, miniChefPositions] = [
+  const [masterChefV1Positions, masterChefV2Positions] = [
     useChefPositions(useMasterChefContract(), undefined, chainId),
     useChefPositions(useMasterChefV2Contract(), undefined, chainId),
-    useChefPositions(useMiniChefContract(), undefined, chainId),
   ]
-  return concat(masterChefV1Positions, masterChefV2Positions, miniChefPositions)
+  return concat(masterChefV1Positions, masterChefV2Positions)
 }
 
 /*

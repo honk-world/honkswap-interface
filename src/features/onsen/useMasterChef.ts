@@ -79,8 +79,6 @@ export default function useMasterChef(chef: Chef) {
           } else {
             tx = await contract?.harvest(pid, account)
           }
-        } else if (chef === Chef.MINICHEF) {
-          tx = await contract?.harvest(pid, account)
         }
 
         return tx

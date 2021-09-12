@@ -1,5 +1,5 @@
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
-import { ChainId, MASTERCHEF_ADDRESS, MASTERCHEF_V2_ADDRESS, MINICHEF_ADDRESS, Token, ZERO } from '@mistswapdex/sdk'
+import { ChainId, MASTERCHEF_ADDRESS, MASTERCHEF_V2_ADDRESS, Token, ZERO } from '@mistswapdex/sdk'
 import { Chef, PairType } from './enum'
 import { Disclosure, Transition } from '@headlessui/react'
 import React, { useState } from 'react'
@@ -50,12 +50,6 @@ const FarmListItem = ({ farm }) => {
   const APPROVAL_ADDRESSES = {
     [Chef.MASTERCHEF]: { [ChainId.MAINNET]: MASTERCHEF_ADDRESS[ChainId.MAINNET] },
     [Chef.MASTERCHEF_V2]: { [ChainId.MAINNET]: MASTERCHEF_V2_ADDRESS[ChainId.MAINNET] },
-    [Chef.MINICHEF]: {
-      [ChainId.MATIC]: MINICHEF_ADDRESS[ChainId.MATIC],
-      [ChainId.XDAI]: MINICHEF_ADDRESS[ChainId.XDAI],
-      [ChainId.HARMONY]: MINICHEF_ADDRESS[ChainId.HARMONY],
-      [ChainId.ARBITRUM]: MINICHEF_ADDRESS[ChainId.ARBITRUM],
-    },
   }
 
   const typedDepositValue = tryParseAmount(depositValue, liquidityToken)

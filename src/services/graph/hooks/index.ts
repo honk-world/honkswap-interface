@@ -5,8 +5,6 @@ import {
   getMasterChefV1TotalAllocPoint,
   getMasterChefV2Farms,
   getMasterChefV2PairAddreses,
-  getMiniChefFarms,
-  getMiniChefPairAddreses,
 } from '../fetchers'
 import { useEffect, useMemo } from 'react'
 import useSWR, { SWRConfiguration } from 'swr'
@@ -70,30 +68,15 @@ export function useMasterChefV2Farms(
   }, [data])
 }
 
-export function useMiniChefFarms(variables = undefined, chainId = undefined, swrConfig: SWRConfiguration = undefined) {
-  chainId = chainId ?? useActiveWeb3React().chainId
-  const shouldFetch = chainId && [ChainId.MATIC, ChainId.XDAI, ChainId.HARMONY, ChainId.ARBITRUM].includes(chainId)
-  const { data } = useSWR(
-    shouldFetch ? ['miniChefFarms', chainId] : null,
-    (_, chainId) => getMiniChefFarms(chainId),
-    swrConfig
-  )
-  return useMemo(() => {
-    if (!data) return []
-    return data.map((data) => ({ ...data, chef: Chef.MINICHEF }))
-  }, [data])
-}
-
 export function useFarms(variables = undefined, chainId = undefined, swrConfig: SWRConfiguration = undefined) {
   const masterChefV1Farms = useMasterChefV1Farms(variables, chainId)
   const masterChefV2Farms = useMasterChefV2Farms(variables, chainId)
-  const miniChefFarms = useMiniChefFarms(variables, chainId)
   // useEffect(() => {
-  //   console.log('debug', { masterChefV1Farms, masterChefV2Farms, miniChefFarms })
-  // }, [masterChefV1Farms, masterChefV2Farms, miniChefFarms])
+  //   console.log('debug', { masterChefV1Farms, masterChefV2Farms})
+  // }, [masterChefV1Farms, masterChefV2Farms])
   return useMemo(
-    () => concat(masterChefV1Farms, masterChefV2Farms, miniChefFarms).filter((pool) => pool && pool.pair),
-    [masterChefV1Farms, masterChefV2Farms, miniChefFarms]
+    () => concat(masterChefV1Farms, masterChefV2Farms).filter((pool) => pool && pool.pair),
+    [masterChefV1Farms, masterChefV2Farms]
   )
 }
 
@@ -121,24 +104,11 @@ export function useMasterChefV2PairAddresses() {
   }, [data])
 }
 
-export function useMiniChefPairAddresses() {
-  const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && [].includes(chainId)
-  const { data } = useSWR(shouldFetch ? ['miniChefPairAddresses', chainId] : null, (_, chainId) =>
-    getMiniChefPairAddreses(chainId)
-  )
-  return useMemo(() => {
-    if (!data) return []
-    return data.map((data) => data.pair)
-  }, [data])
-}
-
 export function useFarmPairAddresses() {
   const masterChefV1PairAddresses = useMasterChefV1PairAddresses()
   const masterChefV2PairAddresses = useMasterChefV2PairAddresses()
-  const miniChefPairAddresses = useMiniChefPairAddresses()
   return useMemo(
-    () => concat(masterChefV1PairAddresses, masterChefV2PairAddresses, miniChefPairAddresses),
-    [masterChefV1PairAddresses, masterChefV2PairAddresses, miniChefPairAddresses]
+    () => concat(masterChefV1PairAddresses, masterChefV2PairAddresses),
+    [masterChefV1PairAddresses, masterChefV2PairAddresses]
   )
 }
