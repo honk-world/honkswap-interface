@@ -37,7 +37,7 @@ export interface LPTokensState {
 
 const useLPTokensState = () => {
   const { account, chainId } = useActiveWeb3React();
-  const boringHelperContract = useBoringHelperContract();
+  // const boringHelperContract = useBoringHelperContract();
   // const dashboardContract = useDashboardContract();
   // const quickSwapFactoryContract = useQuickSwapFactoryContract();
   const [lpTokens, setLPTokens] = useState<LPToken[]>([]);
@@ -144,7 +144,7 @@ const useLPTokensState = () => {
   }, [
     chainId,
     account,
-    boringHelperContract,
+    // boringHelperContract,
     // dashboardContract,
     // quickSwapFactoryContract,
   ]);
@@ -153,12 +153,12 @@ const useLPTokensState = () => {
     if (
       chainId &&
       account &&
-      boringHelperContract &&
+      // boringHelperContract &&
       !updatingLPTokens.current
     ) {
       updateLPTokens();
     }
-  }, [account, chainId, boringHelperContract, updateLPTokens]);
+  }, [account, chainId, /* boringHelperContract,*/ updateLPTokens]);
 
   return {
     updateLPTokens,
