@@ -2219,10 +2219,10 @@
   resolved "https://registry.yarnpkg.com/@mistswapdex/core/-/core-0.0.1.tgz#b7cad95045011e950f892fd7bca58c025e5d814a"
   integrity sha512-SM5lWKk56V/nZeR5sRtxxK6T6/f5Xsw6Rf9iImf1N1apZ29FmfwtVMKbDhprk5IhE8GeRmDSEUSWwXxgbI8axw==
 
-"@mistswapdex/default-token-list@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@mistswapdex/default-token-list/-/default-token-list-0.0.2.tgz#f674783c5db06a2b2cc5cc89cd6f2fafccd54120"
-  integrity sha512-ptMNquX3Ti6a+D6C1krKpHMTBR/oOev31BKsdURXR+xcV1V0pD1xkDAWs1bQbn2rLgtTkxJ/IkByYp3ZQ4E4Rg==
+"@mistswapdex/default-token-list@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@mistswapdex/default-token-list/-/default-token-list-0.0.4.tgz#e6cbb6196f58aa5405d32cfe993a3a1eae554fd0"
+  integrity sha512-3HtsfDVuy7y4nZHmarrxT3BqXrzKVs3RYNcAvFtwWG7ZD+kxYLUEFof/SUkBG65FaQm01aQ4t052ahbwIO3DqQ==
   dependencies:
     commitlint "^13.1.0"
     lint-staged "^11.1.2"
