@@ -2,6 +2,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { formatUnits, parseUnits } from '@ethersproject/units'
 import { ChainId, JSBI } from '@mistswapdex/sdk'
 import { useSushiRollContract } from '../../hooks/useContract'
+import { useLingui } from '@lingui/react'
 import React, { useCallback, useEffect, useState } from 'react'
 import { ChevronRight } from 'react-feather'
 import { Button, ButtonConfirmed } from '../../components/Button'
@@ -278,6 +279,7 @@ const ExchangeLiquidityPairs = ({ state, exchange }: { state: MigrateState; exch
 }
 
 export default function MigrateV2() {
+  const { i18n } = useLingui()
   const { account, chainId } = useActiveWeb3React()
 
   const state = useMigrateState()

@@ -161,7 +161,7 @@ export default function Stake() {
   return (
     <Container id="bar-page" className="py-4 md:py-8 lg:py-12" maxWidth="full">
       <Head>
-        <title key="title">Stake | Sushi</title>
+        <title key="title">Stake | Mist</title>
         <meta
           key="description"
           name="description"
@@ -197,7 +197,7 @@ export default function Stake() {
             </div>
             <div className="max-w-lg pr-3 mb-2 text-sm leading-5 text-gray-500 md:text-base md:mb-4 md:pr-0">
               {i18n._(t`For every swap on the exchange on every chain, 0.05% of the swap fees are distributed as MIST
-                                proportional to your share of the SushiBar. When your MIST is staked into the SushiBar, you receive
+                                proportional to your share of the MistBar. When your MIST is staked into the MistBar, you receive
                                 xMIST in return for voting rights and a fully composable token that can interact with other protocols.
                                 Your xMIST is continuously compounding, when you unstake you will receive all the originally deposited
                                 MIST and any additional from fees.`)}
@@ -451,7 +451,7 @@ export default function Stake() {
                                 text-sm font-bold cursor-pointer
                             `}
                     >
-                      {i18n._(t`Your SushiBar Stats`)}
+                      {i18n._(t`Your MistBar Stats`)}
                     </a>
                   )}
                 </div>
