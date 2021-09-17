@@ -295,8 +295,28 @@ export default function MigrateV2() {
   return (
     <Container id="migrate-page" className="py-4 space-y-6 md:py-8 lg:py-12" maxWidth="2xl">
       <Head>
-          <title>Migrate LP tokens | Mist</title>
-          <meta name="description" content="Migrate LP tokens to Mist LP tokens" />
+          <title key="title">Migrate LP tokens | Mist</title>
+          <meta
+            key="description"
+            name="description"
+            content="Migrate LP tokens to Mist LP tokens"
+          />
+          <meta key="twitter:url" name="twitter:url" content="https://app.mistswap.fi/migrate" />
+          <meta key="twitter:title" name="twitter:title" content="MIGRATE LP" />
+          <meta
+            key="twitter:description"
+            name="twitter:description"
+            content="Migrate LP tokens to Mist LP tokens"
+          />
+          <meta key="twitter:image" name="twitter:image" content="https://app.mistswap.fi/xmist-sign.png" />
+          <meta key="og:title" property="og:title" content="MIGRATE LP" />
+          <meta key="og:url" property="og:url" content="https://app.mistswap.fi/migrate" />
+          <meta key="og:image" property="og:image" content="https://app.mistswap.fi/xmist-sign.png" />
+          <meta
+            key="og:description"
+            property="og:description"
+            content="Migrate LP tokens to Mist LP tokens"
+          />
       </Head>
 
       <div className="p-4 mb-3 space-y-3 text-center">
