@@ -115,7 +115,7 @@ export default function Farm(): JSX.Element {
 
         const icon = ['0', '3', '4', '8'].includes(pool.id)
           ? `https://raw.githubusercontent.com/mistswapdex/icons/master/token/${pool.rewardToken.symbol.toLowerCase()}.jpg`
-          : `https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/ethereum/assets/${getAddress(
+          : `https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/${getAddress(
               pool.rewarder.rewardToken
             )}/logo.png`
 
