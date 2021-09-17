@@ -35,35 +35,22 @@ const nextConfig = {
     disable: process.env.NODE_ENV === 'development',
   },
   images: {
-    domains: ['assets.sushi.com', 'res.cloudinary.com', 'raw.githubusercontent.com', 'logos.covalenthq.com'],
+    domains: [
+      'raw.githubusercontent.com',
+    ],
   },
   reactStrictMode: true,
   async redirects() {
     return [
-      // {
-      //   source: '/',
-      //   destination: '/swap',
-      //   permanent: true,
-      // },
-
       {
-        source: '/zap',
-        destination: '/',
+        source: '/',
+        destination: '/swap',
         permanent: true,
       },
+
       {
         source: '/yield',
         destination: '/farm',
-        permanent: true,
-      },
-      {
-        source: '/bento',
-        destination: '/bentobox',
-        permanent: true,
-      },
-      {
-        source: '/bento/kashi',
-        destination: '/lend',
         permanent: true,
       },
       // Analytics
@@ -106,18 +93,6 @@ const nextConfig = {
         destination: '/exchange/swap/:token*',
       },
       {
-        source: '/limit-order',
-        destination: '/exchange/limit-order',
-      },
-      {
-        source: '/limit-order/:token*',
-        destination: '/exchange/limit-order/:token*',
-      },
-      {
-        source: '/open-order',
-        destination: '/exchange/open-order',
-      },
-      {
         source: '/migrate',
         destination: '/exchange/migrate',
       },
@@ -128,40 +103,6 @@ const nextConfig = {
       {
         source: '/find',
         destination: '/exchange/find',
-      },
-      // Kashi
-      {
-        source: '/borrow',
-        destination: '/kashi/borrow',
-      },
-      {
-        source: '/borrow/:token*',
-        destination: '/kashi/borrow/:token*',
-      },
-      {
-        source: '/lend',
-        destination: '/kashi/lend',
-      },
-      {
-        source: '/lend/:token*',
-        destination: '/kashi/lend/:token*',
-      },
-      // Onsen
-      // {
-      //   source: '/farm',
-      //   destination: '/onsen',
-      // },
-      // {
-      //   source: '/farm/:type*',
-      //   destination: '/onsen/:type*',
-      // },
-      {
-        source: '/me',
-        destination: '/user',
-      },
-      {
-        source: '/balances',
-        destination: '/user/balances',
       },
     ]
   },
