@@ -19,7 +19,7 @@ import { useBar, useBarHistory } from '../../services/graph/hooks/bar'
 import ColoredNumber from '../../features/analytics/ColoredNumber'
 import { XMIST } from '../../config/tokens'
 
-export default function XMIST() {
+export default function xMIST() {
   const block1d = useBlock({ daysAgo: 1, chainId: ChainId.SMARTBCH })
 
   const exchange = useFactory({ chainId: ChainId.SMARTBCH })

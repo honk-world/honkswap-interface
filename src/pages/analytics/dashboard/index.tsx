@@ -151,7 +151,7 @@ export default function Dashboard(): JSX.Element {
       <Background background="dashboard">
         <div className="grid items-center justify-between grid-cols-2">
           <div>
-            <div className="text-3xl font-bold text-high-emphesis">Sushi Analytics</div>
+            <div className="text-3xl font-bold text-high-emphesis">Mist Analytics</div>
             <div className="">
               Dive deeper in the analytics of sushi bar,
               <br /> pools, pairs and tokens.
