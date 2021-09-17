@@ -1,5 +1,5 @@
 import {
-    MIST, XMIST
+    MIST, XMIST, FLEXUSD
 } from '../config/tokens'
 // a list of tokens by chain
 import { ChainId, Currency, Token, WNATIVE } from '@mistswapdex/sdk'
@@ -46,7 +46,11 @@ export const CUSTOM_BASES: {
  * Shows up in the currency select for swap and add liquidity
  */
 export const COMMON_BASES: ChainTokenList = {
-  [ChainId.SMARTBCH]: [...WRAPPED_NATIVE_ONLY[ChainId.SMARTBCH], MIST[ChainId.SMARTBCH]],
+  [ChainId.SMARTBCH]: [
+    ...WRAPPED_NATIVE_ONLY[ChainId.SMARTBCH],
+    MIST[ChainId.SMARTBCH],
+    FLEXUSD,
+  ],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
