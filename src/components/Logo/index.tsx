@@ -23,6 +23,7 @@ const Logo: FC<LogoProps> = ({ srcs, width, height, style, alt = '', className, 
     <div className="rounded" style={{ width, height, ...style }}>
       <Image
         src={src || 'https://raw.githubusercontent.com/mistswapdex/icons/master/token/unknown.png'}
+        loader={() => src}
         onError={() => {
           if (src) BAD_SRCS[src] = true
           refresh((i) => i + 1)
