@@ -45,6 +45,11 @@ export function calculateGasMargin(value: BigNumber): BigNumber {
   return value.mul(BigNumber.from(10000 + 2000)).div(BigNumber.from(10000))
 }
 
+// hardcoded for smartbch
+export function getGasPrice(): BigNumber {
+  return BigNumber.from(1050000000)
+}
+
 const ONE = new Fraction(1, 1)
 
 export function calculateSlippageAmount(value: CurrencyAmount<Currency>, slippage: Percent): [JSBI, JSBI] {

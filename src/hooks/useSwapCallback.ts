@@ -22,7 +22,7 @@ import { SignatureData } from './useERC20Permit'
 import { TransactionFactory } from '@ethereumjs/tx'
 import { TransactionRequest } from '@ethersproject/abstract-provider'
 import approveAmountCalldata from '../functions/approveAmountCalldata'
-import { calculateGasMargin } from '../functions/trade'
+import { calculateGasMargin, getGasPrice } from '../functions/trade'
 import { keccak256 } from '@ethersproject/keccak256'
 import { shortenAddress } from '../functions/format'
 import { t } from '@lingui/macro'
@@ -356,8 +356,8 @@ export function useSwapCallback(
               data: calldata,
               // let the wallet try if we can't estimate the gas
               ...('gasEstimate' in bestCallOption ? { gasLimit: calculateGasMargin(bestCallOption.gasEstimate) } : {}),
-              gasPrice: chainId === ChainId.SMARTBCH ? BigNumber.from('1050000000') : undefined,
               ...(value && !isZero(value) ? { value } : {}),
+              gasPrice: getGasPrice(),
             })
             .then((response) => {
               const inputSymbol = trade.inputAmount.currency.symbol
@@ -432,7 +432,7 @@ export function useSwapCallback(
               // let the wallet try if we can't estimate the gas
               ...('gasEstimate' in bestCallOption ? { gasLimit: calculateGasMargin(bestCallOption.gasEstimate) } : {}),
               ...(value && !isZero(value) ? { value } : {}),
-              ...(archerRelayDeadline && !eip1559 ? { gasPrice: 0 } : {}),
+              gasPrice: getGasPrice(),
             })
           })
 

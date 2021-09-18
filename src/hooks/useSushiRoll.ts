@@ -1,6 +1,7 @@
 import { ChainId } from "@mistswapdex/sdk";
 import LPToken from "../types/LPToken";
 import { ethers } from "ethers";
+import { getGasPrice } from '../functions/trade'
 import { signERC2612Permit } from "eth-permit";
 import { useActiveWeb3React } from "../hooks/useActiveWeb3React";
 import { useCallback } from "react";
@@ -33,6 +34,7 @@ const useSushiRoll = (version: "v1" | "v2" = "v2") => {
         const gasLimit = await sushiRoll.estimateGas.migrate(...args);
         const tx = sushiRoll.migrate(...args, {
           gasLimit: gasLimit.mul(120).div(100),
+          gasPrice: getGasPrice(),
         });
 
         return tx;
@@ -68,6 +70,7 @@ const useSushiRoll = (version: "v1" | "v2" = "v2") => {
         const gasLimit = await sushiRoll.estimateGas.migrateWithPermit(...args);
         const tx = await sushiRoll.migrateWithPermit(...args, {
           gasLimit: gasLimit.mul(120).div(100),
+          gasPrice: getGasPrice(),
         });
 
         return tx;

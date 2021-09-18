@@ -12,7 +12,7 @@ import { useHasPendingApproval, useTransactionAdder } from '../state/transaction
 
 import { MaxUint256 } from '@ethersproject/constants'
 import { TransactionResponse } from '@ethersproject/providers'
-import { calculateGasMargin } from '../functions/trade'
+import { calculateGasMargin, getGasPrice } from '../functions/trade'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useTokenAllowance } from './useTokenAllowance'
 import { useTokenContract } from './useContract'
@@ -88,6 +88,7 @@ export function useApproveCallback(
     return tokenContract
       .approve(spender, useExact ? amountToApprove.quotient.toString() : MaxUint256, {
         gasLimit: calculateGasMargin(estimatedGas),
+        gasPrice: getGasPrice(),
       })
       .then((response: TransactionResponse) => {
         addTransaction(response, {
