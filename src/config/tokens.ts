@@ -1,4 +1,4 @@
-import { ChainId, MIST_ADDRESS, BAR_ADDRESS, Token, WETH9, WNATIVE } from '@mistswapdex/sdk'
+import { ChainId, MIST_ADDRESS, BAR_ADDRESS, Token, WETH9} from '@mistswapdex/sdk'
 
 export const FLEXUSD = new Token(ChainId.SMARTBCH, '0x7b2B3C5308ab5b2a1d9a94d20D35CCDf61e05b72', 18, 'flexUSD', 'flexUSD')
 
