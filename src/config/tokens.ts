@@ -11,6 +11,7 @@ type ChainTokenMap = {
 // MIST
 export const MIST: ChainTokenMap = {
   [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, MIST_ADDRESS[ChainId.SMARTBCH], 18, 'MIST', 'MistToken'),
+  [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, MIST_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'MIST', 'MistToken'),
 }
 
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {
