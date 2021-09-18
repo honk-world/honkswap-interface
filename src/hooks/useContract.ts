@@ -151,11 +151,7 @@ export function useFactoryContract(): Contract | null {
 
 export function useRouterContract(useArcher = false, withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-
-  const address = useArcher ? ARCHER_ROUTER_ADDRESS[chainId] : ROUTER_ADDRESS[chainId]
-  const abi = useArcher ? ARCHER_ROUTER_ABI : ROUTER_ABI
-
-  return useContract(address, abi, withSignerIfPossible)
+  return useContract(chainId && ROUTER_ADDRESS[chainId], ROUTER_ABI, withSignerIfPossible)
 }
 
 export function useSushiBarContract(withSignerIfPossible?: boolean): Contract | null {
@@ -201,14 +197,9 @@ export function useCloneRewarderContract(address, withSignerIfPossibe?: boolean)
 }
 
 export function useLimitOrderContract(withSignerIfPossibe?: boolean): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(STOP_LIMIT_ORDER_ADDRESS[chainId], LIMIT_ORDER_ABI, withSignerIfPossibe)
+  throw new Error('useLimitOrderContract disabled');
 }
 
 export function useLimitOrderHelperContract(withSignerIfPossible?: boolean): Contract | null {
-  return useContract('0xe2f736B7d1f6071124CBb5FC23E93d141CD24E12', LIMIT_ORDER_HELPER_ABI, withSignerIfPossible)
-}
-
-export function useZenkoContract(withSignerIfPossible?: boolean): Contract | null {
-  return useContract('0xa8f676c49f91655ab3b7c3ea2b73bb3088b2bc1f', ZENKO_ABI, withSignerIfPossible)
+  throw new Error('useLimitOrderHelperContract disabled');
 }
