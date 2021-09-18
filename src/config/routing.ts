@@ -64,4 +64,5 @@ export const PINNED_PAIRS: {
   readonly [chainId in ChainId]?: [Token, Token][]
 } = {
   [ChainId.SMARTBCH]: [[MIST[ChainId.SMARTBCH], WNATIVE[ChainId.SMARTBCH]]],
+  [ChainId.SMARTBCH_AMBER]: [[MIST[ChainId.SMARTBCH_AMBER], WNATIVE[ChainId.SMARTBCH_AMBER]]],
 }
