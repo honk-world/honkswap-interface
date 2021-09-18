@@ -1,5 +1,5 @@
 import { AddressZero } from '@ethersproject/constants'
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId, FLEXUSD_ADDRESS } from '@mistswapdex/sdk'
 
 type Currency = { address: string; decimals: number }
 
@@ -7,12 +7,8 @@ type Currency = { address: string; decimals: number }
 // TODO: Check decimals and finish table
 export const USD_CURRENCY: { [chainId in ChainId]?: Currency } = {
   [ChainId.SMARTBCH]: {
-    address: '0x0000000000000000000000000000000000000001',
-    decimals: 6,
-  },
-  [ChainId.SMARTBCH_AMBER]: {
-    address: '0x0000000000000000000000000000000000000001',
-    decimals: 6,
+    address: FLEXUSD_ADDRESS[ChainId.SMARTBCH],
+    decimals: 18,
   },
 }
 
