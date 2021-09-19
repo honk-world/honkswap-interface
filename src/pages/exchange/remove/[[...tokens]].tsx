@@ -320,7 +320,6 @@ export default function Remove() {
       { name: "nonce", type: "uint256" },
       { name: "deadline", type: "uint256" },
     ];
-    console.log(liquidityAmount);
     const message = {
       owner: account,
       spender: routerContract.address,
