@@ -110,6 +110,7 @@ export default function Remove() {
   )
   const [approval, approveCallback] = useApproveCallback(parsedAmounts[Field.LIQUIDITY], routerContract?.address)
 
+  /*
   async function onAttemptToApprove() {
     if (!pairContract || !pair || !library || !deadline) throw new Error('missing dependencies')
     const liquidityAmount = parsedAmounts[Field.LIQUIDITY]
@@ -128,6 +129,7 @@ export default function Remove() {
       await approveCallback()
     }
   }
+  */
 
   // wrapped onUserInput to clear signatures
   const onUserInput = useCallback(
@@ -290,77 +292,70 @@ export default function Remove() {
 
   // const isArgentWallet = useIsArgentWallet();
 
-  // async function onAttemptToApprove() {
-  //   if (!pairContract || !pair || !library || !deadline)
-  //     throw new Error("missing dependencies");
-  //   const liquidityAmount = parsedAmounts[Field.LIQUIDITY];
-  //   if (!liquidityAmount) throw new Error("missing liquidity amount");
+  async function onAttemptToApprove() {
+    if (!pairContract || !pair || !library || !deadline)
+      throw new Error("missing dependencies");
+    const liquidityAmount = parsedAmounts[Field.LIQUIDITY];
+    if (!liquidityAmount) throw new Error("missing liquidity amount");
 
-  //   if (isArgentWallet) {
-  //     return approveCallback();
-  //   }
+    // try to gather a signature for permission
+    const nonce = await pairContract.nonces(account);
 
-  //   if (chainId !== ChainId.HARMONY) {
-  //     // try to gather a signature for permission
-  //     const nonce = await pairContract.nonces(account);
+    const EIP712Domain = [
+      { name: "name", type: "string" },
+      { name: "version", type: "string" },
+      { name: "chainId", type: "uint256" },
+      { name: "verifyingContract", type: "address" },
+    ];
+    const domain = {
+      name: "MISTswap LP Token",
+      version: "1",
+      chainId: chainId,
+      verifyingContract: pair.liquidityToken.address,
+    };
+    const Permit = [
+      { name: "owner", type: "address" },
+      { name: "spender", type: "address" },
+      { name: "value", type: "uint256" },
+      { name: "nonce", type: "uint256" },
+      { name: "deadline", type: "uint256" },
+    ];
+    console.log(liquidityAmount);
+    const message = {
+      owner: account,
+      spender: routerContract.address,
+      value: liquidityAmount.toFixed(),
+      nonce: nonce.toHexString(),
+      deadline: deadline.toNumber(),
+    };
+    const data = JSON.stringify({
+      types: {
+        EIP712Domain,
+        Permit,
+      },
+      domain,
+      primaryType: "Permit",
+      message,
+    });
 
-  //     const EIP712Domain = [
-  //       { name: "name", type: "string" },
-  //       { name: "version", type: "string" },
-  //       { name: "chainId", type: "uint256" },
-  //       { name: "verifyingContract", type: "address" },
-  //     ];
-  //     const domain = {
-  //       name: "SushiSwap LP Token",
-  //       version: "1",
-  //       chainId: chainId,
-  //       verifyingContract: pair.liquidityToken.address,
-  //     };
-  //     const Permit = [
-  //       { name: "owner", type: "address" },
-  //       { name: "spender", type: "address" },
-  //       { name: "value", type: "uint256" },
-  //       { name: "nonce", type: "uint256" },
-  //       { name: "deadline", type: "uint256" },
-  //     ];
-  //     const message = {
-  //       owner: account,
-  //       spender: getRouterAddress(chainId),
-  //       value: liquidityAmount.raw.toString(),
-  //       nonce: nonce.toHexString(),
-  //       deadline: deadline.toNumber(),
-  //     };
-  //     const data = JSON.stringify({
-  //       types: {
-  //         EIP712Domain,
-  //         Permit,
-  //       },
-  //       domain,
-  //       primaryType: "Permit",
-  //       message,
-  //     });
-
-  //     library
-  //       .send("eth_signTypedData_v4", [account, data])
-  //       .then(splitSignature)
-  //       .then((signature) => {
-  //         setSignatureData({
-  //           v: signature.v,
-  //           r: signature.r,
-  //           s: signature.s,
-  //           deadline: deadline.toNumber(),
-  //         });
-  //       })
-  //       .catch((error) => {
-  //         // for all errors other than 4001 (EIP-1193 user rejected request), fall back to manual approve
-  //         if (error?.code !== 4001) {
-  //           approveCallback();
-  //         }
-  //       });
-  //   } else {
-  //     return approveCallback();
-  //   }
-  // }
+    library
+      .send("eth_signTypedData_v4", [account, data])
+      .then(splitSignature)
+      .then((signature) => {
+        setSignatureData({
+          v: signature.v,
+          r: signature.r,
+          s: signature.s,
+          deadline: deadline.toNumber(),
+        });
+      })
+      .catch((error) => {
+        // for all errors other than 4001 (EIP-1193 user rejected request), fall back to manual approve
+        if (error?.code !== 4001) {
+          approveCallback();
+        }
+      });
+  }
 
   // // wrapped onUserInput to clear signatures
   // const onUserInput = useCallback(
