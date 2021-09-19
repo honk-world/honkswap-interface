@@ -5,7 +5,7 @@ import { ButtonConfirmed, ButtonError } from '../../../components/Button'
 import { ChainId, Currency, NATIVE, Percent, WNATIVE, WNATIVE_ADDRESS } from '@mistswapdex/sdk'
 import React, { useCallback, useMemo, useState } from 'react'
 import TransactionConfirmationModal, { ConfirmationModalContent } from '../../../modals/TransactionConfirmationModal'
-import { calculateGasMargin, calculateSlippageAmount } from '../../../functions/trade'
+import { calculateGasMargin, calculateSlippageAmount, getGasPrice } from '../../../functions/trade'
 import { useBurnActionHandlers, useBurnState, useDerivedBurnInfo } from '../../../state/burn/hooks'
 import { usePairContract, useRouterContract } from '../../../hooks/useContract'
 
@@ -267,6 +267,7 @@ export default function Remove() {
       setAttemptingTxn(true)
       await routerContract[methodName](...args, {
         gasLimit: safeGasEstimate,
+        gasPrice: getGasPrice(),
       })
         .then((response: TransactionResponse) => {
           setAttemptingTxn(false)
@@ -533,6 +534,7 @@ export default function Remove() {
   //     setAttemptingTxn(true);
   //     await router[methodName](...args, {
   //       gasLimit: safeGasEstimate,
+  //       gasPrice: getGasPrice(),
   //     })
   //       .then((response: TransactionResponse) => {
   //         setAttemptingTxn(false);
