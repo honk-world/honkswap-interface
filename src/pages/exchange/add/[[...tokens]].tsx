@@ -5,7 +5,7 @@ import { Currency, CurrencyAmount, Percent, WNATIVE, currencyEquals } from '@mis
 import { ONE_BIPS, ZERO_PERCENT } from '../../../constants'
 import React, { useCallback, useState } from 'react'
 import TransactionConfirmationModal, { ConfirmationModalContent } from '../../../modals/TransactionConfirmationModal'
-import { calculateGasMargin, calculateSlippageAmount } from '../../../functions/trade'
+import { calculateGasMargin, calculateSlippageAmount, getGasPrice } from '../../../functions/trade'
 import { currencyId, maxAmountSpend } from '../../../functions/currency'
 import { useDerivedMintInfo, useMintActionHandlers, useMintState } from '../../../state/mint/hooks'
 import { useExpertModeManager, useUserSlippageToleranceWithDefault } from '../../../state/user/hooks'
@@ -184,32 +184,37 @@ export default function Add() {
     }
 
     setAttemptingTxn(true)
-    await estimate(...args, value ? { value } : {})
-      .then((estimatedGasLimit) =>
-        method(...args, {
-          ...(value ? { value } : {}),
-          gasLimit: calculateGasMargin(estimatedGasLimit),
-        }).then((response) => {
-          setAttemptingTxn(false)
+    try {
+      const estimatedGasLimit = await estimate(...args, {
+        ...(value ? { value } : {}),
+        from: '0x8370DAE31693A8BbB9630b7052de52aCBcEC7525',
+        gasPrice: getGasPrice(),
+      });
 
-          addTransaction(response, {
-            summary: i18n._(
-              t`Add ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(3)} ${
-                currencies[Field.CURRENCY_A]?.symbol
-              } and ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(3)} ${currencies[Field.CURRENCY_B]?.symbol}`
-            ),
-          })
+      const response = await method(...args, {
+        ...(value ? { value } : {}),
+        gasLimit: calculateGasMargin(estimatedGasLimit),
+        gasPrice: getGasPrice(),
+      });
 
-          setTxHash(response.hash)
-        })
-      )
-      .catch((error) => {
-        setAttemptingTxn(false)
-        // we only care if the error is something _other_ than the user rejected the tx
-        if (error?.code !== 4001) {
-          console.error(error)
-        }
+      setAttemptingTxn(false)
+
+      addTransaction(response, {
+        summary: i18n._(
+          t`Add ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(3)} ${
+            currencies[Field.CURRENCY_A]?.symbol
+          } and ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(3)} ${currencies[Field.CURRENCY_B]?.symbol}`
+        ),
       })
+
+      setTxHash(response.hash)
+    } catch(error) {
+      setAttemptingTxn(false)
+      // we only care if the error is something _other_ than the user rejected the tx
+      if (error?.code !== 4001) {
+        console.error(error)
+      }
+    }
   }
 
   const modalHeader = () => {
