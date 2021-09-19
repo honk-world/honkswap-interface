@@ -51,14 +51,11 @@ import ROUTER_ABI from '../constants/abis/router.json'
 import SUSHI_ABI from '../constants/abis/sushi.json'
 import SUSHIROLL_ABI from "@mistswapdex/core/abi/SushiRoll.json";
 import TIMELOCK_ABI from '../constants/abis/timelock.json'
-import UNI_FACTORY_ABI from '../constants/abis/uniswap-v2-factory.json'
 import WETH9_ABI from '../constants/abis/weth.json'
 import ZENKO_ABI from '../constants/abis/zenko.json'
 import { getContract } from '../functions/contract'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useMemo } from 'react'
-
-const UNI_FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
 
 export function useEIP2612Contract(tokenAddress?: string): Contract | null {
   return useContract(tokenAddress, EIP_2612_ABI, false)
@@ -177,10 +174,6 @@ export function useBentoBoxContract(withSignerIfPossible?: boolean): Contract | 
 export function useChainlinkOracle(): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId && CHAINLINK_ORACLE_ADDRESS[chainId], CHAINLINK_ORACLE_ABI, false)
-}
-
-export function useUniV2FactoryContract(): Contract | null {
-  return useContract(UNI_FACTORY_ADDRESS, UNI_FACTORY_ABI, false)
 }
 
 export function useSushiRollContract(): Contract | null {
