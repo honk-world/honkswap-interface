@@ -21,7 +21,7 @@ import { usePositions } from '../features/onsen/hooks'
 export default function useFarmRewards() {
   const { chainId } = useActiveWeb3React()
 
-  const positions = usePositions()
+  const positions = usePositions(chainId)
 
   const farms = useFarms()
   const farmAddresses = useMemo(() => farms.map((farm) => farm.pair), [farms])
