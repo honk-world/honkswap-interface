@@ -422,7 +422,7 @@ export default function Swap() {
         <meta
           key="description"
           name="description"
-          content="MISTswap allows for swapping of ERC20 compatible tokens across multiple networks"
+          content="MISTswap allows for swapping of SEP20 compatible tokens"
         />
       </Head>
       <TokenWarningModal
