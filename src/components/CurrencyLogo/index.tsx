@@ -11,10 +11,7 @@ const BLOCKCHAIN = {
 }
 
 function getCurrencySymbol(currency) {
-  if (currency.symbol === 'WBTC') {
-    return 'btc'
-  }
-  if (currency.symbol === 'WETH') {
+  if (currency.symbol === 'WBCH') {
     return 'bch'
   }
   return currency.symbol.toLowerCase()
