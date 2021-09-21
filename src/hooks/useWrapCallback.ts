@@ -1,6 +1,7 @@
 import { ChainId, Currency, NATIVE, WNATIVE } from '@mistswapdex/sdk'
 
 import { tryParseAmount } from '../functions/parse'
+import { getGasPrice } from '../functions/trade'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useCurrencyBalance } from '../state/wallet/hooks'
 import { useMemo } from 'react'
@@ -37,7 +38,7 @@ export default function useWrapCallback(
   const addTransaction = useTransactionAdder()
 
   return useMemo(() => {
-    if (!wethContract || !chainId || !inputCurrency || !outputCurrency || chainId === ChainId.CELO)
+    if (!wethContract || !chainId || !inputCurrency || !outputCurrency)
       return NOT_APPLICABLE
     const weth = WNATIVE[chainId]
     if (!weth) return NOT_APPLICABLE
@@ -54,6 +55,7 @@ export default function useWrapCallback(
                 try {
                   const txReceipt = await wethContract.deposit({
                     value: `0x${inputAmount.quotient.toString(16)}`,
+                    gasPrice: getGasPrice(),
                   })
                   addTransaction(txReceipt, {
                     summary: `Wrap ${inputAmount.toSignificant(6)} ${NATIVE[chainId].symbol} to ${
