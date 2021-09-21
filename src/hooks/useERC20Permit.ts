@@ -31,10 +31,10 @@ const PERMITTABLE_TOKENS: {
   }
 } = {
   [ChainId.SMARTBCH]: {
-    [MIST[ChainId.SMARTBCH].address]: { type: PermitType.AMOUNT, name: 'MISTswap' },
+    [MIST[ChainId.SMARTBCH].address]: { type: PermitType.AMOUNT, name: 'MistToken' },
   },
   [ChainId.SMARTBCH_AMBER]: {
-    [MIST[ChainId.SMARTBCH_AMBER].address]: { type: PermitType.AMOUNT, name: 'MISTswap' },
+    [MIST[ChainId.SMARTBCH_AMBER].address]: { type: PermitType.AMOUNT, name: 'MistToken' },
   },
 }
 
