@@ -42,6 +42,9 @@ async function fetchChunk(
 
     if (process.env.NODE_ENV === 'development') {
       returnData.forEach(({ gasUsed, returnData, success }, i) => {
+        if (typeof gasUsed === 'undefined') {
+          return;
+        }
         if (
           !success &&
           returnData.length === 2 &&
