@@ -24,6 +24,7 @@ const WRAPPED_NATIVE_ONLY: ChainTokenList = {
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WRAPPED_NATIVE_ONLY,
   [ChainId.SMARTBCH]: [...WRAPPED_NATIVE_ONLY[ChainId.SMARTBCH], FLEXUSD],
+  [ChainId.SMARTBCH_AMBER]: [...WRAPPED_NATIVE_ONLY[ChainId.SMARTBCH_AMBER]],
 }
 
 export const ADDITIONAL_BASES: {
@@ -48,8 +49,12 @@ export const CUSTOM_BASES: {
 export const COMMON_BASES: ChainTokenList = {
   [ChainId.SMARTBCH]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.SMARTBCH],
-    MIST[ChainId.SMARTBCH],
     FLEXUSD,
+    MIST[ChainId.SMARTBCH],
+  ],
+  [ChainId.SMARTBCH_AMBER]: [
+    ...WRAPPED_NATIVE_ONLY[ChainId.SMARTBCH_AMBER],
+    MIST[ChainId.SMARTBCH_AMBER],
   ],
 }
 
@@ -63,6 +68,10 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
 export const PINNED_PAIRS: {
   readonly [chainId in ChainId]?: [Token, Token][]
 } = {
-  [ChainId.SMARTBCH]: [[MIST[ChainId.SMARTBCH], WNATIVE[ChainId.SMARTBCH]]],
-  [ChainId.SMARTBCH_AMBER]: [[MIST[ChainId.SMARTBCH_AMBER], WNATIVE[ChainId.SMARTBCH_AMBER]]],
+  [ChainId.SMARTBCH]: [
+      [MIST[ChainId.SMARTBCH], WNATIVE[ChainId.SMARTBCH]],
+  ],
+  [ChainId.SMARTBCH_AMBER]: [
+      [MIST[ChainId.SMARTBCH_AMBER], WNATIVE[ChainId.SMARTBCH_AMBER]]
+  ],
 }
