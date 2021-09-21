@@ -232,7 +232,7 @@ const MigrateButtons = ({ state, exchange }: { state: MigrateState; exchange: st
                 <div className="text-red text-center font-medium">{error.message}</div>
             )}
             <div className="text-xs text-low-emphesis text-center">
-                {`Your ${exchange} ${state.selectedLPToken.tokenA.symbol}/${state.selectedLPToken.tokenB.symbol} liquidity will become SushiSwap ${state.selectedLPToken.tokenA.symbol}/${state.selectedLPToken.tokenB.symbol} liquidity.`}
+                {`Your ${exchange} ${state.selectedLPToken.tokenA.symbol}/${state.selectedLPToken.tokenB.symbol} liquidity will become MistSwap ${state.selectedLPToken.tokenA.symbol}/${state.selectedLPToken.tokenB.symbol} liquidity.`}
             </div>
         </div>
     )
