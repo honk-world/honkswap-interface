@@ -197,10 +197,10 @@ export function useCurrency(currencyId: string | undefined): Currency | null | u
   // const weth = chainId ? WETH9_EXTENDED[chainId] : undefined
 
   const native = useMemo(() => (chainId ? NATIVE[chainId] : undefined), [chainId])
+  if (useNative) return native;
 
   const wnative = chainId ? WNATIVE[chainId] : undefined
-
   if (wnative?.address?.toLowerCase() === currencyId?.toLowerCase()) return wnative
 
-  return useNative ? native : token
+  return token
 }
