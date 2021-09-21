@@ -16,6 +16,8 @@ const useSushiRoll = (version: "v1" | "v2" = "v2") => {
 
   if (chainId === ChainId.SMARTBCH) {
     from = "BenSwap";
+  } else if (chainId === ChainId.SMARTBCH_AMBER) {
+    from = "BenSwap";
   }
 
   const migrate = useCallback(
