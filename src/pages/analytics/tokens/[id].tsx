@@ -16,10 +16,14 @@ import Link from 'next/link'
 import { CheckIcon, DuplicateIcon } from '@heroicons/react/outline'
 import useCopyClipboard from '../../../hooks/useCopyClipboard'
 import { useTokenContract } from '../../../hooks'
+import { useActiveWeb3React } from '../../../hooks'
+import { getExplorerLink } from '../../../functions/explorer'
 
 export default function Token() {
   const router = useRouter()
   const id = (router.query.id as string).toLowerCase()
+
+  const { chainId } = useActiveWeb3React()
 
   const [isCopied, setCopied] = useCopyClipboard()
 
@@ -215,7 +219,7 @@ export default function Token() {
                 <td>
                   <a
                     className="flex flex-row items-center justify-end space-x-1 text-purple"
-                    href={`https://smartscan.cash/address/${id}`}
+                    href={getExplorerLink(chainId, id, 'token')}
                     target="_blank"
                     rel="noreferrer"
                   >

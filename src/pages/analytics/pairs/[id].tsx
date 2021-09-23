@@ -16,10 +16,14 @@ import Background from '../../../features/analytics/Background'
 import useCopyClipboard from '../../../hooks/useCopyClipboard'
 import { DuplicateIcon } from '@heroicons/react/outline'
 import { CheckIcon } from '@heroicons/react/solid'
+import { useActiveWeb3React } from '../../../hooks'
+import { getExplorerLink } from '../../../functions/explorer'
 
 export default function Pair() {
   const router = useRouter()
   const id = (router.query.id as string).toLowerCase()
+
+  const { chainId } = useActiveWeb3React()
 
   const [isCopied, setCopied] = useCopyClipboard()
 
@@ -200,7 +204,7 @@ export default function Pair() {
                           {pair?.id}
                         </div>
                       </Link>
-                      <a href={`https://etherscan.io/address/${pair?.id}`} target="_blank" rel="noreferrer">
+                      <a href={getExplorerLink(chainId, pair?.id, 'token')} target="_blank" rel="noreferrer">
                         <LinkIcon size={16} />
                       </a>
                     </div>
@@ -212,7 +216,7 @@ export default function Pair() {
                           {pair?.token0?.id}
                         </div>
                       </Link>
-                      <a href={`https://etherscan.io/address/${pair?.token0?.id}`} target="_blank" rel="noreferrer">
+                      <a href={getExplorerLink(chainId, pair?.token0?.id, 'token')} target="_blank" rel="noreferrer">
                         <LinkIcon size={16} />
                       </a>
                     </div>
@@ -224,7 +228,7 @@ export default function Pair() {
                           {pair?.token1?.id}
                         </div>
                       </Link>
-                      <a href={`https://etherscan.io/address/${pair?.token1?.id}`} target="_blank" rel="noreferrer">
+                      <a href={getExplorerLink(chainId, pair?.token1?.id, 'token')} target="_blank" rel="noreferrer">
                         <LinkIcon size={16} />
                       </a>
                     </div>
