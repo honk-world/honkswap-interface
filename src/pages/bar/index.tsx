@@ -23,6 +23,7 @@ import useSushiBar from '../../hooks/useSushiBar'
 import { useSushiPrice } from '../../services/graph'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
+import { GRAPH_HOST } from '../../services/graph/constants'
 
 const INPUT_CHAR_LIMIT = 18
 
@@ -55,19 +56,19 @@ const buttonStyleInsufficientFunds = `${buttonStyleEnabled} opacity-60`
 const buttonStyleDisabled = `${buttonStyle} text-secondary bg-dark-700`
 const buttonStyleConnectWallet = `${buttonStyle} text-high-emphesis bg-cyan-blue hover:bg-opacity-90`
 
-const fetcher = (query) => request('https://api.thegraph.com/subgraphs/name/matthewlilley/bar', query)
+const fetcher = (query) => request('http://127.0.0.1:8000/subgraphs/name/mistswap/bar', query)
 
 export default function Stake() {
   const { i18n } = useLingui()
-  const { account } = useActiveWeb3React()
-  const sushiBalance = useTokenBalance(account ?? undefined, MIST[ChainId.SMARTBCH])
-  const xSushiBalance = useTokenBalance(account ?? undefined, XMIST)
+  const { account, chainId } = useActiveWeb3React()
+  const sushiBalance = useTokenBalance(account ?? undefined, MIST[chainId])
+  const xSushiBalance = useTokenBalance(account ?? undefined, XMIST[chainId])
 
   const sushiPrice = useSushiPrice()
 
   const { enter, leave } = useSushiBar()
 
-  const { data } = useSWR(`{bar(id: "${XMIST}") {ratio, totalSupply}}`, fetcher)
+  const { data } = useSWR(`{bar(id: "${XMIST[chainId].address}") {ratio, totalSupply}}`, fetcher)
 
   const xSushiPerSushi = parseFloat(data?.bar?.ratio)
 
@@ -198,7 +199,7 @@ export default function Stake() {
             <div className="max-w-lg pr-3 mb-2 text-sm leading-5 text-gray-500 md:text-base md:mb-4 md:pr-0">
               {i18n._(t`For every swap on the exchange on every chain, 0.05% of the swap fees are distributed as MIST
                                 proportional to your share of the MistBar. When your MIST is staked into the MistBar, you receive
-                                xMIST in return for voting rights and a fully composable token that can interact with other protocols.
+                                xMIST in return.
                                 Your xMIST is continuously compounding, when you unstake you will receive all the originally deposited
                                 MIST and any additional from fees.`)}
             </div>

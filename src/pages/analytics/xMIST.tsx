@@ -1,4 +1,4 @@
-import { ChainId, MIST_ADDRESS } from '@mistswapdex/sdk'
+import { MIST_ADDRESS } from '@mistswapdex/sdk'
 import React, { useMemo } from 'react'
 import ScrollableGraph from '../../components/ScrollableGraph'
 import AnalyticsContainer from '../../features/analytics/AnalyticsContainer'
@@ -18,21 +18,23 @@ import {
 import { useBar, useBarHistory } from '../../services/graph/hooks/bar'
 import ColoredNumber from '../../features/analytics/ColoredNumber'
 import { XMIST } from '../../config/tokens'
+import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 
 export default function xMIST() {
-  const block1d = useBlock({ daysAgo: 1, chainId: ChainId.SMARTBCH })
+  const { chainId } = useActiveWeb3React()
+  const block1d = useBlock({ daysAgo: 1, chainId })
 
-  const exchange = useFactory({ chainId: ChainId.SMARTBCH })
-  const exchange1d = useFactory({ block: block1d, chainId: ChainId.SMARTBCH })
+  const exchange = useFactory({ chainId: chainId})
+  const exchange1d = useFactory({ block: block1d, chainId })
 
   const dayData = useDayData()
 
-  const ethPrice = useNativePrice({ chainId: ChainId.SMARTBCH })
-  const ethPrice1d = useNativePrice({ block: block1d, chainId: ChainId.SMARTBCH, shouldFetch: !!block1d })
+  const ethPrice = useNativePrice({ chainId })
+  const ethPrice1d = useNativePrice({ block: block1d, chainId, shouldFetch: !!block1d })
 
-  const xSushi = useTokens({ chainId: ChainId.SMARTBCH, subset: [XMIST.address] })?.[0]
-  const xSushi1d = useTokens({ block: block1d, chainId: ChainId.SMARTBCH, subset: [XMIST.address] })?.[0]
-  const sushiDayData = useTokenDayData({ token: MIST_ADDRESS['1'], chainId: ChainId.SMARTBCH })
+  const xSushi = useTokens({ chainId, subset: [XMIST[chainId].address] })?.[0]
+  const xSushi1d = useTokens({ block: block1d, chainId, subset: [XMIST[chainId].address] })?.[0]
+  const sushiDayData = useTokenDayData({ token: MIST_ADDRESS[chainId], chainId })
 
   const bar = useBar()
   const bar1d = useBar({ block: block1d, shouldFetch: !!block1d })

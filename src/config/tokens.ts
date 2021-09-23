@@ -2,7 +2,10 @@ import { ChainId, MIST_ADDRESS, BAR_ADDRESS, Token, WETH9} from '@mistswapdex/sd
 
 export const FLEXUSD = new Token(ChainId.SMARTBCH, '0x7b2B3C5308ab5b2a1d9a94d20D35CCDf61e05b72', 18, 'flexUSD', 'flexUSD')
 
-export const XMIST = new Token(ChainId.SMARTBCH, BAR_ADDRESS[ChainId.SMARTBCH], 18, 'xMIST', 'MistBar')
+export const XMIST: ChainTokenMap = {
+    [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, BAR_ADDRESS[ChainId.SMARTBCH], 18, 'xMIST', 'MistBar'),
+    [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, BAR_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'xMIST', 'MistBar'),
+}
 
 type ChainTokenMap = {
   readonly [chainId in ChainId]?: Token
