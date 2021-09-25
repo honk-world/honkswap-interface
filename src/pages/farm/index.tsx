@@ -188,32 +188,6 @@ export default function Farm(): JSX.Element {
 
       const defaultRewards = [defaultReward]
 
-      if (pool.chef === Chef.MASTERCHEF_V2) {
-        // override for mcv2...
-        pool.owner.totalAllocPoint = masterChefV1TotalAllocPoint
-
-        const icon = ['0', '3', '4', '8'].includes(pool.id)
-          ? `https://raw.githubusercontent.com/mistswapdex/icons/master/token/${pool.rewardToken.symbol.toLowerCase()}.jpg`
-          : `https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/${getAddress(
-              pool.rewarder.rewardToken
-            )}/logo.png`
-
-        const decimals = 10 ** pool.rewardToken.decimals
-
-        const rewardPerBlock = (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime
-
-        const rewardPerDay = (pool.rewarder.rewardPerSecond / decimals) * averageBlockTime * blocksPerDay
-
-        const reward = {
-          token: pool.rewardToken.symbol,
-          icon: icon,
-          rewardPerBlock: rewardPerBlock,
-          rewardPerDay: rewardPerDay,
-          rewardPrice: pool.rewardToken.derivedETH * ethPrice,
-        }
-
-        return [...defaultRewards, reward]
-      }
       return defaultRewards
     }
 
@@ -284,8 +258,6 @@ export default function Farm(): JSX.Element {
     threshold: 0.4,
   }
 
-  // console.log({ data })
-
   const { result, term, search } = useFuse({
     data,
     options,
@@ -309,12 +281,6 @@ export default function Farm(): JSX.Element {
               'relative w-full bg-transparent border border-transparent focus:border-gradient-r-blue-pink-dark-900 rounded placeholder-secondary focus:placeholder-primary font-bold text-base px-6 py-3.5',
           }}
         />
-
-        {/* <div className="flex items-center text-lg font-bold text-high-emphesis whitespace-nowrap">
-            Ready to Stake{' '}
-            <div className="w-full h-0 ml-4 font-bold bg-transparent border border-b-0 border-transparent rounded text-high-emphesis md:border-gradient-r-blue-pink-dark-800 opacity-20"></div>
-          </div>
-          <FarmList farms={filtered} term={term} /> */}
 
         <div className="flex items-center text-lg font-bold text-high-emphesis whitespace-nowrap">
           Farms{' '}
