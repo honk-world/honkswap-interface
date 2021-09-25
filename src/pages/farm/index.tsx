@@ -32,17 +32,110 @@ export default function Farm(): JSX.Element {
 
   const type = router.query.filter == null ? 'all' : (router.query.filter as string)
 
-  const pairAddresses = useFarmPairAddresses()
+  // const pairAddresses = useFarmPairAddresses()
 
-  const swapPairs = useSushiPairs({ subset: pairAddresses, shouldFetch: !!pairAddresses })
+  // const swapPairs = useSushiPairs({ subset: pairAddresses, shouldFetch: !!pairAddresses })
+  const swapPairs = [
+    {
+      id: "0xDB70603f600a3eab200bA0F08fbDca467bD5a1D5",
+      reserve0: "5708.95616801",
+      reserve1: "81415.395776750428407421",
+      reserveETH: "162830.791553500856814842",
+      reserveUSD: "510584588.0507161230997462761469069",
+      timestamp: "1599830986",
+      token0: {
+        derivedETH: "14.26099507173652177472868535470121",
+        id: "0x17F4FCF5b6E0A95D4eE331c8529041896A073F9b",
+        name: "Bitcoin Cash",
+        symbol: "BCH",
+        totalSupply: "17720",
+        token0Price: "0.07012133409833881784416110848389942",
+      },
+      token1: {
+        derivedETH: "1",
+        id: "0xD22D61c9c44d13F286Cd7109b3F3e5A4A51914cB",
+        name: "MistToken",
+        symbol: "MIST",
+        totalSupply: "17720",
+        token1Price: "14.26099507173652177472868535470121",
+      },
+      totalSupply: "0.008844376345923753",
+      trackedReserveETH: "162830.791553500856814842",
+      txCount: "152817",
+      untrackedVolumeUSD: "10413947170.78512043307707605351976",
+      volumeUSD: "10413947170.78512043307707605351976",
+    },
+    {
+      id: "0x9A520C877c62aB833276F6FD871D61898aFE0896",
+      reserve0: "5708.95616801",
+      reserve1: "81415.395776750428407421",
+      reserveETH: "162830.791553500856814842",
+      reserveUSD: "510584588.0507161230997462761469069",
+      timestamp: "1599830986",
+      token0: {
+        derivedETH: "14.26099507173652177472868535470121",
+        id: "0x17F4FCF5b6E0A95D4eE331c8529041896A073F9b",
+        name: "Bitcoin Cash",
+        symbol: "BCH",
+        totalSupply: "17720",
+        token0Price: "0.07012133409833881784416110848389942",
+      },
+      token1: {
+        derivedETH: "1",
+        id: "0x74D6635eEeBdB79d02f0BFebc1C4bE25e94Ac27a",
+        name: "tc",
+        symbol: "TC",
+        totalSupply: "17720",
+        token1Price: "14.26099507173652177472868535470121",
+      },
+      totalSupply: "0.008844376345923753",
+      trackedReserveETH: "162830.791553500856814842",
+      txCount: "152817",
+      untrackedVolumeUSD: "10413947170.78512043307707605351976",
+      volumeUSD: "10413947170.78512043307707605351976",
+    },
+  ]
 
-  const kashiPairs = useKashiPairs({ subset: pairAddresses })
+  const kashiPairs = []
 
-  const farms = useFarms()
+  // const farms = useFarms()
+  const farms = [
+    {
+      accSushiPerShare: "3052662329655",
+      allocPoint: 1000,
+      balance: "64614248892144580651",
+      chef: 0,
+      id: 1,
+      lastRewardBlock: "750000",
+      owner: {
+          id: "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd",
+          sushiPerBlock: "100000000000000000000",
+          totalAllocPoint: "238028"
+      },
+      pair: "0xDB70603f600a3eab200bA0F08fbDca467bD5a1D5",
+      userCount: 20,
+    },
+    {
+      accSushiPerShare: "3052662329655",
+      allocPoint: 2,
+      balance: "64614248892144580651",
+      chef: 0,
+      id: 0,
+      lastRewardBlock: "750000",
+      owner: {
+          id: "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd",
+          sushiPerBlock: "100000000000000000000",
+          totalAllocPoint: "238028"
+      },
+      pair: "0x9A520C877c62aB833276F6FD871D61898aFE0896",
+      userCount: 20,
+    },
+  ]
 
   const positions = usePositions(chainId)
 
-  const averageBlockTime = useAverageBlockTime()
+  // const averageBlockTime = useAverageBlockTime()
+  const averageBlockTime = 6;
 
   const masterChefV1TotalAllocPoint = useMasterChefV1TotalAllocPoint()
 
