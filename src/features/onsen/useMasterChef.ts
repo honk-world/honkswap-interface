@@ -5,6 +5,7 @@ import { Chef } from './enum'
 import { Zero } from '@ethersproject/constants'
 import { useCallback } from 'react'
 import { useChefContract } from './hooks'
+import { getGasPrice } from '../../functions/trade'
 
 export default function useMasterChef(chef: Chef) {
   const { account } = useActiveWeb3React()
@@ -20,9 +21,13 @@ export default function useMasterChef(chef: Chef) {
         let tx
 
         if (chef === Chef.MASTERCHEF) {
-          tx = await contract?.deposit(pid, amount)
+          tx = await contract?.deposit(pid, amount, {
+            gasPrice: getGasPrice(),
+          })
         } else {
-          tx = await contract?.deposit(pid, amount, account)
+          tx = await contract?.deposit(pid, amount, account, {
+            gasPrice: getGasPrice(),
+          })
         }
 
         return tx
@@ -41,9 +46,13 @@ export default function useMasterChef(chef: Chef) {
         let tx
 
         if (chef === Chef.MASTERCHEF) {
-          tx = await contract?.withdraw(pid, amount)
+          tx = await contract?.withdraw(pid, amount, {
+            gasPrice: getGasPrice(),
+          })
         } else {
-          tx = await contract?.withdraw(pid, amount, account)
+          tx = await contract?.withdraw(pid, amount, account, {
+            gasPrice: getGasPrice(),
+          })
         }
 
         return tx
@@ -61,7 +70,9 @@ export default function useMasterChef(chef: Chef) {
         let tx
 
         if (chef === Chef.MASTERCHEF) {
-          tx = await contract?.deposit(pid, Zero)
+          tx = await contract?.deposit(pid, Zero, {
+            gasPrice: getGasPrice(),
+          })
         } else if (chef === Chef.MASTERCHEF_V2) {
           const pendingSushi = await contract?.pendingSushi(pid, account)
 
@@ -77,7 +88,9 @@ export default function useMasterChef(chef: Chef) {
               true
             )
           } else {
-            tx = await contract?.harvest(pid, account)
+            tx = await contract?.harvest(pid, account, {
+              gasPrice: getGasPrice(),
+            })
           }
         }
 

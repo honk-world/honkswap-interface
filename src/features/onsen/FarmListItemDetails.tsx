@@ -48,8 +48,10 @@ const FarmListItem = ({ farm }) => {
   const reward = usePendingReward(farm)
 
   const APPROVAL_ADDRESSES = {
-    [Chef.MASTERCHEF]: { [ChainId.MAINNET]: MASTERCHEF_ADDRESS[ChainId.MAINNET] },
-    [Chef.MASTERCHEF_V2]: { [ChainId.MAINNET]: MASTERCHEF_V2_ADDRESS[ChainId.MAINNET] },
+    [Chef.MASTERCHEF]: {
+      [ChainId.SMARTBCH]: MASTERCHEF_ADDRESS[ChainId.SMARTBCH],
+      [ChainId.SMARTBCH_AMBER]: MASTERCHEF_ADDRESS[ChainId.SMARTBCH_AMBER],
+    },
   }
 
   const typedDepositValue = tryParseAmount(depositValue, liquidityToken)

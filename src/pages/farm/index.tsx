@@ -1,29 +1,18 @@
 import { Chef, PairType } from '../../features/onsen/enum'
 import { useActiveWeb3React, useFuse } from '../../hooks'
 import {
-  useAlcxPrice,
   useAverageBlockTime,
-  useCvxPrice,
   useEthPrice,
   useFarmPairAddresses,
   useFarms,
-  useKashiPairs,
   useMasterChefV1SushiPerBlock,
   useMasterChefV1TotalAllocPoint,
-  useMaticPrice,
-  useMphPrice,
-  useOnePrice,
-  usePicklePrice,
-  useRulerPrice,
-  useStakePrice,
   useSushiPairs,
   useSushiPrice,
-  useTruPrice,
-  useYggPrice,
 } from '../../services/graph'
 
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId, WNATIVE } from '@mistswapdex/sdk'
 import Container from '../../components/Container'
 import FarmList from '../../features/onsen/FarmList'
 import Head from 'next/head'
@@ -61,12 +50,9 @@ export default function Farm(): JSX.Element {
 
   // TODO: Obviously need to sort this out but this is fine for time being,
   // prices are only loaded when needed for a specific network
-  const [sushiPrice, ethPrice, maticPrice, stakePrice, onePrice] = [
+  const [sushiPrice, ethPrice] = [
     useSushiPrice(),
     useEthPrice(),
-    useMaticPrice(),
-    useStakePrice(),
-    useOnePrice(),
   ]
 
   const blocksPerDay = 86400 / Number(averageBlockTime)

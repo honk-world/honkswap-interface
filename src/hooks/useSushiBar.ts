@@ -3,6 +3,7 @@ import { Currency, CurrencyAmount, Token } from '@mistswapdex/sdk'
 import { useCallback } from 'react'
 import { useSushiBarContract } from './useContract'
 import { useTransactionAdder } from '../state/transactions/hooks'
+import { getGasPrice } from '../functions/trade'
 
 const useSushiBar = () => {
   const addTransaction = useTransactionAdder()
@@ -12,8 +13,10 @@ const useSushiBar = () => {
     async (amount: CurrencyAmount<Token> | undefined) => {
       if (amount?.quotient) {
         try {
-          const tx = await barContract?.enter(amount?.quotient.toString())
-          return addTransaction(tx, { summary: 'Enter SushiBar' })
+          const tx = await barContract?.enter(amount?.quotient.toString(), {
+            gasPrice: getGasPrice(),
+          })
+          return addTransaction(tx, { summary: 'Staked MIST' })
         } catch (e) {
           return e
         }
@@ -26,8 +29,10 @@ const useSushiBar = () => {
     async (amount: CurrencyAmount<Token> | undefined) => {
       if (amount?.quotient) {
         try {
-          const tx = await barContract?.leave(amount?.quotient.toString())
-          return addTransaction(tx, { summary: 'Leave SushiBar' })
+          const tx = await barContract?.leave(amount?.quotient.toString(), {
+            gasPrice: getGasPrice(),
+          })
+          return addTransaction(tx, { summary: 'Unstaked MIST' })
         } catch (e) {
           return e
         }

@@ -11,7 +11,7 @@ import { Dispatch, useCallback, useEffect, useMemo, useState } from 'react'
 import { useMasterChefContract, useMasterChefV2Contract } from '../../hooks/useContract'
 
 import { Contract } from '@ethersproject/contracts'
-import { SUSHI } from '../../config/tokens'
+import { MIST } from '../../config/tokens'
 import { Zero } from '@ethersproject/constants'
 import concat from 'lodash/concat'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
@@ -88,7 +88,7 @@ export function usePendingSushi(farm) {
 
   const amount = value ? JSBI.BigInt(value.toString()) : undefined
 
-  return amount ? CurrencyAmount.fromRawAmount(SUSHI[chainId], amount) : undefined
+  return amount ? CurrencyAmount.fromRawAmount(MIST[chainId], amount) : undefined
 }
 
 export function usePendingToken(farm, contract) {
