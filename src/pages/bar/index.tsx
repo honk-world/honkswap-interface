@@ -223,13 +223,13 @@ export default function Stake() {
         <div className="flex flex-col justify-center md:flex-row">
           <div className="flex flex-col w-full max-w-xl mx-auto mb-4 md:m-0">
             <div className="mb-4">
+              {/*
               <div className="flex items-center justify-between w-full h-24 max-w-xl p-4 rounded md:pl-5 md:pr-7 bg-light-yellow bg-opacity-40">
                 <div className="flex flex-col">
                   <div className="flex items-center justify-center mb-4 flex-nowrap md:mb-2">
                     <p className="text-sm font-bold whitespace-nowrap md:text-lg md:leading-5 text-high-emphesis">
                       {i18n._(t`Staking APR`)}{' '}
                     </p>
-                    {/* <img className="ml-3 cursor-pointer" src={MoreInfoSymbol} alt={'more info'} /> */}
                   </div>
                   <div className="flex">
                     <a
@@ -254,6 +254,7 @@ export default function Stake() {
                   </p>
                 </div>
               </div>
+              */}
             </div>
             <div>
               <TransactionFailedModal isOpen={modalOpen} onDismiss={() => setModalOpen(false)} />
@@ -287,9 +288,12 @@ export default function Stake() {
                   <p className="font-bold text-large md:text-2xl text-high-emphesis">
                     {activeTab === 0 ? i18n._(t`Stake MIST`) : i18n._(t`Unstake`)}
                   </p>
+                  {/*
                   <div className="border-gradient-r-pink-red-light-brown-dark-pink-red border-transparent border-solid border rounded-3xl px-4 md:px-3.5 py-1.5 md:py-0.5 text-high-emphesis text-xs font-medium md:text-base md:font-normal">
                     {`1 xMIST = ${xSushiPerSushi.toFixed(4)} MIST`}
                   </div>
+                  */
+                  }
                 </div>
 
                 <StyledNumericalInput
@@ -398,7 +402,7 @@ export default function Stake() {
                     />
                     <div className="flex flex-col justify-center">
                       <p className="text-sm font-bold md:text-lg text-high-emphesis">
-                        {xSushiBalance ? xSushiBalance.toSignificant(4) : '-'}
+                        {xSushiBalance ? xSushiBalance.toSignificant(8) : '-'}
                       </p>
                       <p className="text-sm md:text-base text-primary">xMIST</p>
                     </div>
@@ -422,23 +426,15 @@ export default function Stake() {
                     />
                     <div className="flex flex-col justify-center">
                       <p className="text-sm font-bold md:text-lg text-high-emphesis">
-                        {sushiBalance ? sushiBalance.toSignificant(4) : '-'}
+                        {sushiBalance ? sushiBalance.toSignificant(8) : '-'}
                       </p>
                       <p className="text-sm md:text-base text-primary">MIST</p>
                     </div>
                   </div>
                 </div>
 
+                {/*
                 <div className="flex flex-col w-full mb-4 mt-7 md:mb-0">
-                  {/* <div className="flex items-center justify-between">
-                        <div className="flex items-center flex-1 flex-nowrap">
-                            <p className="text-base font-bold md:text-lg text-high-emphesis">Weighted APR</p>
-                            <img className="w-4 ml-2 cursor-pointer" src={MoreInfoSymbol} alt={'more info'} />
-                        </div>
-                        <div className="flex flex-1 md:flex-initial">
-                            <p className="ml-5 text-base text-primary md:ml-0">{`${weightedApr}%`}</p>
-                        </div>
-                    </div> */}
                   {account && (
                     <a
                       href={`https://analytics.mistswap.fi/users/${account}`}
@@ -456,6 +452,7 @@ export default function Stake() {
                     </a>
                   )}
                 </div>
+                */}
               </div>
             </div>
           </div>
