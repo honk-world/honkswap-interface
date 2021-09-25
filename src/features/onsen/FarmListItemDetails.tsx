@@ -198,7 +198,7 @@ const FarmListItem = ({ farm }) => {
                 setPendingTx(false)
               }}
             >
-              {i18n._(t`Harvest ${formatNumber(pendingSushi.toFixed(18))} SUSHI ${
+              {i18n._(t`Harvest ${formatNumber(pendingSushi.toFixed(18))} MIST ${
                 farm.rewards.length > 1 ? `& ${formatNumber(reward)} ${farm.rewards[1].token}` : null
               }
                 `)}
