@@ -11,7 +11,6 @@ type ChainTokenMap = {
   readonly [chainId in ChainId]?: Token
 }
 
-// MIST
 export const MIST: ChainTokenMap = {
   [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, MIST_ADDRESS[ChainId.SMARTBCH], 18, 'MIST', 'MistToken'),
   [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, MIST_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'MIST', 'MistToken'),
@@ -19,4 +18,17 @@ export const MIST: ChainTokenMap = {
 
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {
   ...WETH9,
+}
+
+type ChainTokenMapList = {
+  readonly [chainId in ChainId]?: Token[]
+}
+
+// These are available for migrate
+export const BENSWAP_TOKENS: ChainTokenMapList = {
+  [ChainId.SMARTBCH]: [
+  ],
+  [ChainId.SMARTBCH_AMBER]: [
+    new Token(ChainId.SMARTBCH_AMBER, '0x842692f8A4D0743e942dF5D52155a037327d4f3f', 18, 'EBEN/BCH LP Token', 'EBEN-BCH'),
+  ],
 }

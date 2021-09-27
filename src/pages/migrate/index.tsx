@@ -3,20 +3,25 @@ import { formatUnits, parseUnits } from '@ethersproject/units'
 import { ChainId, JSBI } from '@mistswapdex/sdk'
 import { useSushiRollContract } from '../../hooks/useContract'
 import { useLingui } from '@lingui/react'
+import { t } from '@lingui/macro'
 import React, { useCallback, useEffect, useState } from 'react'
 import { ChevronRight } from 'react-feather'
-import { Button, ButtonConfirmed } from '../../components/Button'
+import styled from 'styled-components'
+import Button from '../../components/Button'
+import { ButtonConfirmed } from '../../components/Button'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
-import { Input } from '../../components/Input'
+import Input from '../../components/Input'
 import QuestionHelper from '../../components/QuestionHelper'
 import Dots from '../../components/Dots'
 import { useActiveWeb3React } from '../../hooks'
+import { tryParseAmount } from '../../functions/parse'
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
 import useMigrateState, { MigrateState } from '../../hooks/useMigrateState'
 import CloseIcon from '../../components/CloseIcon';
 import LPToken from '../../types/LPToken'
 import MetamaskError from '../../types/MetamaskError'
 import Head from 'next/head'
+import Image from 'next/image'
 import Typography from '../../components/Typography'
 import Badge from '../../components/Badge'
 import Container from '../../components/Container'
@@ -24,17 +29,22 @@ import { AutoColumn } from '../../components/Column'
 
 const ZERO = JSBI.BigInt(0)
 
+const StyledNumericalInput = styled(Input.Numeric)`
+  caret-color: #e3e3e3;
+`
+
 const AmountInput = ({ state }: { state: MigrateState }) => {
+    const { i18n } = useLingui()
     const onPressMax = useCallback(() => {
         if (state.selectedLPToken) {
-            let balance = state.selectedLPToken.balance.raw
+            const bal = state.selectedLPToken.balance as CurrencyAmount<Token>
             if (state.selectedLPToken.address === AddressZero) {
                 // Subtract 0.01 ETH for gas fee
                 const fee = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
-                balance = JSBI.greaterThan(balance, fee) ? JSBI.subtract(balance, fee) : ZERO
+                bal = bal.greaterThan(fee) ? bal.subtract(fee) : ZERO
             }
 
-            state.setAmount(formatUnits(balance.toString(), state.selectedLPToken.decimals))
+            state.setAmount(bal.toFixed())
         }
     }, [state])
 
@@ -48,6 +58,15 @@ const AmountInput = ({ state }: { state: MigrateState }) => {
         return null
     }
 
+    const input = state.amount ? state.amount : ''
+
+    const formattedBalance = state.selectedLPToken.balance.toSignificant(4)
+
+    const parsedAmount = tryParseAmount(input, state.selectedLPToken)
+
+    const insufficientAmount = (input && input === '0') || parsedAmount && parsedAmount.greaterThan(state.selectedLPToken.balance)
+    const inputError = insufficientAmount
+
     return (
         <>
             <Typography variant="caption" className="text-secondary">
@@ -55,20 +74,55 @@ const AmountInput = ({ state }: { state: MigrateState }) => {
             </Typography>
 
             <div className="flex items-center relative w-full mb-4">
-                <Input.Numeric
-                    className="w-full p-3 bg-input rounded focus:ring focus:ring-pink"
-                    value={state.amount}
-                    onUserInput={val => state.setAmount(val)}
+              <div class="w-full">
+                <StyledNumericalInput
+                  value={input}
+                  onUserInput={val => state.setAmount(val)}
+                  className={`w-full h-14 px-3 md:px-5 mt-5 rounded bg-dark-800 text-sm md:text-lg font-bold text-dark-800 whitespace-nowrap${
+                    inputError ? ' pl-9 md:pl-12' : ''
+                  }`}
+                  placeholder=" "
                 />
-                <Button
-                    variant="outlined"
-                    color="pink"
-                    size="small"
-                    onClick={onPressMax}
-                    className="absolute right-4 focus:ring focus:ring-pink"
-                >
-                    MAX
-                </Button>
+                {/* input overlay: */}
+                <div className="relative w-full h-0 pointer-events-none bottom-14">
+                  <div
+                    className={`flex justify-between items-center h-14 rounded px-3 md:px-5 ${
+                      inputError ? ' border border-red' : ''
+                    }`}
+                  >
+                    <div className="flex space-x-2 ">
+                      {inputError && (
+                        <Image
+                          className="mr-2 max-w-4 md:max-w-5"
+                          src="/error-triangle.svg"
+                          alt="error"
+                          width="20px"
+                          height="20px"
+                        />
+                      )}
+                      <p
+                        className={`text-sm md:text-lg font-bold whitespace-nowrap ${
+                          input ? 'text-high-emphesis' : 'text-secondary'
+                        }`}
+                      >
+                        {`${input ? input : '0'} LP`}
+                      </p>
+                    </div>
+                    <div className="flex items-center text-sm text-secondary md:text-base">
+                      <div className={input ? 'hidden md:flex md:items-center' : 'flex items-center'}>
+                        <p>{i18n._(t`Balance`)}:&nbsp;</p>
+                        <p className="text-base font-bold">{formattedBalance}</p>
+                      </div>
+                      <button
+                        className="px-2 py-1 ml-3 text-xs font-bold border pointer-events-auto focus:outline-none focus:ring hover:bg-opacity-40 md:bg-cyan-blue md:bg-opacity-30 border-secondary md:border-cyan-blue rounded-2xl md:py-1 md:px-3 md:ml-4 md:text-sm md:font-normal md:text-cyan-blue"
+                        onClick={onPressMax}
+                      >
+                        {i18n._(t`MAX`)}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </>
     )
@@ -154,12 +208,6 @@ const MigrateButtons = ({ state, exchange }: { state: MigrateState; exchange: st
     const sushiRollContract = useSushiRollContract(
         state.selectedLPToken?.version ? state.selectedLPToken?.version : undefined
     )
-    console.log(
-        'sushiRollContract address',
-        sushiRollContract?.address,
-        state.selectedLPToken?.balance,
-        state.selectedLPToken?.version
-    )
 
     const [approval, approve] = useApproveCallback(state.selectedLPToken?.balance, sushiRollContract?.address)
     const noLiquidityTokens = !!state.selectedLPToken?.balance && state.selectedLPToken?.balance.equalTo(ZERO)
@@ -173,10 +221,14 @@ const MigrateButtons = ({ state, exchange }: { state: MigrateState; exchange: st
         return <span />
     }
 
-    const insufficientAmount = JSBI.lessThan(
-        state.selectedLPToken.balance.raw,
-        JSBI.BigInt(parseUnits(state.amount || '0', state.selectedLPToken.decimals).toString())
-    )
+    const input = state.amount ? state.amount : ''
+
+    const formattedBalance = state.selectedLPToken.balance.toSignificant(4)
+
+    const parsedAmount = tryParseAmount(input, state.selectedLPToken)
+
+    const insufficientAmount = parsedAmount && parsedAmount.greaterThan(state.selectedLPToken.balance)
+    const inputError = insufficientAmount
 
     const onPress = async () => {
         setError({})
@@ -199,7 +251,7 @@ const MigrateButtons = ({ state, exchange }: { state: MigrateState; exchange: st
                     <div className="flex justify-between">
                         <div className="text-sm text-secondary">
                             Balance:{' '}
-                            <span className="text-primary">{state.selectedLPToken.balance.toSignificant(4)}</span>
+                            <span className="text-primary">{formattedBalance}</span>
                         </div>
                     </div>
                     {state.mode === 'approve' && (
@@ -261,7 +313,7 @@ const ExchangeLiquidityPairs = ({ state, exchange }: { state: MigrateState; exch
     return (
         <>
             {state.lpTokens.reduce<JSX.Element[]>((acc, lpToken) => {
-                if (lpToken.balance && JSBI.greaterThan(lpToken.balance.raw, JSBI.BigInt(0))) {
+                if ((lpToken.balance as CurrencyAmount<Token>).greaterThan(0)) {
                     acc.push(
                         <LPTokenSelect
                             lpToken={lpToken}

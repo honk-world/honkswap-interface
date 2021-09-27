@@ -1,13 +1,11 @@
-import { ChainId, Token, TokenAmount } from "@mistswapdex/sdk";
-import {
-  useBoringHelperContract,
-  // useDashboardContract,
-  // useQuickSwapFactoryContract,
-} from "../hooks/useContract";
+import { ChainId, Token, CurrencyAmount } from "@mistswapdex/sdk";
+import { BENSWAP_TOKENS } from '../config/tokens'
+import { useTokenBalances } from '../state/wallet/hooks'
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { getAddress } from "@ethersproject/address";
 import { useActiveWeb3React } from "../hooks/useActiveWeb3React";
+import { getAddress } from "@ethersproject/address";
+import { isAddress } from '../functions/validate'
 
 import { ethers } from "ethers";
 
@@ -16,8 +14,7 @@ export interface LPToken {
   address: string;
   tokenA: Token;
   tokenB: Token;
-  totalSupply: ethers.BigNumber;
-  balance: TokenAmount;
+  balance: CurrencyAmount<Currency>;
   name?: string;
   symbol?: string;
   decimals?: number;
@@ -37,106 +34,54 @@ export interface LPTokensState {
 
 const useLPTokensState = () => {
   const { account, chainId } = useActiveWeb3React();
-  // const boringHelperContract = useBoringHelperContract();
-  // const dashboardContract = useDashboardContract();
-  // const quickSwapFactoryContract = useQuickSwapFactoryContract();
   const [lpTokens, setLPTokens] = useState<LPToken[]>([]);
   const [selectedLPToken, setSelectedLPToken] = useState<LPToken>();
   const [selectedLPTokenAllowed, setSelectedLPTokenAllowed] = useState(false);
   const [loading, setLoading] = useState(true);
   const updatingLPTokens = useRef(false);
+
+  const relevantTokenBalances = useTokenBalances(account ?? undefined, BENSWAP_TOKENS[chainId])
+  // const userLiquidity: CurrencyAmount<Token> = relevantTokenBalances?.[pair?.liquidityToken?.address ?? '']
+  console.log('relevantTokenBalances', relevantTokenBalances);
+
   const updateLPTokens = useCallback(async () => {
     try {
       updatingLPTokens.current = true;
-      if (chainId && [ChainId.SMARTBCH].includes(chainId)) {
-        /*
-        const requests: any = {
-          [ChainId.SMARTBCHMAINNET]: [
-            `https://api.covalenthq.com/v1/${ChainId.SMARTBCHMAINNET}/address/${String(
-              account
-            ).toLowerCase()}/stacks/uniswap_v2/balances/?key=ckey_cba3674f2ce5450f9d5dd290589`,
-          ],
-        };
 
-        const responses: any = await Promise.all(
-          requests[chainId].map((request: any) => fetch(request))
-        );
+      const lpTokens: LPToken[] = [];
 
-        let userLP = [];
+      for (const [address, obj] of Object.entries(relevantTokenBalances)) {
+        let data = {
+          address: getAddress(address),
+          decimals: obj.currency.decimals,
+          name: obj.currency.name,
+          symbol: obj.currency.symbol,
+          balance: obj as CurrencyAmount<Token>,
+          version: "v2",
+        } as LPToken;
+        console.log(data)
 
-        if (chainId === ChainId.SMARTBCH) {
-          const { data } = await responses[0].json();
-          userLP = data?.["uniswap_v2"]?.balances
-            ?.filter((balance: any) => balance.pool_token.balance !== "0")
-            .map((balance: any) => ({
-              ...balance,
-              version: "v2",
-            }));
+        const benswapPairs = {
+          [ChainId.SMARTBCH]: {
+          },
+          [ChainId.SMARTBCH_AMBER]: {
+            '0x842692f8A4D0743e942dF5D52155a037327d4f3f': {
+              tokenA: new Token(chainId as ChainId, '0x77beB0D017C743eCa0d22951A3b051A17D50f108', 18, 'EBEN', 'EBEN'),
+              tokenB: new Token(chainId as ChainId, '0x17F4FCF5b6E0A95D4eE331c8529041896A073F9b', 18, 'BCH', 'BCH'),
+            },
+          },
         }
 
-        const tokenDetails = (
-          await dashboardContract?.getTokenInfo(
-            Array.from(
-              new Set(
-                userLP?.reduce(
-                  (a: any, b: any) =>
-                    a.push(
-                      b.pool_token.contract_address,
-                      b.token_0.contract_address,
-                      b.token_1.contract_address
-                    ) && a,
-                  []
-                )
-              )
-            )
-          )
-        )?.reduce((acc: any, cur: any) => {
-          acc[cur[0]] = cur;
-          return acc;
-        }, {});
-
-        const lpTokens = userLP?.map((pair: any, index: number) => {
-          const token = new Token(
-            chainId as ChainId,
-            getAddress(pair.pool_token.contract_address),
-            tokenDetails[getAddress(pair.pool_token.contract_address)].decimals,
-            tokenDetails[getAddress(pair.pool_token.contract_address)].symbol,
-            tokenDetails[getAddress(pair.pool_token.contract_address)].name
-          );
-          const tokenA =
-            tokenDetails[getAddress(pair.token_0.contract_address)];
-          const tokenB =
-            tokenDetails[getAddress(pair.token_1.contract_address)];
-
-          return {
-            address: getAddress(pair.pool_token.contract_address),
-            decimals: token.decimals,
-            name: `${tokenA.symbol}-${tokenB.symbol} LP Token`,
-            symbol: `${tokenA.symbol}-${tokenB.symbol}`,
-            balance: new TokenAmount(token, pair.pool_token.balance),
-            totalSupply: pair.pool_token.total_supply,
-            tokenA: new Token(
-              chainId as ChainId,
-              tokenA.token,
-              tokenA.decimals,
-              tokenA.symbol,
-              tokenA.name
-            ),
-            tokenB: new Token(
-              chainId as ChainId,
-              tokenB.token,
-              tokenB.decimals,
-              tokenB.symbol,
-              tokenB.name
-            ),
-            version: pair.version,
-          } as LPToken;
-        });
-        if (lpTokens) {
-          setLPTokens(lpTokens);
+        if (benswapPairs[chainId] && benswapPairs[chainId][address]) {
+          console.log('PAIR FOUND')
+          data.tokenA = benswapPairs[chainId][address].tokenA;
+          data.tokenB = benswapPairs[chainId][address].tokenB;
         }
-        */
+
+        lpTokens.push(data)
       }
+
+      setLPTokens(lpTokens);
     } finally {
       setLoading(false);
       updatingLPTokens.current = false;
@@ -144,21 +89,17 @@ const useLPTokensState = () => {
   }, [
     chainId,
     account,
-    // boringHelperContract,
-    // dashboardContract,
-    // quickSwapFactoryContract,
   ]);
 
   useEffect(() => {
     if (
       chainId &&
       account &&
-      // boringHelperContract &&
       !updatingLPTokens.current
     ) {
       updateLPTokens();
     }
-  }, [account, chainId, /* boringHelperContract,*/ updateLPTokens]);
+  }, [account, chainId, updateLPTokens]);
 
   return {
     updateLPTokens,
