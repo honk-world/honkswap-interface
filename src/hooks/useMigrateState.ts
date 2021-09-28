@@ -54,6 +54,8 @@ const useMigrateState: () => MigrateState = () => {
 
       if (chainId === ChainId.SMARTBCH) {
         exchange = "BenSwap";
+      } else if (chainId === ChainId.SMARTBCH_AMBER) {
+        exchange = "BenSwap Amber";
       }
 
       addTransaction(tx, {
