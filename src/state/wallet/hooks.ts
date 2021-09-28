@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, SmartBCH, JSBI, Token } from '@mistswapdex/sdk'
+import { Currency, CurrencyAmount, NATIVE, JSBI, Token } from '@mistswapdex/sdk'
 import { useMultipleContractSingleData, useSingleContractMultipleData } from '../multicall/hooks'
 
 import ERC20_ABI from '../../constants/abis/erc20.json'
@@ -41,7 +41,7 @@ export function useETHBalances(uncheckedAddresses?: (string | undefined)[]): {
       addresses.reduce<{ [address: string]: CurrencyAmount<Currency> }>((memo, address, i) => {
         const value = results?.[i]?.result?.[0]
         if (value && chainId)
-          memo[address] = CurrencyAmount.fromRawAmount(SmartBCH.onChain(chainId), JSBI.BigInt(value.toString()))
+          memo[address] = CurrencyAmount.fromRawAmount(NATIVE[chainId], JSBI.BigInt(value.toString()))
         return memo
       }, {}),
     [addresses, chainId, results]
