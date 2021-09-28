@@ -61,6 +61,10 @@ input:focus {
   background: repeating-linear-gradient(45deg, #161522, #161522 10px, #0d0415 10px, #0d0415 20px);
 }
 
+.percent-translate {
+  translate: -40px;
+}
+
 /* *::-webkit-scrollbar {
   width: var(--scrollbar-width);
 }

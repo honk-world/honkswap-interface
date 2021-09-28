@@ -23,7 +23,7 @@ export default function PercentInputPanel({ value, onUserInput, id }: PercentInp
             }}
             align="right"
           />
-          <div className="pl-2 text-xl font-bold">%</div>
+          <div className="text-xl font-bold percent-translate">%</div>
         </div>
       </div>
     </div>
