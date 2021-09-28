@@ -187,7 +187,6 @@ export default function Add() {
     try {
       const estimatedGasLimit = await estimate(...args, {
         ...(value ? { value } : {}),
-        from: '0x8370DAE31693A8BbB9630b7052de52aCBcEC7525',
         gasPrice: getGasPrice(),
       });
 
