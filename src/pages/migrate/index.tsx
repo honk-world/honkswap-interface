@@ -74,7 +74,7 @@ const AmountInput = ({ state }: { state: MigrateState }) => {
             </Typography>
 
             <div className="flex items-center relative w-full mb-4">
-              <div class="w-full">
+              <div className="w-full">
                 <StyledNumericalInput
                   value={input}
                   onUserInput={val => state.setAmount(val)}
