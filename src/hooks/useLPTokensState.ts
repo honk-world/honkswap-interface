@@ -41,8 +41,6 @@ const useLPTokensState = () => {
   const updatingLPTokens = useRef(false);
 
   const relevantTokenBalances = useTokenBalances(account ?? undefined, BENSWAP_TOKENS[chainId])
-  // const userLiquidity: CurrencyAmount<Token> = relevantTokenBalances?.[pair?.liquidityToken?.address ?? '']
-  console.log('relevantTokenBalances', relevantTokenBalances);
 
   const updateLPTokens = useCallback(async () => {
     try {
@@ -59,7 +57,6 @@ const useLPTokensState = () => {
           balance: obj as CurrencyAmount<Token>,
           version: "v2",
         } as LPToken;
-        console.log(data)
 
         const benswapPairs = {
           [ChainId.SMARTBCH]: {
