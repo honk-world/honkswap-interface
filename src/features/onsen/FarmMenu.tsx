@@ -10,6 +10,7 @@ const Menu = ({ positionsLength }) => {
 
   return (
     <div className="space-y-4">
+      {/*
       {account ? (
         <NavLink
           exact
@@ -30,6 +31,7 @@ const Menu = ({ positionsLength }) => {
       )}
 
       <div className="w-full h-0 font-bold bg-transparent border border-b-0 border-transparent rounded text-high-emphesis md:border-gradient-r-blue-pink-dark-800 opacity-20" />
+      */}
 
       <NavLink
         exact
