@@ -17,36 +17,16 @@ const items = (i18n: I18n) => [
     external: true,
   },
   {
-    name: i18n._(t`Dev`),
-    description: i18n._(t`Documentation for developers of MIST.`),
-    href: 'https://dev.mistswap.fi',
-    external: true,
-  },
-  {
     name: i18n._(t`Open Source`),
     description: i18n._(t`MIST is a supporter of Open Source.`),
     href: 'https://github.com/mistswapdex',
     external: true,
   },
   {
-    name: i18n._(t`Tools`),
-    description: i18n._(t`Tools to optimize your workflow.`),
-    href: '/tools',
-    external: false,
-  },
-  /*
-  {
     name: i18n._(t`Discord`),
     description: i18n._(t`Join the community on Discord.`),
-    href: 'https://discord.gg/NVPXN4e',
+    href: 'https://discord.gg/89NADr3Fkr',
     external: true,
-  },
-  */
-  {
-    name: i18n._(t`Vesting`),
-    description: i18n._(t`Weekly unlocks from the vesting period.`),
-    href: '/vesting',
-    external: false,
   },
 ]
 
