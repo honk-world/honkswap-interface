@@ -45,6 +45,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     href: null,
     color: '#E8831D',
   },
+  /*
   WALLET_CONNECT: {
     connector: async () => {
       const WalletConnectConnector = (await import('@web3-react/walletconnect-connector')).WalletConnectConnector
@@ -178,4 +179,5 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     color: '#F0B90B',
     mobile: true,
   },
+  */
 }
