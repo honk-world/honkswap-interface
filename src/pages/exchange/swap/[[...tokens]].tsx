@@ -1,5 +1,4 @@
 import {
-  ARCHER_ROUTER_ADDRESS,
   ChainId,
   Currency,
   CurrencyAmount,
@@ -33,7 +32,6 @@ import {
 import { useNetworkModalToggle, useToggleSettingsMenu, useWalletModalToggle } from '../../../state/application/hooks'
 import useWrapCallback, { WrapType } from '../../../hooks/useWrapCallback'
 
-import { ARCHER_RELAY_URI } from '../../../config/archer'
 import AddressInputPanel from '../../../components/AddressInputPanel'
 import { AdvancedSwapDetails } from '../../../features/exchange-v1/swap/AdvancedSwapDetails'
 import AdvancedSwapDetailsDropdown from '../../../features/exchange-v1/swap/AdvancedSwapDetailsDropdown'
@@ -122,7 +120,7 @@ export default function Swap() {
   const [archerGasPrice] = useUserArcherGasPrice()
 
   // archer
-  const archerRelay = chainId ? ARCHER_RELAY_URI?.[chainId] : undefined
+  const archerRelay = undefined
   // const doArcher = archerRelay !== undefined && useArcher
   const doArcher = undefined
 

@@ -7,11 +7,11 @@ import { request } from 'graphql-request'
 
 export const BLOCKS = {}
 
-export const fetcher = async (chainId = ChainId.MAINNET, query, variables = undefined) => {
+export const fetcher = async (chainId = ChainId.SMARTBCH, query, variables = undefined) => {
   return request(`${GRAPH_HOST[chainId]}/subgraphs/name/${BLOCKS[chainId]}`, query, variables)
 }
 
-export const getBlock = async (chainId = ChainId.MAINNET, timestamp: number) => {
+export const getBlock = async (chainId = ChainId.SMARTBCH, timestamp: number) => {
   const { blocks } = await fetcher(
     chainId,
     blockQuery,
@@ -28,7 +28,7 @@ export const getBlock = async (chainId = ChainId.MAINNET, timestamp: number) => 
   return Number(blocks?.[0]?.number)
 }
 
-export const getBlocks = async (chainId = ChainId.MAINNET, start, end) => {
+export const getBlocks = async (chainId = ChainId.SMARTBCH, start, end) => {
   const { blocks } = await fetcher(chainId, blocksQuery, {
     start,
     end,
@@ -36,7 +36,7 @@ export const getBlocks = async (chainId = ChainId.MAINNET, start, end) => {
   return blocks
 }
 
-export const getMassBlocks = async (chainId = ChainId.MAINNET, timestamps) => {
+export const getMassBlocks = async (chainId = ChainId.SMARTBCH, timestamps) => {
   const data = await fetcher(chainId, massBlocksQuery(timestamps))
   return Object.values(data).map((entry) => ({
     number: Number(entry[0].number),
@@ -46,7 +46,7 @@ export const getMassBlocks = async (chainId = ChainId.MAINNET, timestamps) => {
 
 // Grabs the last 1000 (a sample statistical) blocks and averages
 // the time difference between them
-export const getAverageBlockTime = async (chainId = ChainId.MAINNET) => {
+export const getAverageBlockTime = async (chainId = ChainId.SMARTBCH) => {
   // console.log('getAverageBlockTime')
   const now = startOfHour(Date.now())
   const start = getUnixTime(subHours(now, 6))

@@ -5,7 +5,7 @@ import { Field, setFromBentoBalance } from '../../../state/limit-order/actions'
 import React, { FC, useCallback, useState } from 'react'
 import { useAddPopup, useWalletModalToggle } from '../../../state/application/hooks'
 import { useDerivedLimitOrderInfo, useLimitOrderState } from '../../../state/limit-order/hooks'
-import useLimitOrderApproveCallback, { BentoApprovalState } from '../../../hooks/useLimitOrderApproveCallback'
+// import useLimitOrderApproveCallback, { BentoApprovalState } from '../../../hooks/useLimitOrderApproveCallback'
 
 import Alert from '../../../components/Alert'
 import { AppDispatch } from '../../../state'
@@ -24,6 +24,7 @@ interface LimitOrderButtonProps extends ButtonProps {
 }
 
 const LimitOrderButton: FC<LimitOrderButtonProps> = ({ currency, color, ...rest }) => {
+  /*
   const { i18n } = useLingui()
   const { account, chainId, library } = useActiveWeb3React()
   const dispatch = useDispatch<AppDispatch>()
@@ -192,6 +193,12 @@ const LimitOrderButton: FC<LimitOrderButtonProps> = ({ currency, color, ...rest 
         />
       )}
       {button}
+    </div>
+  )
+  */
+
+  return (
+    <div className="flex flex-col flex-1">
     </div>
   )
 }

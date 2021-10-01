@@ -1,9 +1,7 @@
 import {
-  ARCHER_ROUTER_ADDRESS,
   BAR_ADDRESS,
   BENTOBOX_ADDRESS,
   BORING_HELPER_ADDRESS,
-  CHAINLINK_ORACLE_ADDRESS,
   ChainId,
   ENS_REGISTRAR_ADDRESS,
   FACTORY_ADDRESS,
@@ -11,13 +9,11 @@ import {
   MAKER_ADDRESS,
   MASTERCHEF_ADDRESS,
   MASTERCHEF_V2_ADDRESS,
-  MERKLE_DISTRIBUTOR_ADDRESS,
   MULTICALL2_ADDRESS,
   ROUTER_ADDRESS,
   STOP_LIMIT_ORDER_ADDRESS,
   MIST_ADDRESS,
   MISTROLL_ADDRESS,
-  TIMELOCK_ADDRESS,
   WNATIVE_ADDRESS,
 } from '@mistswapdex/sdk'
 import {
@@ -25,11 +21,9 @@ import {
   ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS,
 } from '../constants/abis/argent-wallet-detector'
 
-import ARCHER_ROUTER_ABI from '../constants/abis/archer-router.json'
 import BAR_ABI from '../constants/abis/bar.json'
 import BENTOBOX_ABI from '../constants/abis/bentobox.json'
 import BORING_HELPER_ABI from '../constants/abis/boring-helper.json'
-import CHAINLINK_ORACLE_ABI from '../constants/abis/chainlink-oracle.json'
 import CLONE_REWARDER_ABI from '../constants/abis/clone-rewarder.json'
 import COMPLEX_REWARDER_ABI from '../constants/abis/complex-rewarder.json'
 import { Contract } from '@ethersproject/contracts'
@@ -45,12 +39,10 @@ import LIMIT_ORDER_HELPER_ABI from '../constants/abis/limit-order-helper.json'
 import MAKER_ABI from '../constants/abis/maker.json'
 import MASTERCHEF_ABI from '../constants/abis/masterchef.json'
 import MASTERCHEF_V2_ABI from '../constants/abis/masterchef-v2.json'
-import MERKLE_DISTRIBUTOR_ABI from '../constants/abis/merkle-distributor.json'
 import MULTICALL2_ABI from '../constants/abis/multicall2.json'
 import ROUTER_ABI from '../constants/abis/router.json'
 import SUSHI_ABI from '../constants/abis/sushi.json'
 import SUSHIROLL_ABI from "@mistswapdex/core/abi/SushiRoll.json";
-import TIMELOCK_ABI from '../constants/abis/timelock.json'
 import WETH9_ABI from '../constants/abis/weth.json'
 import ZENKO_ABI from '../constants/abis/zenko.json'
 import { getContract } from '../functions/contract'
@@ -88,7 +80,7 @@ export function useWETH9Contract(withSignerIfPossible?: boolean): Contract | nul
 export function useArgentWalletDetectorContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(
-    chainId === ChainId.MAINNET ? ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS : undefined,
+    undefined,
     ARGENT_WALLET_DETECTOR_ABI,
     false
   )
@@ -112,8 +104,7 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 }
 
 export function useMerkleDistributorContract(): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(chainId ? MERKLE_DISTRIBUTOR_ADDRESS[chainId] : undefined, MERKLE_DISTRIBUTOR_ABI, true)
+  throw new Error('useMerkleDistributorContract disabled');
 }
 
 export function useBoringHelperContract(): Contract | null {
@@ -162,8 +153,7 @@ export function useMakerContract(): Contract | null {
 }
 
 export function useTimelockContract(): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(chainId && TIMELOCK_ADDRESS[chainId], TIMELOCK_ABI, false)
+  throw new Error('useTimelockContract disabled');
 }
 
 export function useBentoBoxContract(withSignerIfPossible?: boolean): Contract | null {
@@ -172,8 +162,7 @@ export function useBentoBoxContract(withSignerIfPossible?: boolean): Contract | 
 }
 
 export function useChainlinkOracle(): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(chainId && CHAINLINK_ORACLE_ADDRESS[chainId], CHAINLINK_ORACLE_ABI, false)
+  throw new Error('useChainlinkOracle disabled');
 }
 
 export function useSushiRollContract(): Contract | null {

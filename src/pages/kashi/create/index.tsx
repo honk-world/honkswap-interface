@@ -1,4 +1,4 @@
-import { CHAINLINK_ORACLE_ADDRESS, Currency, KASHI_ADDRESS } from '@mistswapdex/sdk'
+import { /* CHAINLINK_ORACLE_ADDRESS,*/ Currency, KASHI_ADDRESS } from '@mistswapdex/sdk'
 import React, { useCallback } from 'react'
 import { useCreateActionHandlers, useCreateState, useDerivedCreateInfo } from '../../../state/create/hook'
 
@@ -123,7 +123,7 @@ function Create() {
         return
       }
 
-      const oracleAddress = CHAINLINK_ORACLE_ADDRESS[chainId]
+      const oracleAddress = undefined // CHAINLINK_ORACLE_ADDRESS[chainId]
 
       const kashiData = defaultAbiCoder.encode(
         ['address', 'address', 'address', 'bytes'],

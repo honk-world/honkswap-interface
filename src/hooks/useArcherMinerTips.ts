@@ -33,7 +33,7 @@ export default function useArcherMinerTips(): { status: string; data: T } {
       setData(json.data as T)
       setStatus('fetched')
     }
-    if (chainId == 1) fetchData()
+    // if (chainId == 1) fetchData()
   }, [])
 
   return { status, data }

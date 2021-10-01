@@ -1,6 +1,6 @@
 import { ExchangeRateCheckBox, SwapCheckbox } from './Checkbox'
 import { KashiApproveButton, TokenApproveButton } from './Button'
-import { Percent, SUSHISWAP_MULTISWAPPER_ADDRESS, WNATIVE } from '@mistswapdex/sdk'
+import { Percent, /*SUSHISWAP_MULTISWAPPER_ADDRESS,*/ WNATIVE } from '@mistswapdex/sdk'
 import React, { useMemo, useState } from 'react'
 import { Warning, Warnings } from '../../entities/Warnings'
 import { ZERO, e10, maximum, minimum } from '../../functions/math'
@@ -242,6 +242,7 @@ export default function Borrow({ pair }: BorrowProps) {
   async function onExecute(cooker: KashiCooker): Promise<string> {
     let summary = ''
 
+    /*
     if (borrowValueSet) {
       if (displayUpdateOracle) {
         cooker.updateExchangeRate(true, ZERO, ZERO)
@@ -312,6 +313,7 @@ export default function Borrow({ pair }: BorrowProps) {
     } else if (borrowValueSet) {
       summary = trade ? 'Borrow, swap and add as collateral' : 'Borrow'
     }
+    */
 
     return summary
   }

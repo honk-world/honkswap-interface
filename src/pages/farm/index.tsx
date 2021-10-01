@@ -12,7 +12,8 @@ import {
 } from '../../services/graph'
 
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId, WNATIVE } from '@mistswapdex/sdk'
+import { ChainId, WNATIVE, Token, WETH9, MASTERCHEF_ADDRESS } from '@mistswapdex/sdk'
+import { MIST, FLEXUSD } from '../../config/tokens'
 import Container from '../../components/Container'
 import FarmList from '../../features/onsen/FarmList'
 import Head from 'next/head'
@@ -32,121 +33,125 @@ export default function Farm(): JSX.Element {
 
   const type = router.query.filter == null ? 'all' : (router.query.filter as string)
 
-  // const pairAddresses = useFarmPairAddresses()
+  const WBCH = WETH9;
+  // WBCH[ChainId.SMARTBCH].symbol = "BCH";
+  // WBCH[ChainId.SMARTBCH_AMBER].symbol = "BCH";
+  const hardcodedPairs = {
+    [ChainId.SMARTBCH]: {
+      "0x0000000000000000000000000000000000000000": {
+        farmId: 0,
+        allocPoint: 750,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: MIST[ChainId.SMARTBCH],
+      },
+      "0x0000000000000000000000000000000000000007": {
+        farmId: 0,
+        allocPoint: 100,
+        token0: MIST[ChainId.SMARTBCH],
+        token1: FLEXUSD,
+      },
+      "0x0000000000000000000000000000000000000001": {
+        farmId: 0,
+        allocPoint: 50,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: FLEXUSD,
+      },
+      "0x0000000000000000000000000000000000000002": {
+        farmId: 0,
+        allocPoint: 25,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0xff3ed63bf8bc9303ea0a7e1215ba2f82d569799e', 18, 'ORB', 'ORB'),
+      },
+      "0x0000000000000000000000000000000000000003": {
+        farmId: 0,
+        allocPoint: 25,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0xc70c7718C7f1CCd906534C2c4a76914173EC2c44', 18, 'KNUTH', 'Knuth'),
+      },
+      "0x0000000000000000000000000000000000000004": {
+        farmId: 0,
+        allocPoint: 25,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0xe11829a7d5d8806bb36e118461a1012588fafd89', 18, 'SPICE', 'SPICE'),
+      },
+      "0x0000000000000000000000000000000000000005": {
+        farmId: 0,
+        allocPoint: 25,
+        token0: MIST[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben'),
+      },
+      "0x0000000000000000000000000000000000000006": {
+        farmId: 0,
+        allocPoint: 25,
+        token0: MIST[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 18, 'CATS', 'Cash Cats'),
+      },
+    },
+    [ChainId.SMARTBCH_AMBER]: {
+      "0x07DE6fc05597E0E4c92C83637A8a0CA411f3a769": {
+        farmId: 0,
+        allocPoint: 1000,
+        token0: WBCH[ChainId.SMARTBCH_AMBER],
+        token1: new Token(ChainId.SMARTBCH_AMBER, '0xC6F80cF669Ab9e4BE07B78032b4821ed5612A9ce', 18, 'sc', 'testcoin2'),
+      },
+    }
+  };
 
-  // const swapPairs = useSushiPairs({ subset: pairAddresses, shouldFetch: !!pairAddresses })
-  const swapPairs = [
-    {
-      id: "0xDB70603f600a3eab200bA0F08fbDca467bD5a1D5",
-      reserve0: "5708.95616801",
-      reserve1: "81415.395776750428407421",
-      reserveETH: "162830.791553500856814842",
-      reserveUSD: "510584588.0507161230997462761469069",
+  const kashiPairs = [] // unused
+  const swapPairs = []
+  const farms = []
+
+  for (const [pairAddress, pair] of Object.entries(hardcodedPairs[chainId])) {
+    swapPairs.push({
+      id: pairAddress,
+      reserveUSD: "100000",
+      totalSupply: "1000",
       timestamp: "1599830986",
       token0: {
-        derivedETH: "14.26099507173652177472868535470121",
-        id: "0x17F4FCF5b6E0A95D4eE331c8529041896A073F9b",
-        name: "Bitcoin Cash",
-        symbol: "BCH",
-        totalSupply: "17720",
-        token0Price: "0.07012133409833881784416110848389942",
+        id: pair.token0.address,
+        name: pair.token0.name,
+        symbol: pair.token0.symbol,
       },
       token1: {
-        derivedETH: "1",
-        id: "0xD22D61c9c44d13F286Cd7109b3F3e5A4A51914cB",
-        name: "MistToken",
-        symbol: "MIST",
-        totalSupply: "17720",
-        token1Price: "14.26099507173652177472868535470121",
+        id: pair.token1.address,
+        name: pair.token1.name,
+        symbol: pair.token1.symbol,
       },
-      totalSupply: "0.008844376345923753",
-      trackedReserveETH: "162830.791553500856814842",
-      txCount: "152817",
-      untrackedVolumeUSD: "10413947170.78512043307707605351976",
-      volumeUSD: "10413947170.78512043307707605351976",
-    },
-    {
-      id: "0x9A520C877c62aB833276F6FD871D61898aFE0896",
-      reserve0: "5708.95616801",
-      reserve1: "81415.395776750428407421",
-      reserveETH: "162830.791553500856814842",
-      reserveUSD: "510584588.0507161230997462761469069",
-      timestamp: "1599830986",
-      token0: {
-        derivedETH: "14.26099507173652177472868535470121",
-        id: "0x17F4FCF5b6E0A95D4eE331c8529041896A073F9b",
-        name: "Bitcoin Cash",
-        symbol: "BCH",
-        totalSupply: "17720",
-        token0Price: "0.07012133409833881784416110848389942",
-      },
-      token1: {
-        derivedETH: "1",
-        id: "0x74D6635eEeBdB79d02f0BFebc1C4bE25e94Ac27a",
-        name: "tc",
-        symbol: "TC",
-        totalSupply: "17720",
-        token1Price: "14.26099507173652177472868535470121",
-      },
-      totalSupply: "0.008844376345923753",
-      trackedReserveETH: "162830.791553500856814842",
-      txCount: "152817",
-      untrackedVolumeUSD: "10413947170.78512043307707605351976",
-      volumeUSD: "10413947170.78512043307707605351976",
-    },
-  ]
+    })
 
-  const kashiPairs = []
-
-  // const farms = useFarms()
-  const farms = [
-    {
-      accSushiPerShare: "3052662329655",
-      allocPoint: 1000,
-      balance: "64614248892144580651",
+    farms.push({
+      pair: pairAddress,
+      allocPoint: pair.allocPoint,
+      balance: "1000000000000000000",
       chef: 0,
-      id: 1,
-      lastRewardBlock: "750000",
+      id: pair.farmId,
       owner: {
-          id: "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd",
-          sushiPerBlock: "100000000000000000000",
-          totalAllocPoint: "238028"
+        id: MASTERCHEF_ADDRESS[chainId],
+        sushiPerBlock: "1000000000000000000000",
+        totalAllocPoint: "1000"
       },
-      pair: "0xDB70603f600a3eab200bA0F08fbDca467bD5a1D5",
-      userCount: 20,
-    },
-    {
-      accSushiPerShare: "3052662329655",
-      allocPoint: 2,
-      balance: "64614248892144580651",
-      chef: 0,
-      id: 0,
-      lastRewardBlock: "750000",
-      owner: {
-          id: "0xc2edad668740f1aa35e4d8f227fb8e17dca888cd",
-          sushiPerBlock: "100000000000000000000",
-          totalAllocPoint: "238028"
-      },
-      pair: "0x9A520C877c62aB833276F6FD871D61898aFE0896",
-      userCount: 20,
-    },
-  ]
+      userCount: 1,
+    })
+  }
 
   const positions = usePositions(chainId)
 
   // const averageBlockTime = useAverageBlockTime()
   const averageBlockTime = 6;
 
-  const masterChefV1TotalAllocPoint = useMasterChefV1TotalAllocPoint()
+  // const masterChefV1TotalAllocPoint = useMasterChefV1TotalAllocPoint()
 
   const masterChefV1SushiPerBlock = useMasterChefV1SushiPerBlock()
 
   // TODO: Obviously need to sort this out but this is fine for time being,
   // prices are only loaded when needed for a specific network
-  const [sushiPrice, ethPrice] = [
+  let [sushiPrice, ethPrice] = [
     useSushiPrice(),
     useEthPrice(),
   ]
+  sushiPrice = "0.000001";
+  ethPrice = "1";
+  console.log('prices', sushiPrice, ethPrice)
 
   const blocksPerDay = 86400 / Number(averageBlockTime)
 
@@ -192,17 +197,15 @@ export default function Farm(): JSX.Element {
     }
 
     const rewards = getRewards()
+    console.log('rewards', rewards)
 
-    const balance = swapPair ? Number(pool.balance / 1e18) : pool.balance / 10 ** kashiPair.token0.decimals
+    const balance = Number(pool.balance / 1e18);
 
-    const tvl = swapPair
-      ? (balance / Number(swapPair.totalSupply)) * Number(swapPair.reserveUSD)
-      : balance * kashiPair.token0.derivedETH * ethPrice
+    const tvl = (balance / Number(swapPair.totalSupply)) * Number(swapPair.reserveUSD);
 
-    const roiPerBlock =
-      rewards.reduce((previousValue, currentValue) => {
-        return previousValue + currentValue.rewardPerBlock * currentValue.rewardPrice
-      }, 0) / tvl
+    const roiPerBlock = rewards.reduce((previousValue, currentValue) => {
+      return previousValue + currentValue.rewardPerBlock * currentValue.rewardPrice
+    }, 0) / tvl
 
     const roiPerHour = roiPerBlock * blocksPerHour
 

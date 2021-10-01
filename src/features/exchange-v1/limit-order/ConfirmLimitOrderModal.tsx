@@ -9,7 +9,7 @@ import CurrencyLogo from '../../../components/CurrencyLogo'
 import { Field } from '../../../state/limit-order/actions'
 import Modal from '../../../components/Modal'
 import { Trans } from '@lingui/react'
-import { USDC } from '@mistswapdex/sdk'
+import { FLEXUSD } from '@mistswapdex/sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
@@ -41,12 +41,12 @@ const ConfirmLimitOrderTopContent = () => {
   const { chainId } = useActiveWeb3React()
 
   const inputUSDC = useUSDCPrice(
-    currencies[Field.INPUT] && chainId in USDC ? currencies[Field.INPUT] : undefined
+    currencies[Field.INPUT] && chainId in FLEXUSD ? currencies[Field.INPUT] : undefined
   )?.toFixed(18)
   const inputValueUSDC = formatNumber(Number(parsedAmounts[Field.INPUT].toSignificant(6)) * Number(inputUSDC))
 
   const outputUSDC = useUSDCPrice(
-    currencies[Field.OUTPUT] && chainId in USDC ? currencies[Field.OUTPUT] : undefined
+    currencies[Field.OUTPUT] && chainId in FLEXUSD ? currencies[Field.OUTPUT] : undefined
   )?.toFixed(18)
   const outputValueUSDC = formatNumber(Number(parsedAmounts[Field.OUTPUT].toSignificant(6)) * Number(outputUSDC))
 

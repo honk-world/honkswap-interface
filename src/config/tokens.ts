@@ -29,6 +29,6 @@ export const BENSWAP_TOKENS: ChainTokenMapList = {
   [ChainId.SMARTBCH]: [
   ],
   [ChainId.SMARTBCH_AMBER]: [
-    new Token(ChainId.SMARTBCH_AMBER, '0x842692f8A4D0743e942dF5D52155a037327d4f3f', 18, 'EBEN/BCH LP Token', 'EBEN-BCH'),
+    new Token(ChainId.SMARTBCH_AMBER, '0x842692f8A4D0743e942dF5D52155a037327d4f3f', 18, 'EBENS/BCH LP Token', 'EBEN-BCH'),
   ],
 }

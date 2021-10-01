@@ -1,4 +1,4 @@
-import useLimitOrderApproveCallback, { BentoApprovalState } from '../../../hooks/useLimitOrderApproveCallback'
+// import useLimitOrderApproveCallback, { BentoApprovalState } from '../../../hooks/useLimitOrderApproveCallback'
 
 import Alert from '../../../components/Alert'
 import { ArrowLeftIcon } from '@heroicons/react/solid'
@@ -16,6 +16,7 @@ import useLimitOrders from '../../../hooks/useLimitOrders'
 import { useLingui } from '@lingui/react'
 
 function OpenOrdersPage() {
+  /*
   const { i18n } = useLingui()
   const [approvalState] = useLimitOrderApproveCallback()
   const { pending } = useLimitOrders()
@@ -55,6 +56,11 @@ function OpenOrdersPage() {
       </div>
     </Container>
   )
+  */
+   return (
+     <Container id="open-order-page" className="py-4 md:py-8 lg:py-12" maxWidth="2xl">
+     </Container>
+   )
 }
 
 export default OpenOrdersPage

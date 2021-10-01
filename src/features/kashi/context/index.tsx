@@ -4,7 +4,7 @@ import {
   KASHI_ADDRESS,
   NATIVE,
   Token,
-  USDC_ADDRESS,
+  FLEXUSD_ADDRESS,
   WNATIVE,
   WNATIVE_ADDRESS,
 } from '@mistswapdex/sdk'
@@ -125,10 +125,10 @@ async function getPairs(bentoBoxContract, chainId: ChainId) {
   let logs = []
   let success = false
   const masterAddress = KASHI_ADDRESS[chainId]
-  if (chainId !== ChainId.BSC && chainId !== ChainId.MATIC) {
+  // if (chainId !== ChainId.BSC && chainId !== ChainId.MATIC) {
     logs = await bentoBoxContract.queryFilter(bentoBoxContract.filters.LogDeploy(masterAddress))
     success = true
-  }
+  // }
   if (!success) {
     logs = (
       (await bentobox.clones({
@@ -197,7 +197,7 @@ export function KashiProvider({ children }) {
 
   const wnative = WNATIVE_ADDRESS[chainId]
 
-  const currency = USDC_ADDRESS[chainId]
+  const currency = FLEXUSD_ADDRESS[chainId]
 
   const boringHelperContract = useBoringHelperContract()
   const bentoBoxContract = useBentoBoxContract()
@@ -218,7 +218,7 @@ export function KashiProvider({ children }) {
     if (
       !account ||
       !chainId ||
-      ![ChainId.MAINNET, ChainId.KOVAN, ChainId.BSC, ChainId.MATIC, ChainId.XDAI, ChainId.ARBITRUM].includes(chainId)
+      ![/*ChainId.MAINNET, ChainId.KOVAN, ChainId.BSC, ChainId.MATIC, ChainId.XDAI, ChainId.ARBITRUM*/].includes(chainId)
     ) {
       return
     }

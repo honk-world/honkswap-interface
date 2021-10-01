@@ -2214,10 +2214,14 @@
   resolved "https://registry.yarnpkg.com/@metamask/safe-event-emitter/-/safe-event-emitter-2.0.0.tgz#af577b477c683fad17c619a78208cede06f9605c"
   integrity sha512-/kSXhY692qiV1MXu6EeOZvg5nECLclxNXcKCxJ3cXQgYuRymRHpdx/t7JXfsK+JLjwA1e1c1/SBrlQYpusC29Q==
 
-"@mistswapdex/core@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@mistswapdex/core/-/core-0.0.1.tgz#b7cad95045011e950f892fd7bca58c025e5d814a"
-  integrity sha512-SM5lWKk56V/nZeR5sRtxxK6T6/f5Xsw6Rf9iImf1N1apZ29FmfwtVMKbDhprk5IhE8GeRmDSEUSWwXxgbI8axw==
+"@mistswapdex/core@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@mistswapdex/core/-/core-0.0.3.tgz#147ed00265e64ba7df0697bcdbf4bde281a764ee"
+  integrity sha512-oKCoQ55YkdVMMR3CoYaYHct4XJ9pE81d3kZuNjXO9S/38XO4U0CryaXGAtYLfYrRJpGjflIWCDTPyPQ3z4uRzQ==
+  dependencies:
+    eip-712 "^0.4.3"
+    patch-package "^6.4.7"
+    postinstall-postinstall "^2.1.0"
 
 "@mistswapdex/default-token-list@0.0.4":
   version "0.0.4"

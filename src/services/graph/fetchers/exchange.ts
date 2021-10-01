@@ -106,11 +106,11 @@ export const getCvxPrice = async (variables = {}) => {
 }
 
 export const getMaticPrice = async (variables = {}) => {
-  // console.log('getMaticPrice')
-  return getTokenPrice(ChainId.MATIC, tokenPriceQuery, {
-    id: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
-    ...variables,
-  })
+  console.log('getMaticPrice')
+  // return getTokenPrice(ChainId.MATIC, tokenPriceQuery, {
+  //   id: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
+  //   ...variables,
+  // })
 }
 
 export const getAlcxPrice = async (variables = {}) => {
@@ -144,18 +144,18 @@ export const getSushiPrice = async (variables = {}) => {
 }
 
 export const getStakePrice = async (variables = {}) => {
-  return getTokenPrice(ChainId.XDAI, tokenPriceQuery, {
-    id: '0xb7d311e2eb55f2f68a9440da38e7989210b9a05e',
-    ...variables,
-  })
+  // return getTokenPrice(ChainId.XDAI, tokenPriceQuery, {
+  //   id: '0xb7d311e2eb55f2f68a9440da38e7989210b9a05e',
+  //   ...variables,
+  // })
 }
 
 export const getOnePrice = async (variables = undefined) => {
-  return getNativePrice(ChainId.HARMONY, variables)
+  // return getNativePrice(ChainId.HARMONY, variables)
 }
 
 export const getAvaxPrice = async (variables = undefined) => {
-  return getNativePrice(ChainId.AVALANCHE, variables)
+  // return getNativePrice(ChainId.AVALANCHE, variables)
 }
 
 export const getBundle = async (

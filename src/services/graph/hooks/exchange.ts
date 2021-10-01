@@ -107,7 +107,7 @@ export function useOnePrice(variables = undefined, swrConfig: SWRConfiguration =
 export function useYggPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
   const { data } = useSWR(
-    chainId && chainId === ChainId.MAINNET ? ['yggPrice', JSON.stringify(variables)] : null,
+    null,
     () => getYggPrice(),
     swrConfig
   )
@@ -117,7 +117,7 @@ export function useYggPrice(variables = undefined, swrConfig: SWRConfiguration =
 export function useRulerPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
   const { data } = useSWR(
-    chainId && chainId === ChainId.MAINNET ? ['rulerPrice', JSON.stringify(variables)] : null,
+    null,
     () => getRulerPrice(variables),
     swrConfig
   )
@@ -127,7 +127,7 @@ export function useRulerPrice(variables = undefined, swrConfig: SWRConfiguration
 export function useTruPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
   const { data } = useSWR(
-    chainId && chainId === ChainId.MAINNET ? ['truPrice', JSON.stringify(variables)] : null,
+    null,
     () => getTruPrice(),
     swrConfig
   )
@@ -136,7 +136,7 @@ export function useTruPrice(variables = undefined, swrConfig: SWRConfiguration =
 
 export function useAlcxPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = false
   const { data } = useSWR(
     shouldFetch ? ['aclxPrice', JSON.stringify(variables)] : null,
     () => getAlcxPrice(variables),
@@ -147,7 +147,7 @@ export function useAlcxPrice(variables = undefined, swrConfig: SWRConfiguration 
 
 export function useCvxPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
-  const shouldFetch = chainId && chainId === ChainId.MAINNET
+  const shouldFetch = false
   const { data } = useSWR(
     shouldFetch ? ['cvxPrice', JSON.stringify(variables)] : null,
     () => getCvxPrice(variables),
@@ -159,7 +159,7 @@ export function useCvxPrice(variables = undefined, swrConfig: SWRConfiguration =
 export function usePicklePrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
   const { data } = useSWR(
-    chainId && chainId === ChainId.MAINNET ? ['picklePrice', JSON.stringify(variables)] : null,
+    null,
     () => getPicklePrice(),
     swrConfig
   )
@@ -169,7 +169,7 @@ export function usePicklePrice(variables = undefined, swrConfig: SWRConfiguratio
 export function useMphPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
   const { data } = useSWR(
-    chainId && chainId === ChainId.MAINNET ? ['mphPrice', JSON.stringify(variables)] : null,
+    null,
     () => getMphPrice(),
     swrConfig
   )

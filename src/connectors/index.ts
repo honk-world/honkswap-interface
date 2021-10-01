@@ -8,7 +8,7 @@ import { TorusConnector } from '@web3-react/torus-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { Web3Provider } from '@ethersproject/providers'
-import { RPC } from '../config/rpc';
+import RPC from '../config/rpc';
 
 export function getNetwork(defaultChainId, urls = RPC) {
   return new NetworkConnector({
@@ -39,7 +39,6 @@ export const walletconnect = new WalletConnectConnector({
   rpc: RPC,
   bridge: 'https://bridge.walletconnect.org',
   qrcode: true,
-  pollingInterval: 15000,
 })
 
 // mainnet only

@@ -43,7 +43,7 @@ const Menu = ({ positionsLength }) => {
         </a>
       </NavLink>
 
-      {chainId === ChainId.MAINNET && (
+      {/*chainId === ChainId.MAINNET && (
         <>
           <NavLink
             exact
@@ -64,9 +64,9 @@ const Menu = ({ positionsLength }) => {
             </a>
           </NavLink>
         </>
-      )}
+      )*/}
 
-      {(chainId === ChainId.MAINNET || chainId === ChainId.MATIC) && (
+      {/*(chainId === ChainId.MAINNET || chainId === ChainId.MATIC) && (
         <NavLink
           exact
           href={`/farm?filter=2x`}
@@ -76,7 +76,7 @@ const Menu = ({ positionsLength }) => {
             2x Reward Farms
           </a>
         </NavLink>
-      )}
+      )*/}
     </div>
   )
 }

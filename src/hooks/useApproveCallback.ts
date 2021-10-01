@@ -1,5 +1,4 @@
 import {
-  ARCHER_ROUTER_ADDRESS,
   Currency,
   CurrencyAmount,
   Percent,
@@ -122,7 +121,7 @@ export function useApproveCallbackFromTrade(
       ? trade instanceof V2Trade
         ? !doArcher
           ? ROUTER_ADDRESS[chainId]
-          : ARCHER_ROUTER_ADDRESS[chainId]
+          : undefined
         : undefined
       : undefined
   )

@@ -1,6 +1,6 @@
 import { AddressZero } from '@ethersproject/constants'
 import { formatUnits, parseUnits } from '@ethersproject/units'
-import { ChainId, JSBI } from '@mistswapdex/sdk'
+import { ChainId, Token, CurrencyAmount, JSBI } from '@mistswapdex/sdk'
 import { useSushiRollContract } from '../../hooks/useContract'
 import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
@@ -18,8 +18,8 @@ import { tryParseAmount } from '../../functions/parse'
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
 import useMigrateState, { MigrateState } from '../../hooks/useMigrateState'
 import CloseIcon from '../../components/CloseIcon';
-import LPToken from '../../types/LPToken'
-import MetamaskError from '../../types/MetamaskError'
+// import LPToken from '../../types/LPToken'
+// import MetamaskError from '../../types/MetamaskError'
 import Head from 'next/head'
 import Image from 'next/image'
 import Typography from '../../components/Typography'
@@ -34,10 +34,11 @@ const StyledNumericalInput = styled(Input.Numeric)`
 `
 
 const AmountInput = ({ state }: { state: MigrateState }) => {
+    /*
     const { i18n } = useLingui()
     const onPressMax = useCallback(() => {
         if (state.selectedLPToken) {
-            const bal = state.selectedLPToken.balance as CurrencyAmount<Token>
+            let bal = state.selectedLPToken.balance as CurrencyAmount<Token>
             if (state.selectedLPToken.address === AddressZero) {
                 // Subtract 0.01 ETH for gas fee
                 const fee = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
@@ -83,7 +84,6 @@ const AmountInput = ({ state }: { state: MigrateState }) => {
                   }`}
                   placeholder=" "
                 />
-                {/* input overlay: */}
                 <div className="relative w-full h-0 pointer-events-none bottom-14">
                   <div
                     className={`flex justify-between items-center h-14 rounded px-3 md:px-5 ${
@@ -126,17 +126,26 @@ const AmountInput = ({ state }: { state: MigrateState }) => {
             </div>
         </>
     )
+    */
+
+   return (
+     <>
+        <div>
+        </div>
+     </>
+   )
 }
 
 interface PositionCardProps {
-    lpToken: LPToken
-    onToggle: (lpToken: LPToken) => void
+    lpToken: any /* LPToken */
+    onToggle: (lpToken: any /* LPToken */) => void
     isSelected: boolean
     updating: boolean
     exchange: string | undefined
 }
 
 const LPTokenSelect = ({ lpToken, onToggle, isSelected, updating, exchange }: PositionCardProps) => {
+    /*
     return (
         <div
             key={lpToken.address}
@@ -154,9 +163,15 @@ const LPTokenSelect = ({ lpToken, onToggle, isSelected, updating, exchange }: Po
             {isSelected ? <CloseIcon /> : <ChevronRight />}
         </div>
     )
+    */
+   return (
+       <div>
+       </div>
+   )
 }
 
 const MigrateModeSelect = ({ state }: { state: MigrateState }) => {
+    /*
     function toggleMode(mode = undefined) {
         state.setMode(mode !== state.mode ? mode : undefined)
     }
@@ -201,9 +216,17 @@ const MigrateModeSelect = ({ state }: { state: MigrateState }) => {
             }, [])}
         </>
     )
+    */
+   return (
+     <>
+        <div>
+        </div>
+    </>
+   )
 }
 
 const MigrateButtons = ({ state, exchange }: { state: MigrateState; exchange: string | undefined }) => {
+    /*
     const [error, setError] = useState<MetamaskError>({})
     const sushiRollContract = useSushiRollContract(
         state.selectedLPToken?.version ? state.selectedLPToken?.version : undefined
@@ -288,10 +311,11 @@ const MigrateButtons = ({ state, exchange }: { state: MigrateState; exchange: st
             </div>
         </div>
     )
+   */
 }
 
 const ExchangeLiquidityPairs = ({ state, exchange }: { state: MigrateState; exchange: undefined | string }) => {
-    function onToggle(lpToken: LPToken) {
+    function onToggle(lpToken: any /* LPToken */) {
         state.setSelectedLPToken(state.selectedLPToken !== lpToken ? lpToken : undefined)
         state.setAmount('')
     }
@@ -331,6 +355,7 @@ const ExchangeLiquidityPairs = ({ state, exchange }: { state: MigrateState; exch
 }
 
 export default function MigrateV2() {
+  /*
   const { i18n } = useLingui()
   const { account, chainId } = useActiveWeb3React()
 
@@ -409,4 +434,10 @@ export default function MigrateV2() {
       </div>
     </Container>
   )
+  */
+  return (
+    <div>
+    </div>
+  )
+
 }

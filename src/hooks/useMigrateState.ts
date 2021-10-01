@@ -50,6 +50,7 @@ const useMigrateState: () => MigrateState = () => {
       const func = mode === "approve" ? migrate : migrateWithPermit;
       const tx = await func(state.selectedLPToken, units);
 
+      console.log('onMigrate', units)
       let exchange;
 
       if (chainId === ChainId.SMARTBCH) {

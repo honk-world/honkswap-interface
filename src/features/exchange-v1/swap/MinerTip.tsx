@@ -105,7 +105,7 @@ export default function MinerTip() {
           Miner Tip
         </Typography>
         <Typography variant="sm" className="text-secondary" onClick={toggleSettings}>
-          {CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.MAINNET), userETHTip).toFixed(3)} ETH
+          {CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.SMARTBCH), userETHTip).toFixed(3)} BCH
         </Typography>
       </div>
       {!userTipManualOverride && (

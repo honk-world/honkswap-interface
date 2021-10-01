@@ -2,7 +2,7 @@ import { ChainId } from '@mistswapdex/sdk'
 import { GRAPH_HOST } from '../constants'
 import { request } from 'graphql-request'
 import { barHistoriesQuery, barQuery } from '../queries/bar'
-import { useActiveWeb3React } from '../../../hooks
+import { useActiveWeb3React } from '../../../hooks'
 
 const BAR = {
   [ChainId.SMARTBCH]: 'mistswap/bar',
@@ -16,11 +16,11 @@ export const bar = async (query, variables = undefined) => {
 }
 
 export const getBar = async (block: number) => {
-  const { bar: barData } = await bar(barQuery, { block: block ? { number: block } : undefined })
+  const { bar: barData }: any = await bar(barQuery, { block: block ? { number: block } : undefined })
   return barData
 }
 
 export const getBarHistory = async () => {
-  const { histories } = await bar(barHistoriesQuery)
+  const { histories }: any = await bar(barHistoriesQuery)
   return histories
 }

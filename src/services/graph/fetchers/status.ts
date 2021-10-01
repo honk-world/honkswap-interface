@@ -2,7 +2,7 @@ import { ChainId } from '@mistswapdex/sdk'
 import { GRAPH_HOST } from '../constants'
 import { request } from 'graphql-request'
 
-export const status = async (chainId = ChainId.MAINNET, subgraphName) =>
+export const status = async (chainId = ChainId.SMARTBCH, subgraphName) =>
   request(
     `${GRAPH_HOST[chainId]}/index-node/graphql`,
     `

@@ -88,12 +88,12 @@ export default function ConfirmSwapModal({
 
   const pendingText2 = minerBribe
     ? trade?.outputAmount.currency.isNative
-      ? `Minus ${CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.MAINNET), minerBribe).toSignificant(
+      ? `Minus ${CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.SMARTBCH), minerBribe).toSignificant(
           6
-        )} ETH Miner Tip`
-      : `Plus ${CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.MAINNET), minerBribe).toSignificant(
+        )} BCH Miner Tip`
+      : `Plus ${CurrencyAmount.fromRawAmount(SmartBCH.onChain(ChainId.SMARTBCH), minerBribe).toSignificant(
           6
-        )} ETH Miner Tip`
+        )} BCH Miner Tip`
     : undefined
 
   const confirmationContent = useCallback(

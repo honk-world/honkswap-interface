@@ -337,6 +337,7 @@ export default function Remove() {
       message,
     });
 
+    /*
     library
       .send("eth_signTypedData_v4", [account, data])
       .then(splitSignature)
@@ -354,6 +355,8 @@ export default function Remove() {
           approveCallback();
         }
       });
+    */
+    approveCallback();
   }
 
   // // wrapped onUserInput to clear signatures

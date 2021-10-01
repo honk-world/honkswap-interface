@@ -1,6 +1,7 @@
 import { ChainId } from "@mistswapdex/sdk";
-import LPToken from "../types/LPToken";
+// import LPToken from "../types/LPToken";
 import { ethers } from "ethers";
+import { BigNumber } from '@ethersproject/bignumber'
 import { getGasPrice } from '../functions/trade'
 import { signERC2612Permit } from "eth-permit";
 import { useActiveWeb3React } from "../hooks/useActiveWeb3React";
@@ -9,7 +10,7 @@ import { useSushiRollContract } from "../hooks/useContract";
 
 const useSushiRoll = (version: "v1" | "v2" = "v2") => {
   const { chainId, library, account } = useActiveWeb3React();
-  const sushiRoll = useSushiRollContract(version);
+  const sushiRoll = useSushiRollContract(/*version*/);
   const ttl = 60 * 20;
 
   let from = "";
@@ -21,7 +22,7 @@ const useSushiRoll = (version: "v1" | "v2" = "v2") => {
   }
 
   const migrate = useCallback(
-    async (lpToken: LPToken, amount: ethers.BigNumber) => {
+    async (lpToken: any /*LPToken*/, amount: BigNumber) => {
       if (sushiRoll) {
         const deadline = Math.floor(new Date().getTime() / 1000) + ttl;
         const args = [
@@ -46,7 +47,7 @@ const useSushiRoll = (version: "v1" | "v2" = "v2") => {
   );
 
   const migrateWithPermit = useCallback(
-    async (lpToken: LPToken, amount: ethers.BigNumber) => {
+    async (lpToken: any /*LPToken*/, amount: BigNumber) => {
       if (account && sushiRoll) {
         const deadline = Math.floor(new Date().getTime() / 1000) + ttl;
         const permit = await signERC2612Permit(

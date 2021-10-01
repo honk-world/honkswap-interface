@@ -20,7 +20,7 @@ import ColoredNumber from '../../features/analytics/ColoredNumber'
 import { XMIST } from '../../config/tokens'
 import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 
-export default function xMIST() {
+export default function XMIST_PAGE() {
   const { chainId } = useActiveWeb3React()
   const block1d = useBlock({ daysAgo: 1, chainId })
 
