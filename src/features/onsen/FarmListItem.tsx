@@ -70,8 +70,7 @@ const FarmListItem = ({ farm, ...rest }) => {
               </div>
               <div className="flex flex-col items-center justify-center">
                 <div className="font-bold text-righttext-high-emphesis">
-                  {formatPercent(farm?.roiPerYear * 100)}
-                  {/* {farm?.roiPerYear > 100 ? '10000%+' : formatPercent(farm?.roiPerYear * 100)} */}
+                  {farm?.roiPerYear > 100 ? '10000%+' : formatPercent(farm?.roiPerYear * 100)}
                 </div>
                 <div className="text-xs text-right md:text-base text-secondary">annualized</div>
               </div>
