@@ -56,7 +56,7 @@ const buttonStyleInsufficientFunds = `${buttonStyleEnabled} opacity-60`
 const buttonStyleDisabled = `${buttonStyle} text-secondary bg-dark-700`
 const buttonStyleConnectWallet = `${buttonStyle} text-high-emphesis bg-cyan-blue hover:bg-opacity-90`
 
-const fetcher = (query) => request('http://127.0.0.1:8000/subgraphs/name/mistswap/bar', query)
+// const fetcher = (query) => request('http://127.0.0.1:8000/subgraphs/name/mistswap/bar', query)
 
 export default function Stake() {
   const { i18n } = useLingui()
@@ -68,7 +68,8 @@ export default function Stake() {
 
   const { enter, leave } = useSushiBar()
 
-  const { data } = useSWR(`{bar(id: "${XMIST[chainId].address}") {ratio, totalSupply}}`, fetcher)
+  // const { data } = useSWR(`{bar(id: "${XMIST[chainId].address}") {ratio, totalSupply}}`, fetcher)
+  const data = null;
 
   const xSushiPerSushi = parseFloat(data?.bar?.ratio)
 
