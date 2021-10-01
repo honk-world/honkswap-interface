@@ -98,7 +98,7 @@ export default function Stake() {
   }
 
   const handleClickMax = () => {
-    setInput(parsedAmount ? parsedAmount.toSignificant(balance.currency.decimals).substring(0, INPUT_CHAR_LIMIT) : '')
+    setInput(balance ? balance.toSignificant(balance.currency.decimals).substring(0, INPUT_CHAR_LIMIT) : '')
     setUsingBalance(true)
   }
 
