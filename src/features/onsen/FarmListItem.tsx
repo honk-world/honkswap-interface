@@ -75,7 +75,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                 </div>
                 <div className="text-xs text-right md:text-base text-secondary">annualized</div>
               </div>
-              {pendingSushi && pendingSushi.greaterThan(ZERO) && (
+              {pendingSushi && pendingSushi.greaterThan(ZERO) ? (
                 <div className="flex-row items-center hidden space-x-4 font-bold md:flex">
                   <div className="flex items-center space-x-2">
                     <div key="0" className="flex items-center">
@@ -95,6 +95,10 @@ const FarmListItem = ({ farm, ...rest }) => {
                     </div>
                   </div>
               </div>
+              ) : (
+                <div className="flex-row items-center hidden space-x-4 font-bold md:flex">
+                  Stake LP to Farm
+                </div>
               )}
             </div>
           </Disclosure.Button>
