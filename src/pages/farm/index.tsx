@@ -150,7 +150,6 @@ export default function Farm(): JSX.Element {
   if (flexUSDMistPool.reserves) {
     mistPriceUSD = 1. / Number.parseFloat(flexUSDMistPool.reserves[1].div(flexUSDMistPool.reserves[0]).toString())
   }
-  console.log('price', bchPriceUSD, mistPriceUSD)
 
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
     MASTERCHEF_ADDRESS[chainId],
@@ -162,7 +161,6 @@ export default function Farm(): JSX.Element {
         const totalSupply = Number.parseFloat(farms[i].pool.totalSupply.toFixed());
         const chefBalance = Number.parseFloat(v2PairsBalances[farms[i].pair].toFixed());
 
-        console.log(farms[i].pool.token0, MIST[chainId].address)
         let tvl = 0;
         if (farms[i].pool.token0 === MIST[chainId].address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
@@ -194,7 +192,6 @@ export default function Farm(): JSX.Element {
       }
     }
   }
-  // console.log(farms)
 
   const positions = usePositions(chainId)
 
@@ -252,11 +249,10 @@ export default function Farm(): JSX.Element {
 
     const balance = Number(pool.balance / 1e18);
 
-    const tvl = pool.tvl
-
     const roiPerBlock = rewards.reduce((previousValue, currentValue) => {
       return previousValue + currentValue.rewardPerBlock * currentValue.rewardPrice
-    }, 0) / tvl
+    }, 0) / pool.tvl
+    console.log(pool.pair, roiPerBlock)
 
     const roiPerHour = roiPerBlock * blocksPerHour
 
