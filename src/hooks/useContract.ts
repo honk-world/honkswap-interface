@@ -43,7 +43,7 @@ import MULTICALL2_ABI from '../constants/abis/multicall2.json'
 import ROUTER_ABI from '../constants/abis/router.json'
 import SUSHI_ABI from '../constants/abis/sushi.json'
 import SUSHIROLL_ABI from "@mistswapdex/core/abi/SushiRoll.json";
-import WETH9_ABI from '../constants/abis/weth.json'
+import WBCH_ABI from '../constants/abis/weth.json'
 import ZENKO_ABI from '../constants/abis/zenko.json'
 import { getContract } from '../functions/contract'
 import { useActiveWeb3React } from './useActiveWeb3React'
@@ -72,9 +72,9 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
   return useContract(tokenAddress, ERC20_ABI, withSignerIfPossible)
 }
 
-export function useWETH9Contract(withSignerIfPossible?: boolean): Contract | null {
+export function useWBCHContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && WNATIVE_ADDRESS[chainId], WETH9_ABI, withSignerIfPossible)
+  return useContract(chainId && WNATIVE_ADDRESS[chainId], WBCH_ABI, withSignerIfPossible)
 }
 
 export function useArgentWalletDetectorContract(): Contract | null {

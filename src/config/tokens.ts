@@ -1,4 +1,4 @@
-import { ChainId, MIST_ADDRESS, BAR_ADDRESS, Token, WETH9} from '@mistswapdex/sdk'
+import { ChainId, MIST_ADDRESS, BAR_ADDRESS, Token, WBCH} from '@mistswapdex/sdk'
 
 export const FLEXUSD = new Token(ChainId.SMARTBCH, '0x7b2B3C5308ab5b2a1d9a94d20D35CCDf61e05b72', 18, 'flexUSD', 'flexUSD')
 
@@ -16,8 +16,8 @@ export const MIST: ChainTokenMap = {
   [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, MIST_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'MIST', 'MistToken'),
 }
 
-export const WETH9_EXTENDED: { [chainId: number]: Token } = {
-  ...WETH9,
+export const WBCH_EXTENDED: { [chainId: number]: Token } = {
+  ...WBCH,
 }
 
 type ChainTokenMapList = {

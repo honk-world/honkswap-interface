@@ -6,7 +6,7 @@ import { useActiveWeb3React } from './useActiveWeb3React'
 import { useCurrencyBalance } from '../state/wallet/hooks'
 import { useMemo } from 'react'
 import { useTransactionAdder } from '../state/transactions/hooks'
-import { useWETH9Contract } from './useContract'
+import { useWBCHContract } from './useContract'
 
 export enum WrapType {
   NOT_APPLICABLE,
@@ -31,7 +31,7 @@ export default function useWrapCallback(
   inputError?: string
 } {
   const { chainId, account } = useActiveWeb3React()
-  const wethContract = useWETH9Contract()
+  const wethContract = useWBCHContract()
   const balance = useCurrencyBalance(account ?? undefined, inputCurrency)
   // we can always parse the amount typed as the input currency, since wrapping is 1:1
   const inputAmount = useMemo(() => tryParseAmount(typedValue, inputCurrency), [inputCurrency, typedValue])

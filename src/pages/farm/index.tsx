@@ -12,7 +12,7 @@ import {
 } from '../../services/graph'
 
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId, WNATIVE, Token, WETH9, MASTERCHEF_ADDRESS } from '@mistswapdex/sdk'
+import { ChainId, WNATIVE, Token, WBCH, MASTERCHEF_ADDRESS } from '@mistswapdex/sdk'
 import { MIST, FLEXUSD } from '../../config/tokens'
 import Container from '../../components/Container'
 import FarmList from '../../features/onsen/FarmList'
@@ -33,9 +33,6 @@ export default function Farm(): JSX.Element {
 
   const type = router.query.filter == null ? 'all' : (router.query.filter as string)
 
-  const WBCH = WETH9;
-  // WBCH[ChainId.SMARTBCH].symbol = "BCH";
-  // WBCH[ChainId.SMARTBCH_AMBER].symbol = "BCH";
   const hardcodedPairs = {
     [ChainId.SMARTBCH]: {
       "0x3FbC8C4e2BBe7B352fDf894A96ffA16d0AD2bC25": {

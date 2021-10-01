@@ -194,7 +194,7 @@ export function useCurrency(currencyId: string | undefined): Currency | null | u
   const token = useToken(useNative ? undefined : currencyId)
 
   // const extendedEther = useMemo(() => (chainId ? ExtendedEther.onChain(chainId) : undefined), [chainId])
-  // const weth = chainId ? WETH9_EXTENDED[chainId] : undefined
+  // const weth = chainId ? WBCH_EXTENDED[chainId] : undefined
 
   const native = useMemo(() => (chainId ? NATIVE[chainId] : undefined), [chainId])
   if (useNative) return native;
