@@ -132,7 +132,7 @@ const FarmListItem = ({ farm }) => {
             {account && (
               <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
                 {i18n._(t`Your Staked`)}: {formatNumber(amount?.toSignificant(6)) ?? 0} {farm.type}
-                ({formatPercent(Number.parseFloat(amount.toFixed()) / Number.parseFloat(farm.pool.totalSupply.toFixed()) * 100)} of pool)
+                ({formatPercent(Math.min(Number.parseFloat(amount.toFixed()) / Number.parseFloat(farm.pool.totalSupply.toFixed()) * 100, 100))} of pool)
               </div>
             )}
             <div className="relative flex items-center w-full mb-4">
