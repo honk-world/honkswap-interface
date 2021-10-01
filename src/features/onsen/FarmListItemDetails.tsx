@@ -190,7 +190,7 @@ const FarmListItem = ({ farm }) => {
                 try {
                   const tx = await harvest(farm.id)
                   addTransaction(tx, {
-                    summary: i18n._(t`Harvest ${farm.pair.token0.name}/${farm.pair.token1.name}`),
+                    summary: i18n._(t`Harvest`) + ` ${farm.pair.token0.name}/${farm.pair.token1.name}`,
                   })
                 } catch (error) {
                   console.error(error)
@@ -198,10 +198,9 @@ const FarmListItem = ({ farm }) => {
                 setPendingTx(false)
               }}
             >
-              {i18n._(t`Harvest ${formatNumber(pendingSushi.toFixed(18))} MIST ${
+              {i18n._(t`Harvest`) + ` ${formatNumber(pendingSushi.toFixed(18))} MIST ${
                 farm.rewards.length > 1 ? `& ${formatNumber(reward)} ${farm.rewards[1].token}` : null
-              }
-                `)}
+              }`}
             </Button>
           </div>
         )}
