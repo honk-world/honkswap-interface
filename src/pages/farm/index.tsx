@@ -24,6 +24,8 @@ import { classNames } from '../../functions'
 import dynamic from 'next/dynamic'
 import { getAddress } from '@ethersproject/address'
 import useFarmRewards from '../../hooks/useFarmRewards'
+import usePool from '../../hooks/usePool'
+import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
 import { usePositions } from '../../features/onsen/hooks'
 import { useRouter } from 'next/router'
 
@@ -124,6 +126,7 @@ export default function Farm(): JSX.Element {
 
     farms.push({
       pair: pairAddress,
+      pool: usePool(pairAddress),
       allocPoint: pair.allocPoint,
       balance: "1000000000000000000",
       chef: 0,
@@ -137,6 +140,62 @@ export default function Farm(): JSX.Element {
     })
   }
 
+  const flexUSDMistPool = farms[1].pool;
+  const bchFlexUSDPool = farms[3].pool;
+  let bchPriceUSD = 0;
+  let mistPriceUSD = 0;
+  if (bchFlexUSDPool.reserves) {
+    bchPriceUSD = bchFlexUSDPool.reserves[1].div(bchFlexUSDPool.reserves[0]).toString()
+  }
+  if (flexUSDMistPool.reserves) {
+    mistPriceUSD = 1. / Number.parseFloat(flexUSDMistPool.reserves[1].div(flexUSDMistPool.reserves[0]).toString())
+  }
+  console.log('price', bchPriceUSD, mistPriceUSD)
+
+  const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
+    MASTERCHEF_ADDRESS[chainId],
+    farms.map((farm) => new Token(chainId, farm.pair, 18, 'LP', 'LP Token'))
+  )
+  if (! fetchingV2PairBalances) {
+    for (let i=0; i<farms.length; ++i) {
+      if (v2PairsBalances.hasOwnProperty(farms[i].pair) && farms[i].pool.totalSupply) {
+        const totalSupply = Number.parseFloat(farms[i].pool.totalSupply.toFixed());
+        const chefBalance = Number.parseFloat(v2PairsBalances[farms[i].pair].toFixed());
+
+        console.log(farms[i].pool.token0, MIST[chainId].address)
+        let tvl = 0;
+        if (farms[i].pool.token0 === MIST[chainId].address) {
+          const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
+          tvl = reserve / totalSupply * chefBalance * mistPriceUSD * 2;
+        }
+        else if (farms[i].pool.token1 === MIST[chainId].address) {
+          const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed());
+          tvl = reserve / totalSupply * chefBalance * mistPriceUSD * 2;
+        }
+        else if (farms[i].pool.token0 === FLEXUSD.address) {
+          const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
+          tvl = reserve / totalSupply * chefBalance * 2;
+        }
+        else if (farms[i].pool.token1 === FLEXUSD.address) {
+          const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed());
+          tvl = reserve / totalSupply * chefBalance * 2;
+        }
+        else if (farms[i].pool.token0 === WBCH[chainId].address) {
+          const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
+          tvl = reserve / totalSupply * chefBalance * bchPriceUSD * 2;
+        }
+        else if (farms[i].pool.token1 === WBCH[chainId].address) {
+          const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed());
+          tvl = reserve / totalSupply * chefBalance * bchPriceUSD * 2;
+        }
+        farms[i].tvl = tvl;
+      } else {
+        farms[i].tvl = "0";
+      }
+    }
+  }
+  // console.log(farms)
+
   const positions = usePositions(chainId)
 
   // const averageBlockTime = useAverageBlockTime()
@@ -145,16 +204,6 @@ export default function Farm(): JSX.Element {
   // const masterChefV1TotalAllocPoint = useMasterChefV1TotalAllocPoint()
 
   const masterChefV1SushiPerBlock = useMasterChefV1SushiPerBlock()
-
-  // TODO: Obviously need to sort this out but this is fine for time being,
-  // prices are only loaded when needed for a specific network
-  let [sushiPrice, ethPrice] = [
-    useSushiPrice(),
-    useEthPrice(),
-  ]
-  sushiPrice = "0.000001";
-  ethPrice = "1";
-  console.log('prices', sushiPrice, ethPrice)
 
   const blocksPerDay = 86400 / Number(averageBlockTime)
 
@@ -175,7 +224,7 @@ export default function Farm(): JSX.Element {
 
     const pair = swapPair || kashiPair
 
-    const blocksPerHour = 3600 / averageBlockTime
+    const blocksPerHour = 15684
 
     function getRewards() {
       // TODO: Some subgraphs give sushiPerBlock & sushiPerSecond, and mcv2 gives nothing
@@ -191,7 +240,7 @@ export default function Farm(): JSX.Element {
         icon: 'https://raw.githubusercontent.com/mistswapdex/icons/master/token/mist.jpg',
         rewardPerBlock,
         rewardPerDay: rewardPerBlock * blocksPerDay,
-        rewardPrice: sushiPrice,
+        rewardPrice: +mistPriceUSD,
       }
 
       const defaultRewards = [defaultReward]
@@ -200,11 +249,10 @@ export default function Farm(): JSX.Element {
     }
 
     const rewards = getRewards()
-    console.log('rewards', rewards)
 
     const balance = Number(pool.balance / 1e18);
 
-    const tvl = (balance / Number(swapPair.totalSupply)) * Number(swapPair.reserveUSD);
+    const tvl = pool.tvl
 
     const roiPerBlock = rewards.reduce((previousValue, currentValue) => {
       return previousValue + currentValue.rewardPerBlock * currentValue.rewardPrice
@@ -229,13 +277,8 @@ export default function Farm(): JSX.Element {
         type,
       },
       balance,
-      roiPerBlock,
-      roiPerHour,
-      roiPerDay,
-      roiPerMonth,
       roiPerYear,
       rewards,
-      tvl,
     }
   }
 
