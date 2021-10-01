@@ -8,7 +8,7 @@ import { usePendingSushi, useUserInfo } from './hooks'
 import Button from '../../components/Button'
 import Dots from '../../components/Dots'
 import Input from '../../components/Input'
-import { formatNumber } from '../../functions'
+import { formatNumber, formatPercent } from '../../functions'
 import { getAddress } from '@ethersproject/address'
 import { t } from '@lingui/macro'
 import { tryParseAmount } from '../../functions/parse'
@@ -132,6 +132,7 @@ const FarmListItem = ({ farm }) => {
             {account && (
               <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
                 {i18n._(t`Your Staked`)}: {formatNumber(amount?.toSignificant(6)) ?? 0} {farm.type}
+                ({formatPercent(Number.parseFloat(amount.toFixed()) / Number.parseFloat(farm.pool.totalSupply.toFixed()) * 100)} of pool)
               </div>
             )}
             <div className="relative flex items-center w-full mb-4">
