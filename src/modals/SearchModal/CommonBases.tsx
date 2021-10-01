@@ -7,6 +7,8 @@ import { COMMON_BASES } from '../../config/routing'
 import CurrencyLogo from '../../components/CurrencyLogo'
 import QuestionHelper from '../../components/QuestionHelper'
 import React from 'react'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import Typography from '../../components/Typography'
 import { currencyId } from '../../functions'
 
@@ -19,13 +21,14 @@ export default function CommonBases({
   selectedCurrency?: Currency | null
   onSelect: (currency: Currency) => void
 }) {
+  const { i18n } = useLingui()
   const bases = typeof chainId !== 'undefined' ? COMMON_BASES[chainId] ?? [] : []
 
   return (
     <div className="flex flex-col space-y-2">
       <div className="flex flex-row">
-        Common bases
-        <QuestionHelper text="These tokens are commonly paired with other tokens." />
+        {i18n._(t`Common bases`)}
+        <QuestionHelper text={i18n._(t`These tokens are commonly paired with other tokens.`)} />
       </div>
       <div className="flex flex-wrap">
         {bases.map((currency: Currency) => {
