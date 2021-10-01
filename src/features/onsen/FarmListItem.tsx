@@ -1,5 +1,6 @@
 import { classNames, formatNumber, formatPercent } from '../../functions'
 
+import { ZERO } from '@mistswapdex/sdk'
 import { Disclosure } from '@headlessui/react'
 import DoubleLogo from '../../components/DoubleLogo'
 import FarmListItemDetails from './FarmListItemDetails'
@@ -7,10 +8,13 @@ import Image from '../../components/Image'
 import { PairType } from './enum'
 import React from 'react'
 import { useCurrency } from '../../hooks/Tokens'
+import { usePendingSushi, useUserInfo } from './hooks'
 
 const FarmListItem = ({ farm, ...rest }) => {
   const token0 = useCurrency(farm.pair.token0.id)
   const token1 = useCurrency(farm.pair.token1.id)
+
+  const pendingSushi = usePendingSushi(farm)
 
   return (
     <Disclosure {...rest}>
@@ -22,7 +26,7 @@ const FarmListItem = ({ farm, ...rest }) => {
               'w-full px-4 py-6 text-left rounded cursor-pointer select-none bg-dark-900 text-primary text-sm md:text-lg'
             )}
           >
-            <div className="grid grid-cols-4">
+            <div className="grid grid-cols-5">
               <div className="flex col-span-2 space-x-4 md:col-span-1">
                 <DoubleLogo currency0={token0} currency1={token1} size={40} />
                 <div className="flex flex-col justify-center">
@@ -40,7 +44,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                   )}
                 </div>
               </div>
-              <div className="flex flex-col justify-center font-bold">{formatNumber(farm.tvl, true)}</div>
+              <div className="flex flex-col items-center justify-center font-bold">{formatNumber(farm.tvl, true)}</div>
               <div className="flex-row items-center hidden space-x-4 md:flex">
                 <div className="flex items-center space-x-2">
                   {farm?.rewards?.map((reward, i) => (
@@ -64,13 +68,34 @@ const FarmListItem = ({ farm, ...rest }) => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col items-end justify-center">
+              <div className="flex flex-col items-center justify-center">
                 <div className="font-bold text-righttext-high-emphesis">
                   {formatPercent(farm?.roiPerYear * 100)}
                   {/* {farm?.roiPerYear > 100 ? '10000%+' : formatPercent(farm?.roiPerYear * 100)} */}
                 </div>
                 <div className="text-xs text-right md:text-base text-secondary">annualized</div>
               </div>
+              {pendingSushi && pendingSushi.greaterThan(ZERO) && (
+                <div className="flex-row items-center hidden space-x-4 font-bold md:flex">
+                  <div className="flex items-center space-x-2">
+                    <div key="0" className="flex items-center">
+                      <Image
+                        src="https://raw.githubusercontent.com/mistswapdex/icons/master/token/mist.jpg"
+                        width="30px"
+                        height="30px"
+                        className="rounded-md"
+                        layout="fixed"
+                        alt="MIST"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col space-y-1">
+                    <div key="0" className="text-xs md:text-sm whitespace-nowrap">
+                      {formatNumber(pendingSushi.toFixed(18))} MIST
+                    </div>
+                  </div>
+              </div>
+              )}
             </div>
           </Disclosure.Button>
 
