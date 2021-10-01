@@ -199,7 +199,7 @@ const FarmListItem = ({ farm }) => {
               }}
             >
               {i18n._(t`Harvest`) + ` ${formatNumber(pendingSushi.toFixed(18))} MIST ${
-                farm.rewards.length > 1 ? `& ${formatNumber(reward)} ${farm.rewards[1].token}` : null
+                farm.rewards.length > 1 ? `& ${formatNumber(reward)} ${farm.rewards[1].token}` : ''
               }`}
             </Button>
           </div>
