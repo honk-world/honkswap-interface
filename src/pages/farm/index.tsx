@@ -126,6 +126,7 @@ export default function Farm(): JSX.Element {
 
     farms.push({
       pair: pairAddress,
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       pool: usePool(pairAddress),
       allocPoint: pair.allocPoint,
       balance: "1000000000000000000",
