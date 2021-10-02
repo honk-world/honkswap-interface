@@ -253,15 +253,12 @@ export default function Farm(): JSX.Element {
     const roiPerBlock = rewards.reduce((previousValue, currentValue) => {
       return previousValue + currentValue.rewardPerBlock * currentValue.rewardPrice
     }, 0) / pool.tvl
-    console.log(pool.pair, roiPerBlock)
 
     const roiPerHour = roiPerBlock * blocksPerHour
 
     const roiPerDay = roiPerHour * 24
 
-    const roiPerMonth = roiPerDay * 30
-
-    const roiPerYear = roiPerMonth * 12
+    const roiPerYear = roiPerDay * 365
 
     const position = positions.find((position) => position.id === pool.id && position.chef === pool.chef)
 
