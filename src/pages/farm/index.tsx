@@ -222,7 +222,7 @@ export default function Farm(): JSX.Element {
 
     const pair = swapPair || kashiPair
 
-    const blocksPerHour = 15684
+    const blocksPerDay = 15684 // calculated empirically
 
     function getRewards() {
       // TODO: Some subgraphs give sushiPerBlock & sushiPerSecond, and mcv2 gives nothing
@@ -254,9 +254,7 @@ export default function Farm(): JSX.Element {
       return previousValue + currentValue.rewardPerBlock * currentValue.rewardPrice
     }, 0) / pool.tvl
 
-    const roiPerHour = roiPerBlock * blocksPerHour
-
-    const roiPerDay = roiPerHour * 24
+    const roiPerDay = roiPerBlock * blocksPerDay
 
     const roiPerYear = roiPerDay * 365
 
