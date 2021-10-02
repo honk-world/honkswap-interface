@@ -104,7 +104,7 @@ const AccountDetails: FC<AccountDetailsProps> = ({
   return (
     <div className="space-y-3">
       <div className="space-y-3">
-        <ModalHeader title="Account" onClose={toggleWalletModal} />
+        <ModalHeader title={i18n._(t`Account`)} onClose={toggleWalletModal} />
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             {formatConnectorName()}

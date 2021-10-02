@@ -7,6 +7,8 @@ import FarmListItemDetails from './FarmListItemDetails'
 import Image from '../../components/Image'
 import { PairType } from './enum'
 import React from 'react'
+import { useLingui } from '@lingui/react'
+import { t } from '@lingui/macro'
 import { useCurrency } from '../../hooks/Tokens'
 import { usePendingSushi, useUserInfo } from './hooks'
 
@@ -15,6 +17,8 @@ const FarmListItem = ({ farm, ...rest }) => {
   const token1 = useCurrency(farm.pair.token1.id)
 
   const pendingSushi = usePendingSushi(farm)
+
+  const { i18n } = useLingui()
 
   return (
     <Disclosure {...rest}>
@@ -37,7 +41,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                     </span>
                   </div>
                   {farm?.pair?.type === PairType.SWAP && (
-                    <div className="text-xs md:text-base text-secondary">MistSwap Farm</div>
+                    <div className="text-xs md:text-base text-secondary">{i18n._(t`MistSwap Farm`)}</div>
                   )}
                   {farm?.pair?.type === PairType.KASHI && (
                     <div className="text-xs md:text-base text-secondary">Kashi Farm</div>
@@ -63,7 +67,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                 <div className="flex flex-col space-y-1">
                   {farm?.rewards?.map((reward, i) => (
                     <div key={i} className="text-xs md:text-sm whitespace-nowrap">
-                      {formatNumber(reward.rewardPerDay)} {reward.token} / DAY
+                      {formatNumber(reward.rewardPerDay)} {reward.token} / {i18n._(t`DAY`)}
                     </div>
                   ))}
                 </div>
@@ -72,7 +76,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                 <div className="font-bold text-righttext-high-emphesis">
                   {farm?.roiPerYear > 100 ? '10000%+' : formatPercent(farm?.roiPerYear * 100)}
                 </div>
-                <div className="text-xs text-right md:text-base text-secondary">annualized</div>
+                <div className="text-xs text-right md:text-base text-secondary">{i18n._(t`annualized`)}</div>
               </div>
               {pendingSushi && pendingSushi.greaterThan(ZERO) ? (
                 <div className="flex-row items-center hidden space-x-4 font-bold md:flex">
@@ -96,7 +100,7 @@ const FarmListItem = ({ farm, ...rest }) => {
               </div>
               ) : (
                 <div className="flex-row items-center hidden space-x-4 font-bold md:flex">
-                  Stake LP to Farm
+                  {i18n._(t`Stake LP to Farm`)}
                 </div>
               )}
             </div>

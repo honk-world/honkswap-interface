@@ -7,6 +7,8 @@ import Image from 'next/image'
 import Modal from '../../components/Modal'
 import ModalHeader from '../../components/ModalHeader'
 import React from 'react'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import cookie from 'cookie-cutter'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 
@@ -49,6 +51,7 @@ export const SUPPORTED_NETWORKS: {
 
 export default function NetworkModal(): JSX.Element | null {
   const { chainId, library, account } = useActiveWeb3React()
+  const { i18n } = useLingui()
   const networkModalOpen = useModalOpen(ApplicationModal.NETWORK)
   const toggleNetworkModal = useNetworkModalToggle()
 
@@ -56,7 +59,7 @@ export default function NetworkModal(): JSX.Element | null {
 
   return (
     <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal} maxWidth={672}>
-      <ModalHeader onClose={toggleNetworkModal} title="Select a Network" />
+      <ModalHeader onClose={toggleNetworkModal} title={i18n._(t`Select a Network`)} />
       <div className="mb-6 text-lg text-primary">
         You are currently browsing <span className="font-bold text-pink">MIST</span>
         <br /> on the <span className="font-bold text-blue">{NETWORK_LABEL[chainId]}</span> network

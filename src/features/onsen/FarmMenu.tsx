@@ -1,11 +1,14 @@
 import { ChainId } from '@mistswapdex/sdk'
 import NavLink from '../../components/NavLink'
 import React from 'react'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import { useActiveWeb3React } from '../../hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
 
 const Menu = ({ positionsLength }) => {
   const { account, chainId } = useActiveWeb3React()
+  const { i18n } = useLingui()
   const toggleWalletModal = useWalletModalToggle()
 
   return (
@@ -39,7 +42,7 @@ const Menu = ({ positionsLength }) => {
         activeClassName="font-bold bg-transparent border rounded text-high-emphesis border-transparent border-gradient-r-blue-pink-dark-900"
       >
         <a className="flex items-center justify-between px-4 py-6 text-base font-bold border border-transparent rounded cursor-pointer bg-dark-900 hover:bg-dark-800">
-          All Farms
+          {i18n._(t`All Farms`)}
         </a>
       </NavLink>
 
