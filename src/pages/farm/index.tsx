@@ -37,55 +37,55 @@ export default function Farm(): JSX.Element {
 
   const hardcodedPairs = {
     [ChainId.SMARTBCH]: {
-      "0x3FbC8C4e2BBe7B352fDf894A96ffA16d0AD2bC25": {
+      "0x674A71E69fe8D5cCff6fdcF9F1Fa4262Aa14b154": {
         farmId: 7,
         allocPoint: 570,
         token0: MIST[ChainId.SMARTBCH],
         token1: WBCH[ChainId.SMARTBCH],
       },
-      "0xD65438E7148BCB0E46eE46EB382bA86D46ADE6AE": {
+      "0x437E444365aD9ed788e8f255c908bceAd5AEA645": {
         farmId: 8,
         allocPoint: 226,
         token0: MIST[ChainId.SMARTBCH],
         token1: FLEXUSD,
       },
-      "0x6D8Efe521D5434c73DAc78fa452b79af4266019B": {
+      "0x80F712670d268cf2C05e7162674c7466c940eBE3": {
         farmId: 0,
         allocPoint: 77,
         token0: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben'),
         token1: WBCH[ChainId.SMARTBCH],
       },
-      "0x3Dfd02B168dA457C7e8B6cd8d8dF9105323FaD40": {
+      "0x24f011f12Ea45AfaDb1D4245bA15dCAB38B43D13": {
         farmId: 1,
         allocPoint: 38,
         token0: FLEXUSD,
         token1: WBCH[ChainId.SMARTBCH],
       },
-      "0x4aB3617962853653C20463A5E3576F25AbB9f88F": {
+      "0x4fF52e9D7824EC9b4e0189F11B5aA0F02b459b03": {
         farmId: 2,
         allocPoint: 57,
         token0: new Token(ChainId.SMARTBCH, '0x98Dd7eC28FB43b3C4c770AE532417015fa939Dd3', 18, 'FLEX', 'FLEX Coin'),
         token1: FLEXUSD,
       },
-      "0x80506cBF5Cbd92373c668e3eDA75e17144ada282": {
+      "0x1EE39F93450d80981c169E59C8A641a3bC853A09": {
         farmId: 3,
         allocPoint: 8,
         token0: new Token(ChainId.SMARTBCH, '0xff3ed63bf8bc9303ea0a7e1215ba2f82d569799e', 18, 'ORB', 'ORB'),
         token1: WBCH[ChainId.SMARTBCH],
       },
-      "0xF2e8F663Ff8fc571f4073F916EA7307951B0F71b": {
+      "0xc98552Ad7DFC5daabAd2660DF378e0070ca75Efc": {
         farmId: 4,
         allocPoint: 8,
-        token0: new Token(ChainId.SMARTBCH, '0xc70c7718C7f1CCd906534C2c4a76914173EC2c44', 18, 'KNUTH', 'Knuth'),
+        token0: new Token(ChainId.SMARTBCH, '0xc70c7718C7f1CCd906534C2c4a76914173EC2c44', 18, 'KTH', 'Knuth'),
         token1: WBCH[ChainId.SMARTBCH],
       },
-      "0x92E4b769451d1A4d07D808f58429B7fe481299aC": {
+      "0x287a276401caDBe50d5C0398137490E6d45830Dd": {
         farmId: 5,
         allocPoint: 8,
         token0: new Token(ChainId.SMARTBCH, '0xe11829a7d5d8806bb36e118461a1012588fafd89', 18, 'SPICE', 'SPICE'),
         token1: WBCH[ChainId.SMARTBCH],
       },
-      "0x272365dFee6bf3Db3c86a64893a53999724954B2": {
+      "0x41075d2Ea8BEF1CAfb24D9Bd2061b620cbc05B60": {
         farmId: 6,
         allocPoint: 8,
         token0: new Token(ChainId.SMARTBCH, '0x675E1d6FcE8C7cC091aED06A68D079489450338a', 18, 'ARG', 'Bitcoin Cash Argentina'),

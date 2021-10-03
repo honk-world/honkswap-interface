@@ -2223,10 +2223,10 @@
     patch-package "^6.4.7"
     postinstall-postinstall "^2.1.0"
 
-"@mistswapdex/default-token-list@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@mistswapdex/default-token-list/-/default-token-list-0.0.6.tgz#c9a67575e3a5d58ceb3888c4722b51f8a88c875a"
-  integrity sha512-1pXFSOBVsGVz/H4o8nxz5UWLV63m7XSMnyEvjCG1CIHBN0ai5agRxIW34qq8YQI0pJ7Ux+wIrgOxTLTJ6hNYBQ==
+"@mistswapdex/default-token-list@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@mistswapdex/default-token-list/-/default-token-list-0.0.7.tgz#2945e37b255e1764493259269bef2554ce1a499b"
+  integrity sha512-LsIl6htXvDZTrgsB0qH90II7xWAq1dDcdd3VxfrlqJaZZuDfLJgf0B+0yZI9sOqyxqqB+KFSpTIJxn4RYlit8Q==
   dependencies:
     commitlint "^13.1.0"
     lint-staged "^11.1.2"
