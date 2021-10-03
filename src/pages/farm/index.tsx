@@ -146,10 +146,10 @@ export default function Farm(): JSX.Element {
   let bchPriceUSD = 0;
   let mistPriceUSD = 0;
   if (bchFlexUSDPool.reserves) {
-    bchPriceUSD = bchFlexUSDPool.reserves[1].div(bchFlexUSDPool.reserves[0]).toString()
+    bchPriceUSD = Number.parseFloat(bchFlexUSDPool.reserves[1].toFixed()) / Number.parseFloat(bchFlexUSDPool.reserves[0].toFixed());
   }
   if (flexUSDMistPool.reserves) {
-    mistPriceUSD = 1. / Number.parseFloat(flexUSDMistPool.reserves[1].div(flexUSDMistPool.reserves[0]).toString())
+    mistPriceUSD = 1. / ( Number.parseFloat(flexUSDMistPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDMistPool.reserves[1].toFixed()))
   }
 
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
