@@ -127,7 +127,7 @@ function AppBar(): JSX.Element {
                                     symbol: 'xMIST',
                                     decimals: 18,
                                     image:
-                                      'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/ethereum/assets/0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272/logo.png',
+                                      'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0xC41C680c60309d4646379eD62020c534eB67b6f4/logo.png',
                                   },
                                 }
                                 library.provider
@@ -172,7 +172,7 @@ function AppBar(): JSX.Element {
                                   symbol: 'MIST',
                                   decimals: 18,
                                   image:
-                                    'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
+                                    'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png',
                                 },
                               }
                               if (library && library.provider.isMetaMask && library.provider.request) {
