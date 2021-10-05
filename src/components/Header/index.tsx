@@ -284,6 +284,8 @@ function AppBar(): JSX.Element {
                   </a>
                 </Link>
 
+
+                {chainId && featureEnabled(Feature.MIGRATE, chainId) && (
                 <Link href={'/migrate'}>
                   <a
                     id={`migrate-nav-link`}
@@ -292,6 +294,7 @@ function AppBar(): JSX.Element {
                     {i18n._(t`Migrate`)}
                   </a>
                 </Link>
+                )}
 
                 {chainId && featureEnabled(Feature.LIQUIDITY_MINING, chainId) && (
                   <Link href={'/farm'}>
