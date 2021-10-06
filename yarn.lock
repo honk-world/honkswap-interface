@@ -2223,18 +2223,18 @@
     patch-package "^6.4.7"
     postinstall-postinstall "^2.1.0"
 
-"@mistswapdex/default-token-list@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@mistswapdex/default-token-list/-/default-token-list-0.0.7.tgz#2945e37b255e1764493259269bef2554ce1a499b"
-  integrity sha512-LsIl6htXvDZTrgsB0qH90II7xWAq1dDcdd3VxfrlqJaZZuDfLJgf0B+0yZI9sOqyxqqB+KFSpTIJxn4RYlit8Q==
+"@mistswapdex/default-token-list@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@mistswapdex/default-token-list/-/default-token-list-0.0.8.tgz#ca66c0f949848fdf5ef9bada0673c18f8ded9e84"
+  integrity sha512-qVRZBlvlHVG1kKhVhGIHLKv38wMB6MvKpHuVp/cyZlDNzAl22Wmyx68hsYQZcGDvc0l4iKI+iDEROhTZke+BPw==
   dependencies:
     commitlint "^13.1.0"
     lint-staged "^11.1.2"
 
-"@mistswapdex/sdk@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@mistswapdex/sdk/-/sdk-0.0.8.tgz#b4e425ad96da049a032cd696c92503c671a3c9df"
-  integrity sha512-DcUmr65VOqc4za4oF5AwIxwRn8dFCwcZhr9tDI57hs4fptlr4qM/HEpXQQPy/ubhNK67e0tdcOBZ1Y+FD6pL7w==
+"@mistswapdex/sdk@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@mistswapdex/sdk/-/sdk-0.0.12.tgz#0b0a2224c3718e68e2765f3c0a6a245998bcbcd7"
+  integrity sha512-vBZHj3zPZXNooZodAFkDJPzs9/R2HC9+bkCCRbXYFAWDUuEWJiHxz1ERmX+UnglxeiQ+BiglESS2INJbahNgQA==
   dependencies:
     big.js "^6.1.0"
     decimal.js-light "^2.5.0"
