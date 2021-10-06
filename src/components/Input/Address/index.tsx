@@ -24,11 +24,7 @@ export const AddressInput = React.memo(
     const { address, loading } = useENS(value)
 
     const enforcer = (nextUserInput: string) => {
-      if (nextUserInput === '' || inputRegex.test(escapeRegExp(nextUserInput))) {
-        if (Number(nextUserInput) <= 100) {
-          onUserInput(nextUserInput)
-        }
-      }
+      onUserInput(nextUserInput)
     }
 
     return (

@@ -16,8 +16,7 @@ const AddressInputPanel: FC<AddressInputPanelProps> = ({ id, value, onChange }) 
   const { address, loading } = useENS(value)
 
   const handleInput = useCallback(
-    (event) => {
-      const input = event.target.value
+    (input) => {
       const withoutSpaces = input.replace(/\s+/g, '')
       onChange(withoutSpaces)
     },
