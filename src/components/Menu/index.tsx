@@ -24,6 +24,11 @@ const items = (i18n: I18n) => [
     description: i18n._(t`Join the community on Discord.`),
     href: 'https://discord.gg/SkVK3bxWCq',
   },
+  {
+    name: i18n._(t`Telegram`),
+    description: i18n._(t`Join the community on Telegram.`),
+    href: 'https://t.me/MistSwapOfficial',
+  },
 ]
 
 export default function Menu() {
