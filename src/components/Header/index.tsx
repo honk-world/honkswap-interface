@@ -123,7 +123,7 @@ function AppBar(): JSX.Element {
                                 const params: any = {
                                   type: 'ERC20',
                                   options: {
-                                    address: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
+                                    address: '0xC41C680c60309d4646379eD62020c534eB67b6f4',
                                     symbol: 'xMIST',
                                     decimals: 18,
                                     image:
