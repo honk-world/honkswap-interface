@@ -83,7 +83,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                   <div className="flex items-center space-x-2">
                     <div key="0" className="flex items-center">
                       <Image
-                        src="https://raw.githubusercontent.com/mistswapdex/icons/master/token/mist.jpg"
+                        src="https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png"
                         width="30px"
                         height="30px"
                         className="rounded-md"
