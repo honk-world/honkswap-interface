@@ -279,10 +279,24 @@ export default function Farm(): JSX.Element {
     mistPriceUSD = 1. / ( Number.parseFloat(flexUSDMistPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDMistPool.reserves[1].toFixed()))
   }
 
-  const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
-    MASTERCHEF_ADDRESS[chainId],
-    farms.map((farm) => new Token(chainId, farm.pair, 18, 'LP', 'LP Token'))
-  )
+  let v2PairsBalances = {};
+  let fetchingV2PairBalances = false;
+
+  for (let i=0; i<farms.length; i+=8) {
+      const [partial_v2PairsBalances, partial_fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
+        MASTERCHEF_ADDRESS[chainId],
+        farms.slice(i, Math.min(i+8, farms.length)).map((farm) => new Token(chainId, farm.pair, 18, 'LP', 'LP Token'))
+      )
+
+      v2PairsBalances = {
+        ...v2PairsBalances,
+        ...partial_v2PairsBalances,
+      };
+
+      if (partial_fetchingV2PairBalances) {
+        fetchingV2PairBalances = true;
+      }
+  }
   if (! fetchingV2PairBalances) {
     for (let i=0; i<farms.length; ++i) {
       if (v2PairsBalances.hasOwnProperty(farms[i].pair) && farms[i].pool.totalSupply) {
