@@ -36,8 +36,14 @@ const FarmList = ({ farms, term }) => {
             ((sortConfig.direction === 'ascending' && <ChevronUpIcon width={12} height={12} />) ||
               (sortConfig.direction === 'descending' && <ChevronDownIcon width={12} height={12} />))}
         </div>
-        <div className="items-center justify-center hidden px-4 md:flex hover:text-high-emphesis">
+        <div className="items-center justify-center hidden px-4 cursor-pointer md:flex hover:text-high-emphesis"
+          onClick={() => requestSort('allocPoint')}
+        >
           {i18n._(t`Rewards`)}
+          {sortConfig &&
+            sortConfig.key === 'allocPoint' &&
+            ((sortConfig.direction === 'ascending' && <ChevronUpIcon width={12} height={12} />) ||
+              (sortConfig.direction === 'descending' && <ChevronDownIcon width={12} height={12} />))}
         </div>
         <div
           className="flex items-center justify-center px-4 cursor-pointer hover:text-high-emphesis"
@@ -54,6 +60,10 @@ const FarmList = ({ farms, term }) => {
           onClick={() => requestSort('pending')}
         >
           {i18n._(t`Pending`)}
+          {sortConfig &&
+            sortConfig.key === 'pending' &&
+            ((sortConfig.direction === 'ascending' && <ChevronUpIcon width={12} height={12} />) ||
+              (sortConfig.direction === 'descending' && <ChevronDownIcon width={12} height={12} />))}
         </div>
       </div>
       <InfiniteScroll

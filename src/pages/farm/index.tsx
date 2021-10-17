@@ -26,7 +26,7 @@ import { getAddress } from '@ethersproject/address'
 import useFarmRewards from '../../hooks/useFarmRewards'
 import usePool from '../../hooks/usePool'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
-import { usePositions } from '../../features/onsen/hooks'
+import { usePositions, usePendingSushi } from '../../features/onsen/hooks'
 import { useRouter } from 'next/router'
 
 export default function Farm(): JSX.Element {
@@ -250,8 +250,9 @@ export default function Farm(): JSX.Element {
       },
     })
 
-    farms.push({
+    const f = {
       pair: pairAddress,
+      symbol: `${hardcodedPairs[chainId][pairAddress].token0.symbol}-${hardcodedPairs[chainId][pairAddress].token1.symbol}`,
       // eslint-disable-next-line react-hooks/rules-of-hooks
       pool: usePool(pairAddress),
       allocPoint: pair.allocPoint,
@@ -264,7 +265,12 @@ export default function Farm(): JSX.Element {
         totalAllocPoint: "999949643"
       },
       userCount: 1,
-    })
+    }
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    f.pendingSushi = usePendingSushi(f)
+    f.pending = Number.parseFloat(f.pendingSushi?.toFixed())
+
+    farms.push(f);
   }
 
   const flexUSDMistPool = farms[1].pool;
