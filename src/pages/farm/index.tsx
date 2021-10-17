@@ -130,8 +130,8 @@ export default function Farm(): JSX.Element {
       "0xbE48dC2353a460668A5D859C66e4472661581998": {
         farmId: 15,
         allocPoint: 3150102,
-        token0: new Token(ChainId.SMARTBCH, '0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd', 18, 'HONK', 'Honk'),
-        token1: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 2, 'CATS', 'CashCats'),
+        token0: new Token(ChainId.SMARTBCH, '0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd', 2, 'HONK', 'Honk'),
+        token1: WBCH[ChainId.SMARTBCH],
       },
       "0x12E03015A85A0c2c1eca69486147608ABB0b801c": {
         farmId: 16,
