@@ -208,8 +208,7 @@ export default function Farm(): JSX.Element {
       "0xFEC4202E22d0cd950aFC52622114e787FFFa0F53": {
         farmId: 28,
         allocPoint: 2499024,
-        // TODO - replace since this is a scam
-        token0: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 18, 'C4Q', 'C4Q'),
+        token0: new Token(ChainId.SMARTBCH, '0xFC27A40259f5d36F647b1142443Ed8941334C608', 18, 'C4Q', 'C4Q'),
         token1: WBCH[ChainId.SMARTBCH],
       },
       "0x98A03761Fe62b9A1FD7888D86f70E94a40ACD511": {
@@ -283,6 +282,7 @@ export default function Farm(): JSX.Element {
   let fetchingV2PairBalances = false;
 
   for (let i=0; i<farms.length; i+=8) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const [partial_v2PairsBalances, partial_fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
         MASTERCHEF_ADDRESS[chainId],
         farms.slice(i, Math.min(i+8, farms.length)).map((farm) => new Token(chainId, farm.pair, 18, 'LP', 'LP Token'))
