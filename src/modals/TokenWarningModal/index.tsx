@@ -13,7 +13,9 @@ export default function TokenWarningModal({
   tokens: Token[]
   onConfirm: () => void
 }) {
-  const handleDismiss = useCallback(() => null, [])
+  const handleDismiss = useCallback(() => {
+      window.location.href = "/"
+  }, [])
 
   return (
     <Modal isOpen={isOpen} onDismiss={handleDismiss} maxHeight={90}>
