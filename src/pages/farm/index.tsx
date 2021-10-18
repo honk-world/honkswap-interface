@@ -259,6 +259,8 @@ export default function Farm(): JSX.Element {
       balance: "1000000000000000000",
       chef: 0,
       id: pair.farmId,
+      pendingSushi: undefined,
+      pending: 0,
       owner: {
         id: MASTERCHEF_ADDRESS[chainId],
         sushiPerBlock: "100000000000000000000",
