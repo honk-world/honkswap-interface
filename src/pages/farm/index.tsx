@@ -423,7 +423,7 @@ export default function Farm(): JSX.Element {
 
   const FILTER = {
     all: (farm) => farm.allocPoint !== '0',
-    portfolio: (farm) => farm?.amount && !farm.amount.isZero(),
+    portfolio: (farm) => farm.pending !== 0,
     sushi: (farm) => farm.pair.type === PairType.SWAP && farm.allocPoint !== '0',
     kashi: (farm) => farm.pair.type === PairType.KASHI && farm.allocPoint !== '0',
     '2x': (farm) => (farm.chef === Chef.MASTERCHEF_V2) && farm.allocPoint !== '0',
