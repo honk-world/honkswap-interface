@@ -40,12 +40,6 @@ const FarmListItem = ({ farm, ...rest }) => {
                       {farm?.pair?.token1?.symbol}
                     </span>
                   </div>
-                  {farm?.pair?.type === PairType.SWAP && (
-                    <div className="text-xs md:text-base text-secondary">{i18n._(t`MistSwap Farm`)}</div>
-                  )}
-                  {farm?.pair?.type === PairType.KASHI && (
-                    <div className="text-xs md:text-base text-secondary">Kashi Farm</div>
-                  )}
                 </div>
               </div>
               <div className="flex flex-col items-center justify-center font-bold">{formatNumber(farm.tvl, true)}</div>
