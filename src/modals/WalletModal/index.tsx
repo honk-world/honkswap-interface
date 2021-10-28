@@ -163,24 +163,21 @@ export default function WalletModal({
           return null
         }
 
-        if (!window.web3 && !window.ethereum && option.mobile) {
-          return (
-            <Option
-              onClick={() => {
-                tryActivation(option.connector)
-              }}
-              id={`connect-${key}`}
-              key={key}
-              active={option.connector && option.connector === connector}
-              color={option.color}
-              link={option.href}
-              header={option.name}
-              subheader={null}
-              icon={'/images/wallets/' + option.iconName}
-            />
-          )
-        }
-        return null
+        return (
+          <Option
+            onClick={() => {
+              tryActivation(option.connector)
+            }}
+            id={`connect-${key}`}
+            key={key}
+            active={option.connector && option.connector === connector}
+            color={option.color}
+            link={option.href}
+            header={option.name}
+            subheader={null}
+            icon={'/images/wallets/' + option.iconName}
+          />
+        )
       }
 
       // overwrite injected when needed
