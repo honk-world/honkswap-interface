@@ -15,6 +15,7 @@ import {
   updateUserArcherTipManualOverride,
   updateUserArcherUseRelay,
   updateUserDarkMode,
+  updateUserFarmFilter,
   updateUserDeadline,
   updateUserExpertMode,
   updateUserSingleHopOnly,
@@ -31,6 +32,7 @@ export interface UserState {
   lastUpdateVersionTimestamp?: number
 
   userDarkMode: boolean | null // the user's choice for dark mode or light mode
+  userFarmFilter: string | null // ther user's last active farm filter
   matchesDarkMode: boolean // whether the dark mode media query matches
 
   userExpertMode: boolean
@@ -72,6 +74,7 @@ function pairKey(token0Address: string, token1Address: string) {
 
 export const initialState: UserState = {
   userDarkMode: null,
+  userFarmFilter: 'all',
   matchesDarkMode: false,
   userExpertMode: false,
   userSingleHopOnly: false,
@@ -107,6 +110,10 @@ export default createReducer(initialState, (builder) =>
     })
     .addCase(updateUserDarkMode, (state, action) => {
       state.userDarkMode = action.payload.userDarkMode
+      state.timestamp = currentTimestamp()
+    })
+    .addCase(updateUserFarmFilter,  (state, action) => {
+      state.userFarmFilter = action.payload.userFarmFilter
       state.timestamp = currentTimestamp()
     })
     .addCase(updateMatchesDarkMode, (state, action) => {
