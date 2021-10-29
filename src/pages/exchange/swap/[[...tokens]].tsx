@@ -51,7 +51,7 @@ import MinerTip from '../../../features/exchange-v1/swap/MinerTip'
 import ProgressSteps from '../../../components/ProgressSteps'
 import SwapHeader from '../../../features/trade/Header'
 import TokenWarningModal from '../../../modals/TokenWarningModal'
-import TradePrice from '../../../features/exchange-v1/swap/TradePrice'
+import { default as TradePrice, GetRateText } from '../../../features/exchange-v1/swap/TradePrice'
 import Typography from '../../../components/Typography'
 import UnsupportedCurrencyFooter from '../../../features/exchange-v1/swap/UnsupportedCurrencyFooter'
 import Web3Connect from '../../../components/Web3Connect'
@@ -416,7 +416,7 @@ export default function Swap() {
   return (
     <Container id="swap-page" className="py-4 md:py-8 lg:py-12">
       <Head>
-        <title>{i18n._(t`MISTswap`)} | MISTswap</title>
+        <title>{GetRateText({price: trade?.executionPrice, showInverted}) || i18n._(t`MISTswap`)} | MISTswap</title>
         <meta
           key="description"
           name="description"

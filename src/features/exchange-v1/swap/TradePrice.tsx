@@ -16,21 +16,9 @@ interface TradePriceProps {
 export default function TradePrice({ price, showInverted, setShowInverted, className }: TradePriceProps) {
   const { i18n } = useLingui()
 
-  let formattedPrice: string
-
-  try {
-    formattedPrice = showInverted ? price.toSignificant(4) : price.invert()?.toSignificant(4)
-  } catch (error) {
-    formattedPrice = '0'
-  }
-
-  const label = showInverted ? `${price.quoteCurrency?.symbol}` : `${price.baseCurrency?.symbol} `
-
-  const labelInverted = showInverted ? `${price.baseCurrency?.symbol} ` : `${price.quoteCurrency?.symbol}`
-
   const flipPrice = useCallback(() => setShowInverted(!showInverted), [setShowInverted, showInverted])
 
-  const text = `${'1 ' + labelInverted + ' = ' + formattedPrice ?? '-'} ${label}`
+  const text = GetRateText({price, showInverted});
 
   return (
     <div
@@ -65,4 +53,27 @@ export default function TradePrice({ price, showInverted, setShowInverted, class
       </div>
     </div>
   )
+}
+
+export function GetRateText({ price, showInverted }) {
+  if (!price) {
+    return "";
+  }
+
+  let formattedPrice: string
+
+  try {
+    formattedPrice = showInverted ? price.toSignificant(4) : price.invert()?.toSignificant(4)
+  } catch (error) {
+    formattedPrice = '0'
+  }
+
+  const label = showInverted ? `${price.quoteCurrency?.symbol}` : `${price.baseCurrency?.symbol} `
+
+  const labelInverted = showInverted ? `${price.baseCurrency?.symbol} ` : `${price.quoteCurrency?.symbol}`
+
+
+  const text = `${'1 ' + labelInverted + ' = ' + formattedPrice ?? '-'} ${label}`
+
+  return text;
 }
