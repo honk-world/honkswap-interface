@@ -221,13 +221,17 @@ function AppBar(): JSX.Element {
                       )}
                       <Web3Status />
                     </div>
-                    <div className="hidden md:block">
+                    <div className="hidden md:block sm:block">
                       <LanguageSwitch />
                     </div>
                     <More />
                   </div>
                 </div>
                 <div className="flex -mr-2 sm:hidden">
+                  {/* Mobile language switch */}
+                  <div className="inline-flex items-center">
+                    <LanguageSwitch />
+                  </div>
                   {/* Mobile menu button */}
                   <Popover.Button className="inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-high-emphesis focus:outline-none">
                     <span className="sr-only">{i18n._(t`Open main menu`)}</span>
