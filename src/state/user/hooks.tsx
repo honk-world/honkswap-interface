@@ -14,6 +14,7 @@ import {
   updateUserArcherTipManualOverride,
   updateUserArcherUseRelay,
   updateUserDarkMode,
+  updateUserFarmFilter,
   updateUserDeadline,
   updateUserExpertMode,
   updateUserSingleHopOnly,
@@ -68,6 +69,22 @@ export function useDarkModeManager(): [boolean, () => void] {
   }, [darkMode, dispatch])
 
   return [darkMode, toggleSetDarkMode]
+}
+
+export function getFarmFilter(): string {
+  return useAppSelector((state) => state.user.userFarmFilter)
+}
+
+export function useUpdateFarmFilter(): (filter: string) => void {
+  // const dispatch = useAppDispatch()
+  // dispatch(updateUserFarmFilter({ userFarmFilter: filter }))
+  const dispatch = useDispatch<AppDispatch>()
+  return useCallback(
+    (filter: string) => {
+      dispatch(updateUserFarmFilter({ userFarmFilter: filter }))
+    },
+    [dispatch]
+  )
 }
 
 export function useIsExpertMode(): boolean {

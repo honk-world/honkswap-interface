@@ -18,7 +18,7 @@ import Container from '../../components/Container'
 import FarmList from '../../features/onsen/FarmList'
 import Head from 'next/head'
 import Menu from '../../features/onsen/FarmMenu'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Search from '../../components/Search'
 import { classNames } from '../../functions'
 import dynamic from 'next/dynamic'
@@ -28,12 +28,23 @@ import usePool from '../../hooks/usePool'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
 import { usePositions, usePendingSushi } from '../../features/onsen/hooks'
 import { useRouter } from 'next/router'
+import { updateUserFarmFilter } from '../../state/user/actions'
+import { getFarmFilter, useUpdateFarmFilter } from '../../state/user/hooks'
 
 export default function Farm(): JSX.Element {
   const { chainId } = useActiveWeb3React()
   const router = useRouter()
 
-  const type = router.query.filter == null ? 'all' : (router.query.filter as string)
+  const type = router.query.filter as string
+
+  const savedFilter = getFarmFilter()
+
+  if (!type && savedFilter) {
+    router.push(`/farm?filter=${savedFilter}`)
+  }
+
+  const updateFarmFilter = useUpdateFarmFilter()
+  updateFarmFilter(type)
 
   const hardcodedPairs = {
     [ChainId.SMARTBCH]: {
