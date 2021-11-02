@@ -56,7 +56,7 @@ const FarmList = ({ farms, term }) => {
               (sortConfig.direction === 'descending' && <ChevronDownIcon width={12} height={12} />))}
         </div>
         <div
-          className="items-center justify-center hidden px-4 cursor-pointer md:flex hover:text-high-emphesis"
+          className="items-center justify-center px-4 cursor-pointer md:flex hover:text-high-emphesis"
           onClick={() => requestSort('pending')}
         >
           {i18n._(t`Pending`)}

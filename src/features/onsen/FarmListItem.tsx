@@ -11,6 +11,7 @@ import { useLingui } from '@lingui/react'
 import { t } from '@lingui/macro'
 import { useCurrency } from '../../hooks/Tokens'
 import { usePendingSushi, useUserInfo } from './hooks'
+import { isMobile } from 'react-device-detect'
 
 const FarmListItem = ({ farm, ...rest }) => {
   const token0 = useCurrency(farm.pair.token0.id)
@@ -32,13 +33,13 @@ const FarmListItem = ({ farm, ...rest }) => {
           >
             <div className="grid grid-cols-5">
               <div className="flex col-span-2 space-x-4 md:col-span-1">
-                <DoubleLogo currency0={token0} currency1={token1} size={40} />
+                <DoubleLogo currency0={token0} currency1={token1} size={isMobile ? 30 : 40} />
                 <div className="flex flex-col justify-center">
                   <div>
-                    <span className="font-bold">{farm?.pair?.token0?.symbol}</span>/
-                    <span className={farm?.pair?.type === PairType.KASHI ? 'font-thin' : 'font-bold'}>
+                    <p className="font-bold">{farm?.pair?.token0?.symbol}</p>
+                    <p className={farm?.pair?.type === PairType.KASHI ? 'font-thin' : 'font-bold'}>
                       {farm?.pair?.token1?.symbol}
-                    </span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -73,8 +74,8 @@ const FarmListItem = ({ farm, ...rest }) => {
                 <div className="text-xs text-right md:text-base text-secondary">{i18n._(t`annualized`)}</div>
               </div>
               {pendingSushi && pendingSushi.greaterThan(ZERO) ? (
-                <div className="flex-row items-center hidden space-x-4 font-bold md:flex">
-                  <div className="flex items-center space-x-2">
+                <div className="flex flex-col items-center justify-center md:flex-row space-x-4 font-bold md:flex">
+                  <div className="hidden md:flex items-center space-x-2">
                     <div key="0" className="flex items-center">
                       <Image
                         src="https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png"
@@ -87,13 +88,13 @@ const FarmListItem = ({ farm, ...rest }) => {
                     </div>
                   </div>
                   <div className="flex flex-col space-y-1">
-                    <div key="0" className="text-xs md:text-sm whitespace-nowrap">
+                    <div key="0" className="text-xs md:text-sm">
                       {formatNumber(pendingSushi.toFixed(18))} MIST
                     </div>
                   </div>
               </div>
               ) : (
-                <div className="flex-row items-center hidden space-x-4 font-bold md:flex">
+                <div className="flex-row items-center justify-center flex pl-3 font-bold text-sm">
                   {i18n._(t`Stake LP to Farm`)}
                 </div>
               )}
