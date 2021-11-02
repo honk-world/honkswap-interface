@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { SUPPORTED_WALLETS, injected } from '../../config/wallets'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 import { useModalOpen, useWalletModalToggle } from '../../state/application/hooks'
@@ -6,7 +6,7 @@ import { useModalOpen, useWalletModalToggle } from '../../state/application/hook
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import AccountDetails from '../../components/AccountDetails'
 import { ApplicationModal } from '../../state/application/actions'
-import { ButtonError } from '../../components/Button'
+import { ButtonConfirmed, ButtonError } from '../../components/Button'
 import ExternalLink from '../../components/ExternalLink'
 import Modal from '../../components/Modal'
 import ModalHeader from '../../components/ModalHeader'
@@ -20,6 +20,10 @@ import styled from 'styled-components'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import usePrevious from '../../hooks/usePrevious'
+import { SUPPORTED_NETWORKS } from '../NetworkModal'
+import { ChainId } from '@mistswapdex/sdk'
+import cookie from 'cookie-cutter'
+import { useActiveWeb3React } from '../../hooks'
 
 const CloseIcon = styled.div`
   position: absolute;
@@ -150,6 +154,38 @@ export default function WalletModal({
     }
   }, [toggleWalletModal, connector])
 
+  const switchToSmartBch = async () => {
+    // `library` context here is invalid, we use the direct communiaction with Metamask via window.ethereum
+    const params = SUPPORTED_NETWORKS[ChainId.SMARTBCH]
+    cookie.set('chainId', ChainId.SMARTBCH)
+
+    const ethereum = window.ethereum as any;
+    try {
+      await ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [ { chainId: params.chainId } ],
+      });
+    } catch (switchError: any) {
+      console.log(switchError);
+      // This error code indicates that the chain has not been added to MetaMask.
+      if (switchError.code === 4902) {
+        try {
+          await ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [ params ],
+          });
+        } catch (addError) {
+          console.log(addError);
+          // handle adding network error
+          throw addError;
+        }
+      } else {
+        // handle other "switch" errors
+        throw switchError;
+      }
+    }
+  }
+
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
     const isMetamask = window.ethereum && window.ethereum.isMetaMask
@@ -251,6 +287,12 @@ export default function WalletModal({
               i18n._(t`Error connecting. Try refreshing the page.`)
             )}
             <div style={{ marginTop: '1rem' }} />
+            <ButtonConfirmed size="sm" onClick={switchToSmartBch}>
+              {i18n._(t`Switch to SmartBch Network`)}
+            </ButtonConfirmed>
+
+            <div style={{ marginTop: '1rem' }} />
+
             <ButtonError error={true} size="sm" onClick={deactivate}>
               {i18n._(t`Disconnect`)}
             </ButtonError>
