@@ -51,6 +51,7 @@ import useENS from '../../hooks/useENS'
 import { useLingui } from '@lingui/react'
 import useParsedQueryString from '../../hooks/useParsedQueryString'
 import useSwapSlippageTolerance from '../../hooks/useSwapSlippageTollerence'
+import { initialState } from './reducer'
 
 export function useSwapState(): AppState['swap'] {
   return useAppSelector((state) => state.swap)
@@ -342,6 +343,11 @@ function validatedRecipient(recipient: any): string | null {
   if (ADDRESS_REGEX.test(recipient)) return recipient
   return null
 }
+
+export function defaultSwapState(): SwapState {
+  return queryParametersToSwapState(initialState);
+}
+
 export function queryParametersToSwapState(parsedQs: ParsedQs, chainId: ChainId = ChainId.SMARTBCH): SwapState {
   let inputCurrency = parseCurrencyFromURLParameter(parsedQs.inputCurrency)
   let outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency)
@@ -390,10 +396,19 @@ export function useDefaultsFromURLSearch():
     | undefined
   >()
 
-  useEffect(() => {
-    if (!chainId) return
-    const parsed = queryParametersToSwapState(parsedQs, chainId)
+  if (!chainId) return
+  const defaultState = defaultSwapState()
+  const hadQuery = Object.keys(parsedQs).length
+  const parsed = queryParametersToSwapState(parsedQs, chainId)
 
+  if (!hadQuery && JSON.stringify(parsed) === JSON.stringify(defaultState)) {
+    return {
+      inputCurrencyId: defaultState[Field.INPUT].currencyId,
+      outputCurrencyId: defaultState[Field.OUTPUT].currencyId,
+    };
+  }
+
+  useEffect(() => {
     dispatch(
       replaceSwapState({
         typedValue: parsed.typedValue,
