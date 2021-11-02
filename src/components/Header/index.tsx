@@ -18,6 +18,8 @@ import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useETHBalances } from '../../state/wallet/hooks'
 import { useLingui } from '@lingui/react'
+import { isMobile } from 'react-device-detect'
+import AddToken from '../AddToken'
 
 // import { ExternalLink, NavLink } from "./Link";
 // import { ReactComponent as Burger } from "../assets/images/burger.svg";
@@ -115,93 +117,27 @@ function AppBar(): JSX.Element {
                   <div className="flex items-center justify-between w-full space-x-2 sm:justify-end">
                     {chainId && [ChainId.SMARTBCH].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
-                        <QuestionHelper text={i18n._(t`Add xMIST to your MetaMask wallet`)}>
-                          <div
-                            className="hidden p-0.5 rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800"
-                            onClick={() => {
-                              if (library && library.provider.isMetaMask && library.provider.request) {
-                                const params: any = {
-                                  type: 'ERC20',
-                                  options: {
-                                    address: '0xC41C680c60309d4646379eD62020c534eB67b6f4',
-                                    symbol: 'xMIST',
-                                    decimals: 18,
-                                    image:
-                                      'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0xC41C680c60309d4646379eD62020c534eB67b6f4/logo.png',
-                                  },
-                                }
-                                library.provider
-                                  .request({
-                                    method: 'wallet_watchAsset',
-                                    params,
-                                  })
-                                  .then((success) => {
-                                    if (success) {
-                                      console.log('Successfully added xMIST to MetaMask')
-                                    } else {
-                                      throw new Error('Something went wrong.')
-                                    }
-                                  })
-                                  .catch(console.error)
-                              }
-                            }}
-                          >
-                            <Image
-                              src="/images/tokens/xmist-square.jpg"
-                              alt="xMIST"
-                              width="38px"
-                              height="38px"
-                              objectFit="contain"
-                              className="rounded-md"
-                            />
-                          </div>
-                        </QuestionHelper>
+                        <AddToken
+                          imageProps={{src: "/images/tokens/xmist-square.jpg", alt: "xMIST"}}
+                          metamaskProps={{
+                            address: '0xC41C680c60309d4646379eD62020c534eB67b6f4',
+                            symbol: 'xMIST',
+                            decimals: 18,
+                            image: 'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0xC41C680c60309d4646379eD62020c534eB67b6f4/logo.png',
+                          }} />
                       </>
                     )}
 
                     {chainId && chainId in MIST_ADDRESS && library && library.provider.isMetaMask && (
                       <>
-                        <QuestionHelper text={i18n._(t`Add MIST to your MetaMask wallet`)}>
-                          <div
-                            className="hidden rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800 p-0.5"
-                            onClick={() => {
-                              const params: any = {
-                                type: 'ERC20',
-                                options: {
-                                  address: MIST_ADDRESS[chainId],
-                                  symbol: 'MIST',
-                                  decimals: 18,
-                                  image:
-                                    'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png',
-                                },
-                              }
-                              if (library && library.provider.isMetaMask && library.provider.request) {
-                                library.provider
-                                  .request({
-                                    method: 'wallet_watchAsset',
-                                    params,
-                                  })
-                                  .then((success) => {
-                                    if (success) {
-                                      console.log('Successfully added MIST to MetaMask')
-                                    } else {
-                                      throw new Error('Something went wrong.')
-                                    }
-                                  })
-                                  .catch(console.error)
-                              }
-                            }}
-                          >
-                            <Image
-                              src="/images/tokens/mist-square.jpg"
-                              alt="MIST"
-                              width="38px"
-                              height="38px"
-                              objectFit="contain"
-                              className="rounded-md"
-                            />
-                          </div>
-                        </QuestionHelper>
+                        <AddToken
+                          imageProps={{src: "/images/tokens/mist-square.jpg", alt: "MIST"}}
+                          metamaskProps={{
+                            address: MIST_ADDRESS[chainId],
+                            symbol: 'MIST',
+                            decimals: 18,
+                            image: 'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png',
+                          }} />
                       </>
                     )}
 
@@ -229,9 +165,13 @@ function AppBar(): JSX.Element {
                 </div>
                 <div className="flex -mr-2 sm:hidden">
                   {/* Mobile language switch */}
-                  <div className="inline-flex items-center">
-                    <LanguageSwitch />
-                  </div>
+                  {isMobile && (
+                    <>
+                      <div className="inline-flex items-center">
+                        <LanguageSwitch />
+                      </div>
+                    </>
+                  )}
                   {/* Mobile menu button */}
                   <Popover.Button className="inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-high-emphesis focus:outline-none">
                     <span className="sr-only">{i18n._(t`Open main menu`)}</span>
