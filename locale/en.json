@@ -188,7 +188,6 @@
   "Pending": "",
   "Pending Treasury Transfer": "",
   "Please connect to the appropriate SmartBCH network.": "",
-  "Please install": "",
   "Please make sure your {0} balance is sufficient to deposit and then try again.": "",
   "Please make sure your {0} balance is sufficient to withdraw and then try again.": "",
   "Please note that the recipient address is different from the connected wallet address.": "",
@@ -315,7 +314,6 @@
   "above": "",
   "annualized": "",
   "below": "",
-  "and then try again": "",
   "failed to load": "",
   "for deliberations on additional points.": "",
   "forum discussion": "",
@@ -325,11 +323,15 @@
   "of pool": "",
   "or the transaction will revert.": "",
   "xMIST Fee": "",
+  "please install": "",
   "{0, plural, one {Token} many {Tokens}}": "",
   "{0} Deposited": "",
   "{0} Strategy": "",
   "{0} {1} per {2}": "",
   "{0} {sign} market rate": "",
   "{0}/{1} Burned": "",
-  "{0} is not supported": ""
+  "{0} is not supported": "",
+  "{0} is supported, but first you need to install": "",
+  "metamask extension": "",
+  "metamask app": ""
 }

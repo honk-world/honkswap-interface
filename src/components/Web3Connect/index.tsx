@@ -3,7 +3,7 @@ import * as deviceInfo from 'react-device-detect'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 
 import { Activity } from 'react-feather'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useWalletModalToggle } from '../../state/application/hooks'
@@ -25,6 +25,26 @@ export default function Web3Connect({ color = 'gray', size = 'sm', className = '
 
     toggleWalletModal()
   }, [setInstructionModalOpen, toggleWalletModal])
+
+  const pluginSupportInfo = useMemo(() => {
+    if (!deviceInfo.isDesktop) {
+      return null
+    }
+
+    if (deviceInfo.isFirefox) {
+      return { url: 'https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/' }
+    }
+
+    if (deviceInfo.isChrome) {
+      return { url: 'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn' }
+    }
+
+    if (deviceInfo.isEdge) {
+      return { url: 'https://microsoftedge.microsoft.com/addons/detail/metamask/ejbalbakoplchlghecdalmeeeajnimhm' }
+    }
+
+    return null
+  }, [])
 
   return error ? (
     <div
@@ -54,24 +74,21 @@ export default function Web3Connect({ color = 'gray', size = 'sm', className = '
         onDismiss={onInstructionModalDismiss}
         instruction={
           <div>
-            {deviceInfo.isChrome && deviceInfo.isDesktop ? (
+            {pluginSupportInfo ? (
               <>
                 <p>
-                  {i18n._(t`Chrome is supported, but first you need to install`)}
-                  <a
-                    className="text-blue"
-                    href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn"
-                  >
+                  {i18n._(t`${deviceInfo.browserName} is supported, but first you need to install`)}
+                  <a className="text-blue" href={pluginSupportInfo.url}>
                     {' '}
-                    chrome metatask extension{' '}
+                    {t`metamask extension`}
                   </a>
                 </p>
               </>
             ) : (
               <>
-                {i18n._(t`${deviceInfo.browserName} is not supported`)} {t`please install`}{' '}
+                {i18n._(t`${deviceInfo.browserName} is not supported`)}, {i18n._(t`please install`)}{' '}
                 <a className="text-blue" href="https://metamask.io/">
-                  MetaTask App
+                  {i18n._(t`metamask app`)}
                 </a>
               </>
             )}
