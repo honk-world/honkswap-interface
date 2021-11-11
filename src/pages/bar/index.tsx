@@ -56,7 +56,7 @@ const buttonStyleInsufficientFunds = `${buttonStyleEnabled} opacity-60`
 const buttonStyleDisabled = `${buttonStyle} text-secondary bg-dark-700`
 const buttonStyleConnectWallet = `${buttonStyle} text-high-emphesis bg-cyan-blue hover:bg-opacity-90`
 
-// const fetcher = (query) => request('http://127.0.0.1:8000/subgraphs/name/mistswap/bar', query)
+const fetcher = (query) => request('https://thegraph.mistswap.fi/subgraphs/name/mistswap/bar', query)
 
 export default function Stake() {
   const { i18n } = useLingui()
@@ -68,8 +68,7 @@ export default function Stake() {
 
   const { enter, leave } = useSushiBar()
 
-  // const { data } = useSWR(`{bar(id: "${XMIST[chainId].address}") {ratio, totalSupply}}`, fetcher)
-  const data = null;
+  const { data } = useSWR(`{bar(id: "0xc41c680c60309d4646379ed62020c534eb67b6f4") {ratio, totalSupply}}`, fetcher)
 
   const xSushiPerSushi = parseFloat(data?.bar?.ratio)
 
@@ -152,9 +151,7 @@ export default function Stake() {
   // TODO: DROP AND USE SWR HOOKS INSTEAD
   useEffect(() => {
     const fetchData = async () => {
-      const results = await sushiData.exchange.dayData()
-      const apr = (((results[1].volumeUSD * 0.05) / data?.bar?.totalSupply) * 365) / (data?.bar?.ratio * sushiPrice)
-
+      const apr = (((3000000 * 0.05) / data?.bar?.totalSupply) * 365) / (data?.bar?.ratio * sushiPrice)
       setApr(apr)
     }
     fetchData()
@@ -224,7 +221,7 @@ export default function Stake() {
         <div className="flex flex-col justify-center md:flex-row">
           <div className="flex flex-col w-full max-w-xl mx-auto mb-4 md:m-0">
             <div className="mb-4">
-              {/*
+              {
               <div className="flex items-center justify-between w-full h-24 max-w-xl p-4 rounded md:pl-5 md:pr-7 bg-light-yellow bg-opacity-40">
                 <div className="flex flex-col">
                   <div className="flex items-center justify-center mb-4 flex-nowrap md:mb-2">
@@ -247,15 +244,17 @@ export default function Stake() {
                   </div>
                 </div>
                 <div className="flex flex-col">
+                  {/*
                   <p className="mb-1 text-lg font-bold text-right text-high-emphesis md:text-3xl">
                     {`${apr ? apr.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
                   </p>
                   <p className="w-32 text-sm text-right text-primary md:w-64 md:text-base">
                     {i18n._(t`Yesterday's APR`)}
                   </p>
+                  */}
                 </div>
               </div>
-              */}
+              }
             </div>
             <div>
               <TransactionFailedModal isOpen={modalOpen} onDismiss={() => setModalOpen(false)} />
@@ -289,12 +288,9 @@ export default function Stake() {
                   <p className="font-bold text-large md:text-2xl text-high-emphesis">
                     {activeTab === 0 ? i18n._(t`Stake MIST`) : i18n._(t`Unstake`)}
                   </p>
-                  {/*
                   <div className="border-gradient-r-pink-red-light-brown-dark-pink-red border-transparent border-solid border rounded-3xl px-4 md:px-3.5 py-1.5 md:py-0.5 text-high-emphesis text-xs font-medium md:text-base md:font-normal">
                     {`1 xMIST = ${xSushiPerSushi.toFixed(4)} MIST`}
                   </div>
-                  */
-                  }
                 </div>
 
                 <StyledNumericalInput
