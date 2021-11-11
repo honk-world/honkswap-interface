@@ -246,7 +246,7 @@
   "Swap From:": "",
   "Swap To (est.):": "",
   "Swap To:": "",
-  "Switch to SmartBch Network": "Switch to SmartBch Network",
+  "Switch to SmartBch Network": "",
   "TVL": "",
   "Telegram": "",
   "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer.": "",
@@ -323,10 +323,15 @@
   "of pool": "",
   "or the transaction will revert.": "",
   "xMIST Fee": "",
+  "please install": "",
   "{0, plural, one {Token} many {Tokens}}": "",
   "{0} Deposited": "",
   "{0} Strategy": "",
   "{0} {1} per {2}": "",
   "{0} {sign} market rate": "",
-  "{0}/{1} Burned": ""
+  "{0}/{1} Burned": "",
+  "{0} is not supported": "",
+  "{0} is supported, but first you need to install": "",
+  "metamask extension": "",
+  "metamask app": ""
 }

@@ -323,10 +323,15 @@
   "of pool": "在池中",
   "or the transaction will revert.": "或交易將被恢復。",
   "xMIST Fee": "xMIST 手續費",
+  "please install": "請安裝",
   "{0, plural, one {Token} many {Tokens}}": "{0, 複數, 一個 {Token} 很多 {Tokens}}",
   "{0} Deposited": "{0}存入的",
   "{0} Strategy": "{0}策略",
   "{0} {1} per {2}": "{0}{1} 每筆 {2}",
   "{0} {sign} market rate": "{0} {sign} 市場匯率",
-  "{0}/{1} Burned": "{0}／{1} 銷毀"
+  "{0}/{1} Burned": "{0}／{1} 銷毀",
+  "{0} is not supported": "{0} 不受支持",
+  "{0} is supported, but first you need to install": "{0} 是支持的，但需要您先安裝",
+  "metamask extension": "{0} 擴展程式",
+  "metamask app": "{0} 應用程式"
 }
