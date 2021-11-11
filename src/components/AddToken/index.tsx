@@ -23,6 +23,7 @@ export interface ImageProps {
 
 export interface AddTokenProps {
   metamaskProps: MetamaskTokenInfo,
+  text: string,
   imageProps: ImageProps,
 }
 
@@ -35,13 +36,13 @@ const defaultImageProps: ImageProps = {
   className: "rounded-md",
 }
 
-function AddToken({ imageProps, metamaskProps }: AddTokenProps & React.HTMLAttributes<HTMLDivElement>): JSX.Element {
+function AddToken({ imageProps, text, metamaskProps }: AddTokenProps & React.HTMLAttributes<HTMLDivElement>): JSX.Element {
   imageProps = { ...defaultImageProps, ...imageProps }
   const { i18n } = useLingui()
   const { library } = useActiveWeb3React()
 
   return (
-  <QuestionHelper text={i18n._(t`Add xMIST to your MetaMask wallet`)}>
+  <QuestionHelper text={text}>
     <div
       className="p-0.5 rounded-md cursor-pointer sm:inline-flex bg-dark-900 hover:bg-dark-800"
       onClick={() => {

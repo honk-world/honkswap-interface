@@ -119,6 +119,7 @@ function AppBar(): JSX.Element {
                       <>
                         <AddToken
                           imageProps={{src: "/images/tokens/xmist-square.jpg", alt: "xMIST"}}
+                          text={i18n._(t`Add xMIST to your MetaMask wallet`)}
                           metamaskProps={{
                             address: '0xC41C680c60309d4646379eD62020c534eB67b6f4',
                             symbol: 'xMIST',
@@ -132,6 +133,7 @@ function AppBar(): JSX.Element {
                       <>
                         <AddToken
                           imageProps={{src: "/images/tokens/mist-square.jpg", alt: "MIST"}}
+                          text={i18n._(t`Add MIST to your MetaMask wallet`)}
                           metamaskProps={{
                             address: MIST_ADDRESS[chainId],
                             symbol: 'MIST',
