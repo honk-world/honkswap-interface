@@ -77,7 +77,7 @@ export default function Web3Connect({ color = 'gray', size = 'sm', className = '
             {pluginSupportInfo ? (
               <>
                 <p>
-                  {i18n._(t`${deviceInfo.browserName} is supported, but first you need to install`)}
+                  {i18n._(t`Your browser is supported, but first you need to install`)}
                   <a className="text-blue" href={pluginSupportInfo.url}>
                     {' '}
                     {i18n._(t`MetaMask extension`)}
@@ -86,9 +86,10 @@ export default function Web3Connect({ color = 'gray', size = 'sm', className = '
               </>
             ) : (
               <>
-                {i18n._(t`${deviceInfo.browserName} is not supported`)}, {i18n._(t`please install`)}{' '}
+                {i18n._(t`Your browser is not supported, please install`)}
                 <a className="text-blue" href="https://metamask.io/">
-                  {i18n._(t`MetaMask app`)}
+                  {' '}
+                  {i18n._(t`MetaMask`)}
                 </a>
               </>
             )}
