@@ -158,7 +158,7 @@
   "Maximize yield by staking MIST for xMIST": "將 MIST 質押為 xMIST 以得到最大化收益",
   "Maximum sent": "最大傳送",
   "MetaMask": "",
-  "MetaMask extension": "{0} 擴展程式",
+  "MetaMask extension": "MetaMask 擴展程式",
   "Migrate": "遷移",
   "Miner Tip": "礦工費",
   "Minimum Received": "最少收到",
@@ -306,8 +306,8 @@
   "Your": "您的",
   "Your Claimable MIST this Week": "您這週可獲得的 MIST",
   "Your Staked": "您已質押",
-  "Your browser is not supported, please install": "",
-  "Your browser is supported, but first you need to install": "",
+  "Your browser is not supported, please install": "不支持您的瀏覽器，請安裝",
+  "Your browser is supported, but first you need to install": "支持您的瀏覽器，但需要您先安裝",
   "Your pool share": "您在流動性資金池中的佔比",
   "Your total pool tokens": "流動性資金池中的總代幣",
   "Your transaction may be frontrun": "您的交易可能被搶跑。",
@@ -333,5 +333,5 @@
   "{0} Strategy": "{0}策略",
   "{0} {1} per {2}": "{0}{1} 比 1 {2}",
   "{0} {sign} market rate": "{0} {sign} 市場匯率",
-  "{0}/{1} Burned": ""
+  "{0}/{1} Burned": "{0}／{1} 銷毀"
 }
