@@ -186,6 +186,7 @@
   "Output is estimated. If the price changes by more than {0}% your transaction will revert.": "Đã ước tính đầu ra. Nếu giá thay đổi hơn {0} % thì giao dịch của bạn sẽ hoàn nguyên.",
   "Output is estimated. You will receive at least": "Đầu ra đã được ước tính. Bạn sẽ nhận được ít nhất",
   "Output will be sent to": "Đầu ra sẽ được gửi đến",
+  "Past Farms": "",
   "Pay": "Thanh toán",
   "Pay from:": "Thanh toán từ:",
   "Pending": "Đang chờ xử lý",

@@ -186,6 +186,7 @@
   "Output is estimated. If the price changes by more than {0}% your transaction will revert.": "Rezultatul este estimat. Dacă prețul suferă modificări mai mari de {0}%, tranzacția dvs. se va anula.",
   "Output is estimated. You will receive at least": "Rezultatul este estimat. Veți primi cel puțin",
   "Output will be sent to": "Rezultatul va fi trimis către",
+  "Past Farms": "",
   "Pay": "Plătiți",
   "Pay from:": "Plătiți din:",
   "Pending": "În așteptare",

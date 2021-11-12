@@ -186,6 +186,7 @@
   "Output is estimated. If the price changes by more than {0}% your transaction will revert.": "Montant total estimé. Si le prix évolue au-delà de {0} %, votre transaction sera annulée.",
   "Output is estimated. You will receive at least": "Montant total estimé. Vous recevrez au moins",
   "Output will be sent to": "Le montant total sera envoyé à",
+  "Past Farms": "",
   "Pay": "Payer",
   "Pay from:": "Payer à partir de :",
   "Pending": "En attente",

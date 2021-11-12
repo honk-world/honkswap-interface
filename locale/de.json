@@ -186,6 +186,7 @@
   "Output is estimated. If the price changes by more than {0}% your transaction will revert.": "Output wird geschätzt. Wenn sich der Preis um mehr als {0} % ändert, wird Ihre Transaktion zurückgesetzt.",
   "Output is estimated. You will receive at least": "Die Ausgabe wird geschätzt. Sie erhalten mindestens",
   "Output will be sent to": "Die Ausgabe wird gesendet an",
+  "Past Farms": "",
   "Pay": "Bezahlen",
   "Pay from:": "Bezahle mit:",
   "Pending": "Ausstehend",

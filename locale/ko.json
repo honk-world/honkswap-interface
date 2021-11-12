@@ -186,6 +186,7 @@
   "Output is estimated. If the price changes by more than {0}% your transaction will revert.": "결과는 예상치입니다. 가격이 {0}% 이상 변동하면 거래가 취소됩니다.",
   "Output is estimated. You will receive at least": "출력값은 예상치입니다. 최소 수령은",
   "Output will be sent to": "아웃풋이 다음으로 전송됩니다",
+  "Past Farms": "",
   "Pay": "지불",
   "Pay from:": "다음에서 지불:",
   "Pending": "보류 중",

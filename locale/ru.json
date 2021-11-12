@@ -186,6 +186,7 @@
   "Output is estimated. If the price changes by more than {0}% your transaction will revert.": "Вывод оценен. Если цена изменится более чем на {0}%, транзакция будет отменена.",
   "Output is estimated. You will receive at least": "Вывод оценен. Вы получите не менее",
   "Output will be sent to": "Вывод будет отправлен на",
+  "Past Farms": "",
   "Pay": "Платить",
   "Pay from:": "Платить с:",
   "Pending": "В ожидании",

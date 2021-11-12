@@ -186,6 +186,7 @@
   "Output is estimated. If the price changes by more than {0}% your transaction will revert.": "估计输出。如果价格变化超过{0} ％，您的交易将被退回。",
   "Output is estimated. You will receive at least": "输出是估计值。您将至少收到",
   "Output will be sent to": "输出将发送至",
+  "Past Farms": "",
   "Pay": "支付",
   "Pay from:": "付款方式：",
   "Pending": "处理中",

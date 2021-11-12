@@ -186,6 +186,7 @@
   "Output is estimated. If the price changes by more than {0}% your transaction will revert.": "نتیجه برآوردی است. در صورت تغییر قیمت تا بیش از {0}% تراکنش شما برگشت داده خواهد شد",
   "Output is estimated. You will receive at least": "خروجی برآوردی است. حداقل مبلغی که دریافت خواهید کرد",
   "Output will be sent to": "خروجی فرستاده خواهد شد به",
+  "Past Farms": "",
   "Pay": "پرداخت",
   "Pay from:": "پرداخت از:",
   "Pending": "در حال تعلیق",
