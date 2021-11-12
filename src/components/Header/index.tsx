@@ -109,6 +109,15 @@ function AppBar(): JSX.Element {
                           </a>
                         </NavLink>
                       )}
+                      {chainId && featureEnabled(Feature.ANALYTICS, chainId) && (
+                        <ExternalLink
+                          id={`analytics-nav-link`}
+                          href={ANALYTICS_URL[chainId] || 'https://analytics.mistswap.fi'}
+                          className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                        >
+                          {i18n._(t`Analytics`)}
+                        </ExternalLink>
+                      )}
                     </div>
                   </div>
                 </div>
