@@ -20,7 +20,7 @@
   "Additional records and weekly merkle updates can be found on": "可以在以下網站找到其他記錄和每週 merkle 的更新",
   "All Farms": "全部的農場",
   "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note fee on transfer and rebase tokens are incompatible with Uniswap V3.": "嘗試進行此交易時發生錯誤。\n您可能需要增加您的滑動價差。\n如果仍無法進行，則可能是交易代幣的相容性問題。\n請注意轉帳手續費及 rebase 代幣與 Uniswap V3 不相容。",
-  "Analytics": "分析界面",
+  "Analytics": "數據分析",
   "Approve": "批准",
   "Approve Kashi": "批準Kashi",
   "Approve {0}": "批准{0}",
