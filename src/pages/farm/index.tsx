@@ -380,8 +380,10 @@ export default function Farm(): JSX.Element {
           tvl = reserve / totalSupply * chefBalance * bchPriceUSD * 2;
         }
         farms[i].tvl = tvl;
+        farms[i].chefBalance = chefBalance;
       } else {
         farms[i].tvl = "0";
+        farms[i].chefBalance = 0;
       }
     }
   }
