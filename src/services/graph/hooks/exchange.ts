@@ -187,6 +187,7 @@ export function useMaticPrice(variables = undefined, swrConfig: SWRConfiguration
   return data
 }
 
+// TODO this should be removed when possible as useMistPrice replaces it
 export function useSushiPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { data } = useSWR(['sushiPrice', JSON.stringify(variables)], () => getSushiPrice(variables), swrConfig)
   return data
