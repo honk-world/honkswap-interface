@@ -159,7 +159,6 @@ export const getAvaxPrice = async (variables = undefined) => {
 }
 
 export const getMistPrice = async (variables = {}) => {
-  // console.log('getSushiPrice')
   return getTokenPrice(ChainId.SMARTBCH, tokenPriceQuery, {
     id: '0x5fa664f69c2a4a3ec94fac3cbf7049bd9ca73129',
     ...variables,

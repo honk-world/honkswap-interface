@@ -107,19 +107,31 @@ export function useOnePrice(variables = undefined, swrConfig: SWRConfiguration =
 
 export function useYggPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
-  const { data } = useSWR(null, () => getYggPrice(), swrConfig)
+  const { data } = useSWR(
+    null,
+    () => getYggPrice(),
+    swrConfig
+  )
   return data
 }
 
 export function useRulerPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
-  const { data } = useSWR(null, () => getRulerPrice(variables), swrConfig)
+  const { data } = useSWR(
+    null,
+    () => getRulerPrice(variables),
+    swrConfig
+  )
   return data
 }
 
 export function useTruPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
-  const { data } = useSWR(null, () => getTruPrice(), swrConfig)
+  const { data } = useSWR(
+    null,
+    () => getTruPrice(),
+    swrConfig
+  )
   return data
 }
 
@@ -147,13 +159,21 @@ export function useCvxPrice(variables = undefined, swrConfig: SWRConfiguration =
 
 export function usePicklePrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
-  const { data } = useSWR(null, () => getPicklePrice(), swrConfig)
+  const { data } = useSWR(
+    null,
+    () => getPicklePrice(),
+    swrConfig
+  )
   return data
 }
 
 export function useMphPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { chainId } = useActiveWeb3React()
-  const { data } = useSWR(null, () => getMphPrice(), swrConfig)
+  const { data } = useSWR(
+    null,
+    () => getMphPrice(),
+    swrConfig
+  )
   return data
 }
 
@@ -169,7 +189,6 @@ export function useMaticPrice(variables = undefined, swrConfig: SWRConfiguration
 
 export function useSushiPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { data } = useSWR(['sushiPrice', JSON.stringify(variables)], () => getSushiPrice(variables), swrConfig)
-
   return data
 }
 
