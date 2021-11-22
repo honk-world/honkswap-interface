@@ -18,7 +18,7 @@ import { GRAPH_HOST } from '../constants'
 import { pager } from './'
 
 export const EXCHANGE = {
-  [ChainId.SMARTBCH]: 'mistswapdex/exchange',
+  [ChainId.SMARTBCH]: 'mistswap/exchange',
 }
 
 export const exchange = async (chainId = ChainId.SMARTBCH, query, variables = {}) =>
@@ -156,6 +156,13 @@ export const getOnePrice = async (variables = undefined) => {
 
 export const getAvaxPrice = async (variables = undefined) => {
   // return getNativePrice(ChainId.AVALANCHE, variables)
+}
+
+export const getMistPrice = async (variables = {}) => {
+  return getTokenPrice(ChainId.SMARTBCH, tokenPriceQuery, {
+    id: '0x5fa664f69c2a4a3ec94fac3cbf7049bd9ca73129',
+    ...variables,
+  })
 }
 
 export const getBundle = async (

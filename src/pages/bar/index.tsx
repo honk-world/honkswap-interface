@@ -20,7 +20,7 @@ import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import { useLingui } from '@lingui/react'
 import useSWR from 'swr'
 import useSushiBar from '../../hooks/useSushiBar'
-import { useSushiPrice } from '../../services/graph'
+import { getDayData, useMistPrice } from '../../services/graph'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { GRAPH_HOST } from '../../services/graph/constants'
@@ -61,10 +61,10 @@ const fetcher = (query) => request('https://thegraph.mistswap.fi/subgraphs/name/
 export default function Stake() {
   const { i18n } = useLingui()
   const { account, chainId } = useActiveWeb3React()
-  const sushiBalance = useTokenBalance(account ?? undefined, MIST[chainId])
-  const xSushiBalance = useTokenBalance(account ?? undefined, XMIST[chainId])
+  const mistBalance = useTokenBalance(account ?? undefined, MIST[chainId])
+  const xMistBalance = useTokenBalance(account ?? undefined, XMIST[chainId])
 
-  const sushiPrice = useSushiPrice()
+  const mistPrice = useMistPrice()
 
   const { enter, leave } = useSushiBar()
 
@@ -81,7 +81,7 @@ export default function Stake() {
   const [input, setInput] = useState<string>('')
   const [usingBalance, setUsingBalance] = useState(false)
 
-  const balance = activeTab === 0 ? sushiBalance : xSushiBalance
+  const balance = activeTab === 0 ? mistBalance : xMistBalance
 
   const formattedBalance = balance?.toSignificant(4)
 
@@ -151,11 +151,12 @@ export default function Stake() {
   // TODO: DROP AND USE SWR HOOKS INSTEAD
   useEffect(() => {
     const fetchData = async () => {
-      const apr = (((3000000 * 0.05) / data?.bar?.totalSupply) * 365) / (data?.bar?.ratio * sushiPrice)
+      const results = await getDayData()
+      const apr = (((results[1].volumeUSD * 0.05) / data?.bar?.totalSupply) * 365) / (data?.bar?.ratio * mistPrice)
       setApr(apr)
     }
     fetchData()
-  }, [data?.bar?.ratio, data?.bar?.totalSupply, sushiPrice])
+  }, [data?.bar?.ratio, data?.bar?.totalSupply, mistPrice])
 
   return (
     <Container id="bar-page" className="py-4 md:py-8 lg:py-12" maxWidth="full">
@@ -222,38 +223,36 @@ export default function Stake() {
           <div className="flex flex-col w-full max-w-xl mx-auto mb-4 md:m-0">
             <div className="mb-4">
               {
-              <div className="flex items-center justify-between w-full h-24 max-w-xl p-4 rounded md:pl-5 md:pr-7 bg-light-yellow bg-opacity-40">
-                <div className="flex flex-col">
-                  <div className="flex items-center justify-center mb-4 flex-nowrap md:mb-2">
-                    <p className="text-sm font-bold whitespace-nowrap md:text-lg md:leading-5 text-high-emphesis">
-                      {i18n._(t`Staking APR`)}{' '}
-                    </p>
-                  </div>
-                  <div className="flex">
-                    <a
-                      href={`https://analytics.mistswap.fi/bar`}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className={`
+                <div className="flex items-center justify-between w-full h-24 max-w-xl p-4 rounded md:pl-5 md:pr-7 bg-light-yellow bg-opacity-40">
+                  <div className="flex flex-col">
+                    <div className="flex items-center justify-center mb-4 flex-nowrap md:mb-2">
+                      <p className="text-sm font-bold whitespace-nowrap md:text-lg md:leading-5 text-high-emphesis">
+                        {i18n._(t`Staking APR`)}
+                      </p>
+                    </div>
+                    <div className="flex">
+                      <a
+                        href={`https://analytics.mistswap.fi/bar`}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className={`
                         py-1 px-4 md:py-1.5 md:px-7 rounded
                         text-xs md:text-sm font-medium md:font-bold text-dark-900
                         bg-light-yellow hover:bg-opacity-90`}
-                    >
-                      {i18n._(t`View Stats`)}
-                    </a>
+                      >
+                        {i18n._(t`View Stats`)}
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="mb-1 text-lg font-bold text-right text-high-emphesis md:text-3xl">
+                      {`${apr ? apr.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
+                    </p>
+                    <p className="w-32 text-sm text-right text-primary md:w-64 md:text-base">
+                      {i18n._(t`Yesterday's APR`)}
+                    </p>
                   </div>
                 </div>
-                <div className="flex flex-col">
-                  {/*
-                  <p className="mb-1 text-lg font-bold text-right text-high-emphesis md:text-3xl">
-                    {`${apr ? apr.toFixed(2) + '%' : i18n._(t`Loading...`)}`}
-                  </p>
-                  <p className="w-32 text-sm text-right text-primary md:w-64 md:text-base">
-                    {i18n._(t`Yesterday's APR`)}
-                  </p>
-                  */}
-                </div>
-              </div>
               }
             </div>
             <div>
@@ -399,7 +398,7 @@ export default function Stake() {
                     />
                     <div className="flex flex-col justify-center">
                       <p className="text-sm font-bold md:text-lg text-high-emphesis">
-                        {xSushiBalance ? xSushiBalance.toSignificant(8) : '-'}
+                        {xMistBalance ? xMistBalance.toSignificant(8) : '-'}
                       </p>
                       <p className="text-sm md:text-base text-primary">xMIST</p>
                     </div>
@@ -423,7 +422,7 @@ export default function Stake() {
                     />
                     <div className="flex flex-col justify-center">
                       <p className="text-sm font-bold md:text-lg text-high-emphesis">
-                        {sushiBalance ? sushiBalance.toSignificant(8) : '-'}
+                        {mistBalance ? mistBalance.toSignificant(8) : '-'}
                       </p>
                       <p className="text-sm md:text-base text-primary">MIST</p>
                     </div>

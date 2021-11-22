@@ -22,6 +22,7 @@ import {
   getTransactions,
   getTruPrice,
   getYggPrice,
+  getMistPrice,
 } from '../fetchers'
 import { getEthPrice, getPairs } from '../fetchers'
 import useSWR, { SWRConfiguration } from 'swr'
@@ -188,6 +189,12 @@ export function useMaticPrice(variables = undefined, swrConfig: SWRConfiguration
 
 export function useSushiPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
   const { data } = useSWR(['sushiPrice', JSON.stringify(variables)], () => getSushiPrice(variables), swrConfig)
+  return data
+}
+
+export function useMistPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
+  const { data } = useSWR(['mistPrice', JSON.stringify(variables)], () => getMistPrice(variables), swrConfig)
+
   return data
 }
 
