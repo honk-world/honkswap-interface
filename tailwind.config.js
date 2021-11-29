@@ -1,6 +1,15 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const plugin = require('tailwindcss/plugin')
 
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    if (opacityValue) {
+      return `rgba(var(${variableName}), ${opacityValue})`
+    }
+    return `rgb(var(${variableName}))`
+  }
+}
+
 module.exports = {
   // important: '#__next',
   // darkMode: true,
@@ -19,14 +28,14 @@ module.exports = {
           r: 'to right',
         },
         colors: {
-          'blue-pink': ['#27B0E6', '#FA52A0'],
-          'pink-red-light-brown': ['#FE5A75', '#FEC464'],
+          'blue-pink': ['var(--blue)', 'var(--pink)'],
+          'pink-red-light-brown': ['rgb(var(--pink-red-v))', 'rgb(var(--light-brown-v))'],
         },
         background: {
-          'dark-1000': '#0D0415',
-          'dark-900': '#161522',
-          'dark-800': '#202231',
-          'dark-pink-red': '#4e3034',
+          'dark-1000': 'var(--dark-1000)',
+          'dark-900': 'var(--dark-900)',
+          'dark-800': 'var(--dark-800)',
+          'dark-pink-red': 'var(--dark-pink-red)',
         },
         border: {
           1: '1px',
@@ -36,32 +45,33 @@ module.exports = {
         },
       },
       colors: {
-        purple: '#a755dd',
-        blue: '#0993ec',
-        pink: '#f338c3',
-        green: '#7cff6b',
-        red: '#ff3838',
-        yellow: '#ffd166',
+        purple: withOpacity('--purple-v'),
+        blue: withOpacity('--blue-v'),
+        pink: withOpacity('--pink-v'),
+        green: withOpacity('--green-v'),
+        red: withOpacity('--red-v'),
+        yellow: withOpacity('--yellow-v'),
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        white: 'var(--white)',
 
-        'opaque-blue': '#0993ec80',
-        'opaque-pink': '#f338c380',
-        'pink-red': '#FE5A75',
-        'light-brown': '#FEC464',
-        'light-yellow': '#FFD166',
-        'cyan-blue': '#0993EC',
-        'dark-pink': '#221825',
-        'dark-blue': '#0F182A',
-        'dark-1000': '#0D0415',
-        'dark-900': '#161522',
-        'dark-850': '#1d1e2c',
-        'dark-800': '#202231',
-        'dark-700': '#2E3348',
-        'dark-600': '#1C2D49',
-        'dark-500': '#223D5E',
-        'low-emphesis': '#575757',
-        primary: '#BFBFBF',
-        secondary: '#7F7F7F',
-        'high-emphesis': '#E3E3E3',
+        'opaque-blue': 'var(--opaque-blue)',
+        'opaque-pink': 'var(--opaque-pink)',
+        'pink-red': withOpacity('--pink-red-v'),
+        'light-brown': withOpacity('--light-brown-v'),
+        'light-yellow': withOpacity('--light-yellow-v'),
+        'cyan-blue': withOpacity('--cyan-blue-v'),
+        'dark-pink': withOpacity('--dark-pink-v'),
+        'dark-blue': 'var(--dark-blue)',
+        'dark-1000': 'var(--dark-1000)',
+        'dark-900': 'var(--dark-900)',
+        'dark-850': 'var(--dark-850)',
+        'dark-800': 'var(--dark-800)',
+        'dark-700': 'var(--dark-700)',
+        'dark-600': 'var(--dark-600)',
+        'dark-500': 'var(--dark-500)',
+        'low-emphesis': 'var(--low-emphesis)',
+        'high-emphesis': 'var(--high-emphesis)',
       },
       lineHeight: {
         '48px': '48px',
