@@ -71,6 +71,7 @@ import { useRouter } from 'next/router'
 import { useSwapCallback } from '../../../hooks/useSwapCallback'
 import { useUSDCValue } from '../../../hooks/useUSDCPrice'
 import { warningSeverity } from '../../../functions/prices'
+import * as gtag from '../../../functions/matomo'
 
 export default function Swap() {
   const { i18n } = useLingui()
@@ -292,6 +293,13 @@ export default function Swap() {
           swapErrorMessage: undefined,
           txHash: hash,
         })
+
+        gtag.event({
+          category: 'Exchange',
+          action: 'Swap',
+          name: txHash,
+        });
+
       })
       .catch((error) => {
         setSwapState({

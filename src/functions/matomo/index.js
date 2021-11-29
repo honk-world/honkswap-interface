@@ -5,13 +5,7 @@ export const pageview = (url) => {
   window._paq.push(['trackPageView']);
 }
 
-// https://developers.google.com/analytics/devguides/collection/gtagjs/events
-export const event = ({ action, category, label, value }) => {
-  /*
-  window.gtag('event', action, {
-    event_category: category,
-    event_label: label,
-    value: value,
-  })
-  */
+// https://matomo.org/docs/event-tracking
+export const event = ({ category, action, name, value }) => {
+  window._paq.push(['trackEvent', category, action, name, value]);
 }
