@@ -1,6 +1,73 @@
 :root {
-    --primary: #040a15;
-    --text-primary: #BFBFBF;
+    --primary: #454553;
+    --secondary: #7F7F7F;
+    --text-primary: #454553;
+    --bg-primary:#FFFFFF;
     --font-sans: "DM Sans", -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue', 'Helvetica', sans-serif;
     --scrollbar-width: 14px;
+
+    --dark-1000: #FEFEFE;
+    --dark-900:#F9FAFB;
+    --dark-850:#F3F4F6;
+    --dark-800:#E5E7EB;
+    --dark-700:#D1D5DB;
+    --dark-600:#9CA3AF;
+    --dark-500: #6B7280;
+    --dark-blue: #BFDBFE;
+    --dark-pink: #DDD6FE;
+    --dark-pink-red: #d6e9e7;
+    
+    --high-emphesis: #000000;
+    --low-emphesis: #9C9A9A;
+
+    --white: #000;
+    --purple-v: 120, 192, 167;
+    --blue-v: 41, 158, 160;
+    --pink-v: 100, 180, 86;
+    --opaque-blue: rgba(var(--blue-v), 0.8);
+    --opaque-pink: rgba(var(--pink-v), 0.8);
+    --blue: rgb(var(--blue-v));
+    --pink: rgb(var(--pink-v));
+    --red-v: 255, 56, 56;
+    --yellow-v: 245, 158, 11;
+    --green-v: 4, 120, 87;
+    --pink-red-v: 254, 90, 117;
+    --light-brown-v: 254, 196, 100;
+    --light-yellow-v: 252, 211, 77;
+    --cyan-blue-v: 9, 147, 236;
+}
+
+.dark:root{
+    --primary: #BFBFBF;
+    --secondary:#7F7F7F;
+    --text-primary: #BFBFBF;
+    --bg-primary:#040a15;
+
+    --dark-pink: #221825;
+    --dark-1000:#0D0415;
+    --dark-900:#161522;
+    --dark-850:#1d1e2c;
+    --dark-800:#202231;
+    --dark-700:#2E3348;
+    --dark-600:#1C2D49;
+    --dark-500: #223D5E;
+    --dark-blue: #0F182A;
+    --dark-pink: #221825;
+    --dark-blue: #0F182A;
+    --dark-pink-red: #4e3034;
+
+    --high-emphesis: #E3E3E3;
+    --low-emphesis: #575757;
+
+    --purple-v: 167, 85, 221;
+    --white: #fff;
+    --blue-v: 9, 147, 236;
+    --pink-v: 243, 56, 195;
+    --red-v: 255, 56, 56;
+    --yellow-v: 255, 209, 102;
+    --green-v: 124, 255, 107;
+    --pink-red-v: 254, 90, 117;
+    --light-brown-v: 254, 196, 100;
+    --light-yellow-v: 255, 209, 102;
+    --cyan-blue-v:9, 147, 236;
 }

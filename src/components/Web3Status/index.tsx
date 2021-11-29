@@ -125,7 +125,7 @@ function Web3StatusInner() {
             <div className="pr-2">
               {pending?.length} {i18n._(t`Pending`)}
             </div>{' '}
-            <Loader stroke="white" />
+            <Loader />
           </div>
         ) : (
           <div className="mr-2">{ENSName || shortenAddress(account)}</div>

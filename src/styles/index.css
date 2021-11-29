@@ -32,7 +32,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--primary);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
@@ -58,7 +58,7 @@ input:focus {
 }
 
 .striped-background {
-  background: repeating-linear-gradient(45deg, #161522, #161522 10px, #0d0415 10px, #0d0415 20px);
+  background: repeating-linear-gradient(45deg, var(--dark-900), var(--dark-900) 10px, var(--dark-800) 10px, var(--dark-800) 20px);
 }
 
 .percent-translate {

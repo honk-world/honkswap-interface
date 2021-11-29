@@ -1,16 +1,21 @@
+import { useTheme } from '../ThemeSwitch'
+
 /**
  * Takes in custom size and stroke for circle color, default to primary color as fill,
  * need ...rest for layered styles on top
  */
 export default function Loader({
   size = '16px',
-  stroke = '#FFFFFF',
+  stroke,
   ...rest
 }: {
   size?: string
   stroke?: string
   [k: string]: any
 }) {
+  const { theme } = useTheme()
+  const defaultStroke = theme === 'dark' ? '#FFFFFF' : '#000000';
+
   return (
     <svg
       className="animate-spin-slow"
@@ -25,7 +30,7 @@ export default function Loader({
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        stroke={stroke}
+        stroke={stroke || defaultStroke}
       />
     </svg>
   )

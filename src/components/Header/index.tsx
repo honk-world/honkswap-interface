@@ -20,6 +20,7 @@ import { useETHBalances } from '../../state/wallet/hooks'
 import { useLingui } from '@lingui/react'
 import { isMobile } from 'react-device-detect'
 import AddToken from '../AddToken'
+import ThemeSwitch from '../ThemeSwitch'
 
 // import { ExternalLink, NavLink } from "./Link";
 // import { ReactComponent as Burger } from "../assets/images/burger.svg";
@@ -171,6 +172,7 @@ function AppBar(): JSX.Element {
                     <div className="hidden md:block sm:block">
                       <LanguageSwitch />
                     </div>
+                    <ThemeSwitch/>
                     <More />
                   </div>
                 </div>
