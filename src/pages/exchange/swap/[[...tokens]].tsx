@@ -301,6 +301,7 @@ export default function Swap() {
           category: 'Exchange',
           action: 'Swap',
           name: txHash,
+          value: null,
         });
 
       })
