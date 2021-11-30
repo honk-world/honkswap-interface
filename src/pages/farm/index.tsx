@@ -491,7 +491,7 @@ export default function Farm(): JSX.Element {
         <title>Farm | Mist</title>
         <meta key="description" name="description" content="Farm MIST" />
       </Head>
-      <div className={classNames('px-3 md:px-0 lg:block md:col-span-1')} style={{ maxHeight: '40rem' }}>
+      <div className={classNames('px-3 md:px-0 lg:block md:col-span-1')} style={{ maxHeight: '40rem', backgroundImage: 'url(/mist-machine.png)', backgroundSize: 'contain', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}>
         <Menu positionsLength={positions.length} />
       </div>
       <div className={classNames('space-y-6 col-span-4 lg:col-span-3')}>
