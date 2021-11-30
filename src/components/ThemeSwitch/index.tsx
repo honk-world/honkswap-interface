@@ -37,15 +37,10 @@ export function ThemeProvider(props: { children: React.ReactNode }) {
   })
 
   useLayoutEffect(() => {
-    const themeEl = document.querySelector('[name="theme-color"]')
-
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
-      console.log(themeEl)
-      themeEl && themeEl.setAttribute('content', '#F338C3')
     } else {
       document.documentElement.classList.remove('dark')
-      themeEl && themeEl.setAttribute('content', '#8DCC56')
     }
   }, [theme])
 
