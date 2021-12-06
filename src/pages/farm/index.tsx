@@ -284,11 +284,13 @@ export default function Farm(): JSX.Element {
         id: pair.token0.address,
         name: pair.token0.name,
         symbol: pair.token0.symbol,
+        decimals: pair.token0.decimals
       },
       token1: {
         id: pair.token1.address,
         name: pair.token1.name,
         symbol: pair.token1.symbol,
+        decimals: pair.token1.decimals
       },
     })
 
