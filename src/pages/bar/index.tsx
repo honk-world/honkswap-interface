@@ -403,6 +403,11 @@ export default function Stake() {
                       <p className="text-sm md:text-base text-primary">xMIST</p>
                     </div>
                   </div>
+                  {(xMistBalance && xSushiPerSushi) ?
+                    (<div className="mt-3">
+                      ~ {xMistBalance.multiply(Math.round(xSushiPerSushi * 1e8)).divide(1e8).toSignificant(8)} MIST
+                    </div>) : (<></>)
+                  }
                 </div>
 
                 <div className="flex flex-col flex-grow">
