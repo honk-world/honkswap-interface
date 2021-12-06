@@ -1,5 +1,8 @@
 import Input from '../Input'
-import React from 'react'
+import React, { useCallback } from 'react'
+import Button from '../Button'
+import { i18n } from '@lingui/core'
+import { t } from '@lingui/macro'
 
 interface PercentInputPanelProps {
   value: string
@@ -8,6 +11,11 @@ interface PercentInputPanelProps {
 }
 
 export default function PercentInputPanel({ value, onUserInput, id }: PercentInputPanelProps) {
+  const onMax = useCallback(() => {
+    value = "100"
+    onUserInput(value)
+  }, [value, onUserInput])
+
   return (
     <div id={id} className="p-5 rounded bg-dark-800">
       <div className="flex flex-col justify-between space-y-3 sm:space-y-0 sm:flex-row">
@@ -15,6 +23,13 @@ export default function PercentInputPanel({ value, onUserInput, id }: PercentInp
           Amount to Remove
         </div>
         <div className="flex items-center w-full p-3 space-x-3 text-xl font-bold rounded bg-dark-900 sm:w-3/5">
+          <Button
+            onClick={onMax}
+            size="xs"
+            className="text-xs font-medium bg-transparent border rounded-full hover:bg-primary border-low-emphesis text-secondary whitespace-nowrap"
+          >
+            {i18n._(t`Max`)}
+          </Button>
           <Input.Percent
             className="token-amount-input"
             value={value}
