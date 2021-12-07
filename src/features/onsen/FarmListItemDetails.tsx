@@ -64,8 +64,10 @@ const FarmListItem = ({ farm }) => {
   const { deposit, withdraw, harvest } = useMasterChef(farm.chef)
 
   const poolFraction = (Number.parseFloat(amount?.toFixed()) / farm.chefBalance) || 0
-  const token0Amount = CurrencyAmount.fromRawAmount(farm.pair.token0, JSBI.BigInt((farm.pool.reserves.reserve0 as BigNumber).toString())).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
-  const token1Amount = CurrencyAmount.fromRawAmount(farm.pair.token1, JSBI.BigInt((farm.pool.reserves.reserve1 as BigNumber).toString())).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
+  const token0Reserve = farm.pool.reserves ? (farm.pool.reserves.reserve0 as BigNumber).toString() : 0
+  const token0Amount = CurrencyAmount.fromRawAmount(farm.pair.token0, JSBI.BigInt(token0Reserve)).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
+  const token1Reserve = farm.pool.reserves ? (farm.pool.reserves.reserve1 as BigNumber).toString() : 0
+  const token1Amount = CurrencyAmount.fromRawAmount(farm.pair.token1, JSBI.BigInt(token1Reserve)).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
   const token0Name = farm.pool.token0 === farm.pair.token0.id ? farm.pair.token0.symbol : farm.pair.token1.symbol
   const token1Name = farm.pool.token1 === farm.pair.token1.id ? farm.pair.token1.symbol : farm.pair.token0.symbol
 
