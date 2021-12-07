@@ -17,6 +17,7 @@ import { MIST, FLEXUSD } from '../../config/tokens'
 import Container from '../../components/Container'
 import FarmList from '../../features/onsen/FarmList'
 import Head from 'next/head'
+import Image from 'next/image'
 import Menu from '../../features/onsen/FarmMenu'
 import React, { useEffect } from 'react'
 import Search from '../../components/Search'
@@ -283,11 +284,13 @@ export default function Farm(): JSX.Element {
         id: pair.token0.address,
         name: pair.token0.name,
         symbol: pair.token0.symbol,
+        decimals: pair.token0.decimals
       },
       token1: {
         id: pair.token1.address,
         name: pair.token1.name,
         symbol: pair.token1.symbol,
+        decimals: pair.token1.decimals
       },
     })
 
@@ -491,8 +494,11 @@ export default function Farm(): JSX.Element {
         <title>Farm | Mist</title>
         <meta key="description" name="description" content="Farm MIST" />
       </Head>
-      <div className={classNames('px-3 md:px-0 lg:block md:col-span-1')} style={{ maxHeight: '40rem', backgroundImage: 'url(/mist-machine.png)', backgroundSize: 'contain', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}>
+      <div className={classNames('px-3 md:px-0 lg:block md:col-span-1')}>
         <Menu positionsLength={positions.length} />
+        <div className="relative hidden h-80 lg:block">
+          <Image layout="fill" objectFit="contain" objectPosition="bottom" src="/mist-machine.png" alt="" />
+        </div>
       </div>
       <div className={classNames('space-y-6 col-span-4 lg:col-span-3')}>
         <Search

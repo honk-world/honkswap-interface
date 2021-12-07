@@ -1,5 +1,5 @@
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
-import { ChainId, MASTERCHEF_ADDRESS, MASTERCHEF_V2_ADDRESS, Token, ZERO } from '@mistswapdex/sdk'
+import { ChainId, CurrencyAmount, JSBI, MASTERCHEF_ADDRESS, MASTERCHEF_V2_ADDRESS, Token, ZERO } from '@mistswapdex/sdk'
 import { Chef, PairType } from './enum'
 import { Disclosure, Transition } from '@headlessui/react'
 import React, { useState } from 'react'
@@ -8,7 +8,7 @@ import { usePendingSushi, useUserInfo } from './hooks'
 import Button from '../../components/Button'
 import Dots from '../../components/Dots'
 import Input from '../../components/Input'
-import { formatNumber, formatPercent } from '../../functions'
+import { formatCurrencyAmount, formatNumber, formatPercent } from '../../functions'
 import { getAddress } from '@ethersproject/address'
 import { t } from '@lingui/macro'
 import { tryParseAmount } from '../../functions/parse'
@@ -18,6 +18,8 @@ import useMasterChef from './useMasterChef'
 import usePendingReward from './usePendingReward'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { useTransactionAdder } from '../../state/transactions/hooks'
+import { BigNumber } from '@ethersproject/bignumber'
+import { isMobile } from 'react-device-detect'
 
 const FarmListItem = ({ farm }) => {
   const { i18n } = useLingui()
@@ -61,6 +63,12 @@ const FarmListItem = ({ farm }) => {
 
   const { deposit, withdraw, harvest } = useMasterChef(farm.chef)
 
+  const poolFraction = (Number.parseFloat(amount?.toFixed()) / farm.chefBalance) || 0
+  const token0Amount = CurrencyAmount.fromRawAmount(farm.pair.token0, JSBI.BigInt((farm.pool.reserves.reserve0 as BigNumber).toString())).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
+  const token1Amount = CurrencyAmount.fromRawAmount(farm.pair.token1, JSBI.BigInt((farm.pool.reserves.reserve1 as BigNumber).toString())).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
+  const token0Name = farm.pool.token0 === farm.pair.token0.id ? farm.pair.token0.symbol : farm.pair.token1.symbol
+  const token1Name = farm.pool.token1 === farm.pair.token1.id ? farm.pair.token1.symbol : farm.pair.token0.symbol
+
   return (
     <Transition
       show={true}
@@ -75,8 +83,13 @@ const FarmListItem = ({ farm }) => {
         <div className="grid grid-cols-2 gap-4 p-4">
           <div className="col-span-2 text-center md:col-span-1">
             {account && (
-              <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
-                {i18n._(t`Wallet Balance`)}: {formatNumber(balance?.toSignificant(6) ?? 0)} {farm.type}
+              <div>
+                <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
+                  {i18n._(t`Wallet Balance`)}: {formatNumber(balance?.toSignificant(6) ?? 0)} {farm.type}
+                </div>
+                {!isMobile && (<div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
+                  &nbsp;
+                </div>)}
               </div>
             )}
             <div className="relative flex items-center w-full mb-4">
@@ -130,9 +143,14 @@ const FarmListItem = ({ farm }) => {
           </div>
           <div className="col-span-2 text-center md:col-span-1">
             {account && (
-              <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
-                {i18n._(t`Your Staked`)}: {formatNumber(amount?.toSignificant(6)) ?? 0} {farm.type}
-                {amount && farm.pool ? `(${formatPercent(Math.min(Number.parseFloat(amount?.toFixed()) / farm.chefBalance * 100, 100)).toString()} ` + i18n._(t`of pool`) + `)` : ''}
+              <div>
+                <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
+                  {i18n._(t`Your Staked`)}: {formatNumber(amount?.toSignificant(6)) ?? 0} {farm.type}
+                  {amount && farm.pool ? `(${formatPercent(Math.min(Number.parseFloat(amount?.toFixed()) / farm.chefBalance * 100, 100)).toString()} ` + i18n._(t`of pool`) + `)` : ''}
+                </div>
+                <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
+                  {token0Amount.toFixed(2)} {token0Name} + {token1Amount.toFixed(2)} {token1Name} ({formatNumber(poolFraction * farm.tvl, true)})
+                </div>
               </div>
             )}
             <div className="relative flex items-center w-full mb-4">
