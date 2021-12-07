@@ -20,9 +20,12 @@ import { useTokenBalance } from '../../state/wallet/hooks'
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import { BigNumber } from '@ethersproject/bignumber'
 import { isMobile } from 'react-device-detect'
+import { useRouter } from 'next/router'
 
 const FarmListItem = ({ farm }) => {
   const { i18n } = useLingui()
+
+  const router = useRouter()
 
   const { account, chainId } = useActiveWeb3React()
   const [pendingTx, setPendingTx] = useState(false)
@@ -82,7 +85,17 @@ const FarmListItem = ({ farm }) => {
       leaveTo="opacity-0"
     >
       <Disclosure.Panel className="flex flex-col w-full border-t-0 rounded rounded-t-none bg-dark-800" static>
-        <div className="grid grid-cols-2 gap-4 p-4">
+        <div className="px-4 pb-4 pt-4">
+          <Button
+            color="gradient"
+            onClick={async () => {
+              router.push(`/add/${farm.pair.token0.id}/${farm.pair.token1.id}`)
+            }}
+          >
+            {i18n._(t`Get ${farm.pair.token0.symbol}/${farm.pair.token1.symbol} LP tokens for staking`)}
+          </Button>
+        </div>
+        <div className="grid grid-cols-2 gap-4 p-4 pt-0">
           <div className="col-span-2 text-center md:col-span-1">
             {account && (
               <div>
