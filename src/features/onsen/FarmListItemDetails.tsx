@@ -64,8 +64,10 @@ const FarmListItem = ({ farm }) => {
   const { deposit, withdraw, harvest } = useMasterChef(farm.chef)
 
   const poolFraction = (Number.parseFloat(amount?.toFixed()) / farm.chefBalance) || 0
-  const token0Amount = CurrencyAmount.fromRawAmount(farm.pair.token0, JSBI.BigInt((farm.pool.reserves.reserve0 as BigNumber).toString())).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
-  const token1Amount = CurrencyAmount.fromRawAmount(farm.pair.token1, JSBI.BigInt((farm.pool.reserves.reserve1 as BigNumber).toString())).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
+  const token0Reserve = farm.pool.reserves ? (farm.pool.reserves.reserve0 as BigNumber).toString() : 0
+  const token0Amount = CurrencyAmount.fromRawAmount(farm.pair.token0, JSBI.BigInt(token0Reserve)).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
+  const token1Reserve = farm.pool.reserves ? (farm.pool.reserves.reserve1 as BigNumber).toString() : 0
+  const token1Amount = CurrencyAmount.fromRawAmount(farm.pair.token1, JSBI.BigInt(token1Reserve)).multiply(Math.round(poolFraction * 1e8)).divide(1e8)
   const token0Name = farm.pool.token0 === farm.pair.token0.id ? farm.pair.token0.symbol : farm.pair.token1.symbol
   const token1Name = farm.pool.token1 === farm.pair.token1.id ? farm.pair.token1.symbol : farm.pair.token0.symbol
 
@@ -149,7 +151,7 @@ const FarmListItem = ({ farm }) => {
                   {amount && farm.pool ? `(${formatPercent(Math.min(Number.parseFloat(amount?.toFixed()) / farm.chefBalance * 100, 100)).toString()} ` + i18n._(t`of pool`) + `)` : ''}
                 </div>
                 <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
-                  {token0Amount.toFixed(2)} {token0Name} + {token1Amount.toFixed(2)} {token1Name} ({formatNumber(poolFraction * farm.tvl, true)})
+                  {token0Amount.toFixed(token0Amount.currency.decimals > 2 ? 2 : undefined)} {token0Name} + {token1Amount.toFixed(token1Amount.currency.decimals > 2 ? 2 : undefined)} {token1Name} ({formatNumber(poolFraction * farm.tvl, true)})
                 </div>
               </div>
             )}
@@ -180,7 +182,7 @@ const FarmListItem = ({ farm }) => {
             <Button
               color="pink"
               className="border-0"
-              disabled={pendingTx || !typedWithdrawValue || amount.lessThan(typedWithdrawValue) || amount.equalTo(0)}
+              disabled={pendingTx || !typedWithdrawValue || (amount && (amount.lessThan(typedWithdrawValue) || amount.equalTo(0)))}
               onClick={async () => {
                 setPendingTx(true)
                 try {

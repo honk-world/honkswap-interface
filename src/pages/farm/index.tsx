@@ -202,8 +202,8 @@ export default function Farm(): JSX.Element {
       "0x8e5EdB62775c1Cd003804Ec2a8242E5E0393876b": {
         farmId: 25,
         allocPoint: 0,
-        token0: new Token(ChainId.SMARTBCH, '0x80453ACDfE0073D6743B27D72e06F48777EeAd80', 0, 'ZOMBIE', 'ZOMBIE'),
-        token1: WBCH[ChainId.SMARTBCH],
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x80453ACDfE0073D6743B27D72e06F48777EeAd80', 0, 'ZOMBIE', 'ZOMBIE'),
       },
       "0x49260567a5610414954a1D8F0E7774104FC5CAED": {
         farmId: 26,
