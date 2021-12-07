@@ -116,8 +116,8 @@ const FarmListItem = ({ farm }) => {
                 </Button>
               )}
             </div>
-            {approvalState === ApprovalState.NOT_APPROVED || approvalState === ApprovalState.PENDING ? (
-              <Button color="blue" disabled={approvalState === ApprovalState.PENDING} onClick={approve}>
+            {approvalState !== ApprovalState.APPROVED ? (
+              <Button color="blue" disabled={approvalState === ApprovalState.PENDING || approvalState === ApprovalState.UNKNOWN} onClick={approve}>
                 {approvalState === ApprovalState.PENDING ? <Dots>Approving </Dots> : 'Approve'}
               </Button>
             ) : (
@@ -151,7 +151,7 @@ const FarmListItem = ({ farm }) => {
                   {amount && farm.pool ? `(${formatPercent(Math.min(Number.parseFloat(amount?.toFixed()) / farm.chefBalance * 100, 100)).toString()} ` + i18n._(t`of pool`) + `)` : ''}
                 </div>
                 <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
-                  {token0Amount.toFixed(2)} {token0Name} + {token1Amount.toFixed(2)} {token1Name} ({formatNumber(poolFraction * farm.tvl, true)})
+                  {token0Amount.toFixed(token0Amount.currency.decimals > 2 ? 2 : undefined)} {token0Name} + {token1Amount.toFixed(token1Amount.currency.decimals > 2 ? 2 : undefined)} {token1Name} ({formatNumber(poolFraction * farm.tvl, true)})
                 </div>
               </div>
             )}
@@ -182,7 +182,7 @@ const FarmListItem = ({ farm }) => {
             <Button
               color="pink"
               className="border-0"
-              disabled={pendingTx || !typedWithdrawValue || amount.lessThan(typedWithdrawValue)}
+              disabled={pendingTx || !typedWithdrawValue || (amount && (amount.lessThan(typedWithdrawValue) || amount.equalTo(0)))}
               onClick={async () => {
                 setPendingTx(true)
                 try {
