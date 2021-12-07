@@ -142,8 +142,8 @@ export default function Farm(): JSX.Element {
       "0xbE48dC2353a460668A5D859C66e4472661581998": {
         farmId: 15,
         allocPoint: 13393564,
-        token0: new Token(ChainId.SMARTBCH, '0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd', 2, 'HONK', 'Honk'),
-        token1: WBCH[ChainId.SMARTBCH],
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd', 2, 'HONK', 'Honk'),
       },
       "0x12E03015A85A0c2c1eca69486147608ABB0b801c": {
         farmId: 16,
@@ -154,8 +154,8 @@ export default function Farm(): JSX.Element {
       "0x6B68f5D7d0531207a01e9AC16cfCd223D2139D28": {
         farmId: 17,
         allocPoint: 2822381,
-        token0: new Token(ChainId.SMARTBCH, '0x7eBeAdb95724a006aFaF2F1f051B13F4eBEBf711', 2, '$KITTEN', 'CashKitten'),
-        token1: WBCH[ChainId.SMARTBCH],
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x7eBeAdb95724a006aFaF2F1f051B13F4eBEBf711', 2, '$KITTEN', 'CashKitten'),
       },
       "0x24615e918AD078900BfE13F4cd26876Bae64dD75": {
         farmId: 18,
@@ -172,8 +172,8 @@ export default function Farm(): JSX.Element {
       "0x1c47c2a72e86B9B488f436F7aC76ACc61e531926": {
         farmId: 20,
         allocPoint: 3521488,
-        token0: new Token(ChainId.SMARTBCH, '0x481De06DCA0198844faA36FCa04Db364e5c2f86C', 6, 'MAZE', 'MAZE'),
-        token1: WBCH[ChainId.SMARTBCH],
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x481De06DCA0198844faA36FCa04Db364e5c2f86C', 6, 'MAZE', 'MAZE'),
       },
       "0xA32B73445dBc075dA5054503171362D790164dC9": {
         farmId: 21,
@@ -214,8 +214,8 @@ export default function Farm(): JSX.Element {
       "0x64c379ab93b859AdA71b8AbACA77BeD104a5DbCa": {
         farmId: 27,
         allocPoint: 5859435,
-        token0: new Token(ChainId.SMARTBCH, '0x9288df32951386A8254aEaF80a66B78cCaf75b82', 18, 'sBUSD', 'Smart BUSD'),
-        token1: WBCH[ChainId.SMARTBCH],
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x9288df32951386A8254aEaF80a66B78cCaf75b82', 2, 'sBUSD', 'Smart BUSD'),
       },
       "0xFEC4202E22d0cd950aFC52622114e787FFFa0F53": {
         farmId: 28,
@@ -256,7 +256,7 @@ export default function Farm(): JSX.Element {
       "0xE75Ec02F28bC0E1ca1794FbFFe8229ac1662075E": {
         farmId: 34,
         allocPoint: 3521227,
-        token0: new Token(ChainId.SMARTBCH, '0x252fd94f3Fb53D3D62F4FEc708501ACd59A57e52', 18, 'HAM', 'HAM Token'),
+        token0: new Token(ChainId.SMARTBCH, '0x252fd94f3Fb53D3D62F4FEc708501ACd59A57e52', 8, 'HAM', 'HAM Token'),
         token1: WBCH[ChainId.SMARTBCH],
       },
     },
