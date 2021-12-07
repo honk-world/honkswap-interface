@@ -114,8 +114,8 @@ const FarmListItem = ({ farm }) => {
                 </Button>
               )}
             </div>
-            {approvalState === ApprovalState.NOT_APPROVED || approvalState === ApprovalState.PENDING ? (
-              <Button color="blue" disabled={approvalState === ApprovalState.PENDING} onClick={approve}>
+            {approvalState !== ApprovalState.APPROVED ? (
+              <Button color="blue" disabled={approvalState === ApprovalState.PENDING || approvalState === ApprovalState.UNKNOWN} onClick={approve}>
                 {approvalState === ApprovalState.PENDING ? <Dots>Approving </Dots> : 'Approve'}
               </Button>
             ) : (
@@ -180,7 +180,7 @@ const FarmListItem = ({ farm }) => {
             <Button
               color="pink"
               className="border-0"
-              disabled={pendingTx || !typedWithdrawValue || amount.lessThan(typedWithdrawValue)}
+              disabled={pendingTx || !typedWithdrawValue || amount.lessThan(typedWithdrawValue) || amount.equalTo(0)}
               onClick={async () => {
                 setPendingTx(true)
                 try {
