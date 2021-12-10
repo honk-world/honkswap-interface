@@ -41,11 +41,15 @@ export function useApproveCallback(
     if (!currentAllowance) return ApprovalState.UNKNOWN
 
     // amountToApprove will be defined if currentAllowance is
-    return currentAllowance.lessThan(amountToApprove)
-      ? pendingApproval
+    if (currentAllowance.equalTo(0)) {
+      return pendingApproval ? ApprovalState.PENDING : ApprovalState.NOT_APPROVED
+    } else if (currentAllowance.lessThan(amountToApprove)) {
+      return pendingApproval
         ? ApprovalState.PENDING
         : ApprovalState.NOT_APPROVED
-      : ApprovalState.APPROVED
+    } else {
+      return ApprovalState.APPROVED
+    }
   }, [amountToApprove, currentAllowance, pendingApproval, spender])
 
   const tokenContract = useTokenContract(token?.address)
