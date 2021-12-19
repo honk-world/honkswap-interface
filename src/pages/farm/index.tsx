@@ -259,6 +259,48 @@ export default function Farm(): JSX.Element {
         token0: new Token(ChainId.SMARTBCH, '0x252fd94f3Fb53D3D62F4FEc708501ACd59A57e52', 8, 'HAM', 'HAM Token'),
         token1: WBCH[ChainId.SMARTBCH],
       },
+      "0x99057a0cB475D1c4d950d552E77e9E68CdDb8261": {
+        farmId: 35,
+        allocPoint: 30856981,
+        token0: FLEXUSD,
+        token1: new Token(ChainId.SMARTBCH, '0xca0235058985fcC1839E9e37c10900a73C126708', 7, 'DAO', 'Decentralized Autonomous Organization'),
+      },
+      "0x1F354956DE4A7Ed71308225De94a27b35A84EA57": {
+        farmId: 36,
+        allocPoint: 22679554,
+        token0: new Token(ChainId.SMARTBCH, '0x225FCa2A940cd5B18DFb168cD9B7f921C63d7B6E', 18, 'FIRE', 'Incinerate'),
+        token1: WBCH[ChainId.SMARTBCH],
+      },
+      "0xBe8C7C35103c443844Ef234cFFd73a491Df6f503": {
+        farmId: 37,
+        allocPoint: 12342954,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0xca0235058985fcC1839E9e37c10900a73C126708', 7, 'DAO', 'Decentralized Autonomous Organization'),
+      },
+      "0xB31f44E525Cc07037E55bd448004CfF66f1fa878": {
+        farmId: 38,
+        allocPoint: 8893292,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x8d7Ea0ec6CaB515463121A3c70Df541f2F534909', 9, 'WOJAK', 'WOJAK'),
+      },
+      "0x49F8C72fCA1f6F62411da1Aa451c479e1324Eb8f": {
+        farmId: 39,
+        allocPoint: 5992823,
+        token0: FLEXUSD,
+        token1: new Token(ChainId.SMARTBCH, '0x9288df32951386A8254aEaF80a66B78cCaf75b82', 2, 'sBUSD', 'Smart BUSD'),
+      },
+      "0xEA5038043364830c489D7fd8F95eFE35eaE6f4Ff": {
+        farmId: 40,
+        allocPoint: 6925466,
+        token0: new Token(ChainId.SMARTBCH, '0x2b591190FF951F60CB9424664155e57A402c1AdE', 3, '🌙🌙🌙🌙', 'MoonMoonMoonMoon'),
+        token1: WBCH[ChainId.SMARTBCH],
+      },
+      "0x2eA9369dAEE963CeBc0266AE8b98c3E015C59046": {
+        farmId: 41,
+        allocPoint: 5599258,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0xd2597a0bde31Ddec2440E256d8AA35eb63F1A9e3', 18, 'GAME', 'Game'),
+      },
     },
     [ChainId.SMARTBCH_AMBER]: {
       "0x07DE6fc05597E0E4c92C83637A8a0CA411f3a769": {
