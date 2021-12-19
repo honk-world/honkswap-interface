@@ -87,13 +87,13 @@ export default function Farm(): JSX.Element {
       },
       "0xc98552Ad7DFC5daabAd2660DF378e0070ca75Efc": {
         farmId: 4,
-        allocPoint: 7205117,
+        allocPoint: 0,
         token0: new Token(ChainId.SMARTBCH, '0xc70c7718C7f1CCd906534C2c4a76914173EC2c44', 18, 'KTH', 'Knuth'),
         token1: WBCH[ChainId.SMARTBCH],
       },
       "0x287a276401caDBe50d5C0398137490E6d45830Dd": {
         farmId: 5,
-        allocPoint: 10799358,
+        allocPoint: 0,
         token0: new Token(ChainId.SMARTBCH, '0xe11829a7d5d8806bb36e118461a1012588fafd89', 18, 'SPICE', 'SPICE'),
         token1: WBCH[ChainId.SMARTBCH],
       },
@@ -135,7 +135,7 @@ export default function Farm(): JSX.Element {
       },
       "0xCabdb1321CEAb169935a0c9d4c856250766C3df7": {
         farmId: 14,
-        allocPoint: 3532595,
+        allocPoint: 0,
         token0: new Token(ChainId.SMARTBCH, '0xB5b1939ef0a3743d0Ae9282DbA62312b614A5Ac0', 18, 'POTA', 'Potato'),
         token1: WBCH[ChainId.SMARTBCH],
       },
@@ -153,7 +153,7 @@ export default function Farm(): JSX.Element {
       },
       "0x6B68f5D7d0531207a01e9AC16cfCd223D2139D28": {
         farmId: 17,
-        allocPoint: 2822381,
+        allocPoint: 0,
         token0: WBCH[ChainId.SMARTBCH],
         token1: new Token(ChainId.SMARTBCH, '0x7eBeAdb95724a006aFaF2F1f051B13F4eBEBf711', 2, '$KITTEN', 'CashKitten'),
       },
@@ -171,7 +171,7 @@ export default function Farm(): JSX.Element {
       },
       "0x1c47c2a72e86B9B488f436F7aC76ACc61e531926": {
         farmId: 20,
-        allocPoint: 3521488,
+        allocPoint: 0,
         token0: WBCH[ChainId.SMARTBCH],
         token1: new Token(ChainId.SMARTBCH, '0x481De06DCA0198844faA36FCa04Db364e5c2f86C', 6, 'MAZE', 'MAZE'),
       },
@@ -183,7 +183,7 @@ export default function Farm(): JSX.Element {
       },
       "0xE3e155c22685F7ceAB3F429CA60f302bCFb13616": {
         farmId: 22,
-        allocPoint: 2915526,
+        allocPoint: 0,
         token0: new Token(ChainId.SMARTBCH, '0xB5b1939ef0a3743d0Ae9282DbA62312b614A5Ac0', 18, 'POTA', 'Potato'),
         token1: FLEXUSD,
       },
@@ -207,7 +207,7 @@ export default function Farm(): JSX.Element {
       },
       "0x49260567a5610414954a1D8F0E7774104FC5CAED": {
         farmId: 26,
-        allocPoint: 3235068,
+        allocPoint: 0,
         token0: new Token(ChainId.SMARTBCH, '0x98Dd7eC28FB43b3C4c770AE532417015fa939Dd3', 18, 'FLEX', 'FLEX Coin'),
         token1: WBCH[ChainId.SMARTBCH],
       },
