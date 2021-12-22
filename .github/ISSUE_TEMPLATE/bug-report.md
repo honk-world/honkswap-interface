@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Describe an issue in the MistSwap Interface
+about: Describe an issue in the HonkSwap Interface
 title: ''
 labels: bug
 assignees: ''

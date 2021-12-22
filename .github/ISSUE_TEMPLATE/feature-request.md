@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Suggest an idea for improving the UX of the MistSwap Interface
+about: Suggest an idea for improving the UX of the HonkSwap Interface
 title: ''
 labels: 'improvement'
 assignees: ''
