@@ -16,7 +16,7 @@ const useSushiBar = () => {
           const tx = await barContract?.enter(amount?.quotient.toString(), {
             gasPrice: getGasPrice(),
           })
-          return addTransaction(tx, { summary: 'Staked MIST' })
+          return addTransaction(tx, { summary: 'Staked HONK' })
         } catch (e) {
           return e
         }
@@ -32,7 +32,7 @@ const useSushiBar = () => {
           const tx = await barContract?.leave(amount?.quotient.toString(), {
             gasPrice: getGasPrice(),
           })
-          return addTransaction(tx, { summary: 'Unstaked MIST' })
+          return addTransaction(tx, { summary: 'Unstaked HONK' })
         } catch (e) {
           return e
         }

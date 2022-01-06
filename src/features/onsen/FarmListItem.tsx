@@ -83,13 +83,13 @@ const FarmListItem = ({ farm, ...rest }) => {
                         height="30px"
                         className="rounded-md"
                         layout="fixed"
-                        alt="MIST"
+                        alt="HONK"
                       />
                     </div>
                   </div>
                   <div className="flex flex-col space-y-1">
                     <div key="0" className="text-xs md:text-sm">
-                      {formatNumber(pendingSushi.toFixed(18))} MIST
+                      {formatNumber(pendingSushi.toFixed(18))} HONK
                     </div>
                   </div>
               </div>

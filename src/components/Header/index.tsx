@@ -1,4 +1,4 @@
-import { ChainId, Currency, NATIVE, MIST_ADDRESS } from '@honkswapdex/sdk'
+import { ChainId, Currency, NATIVE, HONK_ADDRESS } from '@honkswapdex/sdk'
 import { Feature, featureEnabled } from '../../functions/feature'
 import React, { useEffect, useState } from 'react'
 
@@ -128,25 +128,25 @@ function AppBar(): JSX.Element {
                     {chainId && [ChainId.SMARTBCH].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
                         <AddToken
-                          imageProps={{src: "/images/tokens/xmist-square.jpg", alt: "xMIST"}}
-                          text={i18n._(t`Add xMIST to your MetaMask wallet`)}
+                          imageProps={{src: "/images/tokens/xmist-square.jpg", alt: "xHONK"}}
+                          text={i18n._(t`Add xHONK to your MetaMask wallet`)}
                           metamaskProps={{
                             address: '0xC41C680c60309d4646379eD62020c534eB67b6f4',
-                            symbol: 'xMIST',
+                            symbol: 'xHONK',
                             decimals: 18,
                             image: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xC41C680c60309d4646379eD62020c534eB67b6f4/logo.png',
                           }} />
                       </>
                     )}
 
-                    {chainId && chainId in MIST_ADDRESS && library && library.provider.isMetaMask && (
+                    {chainId && chainId in HONK_ADDRESS && library && library.provider.isMetaMask && (
                       <>
                         <AddToken
-                          imageProps={{src: "/images/tokens/mist-square.jpg", alt: "MIST"}}
-                          text={i18n._(t`Add MIST to your MetaMask wallet`)}
+                          imageProps={{src: "/images/tokens/mist-square.jpg", alt: "HONK"}}
+                          text={i18n._(t`Add HONK to your MetaMask wallet`)}
                           metamaskProps={{
-                            address: MIST_ADDRESS[chainId],
-                            symbol: 'MIST',
+                            address: HONK_ADDRESS[chainId],
+                            symbol: 'HONK',
                             decimals: 18,
                             image: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png',
                           }} />

@@ -12,8 +12,8 @@ import {
   MULTICALL2_ADDRESS,
   ROUTER_ADDRESS,
   STOP_LIMIT_ORDER_ADDRESS,
-  MIST_ADDRESS,
-  MISTROLL_ADDRESS,
+  HONK_ADDRESS,
+  HONKROLL_ADDRESS,
   WNATIVE_ADDRESS,
 } from '@honkswapdex/sdk'
 import {
@@ -119,7 +119,7 @@ export function useMulticall2Contract() {
 
 export function useSushiContract(withSignerIfPossible = true): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MIST_ADDRESS[chainId], SUSHI_ABI, withSignerIfPossible)
+  return useContract(chainId && HONK_ADDRESS[chainId], SUSHI_ABI, withSignerIfPossible)
 }
 
 export function useMasterChefContract(withSignerIfPossible?: boolean): Contract | null {
@@ -167,7 +167,7 @@ export function useChainlinkOracle(): Contract | null {
 
 export function useSushiRollContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MISTROLL_ADDRESS[chainId], SUSHIROLL_ABI, false);
+  return useContract(chainId && HONKROLL_ADDRESS[chainId], SUSHIROLL_ABI, false);
 }
 
 export function useComplexRewarderContract(address, withSignerIfPossible?: boolean): Contract | null {

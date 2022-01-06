@@ -5,7 +5,7 @@ import {
   CurrencyAmount,
   JSBI,
   Percent,
-  MIST_ADDRESS,
+  HONK_ADDRESS,
   ROUTER_ADDRESS,
   FACTORY_ADDRESS,
   TradeType,
@@ -352,7 +352,7 @@ export function queryParametersToSwapState(parsedQs: ParsedQs, chainId: ChainId 
   let inputCurrency = parseCurrencyFromURLParameter(parsedQs.inputCurrency)
   let outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency)
   const eth = 'BCH'
-  const sushi = MIST_ADDRESS[chainId]
+  const sushi = HONK_ADDRESS[chainId]
   if (inputCurrency === '' && outputCurrency === '') {
     inputCurrency = eth
     outputCurrency = sushi

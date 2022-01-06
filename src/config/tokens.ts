@@ -1,19 +1,19 @@
-import { ChainId, MIST_ADDRESS, BAR_ADDRESS, Token, WBCH} from '@honkswapdex/sdk'
+import { ChainId, HONK_ADDRESS, BAR_ADDRESS, Token, WBCH} from '@honkswapdex/sdk'
 
 export const FLEXUSD = new Token(ChainId.SMARTBCH, '0x7b2B3C5308ab5b2a1d9a94d20D35CCDf61e05b72', 18, 'flexUSD', 'flexUSD')
 
-export const XMIST: ChainTokenMap = {
-    [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, BAR_ADDRESS[ChainId.SMARTBCH], 18, 'xMIST', 'MistBar'),
-    [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, BAR_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'xMIST', 'MistBar'),
+export const XHONK: ChainTokenMap = {
+    [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, BAR_ADDRESS[ChainId.SMARTBCH], 18, 'xHONK', 'MistBar'),
+    [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, BAR_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'xHONK', 'MistBar'),
 }
 
 type ChainTokenMap = {
   readonly [chainId in ChainId]?: Token
 }
 
-export const MIST: ChainTokenMap = {
-  [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, MIST_ADDRESS[ChainId.SMARTBCH], 18, 'MIST', 'MistToken'),
-  [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, MIST_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'MIST', 'MistToken'),
+export const HONK: ChainTokenMap = {
+  [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, HONK_ADDRESS[ChainId.SMARTBCH], 18, 'HONK', 'MistToken'),
+  [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, HONK_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'HONK', 'MistToken'),
 }
 
 export const WBCH_EXTENDED: { [chainId: number]: Token } = {

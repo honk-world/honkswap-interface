@@ -1,5 +1,5 @@
 import {
-    MIST, XMIST, FLEXUSD
+    HONK, XHONK, FLEXUSD
 } from '../config/tokens'
 // a list of tokens by chain
 import { ChainId, Currency, Token, WNATIVE } from '@honkswapdex/sdk'
@@ -50,11 +50,11 @@ export const COMMON_BASES: ChainTokenList = {
   [ChainId.SMARTBCH]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.SMARTBCH],
     FLEXUSD,
-    MIST[ChainId.SMARTBCH],
+    HONK[ChainId.SMARTBCH],
   ],
   [ChainId.SMARTBCH_AMBER]: [
     ...WRAPPED_NATIVE_ONLY[ChainId.SMARTBCH_AMBER],
-    MIST[ChainId.SMARTBCH_AMBER],
+    HONK[ChainId.SMARTBCH_AMBER],
   ],
 }
 
@@ -69,9 +69,9 @@ export const PINNED_PAIRS: {
   readonly [chainId in ChainId]?: [Token, Token][]
 } = {
   [ChainId.SMARTBCH]: [
-      [MIST[ChainId.SMARTBCH], WNATIVE[ChainId.SMARTBCH]],
+      [HONK[ChainId.SMARTBCH], WNATIVE[ChainId.SMARTBCH]],
   ],
   [ChainId.SMARTBCH_AMBER]: [
-      [MIST[ChainId.SMARTBCH_AMBER], WNATIVE[ChainId.SMARTBCH_AMBER]]
+      [HONK[ChainId.SMARTBCH_AMBER], WNATIVE[ChainId.SMARTBCH_AMBER]]
   ],
 }

@@ -3,7 +3,7 @@ import { getAddress, isAddress } from '@ethersproject/address'
 import { useEffect, useState } from 'react'
 
 import { MERKLE_ROOT } from './../../constants/index'
-import { MIST } from '../../config/tokens'
+import { HONK } from '../../config/tokens'
 import { TransactionResponse } from '@ethersproject/providers'
 import { calculateGasMargin } from '../../functions/trade'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
@@ -87,7 +87,7 @@ export function useUserUnclaimedAmount(account: string | null | undefined): Curr
   const userClaimData = useUserClaimData(account)
   const canClaim = useUserHasAvailableClaim(account)
 
-  const sushi = chainId ? MIST[chainId] : undefined
+  const sushi = chainId ? HONK[chainId] : undefined
 
   // console.log('claimStats:', {
   //   canClaim: canClaim,
@@ -127,7 +127,7 @@ export function useClaimCallback(account: string | null | undefined): {
         })
         .then((response: TransactionResponse) => {
           addTransaction(response, {
-            summary: `Claimed ${unClaimedAmount?.toSignificant(4)} MIST`,
+            summary: `Claimed ${unClaimedAmount?.toSignificant(4)} HONK`,
             claim: { recipient: account },
           })
           return response.hash

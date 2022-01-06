@@ -89,9 +89,9 @@ export function AdvancedSwapDetails({ trade, allowedSlippage, minerBribe }: Adva
 
       <RowBetween>
         <RowFixed>
-          <div className="text-sm text-secondary">{i18n._(t`xMIST Fee`)}</div>
+          <div className="text-sm text-secondary">{i18n._(t`xHONK Fee`)}</div>
           <QuestionHelper
-            text={i18n._(t`A portion of each trade (0.05%) goes to xMIST holders as a protocol incentive.`)}
+            text={i18n._(t`A portion of each trade (0.05%) goes to xHONK holders as a protocol incentive.`)}
           />
         </RowFixed>
         <div className="text-sm font-bold text-high-emphesis">

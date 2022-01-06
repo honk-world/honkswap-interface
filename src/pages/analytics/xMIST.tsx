@@ -1,4 +1,4 @@
-import { MIST_ADDRESS } from '@honkswapdex/sdk'
+import { HONK_ADDRESS } from '@honkswapdex/sdk'
 import React, { useMemo } from 'react'
 import ScrollableGraph from '../../components/ScrollableGraph'
 import AnalyticsContainer from '../../features/analytics/AnalyticsContainer'
@@ -17,10 +17,10 @@ import {
 } from '../../services/graph'
 import { useBar, useBarHistory } from '../../services/graph/hooks/bar'
 import ColoredNumber from '../../features/analytics/ColoredNumber'
-import { XMIST } from '../../config/tokens'
+import { XHONK } from '../../config/tokens'
 import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 
-export default function XMIST_PAGE() {
+export default function XHONK_PAGE() {
   const { chainId } = useActiveWeb3React()
   const block1d = useBlock({ daysAgo: 1, chainId })
 
@@ -32,9 +32,9 @@ export default function XMIST_PAGE() {
   const ethPrice = useNativePrice({ chainId })
   const ethPrice1d = useNativePrice({ block: block1d, chainId, shouldFetch: !!block1d })
 
-  const xSushi = useTokens({ chainId, subset: [XMIST[chainId].address] })?.[0]
-  const xSushi1d = useTokens({ block: block1d, chainId, subset: [XMIST[chainId].address] })?.[0]
-  const sushiDayData = useTokenDayData({ token: MIST_ADDRESS[chainId], chainId })
+  const xSushi = useTokens({ chainId, subset: [XHONK[chainId].address] })?.[0]
+  const xSushi1d = useTokens({ block: block1d, chainId, subset: [XHONK[chainId].address] })?.[0]
+  const sushiDayData = useTokenDayData({ token: HONK_ADDRESS[chainId], chainId })
 
   const bar = useBar()
   const bar1d = useBar({ block: block1d, shouldFetch: !!block1d })
@@ -164,8 +164,8 @@ export default function XMIST_PAGE() {
         <div className="flex flex-row space-x-4 overflow-auto">
           <InfoCard text="APY (Last 24 Hours)" number={formatPercent(APY1d)} />
           <InfoCard text="APY (Last 7 Days)" number={formatPercent(APY1w)} />
-          <InfoCard text="xMIST Supply" number={formatNumber(bar?.totalSupply)} />
-          <InfoCard text="xMIST : MIST" number={Number(bar?.ratio ?? 0)?.toFixed(4)} />
+          <InfoCard text="xHONK Supply" number={formatNumber(bar?.totalSupply)} />
+          <InfoCard text="xHONK : HONK" number={Number(bar?.ratio ?? 0)?.toFixed(4)} />
         </div>
         <div className="space-y-4">
           {graphs.map((graph, i) => (

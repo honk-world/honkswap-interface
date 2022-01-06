@@ -7,7 +7,7 @@ export default function Analytics() {
     <Container maxWidth="full" className="grid h-full grid-cols-4 mx-auto gap-9">
       <Head>
         <title>Analytics Dashboard | Mist</title>
-        <meta name="description" content="MIST Analytics Dashboard by MIST..." />
+        <meta name="description" content="HONK Analytics Dashboard by HONK..." />
       </Head>
 
       <div className="sticky top-0 hidden lg:block md:col-span-1" style={{ maxHeight: '40rem' }}>
