@@ -2,23 +2,19 @@ import {
   BAR_ADDRESS,
   BENTOBOX_ADDRESS,
   BORING_HELPER_ADDRESS,
-  ChainId,
   ENS_REGISTRAR_ADDRESS,
   FACTORY_ADDRESS,
-  KASHI_ADDRESS,
   MAKER_ADDRESS,
   MASTERCHEF_ADDRESS,
   MASTERCHEF_V2_ADDRESS,
   MULTICALL2_ADDRESS,
   ROUTER_ADDRESS,
-  STOP_LIMIT_ORDER_ADDRESS,
   HONK_ADDRESS,
   HONKROLL_ADDRESS,
   WNATIVE_ADDRESS,
 } from '@honkswapdex/sdk'
 import {
-  ARGENT_WALLET_DETECTOR_ABI,
-  ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS,
+  ARGENT_WALLET_DETECTOR_ABI
 } from '../constants/abis/argent-wallet-detector'
 
 import BAR_ABI from '../constants/abis/bar.json'
@@ -34,17 +30,14 @@ import ERC20_ABI from '../constants/abis/erc20.json'
 import { ERC20_BYTES32_ABI } from '../constants/abis/erc20'
 import FACTORY_ABI from '../constants/abis/factory.json'
 import IUniswapV2PairABI from '../constants/abis/uniswap-v2-pair.json'
-import LIMIT_ORDER_ABI from '../constants/abis/limit-order.json'
-import LIMIT_ORDER_HELPER_ABI from '../constants/abis/limit-order-helper.json'
 import MAKER_ABI from '../constants/abis/maker.json'
 import MASTERCHEF_ABI from '../constants/abis/masterchef.json'
 import MASTERCHEF_V2_ABI from '../constants/abis/masterchef-v2.json'
 import MULTICALL2_ABI from '../constants/abis/multicall2.json'
 import ROUTER_ABI from '../constants/abis/router.json'
 import SUSHI_ABI from '../constants/abis/sushi.json'
-import SUSHIROLL_ABI from "@honkswapdex/core/abi/SushiRoll.json";
+import SUSHIROLL_ABI from '../constants/abis/sushi-roll.json'
 import WBCH_ABI from '../constants/abis/weth.json'
-import ZENKO_ABI from '../constants/abis/zenko.json'
 import { getContract } from '../functions/contract'
 import { useActiveWeb3React } from './useActiveWeb3React'
 import { useMemo } from 'react'

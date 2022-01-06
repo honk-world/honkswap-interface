@@ -55,7 +55,6 @@
     "@lingui/react": "^3.10.2",
     "@lingui/remote-loader": "^3.10.4",
     "@metamask/jazzicon": "^2.0.0",
-    "@honkswapdex/core": "0.0.3",
     "@honkswapdex/default-token-list": "0.0.25",
     "@honkswapdex/sdk": "^0.0.14",
     "@next/bundle-analyzer": "^11.1.0",
