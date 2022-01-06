@@ -7,7 +7,7 @@ export default function Saave() {
     <Container id="saave-page" className="py-4 md:py-8 lg:py-12" maxWidth="2xl">
       <Head>
         <title>Saave | Mist</title>
-        <meta key="description" name="description" content="MISTswap Saave..." />
+        <meta key="description" name="description" content="HONKswap Saave..." />
       </Head>
 
       <Container className="text-center">

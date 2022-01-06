@@ -427,11 +427,11 @@ export default function Swap() {
   return (
     <Container id="swap-page" className="py-4 md:py-8 lg:py-12">
       <Head>
-        <title>{GetRateText({price: trade?.executionPrice, showInverted}) || i18n._(t`MISTswap`)} | MISTswap</title>
+        <title>{GetRateText({price: trade?.executionPrice, showInverted}) || i18n._(t`HONKswap`)} | HONKswap</title>
         <meta
           key="description"
           name="description"
-          content="MISTswap allows for swapping of SEP20 compatible tokens"
+          content="HONKswap allows for swapping of SEP20 compatible tokens"
         />
       </Head>
       <TokenWarningModal

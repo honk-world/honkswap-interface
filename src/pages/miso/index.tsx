@@ -116,8 +116,8 @@ function MISO() {
               <Article
                 title={`Learn more about MISO`}
                 content={`MISO is a suite of open-source smart contracts created to ease the process of launching 
-                          a new project on the MISTswap exchange. MISO aims to drive new capital and trade to the exchange 
-                          by increasing the attractiveness of MISTswap as a place for token creators and communities to launch 
+                          a new project on the HONKswap exchange. MISO aims to drive new capital and trade to the exchange 
+                          by increasing the attractiveness of HONKswap as a place for token creators and communities to launch 
                           new project tokens.`}
               />
             </div>

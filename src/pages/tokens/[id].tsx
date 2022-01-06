@@ -9,7 +9,7 @@ export default function Token() {
     <Container id={`token-${id}-page`} className="py-4 md:py-8 lg:py-12" maxWidth="2xl">
       <Head>
         <title>Token {id} | Mist</title>
-        <meta key="description" name="description" content="MISTswap tokens." />
+        <meta key="description" name="description" content="HONKswap tokens." />
       </Head>
     </Container>
   )

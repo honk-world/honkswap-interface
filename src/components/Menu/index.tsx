@@ -27,7 +27,7 @@ const items = (i18n: I18n) => [
   {
     name: i18n._(t`Telegram`),
     description: i18n._(t`Join the community on Telegram.`),
-    href: 'https://t.me/MistSwapOfficial',
+    href: 'https://t.me/HonkSwapOfficial',
   },
 ]
 

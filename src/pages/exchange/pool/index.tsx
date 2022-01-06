@@ -93,7 +93,7 @@ export default function Pool() {
         <meta
           key="description"
           name="description"
-          content="MISTswap liquidity pools are markets for trades between the two tokens, you can provide these tokens and become a liquidity provider to earn 0.25% of fees from trades."
+          content="HONKswap liquidity pools are markets for trades between the two tokens, you can provide these tokens and become a liquidity provider to earn 0.25% of fees from trades."
         />
       </Head>
 

@@ -56,7 +56,7 @@ export const portis = new PortisConnector({
 // mainnet only
 export const walletlink = new WalletLinkConnector({
   url: RPC[ChainId.SMARTBCH],
-  appName: 'MistSwap',
+  appName: 'HonkSwap',
   appLogoUrl: 'https://raw.githubusercontent.com/honk-world/art/master/mist/logo-256x256.png',
 })
 

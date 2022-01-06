@@ -87,7 +87,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
       return new LatticeConnector({
         chainId: ChainId.SMARTBCH,
         url: RPC[ChainId.SMARTBCH],
-        appName: 'MistSwap',
+        appName: 'HonkSwap',
       })
     },
     name: 'Lattice',
@@ -102,7 +102,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
       const WalletLinkConnector = (await import('@web3-react/walletlink-connector')).WalletLinkConnector
       return new WalletLinkConnector({
         url: RPC[ChainId.SMARTBCH],
-        appName: 'MistSwap',
+        appName: 'HonkSwap',
         appLogoUrl: 'https://raw.githubusercontent.com/honk-world/art/master/sushi/logo-256x256.png',
       })
     },

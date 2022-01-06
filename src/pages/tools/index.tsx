@@ -19,7 +19,7 @@ export default function Tools() {
     <Container id="tools-page" className="py-4 space-y-4 md:py-8 lg:py-12" maxWidth="xl">
       <Head>
         <title>Tools | Mist</title>
-        <meta key="description" name="description" content="MISTswap tools..." />
+        <meta key="description" name="description" content="HONKswap tools..." />
       </Head>
       <Typography variant="h1" component="h1">
         Tools

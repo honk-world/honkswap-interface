@@ -316,7 +316,7 @@ export default function Add() {
         <meta
           key="description"
           name="description"
-          content="Add liquidity to the MISTswap AMM to enable gas optimised and low slippage trades across countless networks"
+          content="Add liquidity to the HONKswap AMM to enable gas optimised and low slippage trades across countless networks"
         />
       </Head>
 
