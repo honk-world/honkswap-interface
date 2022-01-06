@@ -7,7 +7,7 @@ const QUERY = `{
     }
 }`
 
-const fetcher = (query) => request('https://thegraph.mistswap.fi/subgraphs/name/mistswap/bar', query)
+const fetcher = (query) => request('https://thegraph.honkswap.fi/subgraphs/name/honkswap/bar', query)
 
 // Returns ratio of XSushi:Sushi
 export default function useSushiPerXSushi(parse = true) {

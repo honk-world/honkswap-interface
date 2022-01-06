@@ -378,17 +378,17 @@ export default function MigrateV2() {
             name="description"
             content="Migrate LP tokens to Mist LP tokens"
           />
-          <meta key="twitter:url" name="twitter:url" content="https://app.mistswap.fi/migrate" />
+          <meta key="twitter:url" name="twitter:url" content="https://app.honkswap.fi/migrate" />
           <meta key="twitter:title" name="twitter:title" content="MIGRATE LP" />
           <meta
             key="twitter:description"
             name="twitter:description"
             content="Migrate LP tokens to Mist LP tokens"
           />
-          <meta key="twitter:image" name="twitter:image" content="https://app.mistswap.fi/xmist-sign.png" />
+          <meta key="twitter:image" name="twitter:image" content="https://app.honkswap.fi/xmist-sign.png" />
           <meta key="og:title" property="og:title" content="MIGRATE LP" />
-          <meta key="og:url" property="og:url" content="https://app.mistswap.fi/migrate" />
-          <meta key="og:image" property="og:image" content="https://app.mistswap.fi/xmist-sign.png" />
+          <meta key="og:url" property="og:url" content="https://app.honkswap.fi/migrate" />
+          <meta key="og:image" property="og:image" content="https://app.honkswap.fi/xmist-sign.png" />
           <meta
             key="og:description"
             property="og:description"

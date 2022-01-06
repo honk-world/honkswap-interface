@@ -7,7 +7,7 @@ import { getTokenSubset } from './exchange'
 import { pager } from '.'
 
 export const BENTOBOX = {
-  [ChainId.SMARTBCH]: 'mistswap/bentobox',
+  [ChainId.SMARTBCH]: 'honkswap/bentobox',
 }
 export const fetcher = async (chainId = ChainId.SMARTBCH, query, variables = undefined) =>
   pager(`${GRAPH_HOST[chainId]}/subgraphs/name/${BENTOBOX[chainId]}`, query, variables)

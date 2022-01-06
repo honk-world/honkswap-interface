@@ -1,5 +1,5 @@
 import { ChainId } from '@honkswapdex/sdk'
-const THE_GRAPH = 'https://thegraph.mistswap.fi'
+const THE_GRAPH = 'https://thegraph.honkswap.fi'
 
 export const GRAPH_HOST = {
   [ChainId.SMARTBCH]: THE_GRAPH,

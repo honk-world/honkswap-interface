@@ -130,18 +130,18 @@ function MyApp({
 
         <meta key="twitter:card" name="twitter:card" content="app" />
         <meta key="twitter:title" name="twitter:title" content="MIST App" />
-        <meta key="twitter:url" name="twitter:url" content="https://app.mistswap.fi" />
+        <meta key="twitter:url" name="twitter:url" content="https://app.honkswap.fi" />
         <meta
           key="twitter:description"
           name="twitter:description"
           content="Trade, launch, stake, farm, invest, automate, build on the premier DeFi platform of smartBCH"
         />
-        <meta key="twitter:image" name="twitter:image" content="https://app.mistswap.fi/icons/icon-192x192.png" />
+        <meta key="twitter:image" name="twitter:image" content="https://app.honkswap.fi/icons/icon-192x192.png" />
         <meta key="twitter:creator" name="twitter:creator" content="@World_of_Honk" />
         <meta key="og:type" property="og:type" content="website" />
         <meta key="og:site_name" property="og:site_name" content="MIST App" />
-        <meta key="og:url" property="og:url" content="https://app.mistswap.fi" />
-        <meta key="og:image" property="og:image" content="https://app.mistswap.fi/apple-touch-icon.png" />
+        <meta key="og:url" property="og:url" content="https://app.honkswap.fi" />
+        <meta key="og:image" property="og:image" content="https://app.honkswap.fi/apple-touch-icon.png" />
         <meta
           key="og:description"
           property="og:description"
