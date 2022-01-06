@@ -49,11 +49,11 @@ function Pair() {
   return (
     <>
       <Head>
-        <title>{i18n._(t`Borrow ${pair?.asset?.symbol}-${pair?.collateral?.symbol}`)} | Mist</title>
+        <title>{i18n._(t`Borrow ${pair?.asset?.symbol}-${pair?.collateral?.symbol}`)} | Honk</title>
         <meta
           key="description"
           name="description"
-          content={`Borrow ${pair?.asset?.symbol} against ${pair?.collateral?.symbol} collateral on Kashi by Mist`}
+          content={`Borrow ${pair?.asset?.symbol} against ${pair?.collateral?.symbol} collateral on Kashi by Honk`}
         />
       </Head>
       <Card

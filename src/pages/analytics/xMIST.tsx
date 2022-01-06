@@ -106,7 +106,7 @@ export default function XHONK_PAGE() {
         ],
       },
       {
-        labels: ['Mist Staked (USD)', 'Mist Harvested (USD)'],
+        labels: ['Honk Staked (USD)', 'Honk Harvested (USD)'],
         note: '/ day',
         data: [
           data.map((d) => ({
@@ -120,7 +120,7 @@ export default function XHONK_PAGE() {
         ],
       },
       {
-        title: 'xMist Total Supply',
+        title: 'xHonk Total Supply',
         data: [
           data.map((d) => ({
             date: d.date * 1000,
@@ -137,8 +137,8 @@ export default function XHONK_PAGE() {
       <Background background="bar">
         <div className="grid items-center justify-between grid-cols-1 gap-x-4 gap-y-2 md:grid-cols-2">
           <div className="space-y-5">
-            <div className="text-3xl font-bold text-high-emphesis">xMist</div>
-            <div>Find out all about xMist here.</div>
+            <div className="text-3xl font-bold text-high-emphesis">xHonk</div>
+            <div>Find out all about xHonk here.</div>
           </div>
           <div className="flex space-x-12">
             <div className="flex flex-col">

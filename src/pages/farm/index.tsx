@@ -363,15 +363,15 @@ export default function Farm(): JSX.Element {
 
   farms = farms.sort((a, b) => b.allocPoint - a.allocPoint);
 
-  const flexUSDMistPool = farms.find((v) => v.pair === '0x437E444365aD9ed788e8f255c908bceAd5AEA645').pool;
+  const flexUSDHonkPool = farms.find((v) => v.pair === '0x437E444365aD9ed788e8f255c908bceAd5AEA645').pool;
   const bchFlexUSDPool = farms.find((v) => v.pair === '0x24f011f12Ea45AfaDb1D4245bA15dCAB38B43D13').pool;
   let bchPriceUSD = 0;
   let mistPriceUSD = 0;
   if (bchFlexUSDPool.reserves) {
     bchPriceUSD = Number.parseFloat(bchFlexUSDPool.reserves[1].toFixed()) / Number.parseFloat(bchFlexUSDPool.reserves[0].toFixed());
   }
-  if (flexUSDMistPool.reserves) {
-    mistPriceUSD = 1. / ( Number.parseFloat(flexUSDMistPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDMistPool.reserves[1].toFixed()))
+  if (flexUSDHonkPool.reserves) {
+    mistPriceUSD = 1. / ( Number.parseFloat(flexUSDHonkPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDHonkPool.reserves[1].toFixed()))
   }
 
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
@@ -533,7 +533,7 @@ export default function Farm(): JSX.Element {
   return (
     <Container id="farm-page" className="lg:grid lg:grid-cols-4 h-full py-4 mx-auto md:py-8 lg:py-12 gap-9" maxWidth="7xl">
       <Head>
-        <title>Farm | Mist</title>
+        <title>Farm | Honk</title>
         <meta key="description" name="description" content="Farm HONK" />
       </Head>
       <div className={classNames('px-3 md:px-0 lg:block md:col-span-1')}>

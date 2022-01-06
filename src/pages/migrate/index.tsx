@@ -372,18 +372,18 @@ export default function MigrateV2() {
   return (
     <Container id="migrate-page" className="py-4 space-y-6 md:py-8 lg:py-12" maxWidth="2xl">
       <Head>
-          <title key="title">Migrate LP tokens | Mist</title>
+          <title key="title">Migrate LP tokens | Honk</title>
           <meta
             key="description"
             name="description"
-            content="Migrate LP tokens to Mist LP tokens"
+            content="Migrate LP tokens to Honk LP tokens"
           />
           <meta key="twitter:url" name="twitter:url" content="https://app.honkswap.fi/migrate" />
           <meta key="twitter:title" name="twitter:title" content="MIGRATE LP" />
           <meta
             key="twitter:description"
             name="twitter:description"
-            content="Migrate LP tokens to Mist LP tokens"
+            content="Migrate LP tokens to Honk LP tokens"
           />
           <meta key="twitter:image" name="twitter:image" content="https://app.honkswap.fi/xmist-sign.png" />
           <meta key="og:title" property="og:title" content="MIGRATE LP" />
@@ -392,7 +392,7 @@ export default function MigrateV2() {
           <meta
             key="og:description"
             property="og:description"
-            content="Migrate LP tokens to Mist LP tokens"
+            content="Migrate LP tokens to Honk LP tokens"
           />
       </Head>
 

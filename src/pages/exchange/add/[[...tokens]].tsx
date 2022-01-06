@@ -312,7 +312,7 @@ export default function Add() {
   return (
     <>
       <Head>
-        <title>Add Liquidity | Mist</title>
+        <title>Add Liquidity | Honk</title>
         <meta
           key="description"
           name="description"

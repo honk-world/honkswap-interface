@@ -11,8 +11,8 @@ function MISO() {
   return (
     <>
       <Head>
-        <title>MISO | Mist</title>
-        <meta key="description" name="description" content="MISO by Mist, an initial Mist offering on steroids ..." />
+        <title>MISO | Honk</title>
+        <meta key="description" name="description" content="MISO by Honk, an initial Honk offering on steroids ..." />
       </Head>
       <div
         className="flex flex-col w-full"

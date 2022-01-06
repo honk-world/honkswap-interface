@@ -31,10 +31,10 @@ const PERMITTABLE_TOKENS: {
   }
 } = {
   [ChainId.SMARTBCH]: {
-    [HONK[ChainId.SMARTBCH].address]: { type: PermitType.AMOUNT, name: 'MistToken' },
+    [HONK[ChainId.SMARTBCH].address]: { type: PermitType.AMOUNT, name: 'HonkToken' },
   },
   [ChainId.SMARTBCH_AMBER]: {
-    [HONK[ChainId.SMARTBCH_AMBER].address]: { type: PermitType.AMOUNT, name: 'MistToken' },
+    [HONK[ChainId.SMARTBCH_AMBER].address]: { type: PermitType.AMOUNT, name: 'HonkToken' },
   },
 }
 

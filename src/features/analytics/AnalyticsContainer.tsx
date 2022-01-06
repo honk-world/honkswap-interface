@@ -6,8 +6,8 @@ export default function AnalyticsContainer({ children }): JSX.Element {
   return (
     <>
       <Head>
-        <title>HONKswap Liquidity Pair (MLP) Analytics | Mist</title>
-        <meta name="description" content="HONKswap Liquidity Pair (SLP) Analytics by Mist" />
+        <title>HONKswap Liquidity Pair (MLP) Analytics | Honk</title>
+        <meta name="description" content="HONKswap Liquidity Pair (SLP) Analytics by Honk" />
       </Head>
 
       <Container id="analytics" maxWidth="full" className="grid h-full grid-flow-col grid-cols-10 px-4 mx-auto gap-9">
@@ -19,7 +19,7 @@ export default function AnalyticsContainer({ children }): JSX.Element {
                 href: '/analytics/dashboard',
               },
               {
-                text: 'xMist',
+                text: 'xHonk',
                 href: '/analytics/xHONK',
               },
               {

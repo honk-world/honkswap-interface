@@ -20,7 +20,7 @@ import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import { useLingui } from '@lingui/react'
 import useSWR from 'swr'
 import useSushiBar from '../../hooks/useSushiBar'
-import { getDayData, useMistPrice } from '../../services/graph'
+import { getDayData, useHonkPrice } from '../../services/graph'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { GRAPH_HOST } from '../../services/graph/constants'
@@ -62,9 +62,9 @@ export default function Stake() {
   const { i18n } = useLingui()
   const { account, chainId } = useActiveWeb3React()
   const mistBalance = useTokenBalance(account ?? undefined, HONK[chainId])
-  const xMistBalance = useTokenBalance(account ?? undefined, XHONK[chainId])
+  const xHonkBalance = useTokenBalance(account ?? undefined, XHONK[chainId])
 
-  const mistPrice = useMistPrice()
+  const mistPrice = useHonkPrice()
 
   const { enter, leave } = useSushiBar()
 
@@ -81,7 +81,7 @@ export default function Stake() {
   const [input, setInput] = useState<string>('')
   const [usingBalance, setUsingBalance] = useState(false)
 
-  const balance = activeTab === 0 ? mistBalance : xMistBalance
+  const balance = activeTab === 0 ? mistBalance : xHonkBalance
 
   const formattedBalance = balance?.toSignificant(4)
 
@@ -161,7 +161,7 @@ export default function Stake() {
   return (
     <Container id="bar-page" className="py-4 md:py-8 lg:py-12" maxWidth="full">
       <Head>
-        <title key="title">Stake | Mist</title>
+        <title key="title">Stake | Honk</title>
         <meta
           key="description"
           name="description"
@@ -398,14 +398,14 @@ export default function Stake() {
                     />
                     <div className="flex flex-col justify-center">
                       <p className="text-sm font-bold md:text-lg text-high-emphesis">
-                        {xMistBalance ? xMistBalance.toSignificant(8) : '-'}
+                        {xHonkBalance ? xHonkBalance.toSignificant(8) : '-'}
                       </p>
                       <p className="text-sm md:text-base text-primary">xHONK</p>
                     </div>
                   </div>
-                  {(xMistBalance && xSushiPerSushi) ?
+                  {(xHonkBalance && xSushiPerSushi) ?
                     (<div className="mt-3">
-                      ~ {xMistBalance.multiply(Math.round(xSushiPerSushi * 1e8)).divide(1e8).toSignificant(8)} HONK
+                      ~ {xHonkBalance.multiply(Math.round(xSushiPerSushi * 1e8)).divide(1e8).toSignificant(8)} HONK
                     </div>) : (<></>)
                   }
                 </div>

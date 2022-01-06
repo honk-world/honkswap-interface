@@ -41,7 +41,7 @@ function Balances() {
   return (
     <>
       <Head>
-        <title>Balances | Mist</title>
+        <title>Balances | Honk</title>
         <meta key="description" name="description" content="" />
       </Head>
       <Card
