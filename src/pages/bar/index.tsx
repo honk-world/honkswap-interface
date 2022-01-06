@@ -197,7 +197,7 @@ export default function Stake() {
             </div>
             <div className="max-w-lg pr-3 mb-2 text-sm leading-5 text-gray-500 md:text-base md:mb-4 md:pr-0">
               {i18n._(t`For every swap on the exchange on every chain, 0.05% of the swap fees are distributed as HONK
-                                proportional to your share of the MistBar. When your HONK is staked into the MistBar, you receive
+                                proportional to your share of the HonkBar. When your HONK is staked into the HonkBar, you receive
                                 xHONK in return.
                                 Your xHONK is continuously compounding, when you unstake you will receive all the originally deposited
                                 HONK and any additional from fees.`)}
@@ -449,7 +449,7 @@ export default function Stake() {
                                 text-sm font-bold cursor-pointer
                             `}
                     >
-                      {i18n._(t`Your MistBar Stats`)}
+                      {i18n._(t`Your HonkBar Stats`)}
                     </a>
                   )}
                 </div>
