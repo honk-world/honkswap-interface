@@ -1,4 +1,4 @@
-import { ChainId, Currency, WNATIVE } from '@mistswapdex/sdk'
+import { ChainId, Currency, WNATIVE } from '@honkswapdex/sdk'
 import React, { FunctionComponent, useMemo } from 'react'
 
 import Logo from '../Logo'
@@ -20,10 +20,10 @@ function getCurrencySymbol(currency) {
 export function getCurrencyLogoUrls(currency) {
   const urls = []
 
-  urls.push(`https://raw.githubusercontent.com/mistswapdex/icons/master/token/${getCurrencySymbol(currency)}.jpg`)
+  urls.push(`https://raw.githubusercontent.com/honk-world/icons/master/token/${getCurrencySymbol(currency)}.jpg`)
   if (currency.chainId in BLOCKCHAIN) {
     urls.push(
-      `https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/${BLOCKCHAIN[currency.chainId]}/assets/${
+      `https://raw.githubusercontent.com/honk-world/assets/master/blockchains/${BLOCKCHAIN[currency.chainId]}/assets/${
         currency.address
       }/logo.png`
     )
@@ -37,7 +37,7 @@ export function getCurrencyLogoUrls(currency) {
   return urls
 }
 
-const BitcoinCashLogo = 'https://raw.githubusercontent.com/mistswapdex/icons/master/token/bch.jpg'
+const BitcoinCashLogo = 'https://raw.githubusercontent.com/honk-world/icons/master/token/bch.jpg'
 
 const LOGO: { readonly [chainId in ChainId]?: string } = {
   [ChainId.SMARTBCH]: BitcoinCashLogo,
@@ -52,7 +52,7 @@ interface CurrencyLogoProps {
   squared?: boolean
 }
 
-const unknown = 'https://raw.githubusercontent.com/mistswapdex/icons/master/token/unknown.png'
+const unknown = 'https://raw.githubusercontent.com/honk-world/icons/master/token/unknown.png'
 
 const CurrencyLogo: FunctionComponent<CurrencyLogoProps> = ({
   currency,

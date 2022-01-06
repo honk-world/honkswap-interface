@@ -1,4 +1,4 @@
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 const THE_GRAPH = 'https://thegraph.mistswap.fi'
 
 export const GRAPH_HOST = {

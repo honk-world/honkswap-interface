@@ -1,4 +1,4 @@
-import { Currency, TradeType, Trade as V2Trade } from '@mistswapdex/sdk'
+import { Currency, TradeType, Trade as V2Trade } from '@honkswapdex/sdk'
 import React, { useMemo } from 'react'
 
 import FormattedPriceImpact from '../exchange-v1/swap/FormattedPriceImpact'

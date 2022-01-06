@@ -1,4 +1,4 @@
-import { Currency, TradeType, Trade as V2Trade } from '@mistswapdex/sdk'
+import { Currency, TradeType, Trade as V2Trade } from '@honkswapdex/sdk'
 import React, { ReactNode } from 'react'
 
 import { ButtonError } from '../../../components/Button'

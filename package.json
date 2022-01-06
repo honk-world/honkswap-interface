@@ -57,7 +57,7 @@
     "@metamask/jazzicon": "^2.0.0",
     "@honkswapdex/core": "0.0.3",
     "@honkswapdex/default-token-list": "0.0.25",
-    "@honkswapdex/sdk": "^0.0.12",
+    "@honkswapdex/sdk": "^0.0.14",
     "@next/bundle-analyzer": "^11.1.0",
     "@popperjs/core": "^2.9.2",
     "@ramp-network/ramp-instant-sdk": "^2.4.6",

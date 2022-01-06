@@ -1,4 +1,4 @@
-import { ChainId, Currency, CurrencyAmount, JSBI, Percent, Token, TradeType, Trade as V2Trade } from '@mistswapdex/sdk'
+import { ChainId, Currency, CurrencyAmount, JSBI, Percent, Token, TradeType, Trade as V2Trade } from '@honkswapdex/sdk'
 import { MIST } from '../config/tokens'
 import { useMemo, useState } from 'react'
 

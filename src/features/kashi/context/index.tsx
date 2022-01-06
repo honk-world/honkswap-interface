@@ -7,7 +7,7 @@ import {
   FLEXUSD_ADDRESS,
   WNATIVE,
   WNATIVE_ADDRESS,
-} from '@mistswapdex/sdk'
+} from '@honkswapdex/sdk'
 import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react'
 import { ZERO, e10, maximum, minimum } from '../../../functions/math'
 import {

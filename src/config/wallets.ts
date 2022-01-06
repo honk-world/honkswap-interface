@@ -1,5 +1,5 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { NetworkConnector } from '../entities/NetworkConnector'
 import RPC from './rpc'
@@ -103,7 +103,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
       return new WalletLinkConnector({
         url: RPC[ChainId.SMARTBCH],
         appName: 'MistSwap',
-        appLogoUrl: 'https://raw.githubusercontent.com/mistswapdex/art/master/sushi/logo-256x256.png',
+        appLogoUrl: 'https://raw.githubusercontent.com/honk-world/art/master/sushi/logo-256x256.png',
       })
     },
     name: 'Coinbase Wallet',

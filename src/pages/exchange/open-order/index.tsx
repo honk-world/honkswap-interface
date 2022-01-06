@@ -2,7 +2,7 @@
 
 import Alert from '../../../components/Alert'
 import { ArrowLeftIcon } from '@heroicons/react/solid'
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import CompletedOrders from '../../../features/exchange-v1/open-order/CompletedOrders'
 import Container from '../../../components/Container'
 import DoubleGlowShadow from '../../../components/DoubleGlowShadow'

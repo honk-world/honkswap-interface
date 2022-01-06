@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, FACTORY_ADDRESS, Pair, computePairAddress } from '@mistswapdex/sdk'
+import { Currency, CurrencyAmount, FACTORY_ADDRESS, Pair, computePairAddress } from '@honkswapdex/sdk'
 
-import IUniswapV2PairABI from '@mistswapdex/core/abi/IUniswapV2Pair.json'
+import IUniswapV2PairABI from '@honkswapdex/core/abi/IUniswapV2Pair.json'
 import { Interface } from '@ethersproject/abi'
 import { useMemo } from 'react'
 import { useMultipleContractSingleData } from '../state/multicall/hooks'

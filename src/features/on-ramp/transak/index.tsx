@@ -1,4 +1,4 @@
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import { t } from '@lingui/macro'
 import transakSDK from '@transak/transak-sdk'
 import { useActiveWeb3React } from '../../../hooks'

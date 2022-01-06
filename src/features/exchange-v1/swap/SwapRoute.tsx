@@ -1,4 +1,4 @@
-import { Currency, Trade, TradeType } from '@mistswapdex/sdk'
+import { Currency, Trade, TradeType } from '@honkswapdex/sdk'
 import React, { Fragment, memo } from 'react'
 
 import { ChevronRightIcon } from '@heroicons/react/outline'

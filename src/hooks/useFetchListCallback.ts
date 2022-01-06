@@ -1,5 +1,5 @@
 import { AppDispatch } from '../state'
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import { TokenList } from '@uniswap/token-lists'
 import { fetchTokenList } from '../state/lists/actions'
 import { getNetworkLibrary } from '../functions/getNetworkLibrary'

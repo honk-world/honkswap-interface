@@ -1,10 +1,10 @@
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
-import { BAR_ADDRESS, ZERO } from '@mistswapdex/sdk'
+import { BAR_ADDRESS, ZERO } from '@honkswapdex/sdk'
 import React, { useEffect, useState } from 'react'
 import { MIST, XMIST } from '../../config/tokens'
 
 import Button from '../../components/Button'
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import Container from '../../components/Container'
 import Dots from '../../components/Dots'
 import Head from 'next/head'

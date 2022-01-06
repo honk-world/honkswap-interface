@@ -13,7 +13,7 @@ import {
   transactionsQuery,
 } from '../queries'
 
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import { GRAPH_HOST } from '../constants'
 import { pager } from './'
 

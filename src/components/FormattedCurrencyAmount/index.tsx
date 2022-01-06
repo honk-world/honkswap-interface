@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Fraction, JSBI } from '@mistswapdex/sdk'
+import { Currency, CurrencyAmount, Fraction, JSBI } from '@honkswapdex/sdk'
 
 import React from 'react'
 

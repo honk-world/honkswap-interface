@@ -1,4 +1,4 @@
-import { JSBI, Percent } from '@mistswapdex/sdk'
+import { JSBI, Percent } from '@honkswapdex/sdk'
 
 // converts a basis points value to a sdk percent
 export function basisPointsToPercent(num: number): Percent {

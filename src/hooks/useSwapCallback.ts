@@ -9,7 +9,7 @@ import {
   Router,
   TradeType,
   Trade as V2Trade,
-} from '@mistswapdex/sdk'
+} from '@honkswapdex/sdk'
 import { arrayify, hexlify, splitSignature } from '@ethersproject/bytes'
 import { isAddress, isZero } from '../functions/validate'
 import { useFactoryContract, useRouterContract } from './useContract'

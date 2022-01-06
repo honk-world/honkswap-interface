@@ -1,6 +1,6 @@
 import { AppState } from '..'
-import { ChainId } from '@mistswapdex/sdk'
-import DEFAULT_TOKEN_LIST from '@mistswapdex/default-token-list'
+import { ChainId } from '@honkswapdex/sdk'
+import DEFAULT_TOKEN_LIST from '@honk-world/default-token-list'
 import { TokenList } from '@uniswap/token-lists'
 import { UNSUPPORTED_LIST_URLS } from '../../config/token-lists'
 import UNSUPPORTED_TOKEN_LIST from '../../constants/token-lists/mistswap-v2-unsupported.tokenlist.json'

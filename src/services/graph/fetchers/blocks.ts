@@ -1,7 +1,7 @@
 import { blockQuery, blocksQuery, massBlocksQuery } from '../queries'
 import { getUnixTime, startOfHour, subDays, subHours } from 'date-fns'
 
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import { GRAPH_HOST } from '../constants'
 import { request } from 'graphql-request'
 

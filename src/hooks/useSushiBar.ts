@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Token } from '@mistswapdex/sdk'
+import { Currency, CurrencyAmount, Token } from '@honkswapdex/sdk'
 
 import { useCallback } from 'react'
 import { useSushiBarContract } from './useContract'

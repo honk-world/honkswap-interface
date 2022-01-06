@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from '@mistswapdex/sdk'
+import { Currency, Percent, Price } from '@honkswapdex/sdk'
 
 import { Field } from '../../../state/mint/actions'
 import { ONE_BIPS } from '../../../constants'

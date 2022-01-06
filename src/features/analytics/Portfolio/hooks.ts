@@ -10,7 +10,7 @@ import {
   useTokens,
 } from '../../../services/graph'
 
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import { getFraction } from '../../../functions'
 import { uniq } from 'lodash'
 import { useActiveWeb3React } from '../../../hooks'

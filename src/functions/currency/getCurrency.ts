@@ -1,5 +1,5 @@
 import { AddressZero } from '@ethersproject/constants'
-import { ChainId, FLEXUSD_ADDRESS } from '@mistswapdex/sdk'
+import { ChainId, FLEXUSD_ADDRESS } from '@honkswapdex/sdk'
 
 type Currency = { address: string; decimals: number }
 

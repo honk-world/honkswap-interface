@@ -1,4 +1,4 @@
-import { ChainId, Currency, Percent } from '@mistswapdex/sdk'
+import { ChainId, Currency, Percent } from '@honkswapdex/sdk'
 import React, { FC, useState } from 'react'
 
 import Gas from '../../components/Gas'

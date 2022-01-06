@@ -1,6 +1,6 @@
 // NOTE: Try not to add anything to thie file, it's almost entirely refactored out.
 
-import { ChainId, ROUTER_ADDRESS } from '@mistswapdex/sdk'
+import { ChainId, ROUTER_ADDRESS } from '@honkswapdex/sdk'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 
 import { AddressZero } from '@ethersproject/constants'

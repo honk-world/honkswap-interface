@@ -1,4 +1,4 @@
-import { Currency, Token } from '@mistswapdex/sdk'
+import { Currency, Token } from '@honkswapdex/sdk'
 import { useCallback, useState } from 'react'
 
 import { getCurrencyLogoUrls } from './../components/CurrencyLogo'
@@ -26,7 +26,7 @@ export default function useAddTokenToMetaMask(currencyToAdd: Currency | undefine
               address: token.address,
               symbol: token.symbol,
               decimals: token.decimals,
-              image: `https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/${token.address}/logo.png`,
+              image: `https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/${token.address}/logo.png`,
             },
           },
         })

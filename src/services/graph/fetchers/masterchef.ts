@@ -7,7 +7,7 @@ import {
   poolsV2Query,
 } from '../queries'
 
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 import { GRAPH_HOST } from '../constants'
 import { getTokenSubset } from './exchange'
 import { request } from 'graphql-request'

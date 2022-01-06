@@ -1,4 +1,4 @@
-import { BigintIsh, Currency, CurrencyAmount, JSBI } from '@mistswapdex/sdk'
+import { BigintIsh, Currency, CurrencyAmount, JSBI } from '@honkswapdex/sdk'
 
 import { Interface } from '@ethersproject/abi'
 

@@ -9,7 +9,7 @@ import CurrencyLogo from '../../../components/CurrencyLogo'
 import { Field } from '../../../state/limit-order/actions'
 import Modal from '../../../components/Modal'
 import { Trans } from '@lingui/react'
-import { FLEXUSD } from '@mistswapdex/sdk'
+import { FLEXUSD } from '@honkswapdex/sdk'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 

@@ -1,4 +1,4 @@
-import { ChainId, Currency } from '@mistswapdex/sdk'
+import { ChainId, Currency } from '@honkswapdex/sdk'
 
 export function currencyId(currency: Currency): string {
   if (currency.isNative) return 'BCH'

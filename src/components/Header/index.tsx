@@ -1,4 +1,4 @@
-import { ChainId, Currency, NATIVE, MIST_ADDRESS } from '@mistswapdex/sdk'
+import { ChainId, Currency, NATIVE, MIST_ADDRESS } from '@honkswapdex/sdk'
 import { Feature, featureEnabled } from '../../functions/feature'
 import React, { useEffect, useState } from 'react'
 
@@ -134,7 +134,7 @@ function AppBar(): JSX.Element {
                             address: '0xC41C680c60309d4646379eD62020c534eB67b6f4',
                             symbol: 'xMIST',
                             decimals: 18,
-                            image: 'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0xC41C680c60309d4646379eD62020c534eB67b6f4/logo.png',
+                            image: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xC41C680c60309d4646379eD62020c534eB67b6f4/logo.png',
                           }} />
                       </>
                     )}
@@ -148,7 +148,7 @@ function AppBar(): JSX.Element {
                             address: MIST_ADDRESS[chainId],
                             symbol: 'MIST',
                             decimals: 18,
-                            image: 'https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png',
+                            image: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png',
                           }} />
                       </>
                     )}

@@ -5,7 +5,7 @@ import {
 } from "../state/transactions/hooks";
 import useLPTokensState, { LPTokensState } from "./useLPTokensState";
 
-import { ChainId } from "@mistswapdex/sdk";
+import { ChainId } from "@honkswapdex/sdk";
 import { parseUnits } from "@ethersproject/units";
 import { useActiveWeb3React } from "./useActiveWeb3React";
 import useSushiRoll from "./useSushiRoll";

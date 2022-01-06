@@ -2,7 +2,7 @@ import {
     MIST, XMIST, FLEXUSD
 } from '../config/tokens'
 // a list of tokens by chain
-import { ChainId, Currency, Token, WNATIVE } from '@mistswapdex/sdk'
+import { ChainId, Currency, Token, WNATIVE } from '@honkswapdex/sdk'
 
 type ChainTokenList = {
   readonly [chainId: number]: Token[]

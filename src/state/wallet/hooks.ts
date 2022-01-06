@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, NATIVE, JSBI, Token } from '@mistswapdex/sdk'
+import { Currency, CurrencyAmount, NATIVE, JSBI, Token } from '@honkswapdex/sdk'
 import { useMultipleContractSingleData, useSingleContractMultipleData } from '../multicall/hooks'
 
 import ERC20_ABI from '../../constants/abis/erc20.json'

@@ -1,4 +1,4 @@
-import { ChainId } from '@mistswapdex/sdk'
+import { ChainId } from '@honkswapdex/sdk'
 
 const RPC = {
   [ChainId.SMARTBCH]: 'https://smartbch.fountainhead.cash/mainnet',

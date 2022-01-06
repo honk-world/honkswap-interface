@@ -1,4 +1,4 @@
-// import { CurrencyAmount, JSBI, Token } from '@mistswapdex/sdk'
+// import { CurrencyAmount, JSBI, Token } from '@honkswapdex/sdk'
 
 // import { t } from '@lingui/macro'
 // import { tryParseAmount } from '../../functions'

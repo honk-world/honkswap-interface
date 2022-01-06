@@ -11,7 +11,7 @@ import {
   TradeType,
   Trade as V2Trade,
   WNATIVE_ADDRESS,
-} from '@mistswapdex/sdk'
+} from '@honkswapdex/sdk'
 import { DEFAULT_ARCHER_ETH_TIP, DEFAULT_ARCHER_GAS_ESTIMATE } from '../../config/archer'
 import {
   EstimatedSwapCall,

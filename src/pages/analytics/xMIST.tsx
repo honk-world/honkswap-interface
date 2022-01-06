@@ -1,4 +1,4 @@
-import { MIST_ADDRESS } from '@mistswapdex/sdk'
+import { MIST_ADDRESS } from '@honkswapdex/sdk'
 import React, { useMemo } from 'react'
 import ScrollableGraph from '../../components/ScrollableGraph'
 import AnalyticsContainer from '../../features/analytics/AnalyticsContainer'

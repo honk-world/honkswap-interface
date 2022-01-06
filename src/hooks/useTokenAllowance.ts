@@ -1,4 +1,4 @@
-import { CurrencyAmount, Token } from '@mistswapdex/sdk'
+import { CurrencyAmount, Token } from '@honkswapdex/sdk'
 
 import { useMemo } from 'react'
 import { useSingleCallResult } from '../state/multicall/hooks'

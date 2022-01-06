@@ -1,4 +1,4 @@
-import { ChainId, Currency, NATIVE, Token } from '@mistswapdex/sdk'
+import { ChainId, Currency, NATIVE, Token } from '@honkswapdex/sdk'
 import React, { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { filterTokens, useSortedTokensByQuery } from '../../functions/filtering'
 import { useAllTokens, useIsUserAddedToken, useSearchInactiveTokenLists, useToken } from '../../hooks/Tokens'

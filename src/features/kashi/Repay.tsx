@@ -7,7 +7,7 @@ import {
   SUSHISWAP_MULTI_EXACT_SWAPPER_ADDRESS,
   */
   WNATIVE,
-} from '@mistswapdex/sdk'
+} from '@honkswapdex/sdk'
 import React, { useContext, useMemo, useState } from 'react'
 import { Warning, Warnings } from '../../entities/Warnings'
 import { ZERO, e10, maximum, minimum } from '../../functions/math'

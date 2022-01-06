@@ -1,4 +1,4 @@
-import { ChainId, Currency, NATIVE, WNATIVE } from '@mistswapdex/sdk'
+import { ChainId, Currency, NATIVE, WNATIVE } from '@honkswapdex/sdk'
 
 import { tryParseAmount } from '../functions/parse'
 import { getGasPrice } from '../functions/trade'

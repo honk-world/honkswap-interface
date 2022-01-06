@@ -1,4 +1,4 @@
-import { Currency, Token } from '@mistswapdex/sdk'
+import { Currency, Token } from '@honkswapdex/sdk'
 import { Tags, TokenInfo } from '@uniswap/token-lists'
 
 import { TokenList } from '@uniswap/token-lists/dist/types'

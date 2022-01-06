@@ -1,6 +1,6 @@
 import { classNames, formatNumber, formatPercent } from '../../functions'
 
-import { ZERO } from '@mistswapdex/sdk'
+import { ZERO } from '@honkswapdex/sdk'
 import { Disclosure } from '@headlessui/react'
 import DoubleLogo from '../../components/DoubleLogo'
 import FarmListItemDetails from './FarmListItemDetails'
@@ -78,7 +78,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                   <div className="hidden md:flex items-center space-x-2">
                     <div key="0" className="flex items-center">
                       <Image
-                        src="https://raw.githubusercontent.com/mistswapdex/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png"
+                        src="https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png"
                         width="30px"
                         height="30px"
                         className="rounded-md"

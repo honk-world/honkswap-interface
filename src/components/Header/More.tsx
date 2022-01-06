@@ -18,8 +18,8 @@ const items = (i18n: I18n) => [
   },
   {
     name: i18n._(t`Open Source`),
-    description: i18n._(t`MIST is a supporter of Open Source.`),
-    href: 'https://github.com/mistswapdex',
+    description: i18n._(t`HONK is a supporter of Open Source.`),
+    href: 'https://github.com/honk-world',
     external: true,
   },
   {

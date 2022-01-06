@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, JSBI } from '@mistswapdex/sdk'
+import { Currency, CurrencyAmount, JSBI } from '@honkswapdex/sdk'
 
 import { parseUnits } from '@ethersproject/units'
 

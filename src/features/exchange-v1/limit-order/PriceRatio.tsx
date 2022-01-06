@@ -1,4 +1,4 @@
-import { Currency, Price } from '@mistswapdex/sdk'
+import { Currency, Price } from '@honkswapdex/sdk'
 import { FC, useState } from 'react'
 import { useDerivedLimitOrderInfo, useLimitOrderState } from '../../../state/limit-order/hooks'
 
