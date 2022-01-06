@@ -61,7 +61,7 @@ export default function NetworkModal(): JSX.Element | null {
     <Modal isOpen={networkModalOpen} onDismiss={toggleNetworkModal} maxWidth={672}>
       <ModalHeader onClose={toggleNetworkModal} title={i18n._(t`Select a Network`)} />
       <div className="mb-6 text-lg text-primary">
-        You are currently browsing <span className="font-bold text-pink">MIST</span>
+        You are currently browsing <span className="font-bold text-pink">HONK</span>
         <br /> on the <span className="font-bold text-blue">{NETWORK_LABEL[chainId]}</span> network
       </div>
 

@@ -12,7 +12,7 @@ import NavLink from '../NavLink'
 const items = (i18n: I18n) => [
   {
     name: i18n._(t`Docs`),
-    description: i18n._(t`Documentation for users of MIST.`),
+    description: i18n._(t`Documentation for users of HONK.`),
     href: 'https://docs.honkswap.fi',
     external: true,
   },

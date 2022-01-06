@@ -20,7 +20,7 @@ export default function AnalyticsContainer({ children }): JSX.Element {
               },
               {
                 text: 'xMist',
-                href: '/analytics/xMIST',
+                href: '/analytics/xHONK',
               },
               {
                 text: 'Farms',
