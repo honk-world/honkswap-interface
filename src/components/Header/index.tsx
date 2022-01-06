@@ -128,7 +128,7 @@ function AppBar(): JSX.Element {
                     {chainId && [ChainId.SMARTBCH].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
                         <AddToken
-                          imageProps={{src: "/images/tokens/xmist-square.jpg", alt: "xHONK"}}
+                          imageProps={{src: "/images/tokens/xhonk-square.jpg", alt: "xHONK"}}
                           text={i18n._(t`Add xHONK to your MetaMask wallet`)}
                           metamaskProps={{
                             address: '0xC41C680c60309d4646379eD62020c534eB67b6f4',
@@ -142,7 +142,7 @@ function AppBar(): JSX.Element {
                     {chainId && chainId in HONK_ADDRESS && library && library.provider.isMetaMask && (
                       <>
                         <AddToken
-                          imageProps={{src: "/images/tokens/mist-square.jpg", alt: "HONK"}}
+                          imageProps={{src: "/images/tokens/honk-square.jpg", alt: "HONK"}}
                           text={i18n._(t`Add HONK to your MetaMask wallet`)}
                           metamaskProps={{
                             address: HONK_ADDRESS[chainId],

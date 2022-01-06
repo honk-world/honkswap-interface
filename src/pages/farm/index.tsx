@@ -366,12 +366,12 @@ export default function Farm(): JSX.Element {
   const flexUSDHonkPool = farms.find((v) => v.pair === '0x437E444365aD9ed788e8f255c908bceAd5AEA645').pool;
   const bchFlexUSDPool = farms.find((v) => v.pair === '0x24f011f12Ea45AfaDb1D4245bA15dCAB38B43D13').pool;
   let bchPriceUSD = 0;
-  let mistPriceUSD = 0;
+  let honkPriceUSD = 0;
   if (bchFlexUSDPool.reserves) {
     bchPriceUSD = Number.parseFloat(bchFlexUSDPool.reserves[1].toFixed()) / Number.parseFloat(bchFlexUSDPool.reserves[0].toFixed());
   }
   if (flexUSDHonkPool.reserves) {
-    mistPriceUSD = 1. / ( Number.parseFloat(flexUSDHonkPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDHonkPool.reserves[1].toFixed()))
+    honkPriceUSD = 1. / ( Number.parseFloat(flexUSDHonkPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDHonkPool.reserves[1].toFixed()))
   }
 
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
@@ -388,11 +388,11 @@ export default function Farm(): JSX.Element {
         let tvl = 0;
         if (farms[i].pool.token0 === HONK[chainId].address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
-          tvl = reserve / totalSupply * chefBalance * mistPriceUSD * 2;
+          tvl = reserve / totalSupply * chefBalance * honkPriceUSD * 2;
         }
         else if (farms[i].pool.token1 === HONK[chainId].address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed());
-          tvl = reserve / totalSupply * chefBalance * mistPriceUSD * 2;
+          tvl = reserve / totalSupply * chefBalance * honkPriceUSD * 2;
         }
         else if (farms[i].pool.token0 === FLEXUSD.address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
@@ -463,7 +463,7 @@ export default function Farm(): JSX.Element {
         icon: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png',
         rewardPerBlock,
         rewardPerDay: rewardPerBlock * blocksPerDay,
-        rewardPrice: +mistPriceUSD,
+        rewardPrice: +honkPriceUSD,
       }
 
       const defaultRewards = [defaultReward]
@@ -539,7 +539,7 @@ export default function Farm(): JSX.Element {
       <div className={classNames('px-3 md:px-0 lg:block md:col-span-1')}>
         <Menu positionsLength={positions.length} />
         <div className="relative hidden h-80 lg:block">
-          <Image layout="fill" objectFit="contain" objectPosition="bottom" src="/mist-machine.png" alt="" />
+          <Image layout="fill" objectFit="contain" objectPosition="bottom" src="/honk-machine.png" alt="" />
         </div>
       </div>
       <div className={classNames('space-y-6 col-span-4 lg:col-span-3')}>

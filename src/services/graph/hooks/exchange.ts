@@ -194,7 +194,7 @@ export function useSushiPrice(variables = undefined, swrConfig: SWRConfiguration
 }
 
 export function useHonkPrice(variables = undefined, swrConfig: SWRConfiguration = undefined) {
-  const { data } = useSWR(['mistPrice', JSON.stringify(variables)], () => getHonkPrice(variables), swrConfig)
+  const { data } = useSWR(['honkPrice', JSON.stringify(variables)], () => getHonkPrice(variables), swrConfig)
 
   return data
 }

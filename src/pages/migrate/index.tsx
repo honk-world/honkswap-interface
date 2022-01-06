@@ -385,10 +385,10 @@ export default function MigrateV2() {
             name="twitter:description"
             content="Migrate LP tokens to Honk LP tokens"
           />
-          <meta key="twitter:image" name="twitter:image" content="https://app.honkswap.fi/xmist-sign.png" />
+          <meta key="twitter:image" name="twitter:image" content="https://app.honkswap.fi/xhonk-sign.png" />
           <meta key="og:title" property="og:title" content="MIGRATE LP" />
           <meta key="og:url" property="og:url" content="https://app.honkswap.fi/migrate" />
-          <meta key="og:image" property="og:image" content="https://app.honkswap.fi/xmist-sign.png" />
+          <meta key="og:image" property="og:image" content="https://app.honkswap.fi/xhonk-sign.png" />
           <meta
             key="og:description"
             property="og:description"
