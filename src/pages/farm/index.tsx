@@ -47,7 +47,7 @@ export default function Farm(): JSX.Element {
   const updateFarmFilter = useUpdateFarmFilter()
   updateFarmFilter(type)
 
-  const hardcodedPairs = {
+  const hardcodedPairs = { //todo: fix pairs
     [ChainId.SMARTBCH]: {
       "0x674A71E69fe8D5cCff6fdcF9F1Fa4262Aa14b154": {
         farmId: 7,
@@ -166,7 +166,7 @@ export default function Farm(): JSX.Element {
       "0xa331430473ABA2337698fD95a7c2fCf376DEbFb1": {
         farmId: 19,
         allocPoint: 5923315,
-        token0: new Token(ChainId.SMARTBCH, '0xC41C680c60309d4646379eD62020c534eB67b6f4', 18, 'XHONK', 'HONKbar'),
+        token0: new Token(ChainId.SMARTBCH, '0xC41C680c60309d4646379eD62020c534eB67b6f4', 18, 'XHONK', 'HONKbar'), //todo: this is mistbar
         token1: WBCH[ChainId.SMARTBCH],
       },
       "0x1c47c2a72e86B9B488f436F7aC76ACc61e531926": {
@@ -191,7 +191,7 @@ export default function Farm(): JSX.Element {
         farmId: 23,
         allocPoint: 6841696,
         token0: HONK[ChainId.SMARTBCH],
-        token1: new Token(ChainId.SMARTBCH, '0xC41C680c60309d4646379eD62020c534eB67b6f4', 18, 'XHONK', 'HONKbar'),
+        token1: new Token(ChainId.SMARTBCH, '0xC41C680c60309d4646379eD62020c534eB67b6f4', 18, 'XHONK', 'HONKbar'), //todo: this is mistbar
       },
       "0x211c0d74b1213A40Bdfd61490A9893353544ea46": {
         farmId: 24,
@@ -460,7 +460,7 @@ export default function Farm(): JSX.Element {
 
       const defaultReward = {
         token: 'HONK',
-        icon: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png',
+        icon: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd/logo.png',
         rewardPerBlock,
         rewardPerDay: rewardPerBlock * blocksPerDay,
         rewardPrice: +honkPriceUSD,

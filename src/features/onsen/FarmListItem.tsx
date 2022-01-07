@@ -78,7 +78,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                   <div className="hidden md:flex items-center space-x-2">
                     <div key="0" className="flex items-center">
                       <Image
-                        src="https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129/logo.png"
+                        src="https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd/logo.png"
                         width="30px"
                         height="30px"
                         className="rounded-md"
@@ -89,7 +89,7 @@ const FarmListItem = ({ farm, ...rest }) => {
                   </div>
                   <div className="flex flex-col space-y-1">
                     <div key="0" className="text-xs md:text-sm">
-                      {formatNumber(pendingSushi.toFixed(18))} HONK
+                      {formatNumber(pendingSushi.toFixed(2))} HONK
                     </div>
                   </div>
               </div>

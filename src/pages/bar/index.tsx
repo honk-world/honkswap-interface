@@ -68,7 +68,7 @@ export default function Stake() {
 
   const { enter, leave } = useSushiBar()
 
-  const { data } = useSWR(`{bar(id: "0xc41c680c60309d4646379ed62020c534eb67b6f4") {ratio, totalSupply}}`, fetcher)
+  const { data } = useSWR(`{bar(id: "0xc41c680c60309d4646379ed62020c534eb67b6f4") {ratio, totalSupply}}`, fetcher) //todo: this is mistbar
 
   const xSushiPerSushi = parseFloat(data?.bar?.ratio)
 
