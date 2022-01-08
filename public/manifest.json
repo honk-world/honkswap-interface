@@ -12,7 +12,7 @@
   "start_url": "/",
   "splash_pages": null,
   "prefer_related_applications": false,
-  "iconPath": "logo.png",
+  "iconPath": "honk-world-logo.svg",
   "icons": [
     {
         "src": "/android-chrome-36x36.png",
