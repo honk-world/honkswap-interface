@@ -23,7 +23,7 @@ export default function AllocationTable({ allocations }: AllocationTableProps) {
             </td>
             <td className="w-full px-2">
               <div className="w-full h-3 overflow-hidden rounded-lg bg-dark-800">
-                <div className="h-full bg-gradient-to-r from-blue to-pink" style={{ width: `${alloc.allocation}%` }} />
+                <div className="h-full bg-gradient-to-r from-blue to-red" style={{ width: `${alloc.allocation}%` }} />
               </div>
             </td>
             <td>

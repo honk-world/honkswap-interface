@@ -117,7 +117,7 @@ export default function Portfolio() {
           <div className="text-2xl font-bold text-high-emphesis">Total Assets</div>
           <div>{address ? `(${shortenAddress(address)})` : ''}</div>
         </div>
-        <div className="text-2xl font-bold text-transparent bg-gradient-to-r from-blue to-pink bg-clip-text">
+        <div className="text-2xl font-bold text-transparent bg-gradient-to-r from-blue to-red bg-clip-text">
           {totalUsd ? formatNumber(totalUsd, true) : ''}
         </div>
       </div>

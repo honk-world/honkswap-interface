@@ -98,7 +98,7 @@ export default function Pair() {
   return (
     <AnalyticsContainer>
       <div className="relative h-8">
-        <div className="absolute w-full h-full bg-gradient-to-r from-blue to-pink opacity-5" />
+        <div className="absolute w-full h-full bg-gradient-to-r from-blue to-red opacity-5" />
         <div className="absolute flex items-center w-full p-2 lg:pl-14">
           <div className="text-xs font-medium text-secondary">
             <Link href="/analytics/dashboard">Analytics</Link>&nbsp;
@@ -143,7 +143,7 @@ export default function Pair() {
         <div className="relative h-12">
           <div className="absolute w-full h-full">
             <div className="h-1/3" />
-            <div className="opacity-50 w-[210px] h-1/3 bg-gradient-to-r from-blue to-pink" />
+            <div className="opacity-50 w-[210px] h-1/3 bg-gradient-to-r from-blue to-red" />
           </div>
           <div className="absolute text-3xl font-bold text-high-emphesis">Pool Overview</div>
         </div>

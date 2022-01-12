@@ -17,7 +17,7 @@ const FILLED = {
   gray: 'border rounded shadow-sm focus:ring-2 focus:ring-offset-2 bg-dark-700 bg-opacity-80 w-full text-primary border-dark-800 hover:bg-opacity-100 focus:ring-offset-dark-700 focus:ring-dark-800 disabled:bg-opacity-80',
   green: 'bg-green bg-opacity-80 w-full rounded text-high-emphesis hover:bg-opacity-100 disabled:bg-opacity-80',
   gradient:
-    'w-full text-high-emphesis bg-gradient-to-r from-blue to-pink opacity-80 hover:opacity-100 disabled:bg-opacity-80',
+    'w-full text-high-emphesis bg-gradient-to-r from-blue to-red opacity-80 hover:opacity-100 disabled:bg-opacity-80',
 }
 
 const OUTLINED = {

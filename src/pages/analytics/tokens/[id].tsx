@@ -136,7 +136,7 @@ export default function Token() {
   return (
     <AnalyticsContainer>
       <div className="relative h-8">
-        <div className="absolute w-full h-full bg-gradient-to-r from-blue to-pink opacity-5" />
+        <div className="absolute w-full h-full bg-gradient-to-r from-blue to-red opacity-5" />
         <div className="absolute flex items-center w-full p-2 lg:pl-14">
           <div className="text-xs font-medium text-secondary">
             <Link href="/analytics/dashboard">Analytics</Link>&nbsp;
