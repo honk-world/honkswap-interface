@@ -19,7 +19,7 @@ const CompletedOrders: FC = () => {
       <div className="flex items-center gap-2 pb-4 text-xl border-b text-high-emphesis border-dark-800">
         {i18n._(t`Order History`)}{' '}
         <span className="inline-flex">
-          <Badge color="pink" size="medium">
+          <Badge color="red" size="medium">
             {completed.totalOrders}
           </Badge>
         </span>

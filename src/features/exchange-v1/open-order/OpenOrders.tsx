@@ -100,7 +100,7 @@ const OpenOrders: FC = () => {
                       </div>
                       <div>
                         <Button
-                          color="pink"
+                          color="red"
                           variant="outlined"
                           size="xs"
                           onClick={() => cancelOrder(order.limitOrder, `Cancel order`)}
