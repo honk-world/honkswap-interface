@@ -56,7 +56,7 @@ module.exports = {
         white: 'var(--white)',
 
         'opaque-blue': 'var(--opaque-blue)',
-        'opaque-pink': 'var(--opaque-pink)',
+        'opaque-red': 'var(--opaque-red)',
         'pink-red': withOpacity('--pink-red-v'),
         'light-brown': withOpacity('--light-brown-v'),
         'light-yellow': withOpacity('--light-yellow-v'),

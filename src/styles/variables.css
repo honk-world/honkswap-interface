@@ -25,9 +25,9 @@
     --blue-v: 41, 158, 160;
     --pink-v: 100, 180, 86;
     --opaque-blue: rgba(var(--blue-v), 0.8);
-    --opaque-pink: rgba(var(--pink-v), 0.8);
+    --opaque-red: rgba(var(--red-v), 0.8);
     --blue: rgb(var(--blue-v));
-    --pink: rgb(var(--pink-v));
+    --red: rgb(var(--red-v));
     --red-v: 255, 56, 56;
     --yellow-v: 245, 158, 11;
     --green-v: 4, 120, 87;
