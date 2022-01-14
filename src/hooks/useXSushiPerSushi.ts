@@ -1,9 +1,9 @@
 import { request } from 'graphql-request'
 import useSWR from 'swr'
 
-//todo: this is mistbar
+//todo: update with honkbar
 const QUERY = `{
-    bar(id: "0xc41c680c60309d4646379ed62020c534eb67b6f4") {  
+    bar(id: "0xdB9efDae281BCFF410d64FEB62D8f27D907745E3") {  
       ratio
     }
 }`
