@@ -1,7 +1,6 @@
 import { Currency, Token } from '@honkswapdex/sdk'
 import { useCallback, useState } from 'react'
 
-import { getCurrencyLogoUrls } from './../components/CurrencyLogo'
 import { useActiveWeb3React } from './useActiveWeb3React'
 
 export default function useAddTokenToMetaMask(currencyToAdd: Currency | undefined): {
