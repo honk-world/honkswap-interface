@@ -1,6 +1,6 @@
 # HONKswap Interface
 
-HONKswap Interface is a progressive web application for the HONKswap Protocol.
+HONKswap Interface is a DEX frontend for the smartBCH blockchain.
 
 ## Getting started
 
@@ -13,4 +13,3 @@ git clone https://github.com/honk-world/honkswap-interface.git && cd honkswap-in
 ## Licence
 
 MIT
-x
