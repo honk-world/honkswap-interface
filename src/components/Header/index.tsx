@@ -131,9 +131,9 @@ function AppBar(): JSX.Element {
                           imageProps={{src: "/images/tokens/xhonk-square.png", alt: "xHONK"}}
                           text={i18n._(t`Add xHONK to your MetaMask wallet`)}
                           metamaskProps={{
-                            address: '0xdB9efDae281BCFF410d64FEB62D8f27D907745E3', //todo: change to honkbar address
+                            address: '0xdB9efDae281BCFF410d64FEB62D8f27D907745E3', 
                             symbol: 'xHONK',
-                            decimals: 18,
+                            decimals: 2,
                             image: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd/logo.png',
                           }} />
                       </>
@@ -147,7 +147,7 @@ function AppBar(): JSX.Element {
                           metamaskProps={{
                             address: HONK_ADDRESS[chainId],
                             symbol: 'HONK',
-                            decimals: 18,
+                            decimals: 2,
                             image: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd/logo.png', //todo: change to honkbar address
                           }} />
                       </>
