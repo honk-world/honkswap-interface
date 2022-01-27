@@ -47,7 +47,7 @@ export function calculateGasMargin(value: BigNumber): BigNumber {
 
 // hardcoded for smartbch
 export function getGasPrice(): BigNumber {
-  return BigNumber.from(1000000000)
+  return BigNumber.from(1050000000)
 }
 
 const ONE = new Fraction(1, 1)
