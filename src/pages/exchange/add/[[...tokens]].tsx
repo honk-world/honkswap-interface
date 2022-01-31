@@ -189,7 +189,7 @@ export default function Add() {
       //   ...(value ? { value } : {}),
       //   gasPrice: getGasPrice(),
       // });
-      const estimatedGasLimit = BigNumber.from(1000000000);
+      const estimatedGasLimit = BigNumber.from(100000);
 
       const response = await method(...args, {
         ...(value ? { value } : {}),
