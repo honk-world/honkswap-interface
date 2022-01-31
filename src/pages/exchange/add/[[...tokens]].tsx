@@ -185,10 +185,11 @@ export default function Add() {
 
     setAttemptingTxn(true)
     try {
-      const estimatedGasLimit = await estimate(...args, {
-        ...(value ? { value } : {}),
-        gasPrice: getGasPrice(),
-      });
+      // const estimatedGasLimit = await estimate(...args, {
+      //   ...(value ? { value } : {}),
+      //   gasPrice: getGasPrice(),
+      // });
+      const estimatedGasLimit = BigNumber.from(1000000000);
 
       const response = await method(...args, {
         ...(value ? { value } : {}),
