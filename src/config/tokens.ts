@@ -12,8 +12,8 @@ type ChainTokenMap = {
 }
 
 export const HONK: ChainTokenMap = {
-  [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, HONK_ADDRESS[ChainId.SMARTBCH], 18, 'HONK', 'HonkToken'),
-  [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, HONK_ADDRESS[ChainId.SMARTBCH_AMBER], 18, 'HONK', 'HonkToken'),
+  [ChainId.SMARTBCH]: new Token(ChainId.SMARTBCH, HONK_ADDRESS[ChainId.SMARTBCH], 2, 'HONK', 'HonkToken'),
+  [ChainId.SMARTBCH_AMBER]: new Token(ChainId.SMARTBCH_AMBER, HONK_ADDRESS[ChainId.SMARTBCH_AMBER], 2, 'HONK', 'HonkToken'),
 }
 
 export const WBCH_EXTENDED: { [chainId: number]: Token } = {
