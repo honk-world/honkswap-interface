@@ -33,7 +33,7 @@ export const SUPPORTED_NETWORKS: {
       symbol: 'BCH',
       decimals: 18,
     },
-    rpcUrls: ['https://global.uat.cash'],
+    rpcUrls: ['https://smartbch.fountainhead.cash/mainnet'],
     blockExplorerUrls: ['https://smartscan.cash'],
   },
   [ChainId.SMARTBCH_AMBER]: {
