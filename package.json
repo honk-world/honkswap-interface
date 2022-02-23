@@ -48,7 +48,7 @@
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.4",
     "@honkswapdex/default-token-list": "^0.0.29",
-    "@honkswapdex/sdk": "^0.0.27",
+    "@honkswapdex/sdk": "^0.0.28",
     "@keystonehq/keystone-connector": "^0.8.0",
     "@lingui/cli": "^3.10.2",
     "@lingui/core": "^3.10.4",
