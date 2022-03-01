@@ -52,7 +52,7 @@ export default function Farm(): JSX.Element {
       "0x66f72b9ab277f49508c6b57ccb28786f1231ccf5": {
         farmId: 1,
         allocPoint: 1000,
-        token0: new Token(ChainId.SMARTBCH_AMBER, '0x3d2cd929D1fC1dA68D2557AB85336C2740b1Ae81', 18, 'MIST', 'Mist Token'),,
+        token0: new Token(ChainId.SMARTBCH_AMBER, '0x3d2cd929D1fC1dA68D2557AB85336C2740b1Ae81', 18, 'MIST', 'Mist Token'),
         token1: HONK[ChainId.SMARTBCH_AMBER],
       }
       // "0x437E444365aD9ed788e8f255c908bceAd5AEA645": {
@@ -72,7 +72,7 @@ export default function Farm(): JSX.Element {
       "0x66f72b9ab277f49508c6b57ccb28786f1231ccf5": {
         farmId: 1,
         allocPoint: 1000,
-        token0: new Token(ChainId.SMARTBCH_AMBER, '0x3d2cd929D1fC1dA68D2557AB85336C2740b1Ae81', 18, 'MIST', 'Mist Token'),,
+        token0: new Token(ChainId.SMARTBCH_AMBER, '0x3d2cd929D1fC1dA68D2557AB85336C2740b1Ae81', 18, 'MIST', 'Mist Token'),
         token1: HONK[ChainId.SMARTBCH_AMBER],
       }
     }
