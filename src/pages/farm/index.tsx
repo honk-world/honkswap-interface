@@ -152,19 +152,16 @@ export default function Farm(): JSX.Element {
   }
 
   farms = farms.sort((a, b) => b.allocPoint - a.allocPoint);
-
-  //mainnet
-  // const flexUSDHonkPool = farms.find((v) => v.pair === '0x437E444365aD9ed788e8f255c908bceAd5AEA645').pool; //todo: figure out and fix hardcode
-  // const bchFlexUSDPool = farms.find((v) => v.pair === '0x24f011f12Ea45AfaDb1D4245bA15dCAB38B43D13').pool; //todo: figure out and fix hardcode
-  //amber
-  const flexUSDHonkPool = farms.find((v) => v.pair === '0x66f72b9ab277f49508c6b57ccb28786f1231ccf5').pool; //todo: figure out and fix hardcode
-  const bchFlexUSDPool = farms.find((v) => v.pair === '0x66f72b9ab277f49508c6b57ccb28786f1231ccf5').pool; //todo: figure out and fix hardcode
+  
+  const flexUSDHonkPool = farms.find((v) => v.pair === '0x56c92D1d401697dFFA132ED4a1274cdbBd0Aff05').pool; 
+  //const bchFlexUSDPool = farms.find((v) => v.pair === '0x66f72b9ab277f49508c6b57ccb28786f1231ccf5').pool; 
   
   let bchPriceUSD = 0;
   let honkPriceUSD = 0;
-  if (bchFlexUSDPool.reserves) {
-    bchPriceUSD = Number.parseFloat(bchFlexUSDPool.reserves[1].toFixed()) / Number.parseFloat(bchFlexUSDPool.reserves[0].toFixed());
-  }
+  // todo: readd when we have some data
+  // if (bchFlexUSDPool.reserves) {
+  //   bchPriceUSD = Number.parseFloat(bchFlexUSDPool.reserves[1].toFixed()) / Number.parseFloat(bchFlexUSDPool.reserves[0].toFixed());
+  // }
   if (flexUSDHonkPool.reserves) {
     honkPriceUSD = 1. / ( Number.parseFloat(flexUSDHonkPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDHonkPool.reserves[1].toFixed()))
   }
