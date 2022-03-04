@@ -55,9 +55,10 @@ export default function Farm(): JSX.Element {
         token0: new Token(ChainId.SMARTBCH_AMBER, '0x3d2cd929D1fC1dA68D2557AB85336C2740b1Ae81', 18, 'MIST', 'Mist Token'),
         token1: HONK[ChainId.SMARTBCH_AMBER],
       }
+      // ,
       // "0x437E444365aD9ed788e8f255c908bceAd5AEA645": {
       //   farmId: 8,
-      //   allocPoint: 57663568,
+      //   allocPoint: 57663568,   
       //   token0: HONK[ChainId.SMARTBCH],
       //   token1: FLEXUSD,
       // },
@@ -129,8 +130,13 @@ export default function Farm(): JSX.Element {
 
   farms = farms.sort((a, b) => b.allocPoint - a.allocPoint);
 
-  const flexUSDHonkPool = farms.find((v) => v.pair === '0x437E444365aD9ed788e8f255c908bceAd5AEA645').pool; //todo: figure out and fix hardcode
-  const bchFlexUSDPool = farms.find((v) => v.pair === '0x24f011f12Ea45AfaDb1D4245bA15dCAB38B43D13').pool; //todo: figure out and fix hardcode
+  //mainnet
+  // const flexUSDHonkPool = farms.find((v) => v.pair === '0x437E444365aD9ed788e8f255c908bceAd5AEA645').pool; //todo: figure out and fix hardcode
+  // const bchFlexUSDPool = farms.find((v) => v.pair === '0x24f011f12Ea45AfaDb1D4245bA15dCAB38B43D13').pool; //todo: figure out and fix hardcode
+  //amber
+  const flexUSDHonkPool = farms.find((v) => v.pair === '0x66f72b9ab277f49508c6b57ccb28786f1231ccf5').pool; //todo: figure out and fix hardcode
+  const bchFlexUSDPool = farms.find((v) => v.pair === '0x66f72b9ab277f49508c6b57ccb28786f1231ccf5').pool; //todo: figure out and fix hardcode
+  
   let bchPriceUSD = 0;
   let honkPriceUSD = 0;
   if (bchFlexUSDPool.reserves) {

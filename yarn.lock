@@ -2226,18 +2226,18 @@
   resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-1.0.4.tgz#11847eb2ea5510419d7ada9ff150a33af0ad0863"
   integrity sha512-3kOrTmo8+Z8o6AL0rzN82MOf8J5CuxhRLFhpI8mrn+3OqekA6d5eb1GYO3EYYo1Vn6mYQSMNTzCWbEwUInb0cQ==
 
-"@honkswapdex/default-token-list@^0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@honkswapdex/default-token-list/-/default-token-list-0.0.29.tgz#e1fb03bb191bd12cab501b193acb9008b31d7a29"
-  integrity sha512-6n6bdnWHzBPHB668cIXezY+LqkTo4W7UPcFydDwiEZIga6v9Z8NiZYkv+cnnZOZ3o1BskfpfL8u+0btpFY47ZQ==
+"@honkswapdex/default-token-list@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@honkswapdex/default-token-list/-/default-token-list-0.0.32.tgz#9906208edc1e670660a0752e59b54f9f2e470b45"
+  integrity sha512-MJK+wiRjwSK9iqTLJOYMfzT2cgBnJjfQrrBKHc5q6U81pD+wYVIkPferHraZx+AFsQAKqxpKi/A4lzhcb2bCSA==
   dependencies:
     commitlint "^13.1.0"
     lint-staged "^11.1.2"
 
-"@honkswapdex/sdk@^0.0.27":
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@honkswapdex/sdk/-/sdk-0.0.27.tgz#a01b39b8a4051fdbf809a71e64b0c37efa4c5e5c"
-  integrity sha512-461yXY+obUivYidmg54UfBBAHlO5MALDZU3MRekTJ+Su7biMdWktsfypq1jLCHyhnhJcQBz1ectvUKGsu9tcNg==
+"@honkswapdex/sdk@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@honkswapdex/sdk/-/sdk-0.0.30.tgz#2da6fa7500a041e0df3d3a11a2b9c60ee85cab1a"
+  integrity sha512-nPYtxODdSGi046ldErPFUwET+FJ932DpSum+o51XweJoyTwNkunZvkMQuSuYfEDVgy+/r2TkT7svWCwCj24+nA==
   dependencies:
     big.js "^6.1.0"
     decimal.js-light "^2.5.0"
