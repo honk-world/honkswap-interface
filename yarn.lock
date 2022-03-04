@@ -2234,10 +2234,10 @@
     commitlint "^13.1.0"
     lint-staged "^11.1.2"
 
-"@honkswapdex/sdk@^0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@honkswapdex/sdk/-/sdk-0.0.30.tgz#2da6fa7500a041e0df3d3a11a2b9c60ee85cab1a"
-  integrity sha512-nPYtxODdSGi046ldErPFUwET+FJ932DpSum+o51XweJoyTwNkunZvkMQuSuYfEDVgy+/r2TkT7svWCwCj24+nA==
+"@honkswapdex/sdk@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@honkswapdex/sdk/-/sdk-0.0.32.tgz#369b643a3ea8c13045392a03b7121aca2cbcefaf"
+  integrity sha512-LpZzdmVvltnzjKbb6mQ26FNkrUwYMFmyfOg7tq/XXsdeOmjLLxdg5jGZjRPQQXvqkMA3dM0pJ3h7IBN5jS0XNQ==
   dependencies:
     big.js "^6.1.0"
     decimal.js-light "^2.5.0"
