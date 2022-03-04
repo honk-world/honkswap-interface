@@ -49,25 +49,48 @@ export default function Farm(): JSX.Element {
 
   const hardcodedPairs = { //todo: fix farms
     [ChainId.SMARTBCH]: {
-      "0x66f72b9ab277f49508c6b57ccb28786f1231ccf5": {
+      "0xC29f4FeBB17A16da9D29bbFa1F3A79d53E46B71F": {
+        farmId: 0,
+        allocPoint: 1000,
+        token0: WBCH[ChainId.SMARTBCH],
+        token1: HONK[ChainId.SMARTBCH],
+      },
+      "0x56c92D1d401697dFFA132ED4a1274cdbBd0Aff05": {
         farmId: 1,
         allocPoint: 1000,
-        token0: new Token(ChainId.SMARTBCH_AMBER, '0x3d2cd929D1fC1dA68D2557AB85336C2740b1Ae81', 18, 'MIST', 'Mist Token'),
-        token1: HONK[ChainId.SMARTBCH_AMBER],
+        token0: HONK[ChainId.SMARTBCH],
+        token1: FLEXUSD,
+      },
+      "0xC9FBE3D954C00D75F558D6F28cEE1A5Cd2D672A7": {
+        farmId: 2,
+        allocPoint: 1000,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129', 18, 'MIST', 'Mist Token')
+      },
+      "0xFe2Bb50E19f3ECd1bb6296cE2a02287613E2C658": {
+        farmId: 3,
+        allocPoint: 1000,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben')
+      },
+      "0x71636033d2E0A128250CE7c57f5e7210aEA1D6Ea": {
+        farmId: 4,
+        allocPoint: 1000,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x0b00366fBF7037E9d75E4A569ab27dAB84759302', 18, 'LAW', 'LAW')
+      },
+      "0x63bCa1CEF1423b71aF70DCD5D5c420Df71b7cd38": {
+        farmId: 5,
+        allocPoint: 1000,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 18, '$CATS', 'CashCats')
+      },
+      "0x00595DA02F1b7f80C8e341A21a553E5154ff5508": {
+        farmId: 6,
+        allocPoint: 1000,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x98Dd7eC28FB43b3C4c770AE532417015fa939Dd3', 18, 'FLEX', 'Flex Coin')
       }
-      // ,
-      // "0x437E444365aD9ed788e8f255c908bceAd5AEA645": {
-      //   farmId: 8,
-      //   allocPoint: 57663568,   
-      //   token0: HONK[ChainId.SMARTBCH],
-      //   token1: FLEXUSD,
-      // },
-      // "0x80F712670d268cf2C05e7162674c7466c940eBE3": {
-      //   farmId: 0,
-      //   allocPoint: 56352041,
-      //   token0: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben'),
-      //   token1: WBCH[ChainId.SMARTBCH],
-      // },
     },
     [ChainId.SMARTBCH_AMBER]: {
       "0x66f72b9ab277f49508c6b57ccb28786f1231ccf5": {
