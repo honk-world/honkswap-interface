@@ -18,16 +18,14 @@ const features = {
     Feature.LIQUIDITY_MINING,
     // Feature.MIGRATE,
     //Feature.ANALYTICS,
-    Feature.STAKING
+    //Feature.STAKING
   ],
   [ChainId.SMARTBCH_AMBER]: [
     Feature.AMM,
     Feature.LIQUIDITY_MINING,
-    /*
-    Feature.MIGRATE,
-    Feature.ANALYTICS,
-    */
-    Feature.STAKING,
+    // Feature.MIGRATE,
+    // Feature.ANALYTICS,
+    //Feature.STAKING,
   ],
 }
 
