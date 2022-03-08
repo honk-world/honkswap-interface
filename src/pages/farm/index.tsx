@@ -47,7 +47,7 @@ export default function Farm(): JSX.Element {
   const updateFarmFilter = useUpdateFarmFilter()
   updateFarmFilter(type)
 
-  const hardcodedPairs = { //todo: fix farms
+  const hardcodedPairs = { 
     [ChainId.SMARTBCH]: {
       "0xC29f4FeBB17A16da9D29bbFa1F3A79d53E46B71F": {
         farmId: 0,
@@ -139,8 +139,8 @@ export default function Farm(): JSX.Element {
       pending: 0,
       owner: {
         id: MASTERCHEF_ADDRESS[chainId],
-        sushiPerBlock: "100000000000000000000",
-        totalAllocPoint: "999949643"
+        sushiPerBlock: "176800",
+        totalAllocPoint: "7000"
       },
       userCount: 1,
     }
@@ -220,8 +220,6 @@ export default function Farm(): JSX.Element {
 
   const masterChefV1SushiPerBlock = useMasterChefV1SushiPerBlock()
 
-  const blocksPerDay = 86400 / Number(averageBlockTime)
-
   const map = (pool) => {
     // TODO: Account for fees generated in case of swap pairs, and use standard compounding
     // algorithm with the same intervals acrosss chains to account for consistency.
@@ -239,13 +237,13 @@ export default function Farm(): JSX.Element {
 
     const pair = swapPair || kashiPair
 
-    const blocksPerDay = 15684 // calculated empirically
+    const blocksPerDay = 15709 // calculated empirically
 
     function getRewards() {
       // TODO: Some subgraphs give sushiPerBlock & sushiPerSecond, and mcv2 gives nothing
       const sushiPerBlock =
-        pool?.owner?.sushiPerBlock / 1e18 ||
-        (pool?.owner?.sushiPerSecond / 1e18) * averageBlockTime ||
+        pool?.owner?.sushiPerBlock / 1e2 ||
+        (pool?.owner?.sushiPerSecond / 1e2) * averageBlockTime ||
         masterChefV1SushiPerBlock
 
       const rewardPerBlock = (pool.allocPoint / pool.owner.totalAllocPoint) * sushiPerBlock
@@ -265,7 +263,7 @@ export default function Farm(): JSX.Element {
 
     const rewards = getRewards()
 
-    const balance = Number(pool.balance / 1e18);
+    const balance = Number(pool.balance / 1e2);
 
     const roiPerBlock = rewards.reduce((previousValue, currentValue) => {
       return previousValue + currentValue.rewardPerBlock * currentValue.rewardPrice
