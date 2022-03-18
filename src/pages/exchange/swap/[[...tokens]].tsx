@@ -297,12 +297,12 @@ export default function Swap() {
           txHash: hash,
         })
 
-        gtag.event({
-          category: 'Exchange',
-          action: 'Swap',
-          name: txHash,
-          value: null,
-        });
+        // gtag.event({ //matomo
+        //   category: 'Exchange',
+        //   action: 'Swap',
+        //   name: txHash,
+        //   value: null,
+        // });
 
       })
       .catch((error) => {
