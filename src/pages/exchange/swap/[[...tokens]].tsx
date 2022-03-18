@@ -72,7 +72,7 @@ import { useRouter } from 'next/router'
 import { useSwapCallback } from '../../../hooks/useSwapCallback'
 import { useUSDCValue } from '../../../hooks/useUSDCPrice'
 import { warningSeverity } from '../../../functions/prices'
-import * as gtag from '../../../functions/matomo'
+// import * as gtag from '../../../functions/matomo'
 import { useTheme } from '../../../components/ThemeSwitch'
 
 export default function Swap() {

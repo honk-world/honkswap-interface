@@ -2,7 +2,7 @@ import '../bootstrap'
 import '../styles/index.css'
 
 import * as plurals from 'make-plural/plurals'
-import * as gtag from './../functions/matomo'
+// import * as gtag from './../functions/matomo'
 
 import { Fragment, FunctionComponent } from 'react'
 import { NextComponentType, NextPageContext } from 'next'
@@ -54,7 +54,7 @@ function MyApp({
   const router = useRouter()
   useEffect(() => {
     const handleRouteChange = (url) => {
-      gtag.pageview(url)
+      // gtag.pageview(url) // matomo 
     }
     router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
