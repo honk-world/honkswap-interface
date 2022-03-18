@@ -67,24 +67,24 @@ export default function Farm(): JSX.Element {
         token0: HONK[ChainId.SMARTBCH],
         token1: new Token(ChainId.SMARTBCH, '0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129', 18, 'MIST', 'Mist Token')
       },
-      // "0xFe2Bb50E19f3ECd1bb6296cE2a02287613E2C658": {
-      //   farmId: 3,
-      //   allocPoint: 0,
-      //   token0: HONK[ChainId.SMARTBCH],
-      //   token1: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben')
-      // },
-      // "0x71636033d2E0A128250CE7c57f5e7210aEA1D6Ea": {
-      //   farmId: 4,
-      //   allocPoint: 0,
-      //   token0: HONK[ChainId.SMARTBCH],
-      //   token1: new Token(ChainId.SMARTBCH, '0x0b00366fBF7037E9d75E4A569ab27dAB84759302', 18, 'LAW', 'LAW')
-      // },
-      // "0x63bCa1CEF1423b71aF70DCD5D5c420Df71b7cd38": {
-      //   farmId: 5,
-      //   allocPoint: 0,
-      //   token0: HONK[ChainId.SMARTBCH],
-      //   token1: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 18, '$CATS', 'CashCats')
-      // },
+      "0xFe2Bb50E19f3ECd1bb6296cE2a02287613E2C658": {
+        farmId: 3,
+        allocPoint: 1,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben')
+      },
+      "0x71636033d2E0A128250CE7c57f5e7210aEA1D6Ea": {
+        farmId: 4,
+        allocPoint: 1,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x0b00366fBF7037E9d75E4A569ab27dAB84759302', 18, 'LAW', 'LAW')
+      },
+      "0x63bCa1CEF1423b71aF70DCD5D5c420Df71b7cd38": {
+        farmId: 5,
+        allocPoint: 1,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 18, '$CATS', 'CashCats')
+      },
       "0x00595DA02F1b7f80C8e341A21a553E5154ff5508": {
         farmId: 6,
         allocPoint: 10,
