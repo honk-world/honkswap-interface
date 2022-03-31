@@ -163,7 +163,7 @@ export default function Farm(): JSX.Element {
   //   bchPriceUSD = Number.parseFloat(bchFlexUSDPool.reserves[1].toFixed()) / Number.parseFloat(bchFlexUSDPool.reserves[0].toFixed());
   // }
   if (flexUSDHonkPool.reserves) {
-    honkPriceUSD = 1. / ( Number.parseFloat(flexUSDHonkPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDHonkPool.reserves[1].toFixed()))
+    honkPriceUSD = Number.parseFloat(flexUSDHonkPool.reserves[0].toFixed()) / Number.parseFloat(flexUSDHonkPool.reserves[1].toFixed(2))
   }
 
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
@@ -180,11 +180,11 @@ export default function Farm(): JSX.Element {
         let tvl = 0;
         if (farms[i].pool.token0 === HONK[chainId].address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
-          tvl = reserve / totalSupply * chefBalance * honkPriceUSD * 2;
+          tvl = 10000000000000000 * reserve / totalSupply * chefBalance * honkPriceUSD * 2;
         }
         else if (farms[i].pool.token1 === HONK[chainId].address) {
-          const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed());
-          tvl = reserve / totalSupply * chefBalance * honkPriceUSD * 2;
+           const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed());
+          tvl = 10000000000000000 * reserve / totalSupply * chefBalance * honkPriceUSD * 2;
         }
         else if (farms[i].pool.token0 === FLEXUSD.address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());

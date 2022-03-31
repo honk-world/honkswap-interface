@@ -7,7 +7,7 @@ import { shade } from 'polished'
 import { uriToHttp } from '../functions/convert'
 
 async function getColorFromToken(token: Token): Promise<string | null> {
-  const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${token.address}/logo.png`
+  const path = `https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/${token.address}/logo.png`
 
   return Vibrant.from(path)
     .getPalette()
