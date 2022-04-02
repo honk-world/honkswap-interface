@@ -125,7 +125,7 @@ function AppBar(): JSX.Element {
 
                 <div className="fixed bottom-0 left-0 z-10 flex flex-row items-center justify-center w-full p-4 lg:w-auto bg-dark-1000 lg:relative lg:p-0 lg:bg-transparent">
                   <div className="flex items-center justify-between w-full space-x-2 sm:justify-end">
-                    {chainId && [ChainId.SMARTBCH].includes(chainId) && library && library.provider.isMetaMask && (
+                    {/* {chainId && [ChainId.SMARTBCH].includes(chainId) && library && library.provider.isMetaMask && (
                       <>
                         <AddToken
                           imageProps={{src: "/images/tokens/xhonk-square.png", alt: "xHONK"}}
@@ -137,7 +137,7 @@ function AppBar(): JSX.Element {
                             image: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd/logo.png',
                           }} />
                       </>
-                    )}
+                    )} */}
 
                     {chainId && chainId in HONK_ADDRESS && library && library.provider.isMetaMask && (
                       <>
