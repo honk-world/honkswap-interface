@@ -51,46 +51,52 @@ export default function Farm(): JSX.Element {
     [ChainId.SMARTBCH]: {
       "0xC29f4FeBB17A16da9D29bbFa1F3A79d53E46B71F": {
         farmId: 0,
-        allocPoint: 50,
+        allocPoint: 20,
         token0: WBCH[ChainId.SMARTBCH],
         token1: HONK[ChainId.SMARTBCH],
       },
       "0x56c92D1d401697dFFA132ED4a1274cdbBd0Aff05": {
         farmId: 1,
-        allocPoint: 25,
+        allocPoint: 10,
         token0: HONK[ChainId.SMARTBCH],
         token1: FLEXUSD,
       },
-      "0xC9FBE3D954C00D75F558D6F28cEE1A5Cd2D672A7": {
+      "0x47982804BbebD6456cA15bd5D11C367A46E61B21": {
         farmId: 2,
         allocPoint: 5,
         token0: HONK[ChainId.SMARTBCH],
-        token1: new Token(ChainId.SMARTBCH, '0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129', 18, 'MIST', 'Mist Token')
-      },
-      "0xFe2Bb50E19f3ECd1bb6296cE2a02287613E2C658": {
-        farmId: 3,
-        allocPoint: 1,
-        token0: HONK[ChainId.SMARTBCH],
-        token1: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben')
-      },
-      "0x71636033d2E0A128250CE7c57f5e7210aEA1D6Ea": {
-        farmId: 4,
-        allocPoint: 1,
-        token0: HONK[ChainId.SMARTBCH],
-        token1: new Token(ChainId.SMARTBCH, '0x0b00366fBF7037E9d75E4A569ab27dAB84759302', 18, 'LAW', 'LAW')
-      },
-      "0x63bCa1CEF1423b71aF70DCD5D5c420Df71b7cd38": {
-        farmId: 5,
-        allocPoint: 1,
-        token0: HONK[ChainId.SMARTBCH],
-        token1: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 18, '$CATS', 'CashCats')
+        token1: new Token(ChainId.SMARTBCH, '0x6732E55Ac3ECa734F54C26Bd8DF4eED52Fb79a6E', 18, 'JOY', 'Joystick')
       },
       "0x00595DA02F1b7f80C8e341A21a553E5154ff5508": {
-        farmId: 6,
-        allocPoint: 10,
+        farmId: 3,
+        allocPoint: 3,
         token0: HONK[ChainId.SMARTBCH],
         token1: new Token(ChainId.SMARTBCH, '0x98Dd7eC28FB43b3C4c770AE532417015fa939Dd3', 18, 'FLEX', 'Flex Coin')
+      },
+      "0xC9FBE3D954C00D75F558D6F28cEE1A5Cd2D672A7": {
+        farmId: 4,
+        allocPoint: 2,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129', 18, 'MIST', 'Mist Token')
       }
+      // "0xFe2Bb50E19f3ECd1bb6296cE2a02287613E2C658": {
+      //   farmId: 3,
+      //   allocPoint: 1,
+      //   token0: HONK[ChainId.SMARTBCH],
+      //   token1: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben')
+      // },
+      // "0x71636033d2E0A128250CE7c57f5e7210aEA1D6Ea": {
+      //   farmId: 4,
+      //   allocPoint: 1,
+      //   token0: HONK[ChainId.SMARTBCH],
+      //   token1: new Token(ChainId.SMARTBCH, '0x0b00366fBF7037E9d75E4A569ab27dAB84759302', 18, 'LAW', 'LAW')
+      // },
+      // "0x63bCa1CEF1423b71aF70DCD5D5c420Df71b7cd38": {
+      //   farmId: 5,
+      //   allocPoint: 1,
+      //   token0: HONK[ChainId.SMARTBCH],
+      //   token1: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 18, '$CATS', 'CashCats')
+      // },
     },
     [ChainId.SMARTBCH_AMBER]: {
       "0x66f72b9ab277f49508c6b57ccb28786f1231ccf5": {
