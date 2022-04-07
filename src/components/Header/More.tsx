@@ -10,29 +10,35 @@ import { useLingui } from '@lingui/react'
 import NavLink from '../NavLink'
 
 const items = (i18n: I18n) => [
-  {
-    name: i18n._(t`Docs`),
-    description: i18n._(t`Documentation for users of HONK.`),
-    href: 'https://docs.honkswap.fi',
-    external: true,
-  },
+  // {
+  //   name: i18n._(t`Docs`),
+  //   description: i18n._(t`Documentation for users of HONK.`),
+  //   href: 'https://docs.honkswap.fi',
+  //   target: '_blank',
+  // },
   {
     name: i18n._(t`Open Source`),
     description: i18n._(t`HONK is a supporter of Open Source.`),
     href: 'https://github.com/honk-world',
-    external: true,
+    target: '_blank',
   },
   {
     name: i18n._(t`Discord`),
     description: i18n._(t`Join the community on Discord.`),
-    href: 'https://discord.gg/xFTnQEzu9T',
-    external: true,
+    href: 'https://discord.gg/UGRtzjPNTV',
+    target: '_blank',
   },
   {
     name: i18n._(t`Telegram`),
     description: i18n._(t`Join the community on Telegram.`),
-    href: 'https://t.me/HonkSwapOfficial',
-    external: true,
+    href: 'https://t.me/honkhonktoken',
+    target: '_blank',
+  },
+  {
+    name: i18n._(t`Twitter`),
+    description: i18n._(t`Follow us on Twitter.`),
+    href: 'https://twitter.com/World_of_Honk',
+    target: '_blank',
   },
 ]
 

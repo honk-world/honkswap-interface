@@ -11,21 +11,23 @@ const SIZE = {
 
 const FILLED = {
   default: 'bg-transparent opacity-80 hover:opacity-100',
-  red: 'bg-red bg-opacity-80 w-full rounded text-high-emphesis hover:bg-opacity-100 disabled:bg-opacity-80',
+  // red: 'bg-red bg-opacity-80 w-full rounded text-high-emphesis hover:bg-opacity-100 disabled:bg-opacity-80',
+  red: 'bg-red outline-red rounded text-white hover:bg-lred disabled:bg-opacity-20',
   blue: 'bg-blue bg-opacity-80 w-full rounded text-high-emphesis hover:bg-opacity-100 disabled:bg-opacity-80',
   pink: 'bg-gradient-to-r from-pink to-opaque-red w-full rounded text-high-emphesis opacity-80 hover:opacity-100 disabled:bg-opacity-80',
   gray: 'border rounded shadow-sm focus:ring-2 focus:ring-offset-2 bg-dark-700 bg-opacity-80 w-full text-primary border-dark-800 hover:bg-opacity-100 focus:ring-offset-dark-700 focus:ring-dark-800 disabled:bg-opacity-80',
   green: 'bg-green bg-opacity-80 w-full rounded text-high-emphesis hover:bg-opacity-100 disabled:bg-opacity-80',
-  gradient:
-    'w-full text-high-emphesis bg-gradient-to-r from-blue to-red opacity-80 hover:opacity-100 disabled:bg-opacity-80',
+  // gradient:
+  //   'w-full text-high-emphesis bg-gradient-to-r from-gree to-red opacity-80 hover:opacity-100 disabled:bg-opacity-80',
+  gradient: 'bg-green outline-green rounded text-white hover:bg-lgreen disabled:bg-opacity-20',
 }
 
 const OUTLINED = {
   default: 'bg-transparent opacity-80 hover:opacity-100',
   red: 'bg-red bg-opacity-20 outline-red rounded text-red hover:bg-opacity-40 disabled:bg-opacity-20',
-  blue: 'bg-blue bg-opacity-20 outline-blue rounded text-blue hover:bg-opacity-40 disabled:bg-opacity-20',
+  blue: 'bg-blue outline-blue rounded text-white hover:bg-lblue disabled:bg-opacity-20',
   pink: 'bg-pink bg-opacity-20 outline-pink rounded text-pink hover:bg-opacity-40 disabled:bg-opacity-20',
-  gray: 'bg-dark-700 bg-opacity-20 outline-gray rounded text-gray hover:bg-opacity-40 disabled:bg-opacity-20',
+  gray: 'bg-blue outline-blue rounded text-white hover:bg-lblue disabled:bg-opacity-20',
   green: 'bg-green bg-opacity-20 border border-green rounded text-green hover:bg-opacity-40 disabled:bg-opacity-20',
   gradient:
     'border border-transparent border-gradient-r-blue-pink-dark-900 opacity-80 hover:opacity-100 disabled:bg-opacity-20',

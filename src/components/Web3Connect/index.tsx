@@ -10,7 +10,7 @@ import { useWalletModalToggle } from '../../state/application/hooks'
 import useInstructionModal from '../../modals/InstructionModal/useInstuctionModal'
 import InstructionModal from '../../modals/InstructionModal'
 
-export default function Web3Connect({ color = 'gray', size = 'sm', className = '', ...rest }: ButtonProps) {
+export default function Web3Connect({ color = 'blue', size = 'sm', className = '', ...rest }: ButtonProps) {
   const { i18n } = useLingui()
   const toggleWalletModal = useWalletModalToggle()
   const { error } = useWeb3React()

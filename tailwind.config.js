@@ -47,9 +47,12 @@ module.exports = {
       colors: {
         purple: withOpacity('--purple-v'),
         blue: withOpacity('--blue-v'),
+        lblue: withOpacity('--lblue-v'),
         pink: withOpacity('--pink-v'),
         green: withOpacity('--green-v'),
+        lgreen: withOpacity('--lgreen-v'),
         red: withOpacity('--red-v'),
+        lred: withOpacity('--lred-v'),
         yellow: withOpacity('--yellow-v'),
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
@@ -163,7 +166,8 @@ module.exports = {
       addUtilities({
         '.header-border-b': {
           background:
-            'linear-gradient(to right, rgba(39, 176, 230, 0.2) 0%, rgba(250, 82, 160, 0.2) 100%) left bottom no-repeat',
+            // 'linear-gradient(to right, rgba(39, 176, 230, 0.2) 0%, rgba(250, 82, 160, 0.2) 100%) left bottom no-repeat',
+            'linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(245, 158, 11, 0.2), rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.2)) left bottom no-repeat',
           backgroundSize: '100% 1px',
         },
       })
