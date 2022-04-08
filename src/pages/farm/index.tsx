@@ -186,11 +186,11 @@ export default function Farm(): JSX.Element {
         let tvl = 0;
         if (farms[i].pool.token0 === HONK[chainId].address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
-          tvl = 10000000000000000 * reserve / totalSupply * chefBalance * honkPriceUSD * 2;
+          tvl = reserve / totalSupply * chefBalance * honkPriceUSD * 2;
         }
         else if (farms[i].pool.token1 === HONK[chainId].address) {
-           const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed());
-          tvl = 10000000000000000 * reserve / totalSupply * chefBalance * honkPriceUSD * 2;
+           const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed(2));
+          tvl = reserve / totalSupply * chefBalance * honkPriceUSD * 2;
         }
         else if (farms[i].pool.token0 === FLEXUSD.address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
