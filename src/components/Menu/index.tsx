@@ -9,11 +9,11 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
 const items = (i18n: I18n) => [
-  {
-    name: i18n._(t`Docs`),
-    description: i18n._(t`Documentation for users of HONK.`),
-    href: 'https://docs.honkswap.fi',
-  },
+  // {
+  //   name: i18n._(t`Docs`),
+  //   description: i18n._(t`Documentation for users of HONK.`),
+  //   href: 'https://docs.honkswap.fi',
+  // },
   {
     name: i18n._(t`Open Source`),
     description: i18n._(t`HONK is a supporter of Open Source.`),
@@ -22,12 +22,17 @@ const items = (i18n: I18n) => [
   {
     name: i18n._(t`Discord`),
     description: i18n._(t`Join the community on Discord.`),
-    href: 'https://discord.gg/xFTnQEzu9T',
+    href: 'https://discord.gg/UGRtzjPNTV',
   },
   {
     name: i18n._(t`Telegram`),
     description: i18n._(t`Join the community on Telegram.`),
-    href: 'https://t.me/HonkSwapOfficial',
+    href: 'https://t.me/honkhonktoken',
+  },
+  {
+    name: i18n._(t`Twitter`),
+    description: i18n._(t`Follow us on Twitter.`),
+    href: 'https://twitter.com/World_of_Honk',
   },
 ]
 

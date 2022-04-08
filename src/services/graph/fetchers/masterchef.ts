@@ -23,9 +23,10 @@ export const MASTERCHEF_V1 = {
   [ChainId.SMARTBCH]: 'honkswap/master-chef',
 }
 
-export const masterChefV1 = async (query, chainId = ChainId.SMARTBCH, variables = undefined) =>
-  request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V1[chainId]}`, query, variables)
-
+export const masterChefV1 = async (query, chainId = ChainId.SMARTBCH, variables = undefined) => {
+ return null //request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V1[chainId]}`, query, variables)
+}
+  
 export const getMasterChefV1TotalAllocPoint = async () => {
   const {
     masterChef: { totalAllocPoint },

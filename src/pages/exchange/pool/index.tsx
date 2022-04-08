@@ -107,7 +107,9 @@ export default function Pool() {
 
       <Alert
         title={i18n._(t`Liquidity Provider Rewards`)}
-        message={i18n._(t`Liquidity providers earn a 0.25% fee on all trades proportional to their share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity`)}
+        message={i18n._(
+          t`Liquidity providers earn a 0.25% fee on all trades proportional to their share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity`
+        )}
         type="information"
       />
 
@@ -150,7 +152,7 @@ export default function Pool() {
             >
               {i18n._(t`Add`)}
             </Button>
-            <Button id="add-pool-button" color="gray" onClick={() => router.push(`/find`)}>
+            <Button id="add-pool-button" color="red" onClick={() => router.push(`/find`)}>
               {i18n._(t`Import`)}
             </Button>
 

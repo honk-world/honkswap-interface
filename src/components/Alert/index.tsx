@@ -5,7 +5,7 @@ import { classNames } from '../../functions'
 
 const TYPE = {
   information: {
-    color: 'bg-yellow bg-opacity-20 text-high-emphesis',
+    color: 'bg-yellow bg-opacity-80 text-high-emphesis',
     icon: (
       <svg
         width="33"

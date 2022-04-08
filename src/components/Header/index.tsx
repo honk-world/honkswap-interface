@@ -40,7 +40,9 @@ function AppBar(): JSX.Element {
             <div className="px-4 py-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <Image src="/honk-world-logo.svg" alt="Honk" width="32px" height="32px" />
+                  <a href="/swap">
+                    <Image src="/honk-world-logo.svg" alt="Honk" width="42px" height="42px" />
+                  </a>
                   <div className="hidden sm:block sm:ml-4">
                     <div className="flex space-x-2">
                       {/* <Buy /> */}
@@ -142,14 +144,16 @@ function AppBar(): JSX.Element {
                     {chainId && chainId in HONK_ADDRESS && library && library.provider.isMetaMask && (
                       <>
                         <AddToken
-                          imageProps={{src: "/images/tokens/honk-square.png", alt: "HONK"}}
+                          imageProps={{ src: '/images/tokens/honk-square.png', alt: 'HONK' }}
                           text={i18n._(t`Add HONK to your MetaMask wallet`)}
                           metamaskProps={{
                             address: HONK_ADDRESS[chainId],
                             symbol: 'HONK',
                             decimals: 2,
-                            image: 'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd/logo.png', //todo: change to honkbar address
-                          }} />
+                            image:
+                              'https://raw.githubusercontent.com/honk-world/assets/master/blockchains/smartbch/assets/0xF2d4D9c65C2d1080ac9e1895F6a32045741831Cd/logo.png', //todo: change to honkbar address
+                          }}
+                        />
                       </>
                     )}
 
@@ -172,7 +176,7 @@ function AppBar(): JSX.Element {
                     <div className="hidden md:block sm:block">
                       <LanguageSwitch />
                     </div>
-                    <ThemeSwitch/>
+                    <ThemeSwitch />
                     <More />
                   </div>
                 </div>
@@ -241,16 +245,15 @@ function AppBar(): JSX.Element {
                   </a>
                 </Link>
 
-
                 {chainId && featureEnabled(Feature.MIGRATE, chainId) && (
-                <Link href={'/migrate'}>
-                  <a
-                    id={`migrate-nav-link`}
-                    className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
-                  >
-                    {i18n._(t`Migrate`)}
-                  </a>
-                </Link>
+                  <Link href={'/migrate'}>
+                    <a
+                      id={`migrate-nav-link`}
+                      className="p-2 text-baseline text-primary hover:text-high-emphesis focus:text-high-emphesis md:p-3 whitespace-nowrap"
+                    >
+                      {i18n._(t`Migrate`)}
+                    </a>
+                  </Link>
                 )}
 
                 {chainId && featureEnabled(Feature.LIQUIDITY_MINING, chainId) && (
