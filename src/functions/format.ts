@@ -84,9 +84,9 @@ export const formatNumber = (number: any, usd = false, scale = true, decimals = 
     return '0'
   }
 
-  if (num < 0.0001 && num > 0) {
-    return usd ? '< $0.0001' : '< 0.0001'
-  }
+  // if (num < 0.0001 && num > 0) {
+  //   return usd ? '< $0.0001' : '< 0.0001'
+  // }
 
   if (num > 1000 || num < -1000) {
     return (
