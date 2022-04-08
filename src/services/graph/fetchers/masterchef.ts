@@ -24,7 +24,9 @@ export const MASTERCHEF_V1 = {
 }
 
 export const masterChefV1 = async (query, chainId = ChainId.SMARTBCH, variables = undefined) =>
-  request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V1[chainId]}`, query, variables)
+  {
+   // request(`${GRAPH_HOST[chainId]}/subgraphs/name/${MASTERCHEF_V1[chainId]}`, query, variables)
+  }
 
 export const getMasterChefV1TotalAllocPoint = async () => {
   const {

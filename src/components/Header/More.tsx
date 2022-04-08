@@ -21,24 +21,28 @@ const items = (i18n: I18n) => [
     description: i18n._(t`HONK is a supporter of Open Source.`),
     href: 'https://github.com/honk-world',
     target: '_blank',
+    external: 'true'
   },
   {
     name: i18n._(t`Discord`),
     description: i18n._(t`Join the community on Discord.`),
     href: 'https://discord.gg/UGRtzjPNTV',
     target: '_blank',
+    external: 'true'
   },
   {
     name: i18n._(t`Telegram`),
     description: i18n._(t`Join the community on Telegram.`),
     href: 'https://t.me/honkhonktoken',
     target: '_blank',
+    external: 'true'
   },
   {
     name: i18n._(t`Twitter`),
     description: i18n._(t`Follow us on Twitter.`),
     href: 'https://twitter.com/World_of_Honk',
     target: '_blank',
+    external: 'true'
   },
 ]
 
