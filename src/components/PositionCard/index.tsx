@@ -72,7 +72,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
                 </div>
               </div>
               <div className="flex items-center mt-3 space-x-2 text-base md:mt-0">
-                <div>{userPoolBalance ? userPoolBalance.toSignificant(4) : '-'} </div>
+                <div>{userPoolBalance ? userPoolBalance.multiply(1e7).toSignificant(4) : '-'} </div>
                 <div className="text-secondary">Pool Tokens</div>
               </div>
             </div>

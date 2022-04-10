@@ -68,6 +68,7 @@ export default function Remove() {
   // burn state
   const { independentField, typedValue } = useBurnState()
   const { pair, parsedAmounts, error } = useDerivedBurnInfo(currencyA ?? undefined, currencyB ?? undefined)
+  
   const { onUserInput: _onUserInput } = useBurnActionHandlers()
   const isValid = !error
 
@@ -623,7 +624,7 @@ export default function Remove() {
           <div className="flex items-center justify-between">
             <div className="text-sm text-secondary">{i18n._(t`${currencyA?.symbol}/${currencyB?.symbol} Burned`)}</div>
             <div className="text-sm font-bold justify-center items-center flex right-align pl-1.5 text-high-emphasis">
-              {parsedAmounts[Field.LIQUIDITY]?.toSignificant(6)}
+              {parsedAmounts[Field.LIQUIDITY]?.multiply(1e7).toSignificant(6)}
             </div>
           </div>
         </div>
