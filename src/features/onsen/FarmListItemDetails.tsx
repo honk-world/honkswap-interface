@@ -163,7 +163,7 @@ const FarmListItem = ({ farm }) => {
               <div>
                 <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
                   {i18n._(t`Your Staked`)}: {formatNumber(amount?.toSignificant(6)) ?? 0} {farm.type}
-                  {amount && farm.pool ? `(${formatPercent(Math.min(Number.parseFloat(amount?.toFixed()) / farm.chefBalance * .0000001, 100)).toString()} ` + i18n._(t`of pool`) + `)` : ''}
+                  {amount && farm.pool ? `(${formatPercent(Math.min(Number.parseFloat(amount?.toFixed()) / farm.chefBalance * .00001, 100)).toString()} ` + i18n._(t`of pool`) + `)` : ''}
                 </div>
                 <div className="pr-4 mb-2 text-sm text-right cursor-pointer text-secondary">
                   {token0Amount.divide(1e7).toFixed(token0Amount.currency.decimals > 2 ? 2 : undefined)} {token0Name} + {token1Amount.divide(1e7).toFixed(token1Amount.currency.decimals > 2 ? 2 : undefined)} {token1Name} ({formatNumber(poolFraction * farm.tvl / 1e7, true)})
