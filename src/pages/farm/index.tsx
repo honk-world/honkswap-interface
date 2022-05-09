@@ -83,7 +83,7 @@ export default function Farm(): JSX.Element {
         farmId: 5,
         allocPoint: 5,
         token0: HONK[ChainId.SMARTBCH],
-        token1: new Token(ChainId.SMARTBCH, '0x9288df32951386a8254aeaf80a66b78ccaf75b82', 18, 'SBUSD', 'Smart BUSD')
+        token1: new Token(ChainId.SMARTBCH, '0x9288df32951386a8254aeaf80a66b78ccaf75b82', 2, 'SBUSD', 'Smart BUSD')
       }
       // "0xFe2Bb50E19f3ECd1bb6296cE2a02287613E2C658": {
       //   farmId: 3,
