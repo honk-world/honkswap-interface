@@ -69,15 +69,21 @@ export default function Farm(): JSX.Element {
       },
       "0x00595DA02F1b7f80C8e341A21a553E5154ff5508": {
         farmId: 3,
-        allocPoint: 3,
+        allocPoint: 0, //3
         token0: HONK[ChainId.SMARTBCH],
         token1: new Token(ChainId.SMARTBCH, '0x98Dd7eC28FB43b3C4c770AE532417015fa939Dd3', 18, 'FLEX', 'Flex Coin')
       },
       "0xC9FBE3D954C00D75F558D6F28cEE1A5Cd2D672A7": {
         farmId: 4,
-        allocPoint: 2,
+        allocPoint: 0, //2
         token0: HONK[ChainId.SMARTBCH],
         token1: new Token(ChainId.SMARTBCH, '0x5fA664f69c2A4A3ec94FaC3cBf7049BD9CA73129', 18, 'MIST', 'Mist Token')
+      },
+      "0x67cDA96C3c9CC967DcD8cD01e965647ca4029d08": {
+        farmId: 5,
+        allocPoint: 5,
+        token0: HONK[ChainId.SMARTBCH],
+        token1: new Token(ChainId.SMARTBCH, '0x9288df32951386a8254aeaf80a66b78ccaf75b82', 18, 'SBUSD', 'Smart BUSD')
       }
       // "0xFe2Bb50E19f3ECd1bb6296cE2a02287613E2C658": {
       //   farmId: 3,
