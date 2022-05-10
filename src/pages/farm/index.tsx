@@ -85,24 +85,6 @@ export default function Farm(): JSX.Element {
         token0: HONK[ChainId.SMARTBCH],
         token1: new Token(ChainId.SMARTBCH, '0x9288df32951386a8254aeaf80a66b78ccaf75b82', 2, 'sBUSD', 'Smart BUSD')
       }
-      // "0xFe2Bb50E19f3ECd1bb6296cE2a02287613E2C658": {
-      //   farmId: 3,
-      //   allocPoint: 1,
-      //   token0: HONK[ChainId.SMARTBCH],
-      //   token1: new Token(ChainId.SMARTBCH, '0x77CB87b57F54667978Eb1B199b28a0db8C8E1c0B', 18, 'EBEN', 'Green Ben')
-      // },
-      // "0x71636033d2E0A128250CE7c57f5e7210aEA1D6Ea": {
-      //   farmId: 4,
-      //   allocPoint: 1,
-      //   token0: HONK[ChainId.SMARTBCH],
-      //   token1: new Token(ChainId.SMARTBCH, '0x0b00366fBF7037E9d75E4A569ab27dAB84759302', 18, 'LAW', 'LAW')
-      // },
-      // "0x63bCa1CEF1423b71aF70DCD5D5c420Df71b7cd38": {
-      //   farmId: 5,
-      //   allocPoint: 1,
-      //   token0: HONK[ChainId.SMARTBCH],
-      //   token1: new Token(ChainId.SMARTBCH, '0x265bD28d79400D55a1665707Fa14A72978FA6043', 18, '$CATS', 'CashCats')
-      // },
     },
     [ChainId.SMARTBCH_AMBER]: {
       "0x66f72b9ab277f49508c6b57ccb28786f1231ccf5": {
@@ -195,8 +177,13 @@ export default function Farm(): JSX.Element {
           tvl = reserve / totalSupply * chefBalance * honkPriceUSD * 2;
         }
         else if (farms[i].pool.token1 === HONK[chainId].address) {
-           const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed(2));
+          const reserve = Number.parseFloat(farms[i].pool.reserves[1].toFixed(2));
           tvl = reserve / totalSupply * chefBalance * honkPriceUSD * 2;
+
+          // quick hack to get this working
+          if (hardcodedPairs[chainId][farms[i].pair].token1.symbol == 'sBUSD') {
+            tvl = farms[i].pool.reserves[1].div(farms[i].pool.totalSupply).toNumber() * chefBalance * honkPriceUSD * 2 * 10000000000000000
+          }
         }
         else if (farms[i].pool.token0 === FLEXUSD.address) {
           const reserve = Number.parseFloat(farms[i].pool.reserves[0].toFixed());
